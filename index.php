@@ -19,7 +19,6 @@
 
 </section>
 
-
 <footer class="foot fixed-bottom">
     <p>COPYRIGHT &copy; 2018 TRAVEL PIG</p>
 </footer>
