@@ -16,13 +16,23 @@
 <?php include_once("header.php") ?>
 
 <section>
-
+    <div class="input-group mb-3">
+        <select class="custom-select" id="selectVendedor">
+            <option selected>Vendedor...</option>
+        </select>
+        <select class="custom-select" id="selectCasas">
+            <option selected>Tipo de Casa...</option>
+        </select>
+    </div>
 </section>
 
 
 <footer class="foot fixed-bottom">
     <p>COPYRIGHT &copy 2018 TRAVEL PIG</p>
 </footer>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/selects/selectVendedorsViviendas.js"></script>
 <script src="js/font-awesome.js"></script>
 </body>
 </html>
