@@ -16,7 +16,7 @@
 <?php include_once("header.php") ?>
 
 <section>
-
+    <h1>Profile</h1>
 </section>
 
 

@@ -9,15 +9,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link rel="stylesheet" href="css/font-awesome.css">
-    <title>Premium</title>
+    <title>Messages</title>
 </head>
 
 <body>
 <?php include_once("header.php") ?>
 
 <section>
-    <h1>Premium</h1>
-
+<h1>Messages</h1>
 </section>
 
 
