@@ -1,6 +1,16 @@
 <header class="head">
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-md">
+        <nav class="navbar navbar-expand-md col-md-10 offset-md-1">
+
+            <div class="container">
+                <div class="row">
+                    <h2 class="navbar-brand col-md-12" href="#">ADMIN</h2>
+                </div>
+                <div class="row">
+                    <h2 class="navbar-brand col-md-12" href="#">Premium</h2>
+                </div>
+            </div>
+
             <img src="img/logo.png" alt="" class="header-logo">
             <ul id="nav-ul" class="navbar-nav">
                 <li class="nav-item ml-3"><a href="#" class="nav-link"><i
@@ -25,5 +35,6 @@
                     </a>
                 </ul>
             </div>
+        </nav>
     </div>
 </header>

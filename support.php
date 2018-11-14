@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link rel="stylesheet" href="css/font-awesome.css">
-    <title>Plantilla para backend</title>
+    <title>Support</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 
 
 <footer class="foot fixed-bottom">
-    <p>COPYRIGHT &copy; 2018 TRAVEL PIG</p>
+    <p>COPYRIGHT &copy 2018 TRAVEL PIG</p>
 </footer>
 <script src="js/font-awesome.js"></script>
 </body>
