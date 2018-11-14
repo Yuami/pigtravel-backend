@@ -16,6 +16,7 @@
 <?php include_once("header.php") ?>
 
 <section>
+    <h1>Reservations</h1>
 
 </section>
 
