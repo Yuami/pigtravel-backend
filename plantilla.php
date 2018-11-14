@@ -13,16 +13,16 @@
 </head>
 
 <body>
-    <?php include_once("header.php")?>
+<?php include_once("header.php") ?>
 
-    <section>
+<section>
 
-    </section>
+</section>
 
 
-
-    <footer class="foot fixed-bottom"">
-        <p>COPYRIGHT &copy 2018 TRAVEL PIG</p>
-    </footer>
-    <script src="
-        js/font-awesome.js"> </script> </body> </html>
+<footer class="foot fixed-bottom">
+    <p>COPYRIGHT &copy 2018 TRAVEL PIG</p>
+</footer>
+<script src="js/font-awesome.js"></script>
+</body>
+</html>
