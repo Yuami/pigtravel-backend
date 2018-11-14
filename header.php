@@ -2,13 +2,9 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md col-md-10 offset-md-1">
 
-            <div class="container">
-                <div class="row">
-                    <h2 class="navbar-brand col-md-12" href="#">ADMIN</h2>
-                </div>
-                <div class="row">
-                    <h2 class="navbar-brand col-md-12" href="#">Premium</h2>
-                </div>
+            <div class="head-brand">
+                <h2 class="algn-r head-brand-text" href="#">ADMIN</h2>
+                <p class="algn-r mb-0"><span class="premium-text">Premium</span></p>
             </div>
 
             <img src="img/logo.png" alt="" class="header-logo">
