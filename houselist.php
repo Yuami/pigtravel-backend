@@ -25,9 +25,16 @@
             <option selected>Tipo de Casa...</option>
         </select>
     </div>
+
+    <table class="table table-striped" id="listadoViviendas">
+
+    </table>
 </section>
 
 
 <?php include_once("footer.php") ?>
+<script src="js/selects/selectViviendas.js"></script>
+<script src="js/selects/selectVendedorsViviendas.js"></script>
+
 </body>
 </html>
