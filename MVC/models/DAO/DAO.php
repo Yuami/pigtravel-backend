@@ -7,15 +7,10 @@
  */
 
 abstract class DAO extends PDO {
-    private $table;
-    private $db;
-
     private static $instance = null;
 
 
-    private function __construct($table) {
-        $this->table=(string) $table;
-
+    private function __construct() {
         $config = Config::singleton();
         $dsn = 'mysql:host=' . $config->get('dbhost') . ';dbname=' . $config->get('dbname');
         $user = $config->get('dbuser');
@@ -23,49 +18,48 @@ abstract class DAO extends PDO {
         parent::__construct($dsn, $user, $pass);
     }
 
-    public function db(){
-        return $this->db;
+    public function getAll($table) {
+        $statement = parent::prepare("SELECT * FROM :table");
+        $statement->bindValue(":table", $table);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getAll(){
-        $statement = "SELECT * FROM $this->table ORDER BY id DESC";
-        $res = db()->prepare($statement);
-        $res->execute();
+    public function getById($table, $id) {
+        $statement = parent::prepare("SELECT * FROM :table WHERE id=:id");
+        $statement->bindValue(":id", $id);
+        $statement->bindValue(":table", $table);
+        $statement->execute();
 
-        //Devolvemos el resultset en forma de array de objetos
-        $rows = $res->fetchAll(PDO::FETCH_ASSOC);
-
-        return $rows;
+        return $statement->fetchAll();
     }
 
-    public function getById($id){
-        $query=$this->db->query("SELECT * FROM $this->table WHERE id=$id");
+    public function getBy($table, $column, $value) {
+        $statement = parent::prepare("SELECT * FROM :table WHERE :column=':value'");
+        $statement->bindValue(":column", $column);
+        $statement->bindValue(":value", $value);
+        $statement->bindValue(":table", $table);
+        $statement->execute();
 
-        if($row = $query->fetch_object()) {
-            $resultSet=$row;
-        }
-
-        return $resultSet;
+        return $statement->fetchAll();
     }
 
-    public function getBy($column,$value){
-        $query=$this->db->query("SELECT * FROM $this->table WHERE $column='$value'");
-
-        while($row = $query->fetch_object()) {
-            $resultSet[]=$row;
-        }
-
-        return $resultSet;
+    public function deleteById($table, $id) {
+        $statement = parent::prepare("DELETE FROM :table WHERE id=:id");
+        $statement->bindValue(":table", $table);
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 
-    public function deleteById($id){
-        $query=$this->db->query("DELETE FROM $this->table WHERE id=$id");
-        return $query;
-    }
-
-    public function deleteBy($column,$value){
-        $query=$this->db->query("DELETE FROM $this->table WHERE $column='$value'");
-        return $query;
+    public function deleteBy($table, $column, $value) {
+        $statement = parent::query("DELETE FROM :table WHERE :column=':value'");
+        $statement->bindValue(":table", $table);
+        $statement->bindValue(":column", $column);
+        $statement->bindValue(":value", $value);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 
 
