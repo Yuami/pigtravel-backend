@@ -10,14 +10,14 @@
                 <img src="img/logo.png" alt="" class="header-logo">
             </a>
             <ul id="nav-ul" class="navbar-nav">
-                <li class="nav-item ml-3">
-                    <a href="houselist.php" class="nav-link"><i class="fas fa-home"></i> HOUSES</a>
+                <li class="nav-item">
+                    <a href="houselist.php" class="nav-link"><i class="fas fa-home"></i> <span class="d-none d-lg-inline-block">HOUSES</span></a>
                 </li>
-                <li class="nav-item ml-3">
-                    <a href="reservations.php" class="nav-link"><i class="fas fa-list-alt"></i> RESERVATIONS</a>
+                <li class="nav-item">
+                    <a href="reservations.php" class="nav-link"><i class="fas fa-list-alt"></i> <span class="d-none d-lg-inline-block">RESERVATIONS</span></a>
                 </li>
-                <li class="nav-item ml-3">
-                    <a href="support.php" class="nav-link"><i class="fas fa-question-circle"></i> SUPPORT</a>
+                <li class="nav-item">
+                    <a href="support.php" class="nav-link"><i class="fas fa-question-circle"></i> <span class="d-none d-lg-inline-block">SUPPORT</span></a>
                 </li>
             </ul>
             <div id="header-right">
@@ -25,10 +25,10 @@
                     <li class="nav-item">
                         <a href="messages.php" class="nav-link"><i class="far fa-comments"></i></a>
                     </li>
-                    <li class="nav-item mr-2">
+                    <li class="nav-item">
                         <a href="notifications.php" class="nav-link"><i class="far fa-bell"></i></a>
                     </li>
-                    <li class="nav-item ml-5">
+                    <li class="nav-item ml-3">
                         <a href="profile.php">
                             <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
                         </a>
