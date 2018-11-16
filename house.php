@@ -19,10 +19,10 @@
     <h1>Houses</h1>
     <div class="input-group mb-3">
         <select class="custom-select" id="selectTarifa">
-            <option selected>Tarifa...</option>
+            <option value="" selected>Tarifa...</option>
         </select>
         <select class="custom-select" id="selectRebaja">
-            <option selected>Rebaja...</option>
+            <option value="" selected>Rebaja...</option>
         </select>
     </div>
 
@@ -33,6 +33,6 @@
 
 
 <?php include_once("footer.php") ?>
-<script src="js/selects/selectTarifas.js"></script>
+<script src="js/selects/selectTarifa-Rebaja.js"></script>
 </body>
 </html>

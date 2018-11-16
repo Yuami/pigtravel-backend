@@ -2,8 +2,6 @@
 header("Content-Type: application/json");
 require_once "conn.php";
 
-
-
 if (isset($_GET["idTarifa"])){
     $idTarifa = $_GET["idTarifa"];
     $sql = "SELECT * from rebaja WHERE idTarifa = :idTarifa";
