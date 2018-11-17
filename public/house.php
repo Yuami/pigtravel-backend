@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link rel="stylesheet" href="css/font-awesome.css">
-    <title>List of houses</title>
+    <title>House</title>
 </head>
 
 <body>
 <?php include_once("header.php") ?>
 
-<section>
-    <h1>Houses</h1>
+<section class="container">
+    <h1>House</h1>
     <div class="input-group mb-3">
         <select class="custom-select" id="selectTarifa">
             <option value="" selected>Tarifa...</option>
@@ -38,10 +38,26 @@
         </tr>
         </thead>
     </table>
+    <div class="container">
+
+        <ul class="list-group mb-5" id="list-group-tarifa"></ul>
+        <ul class="list-group mb-5" id="list-group-vivienda-tarifa"></ul>
+        <h2>Politicas Cancelacion</h2>
+        <div class="row">
+            <div class="col-4">
+                <div class="list-group" id="list-group-politica-cancelacion" role="tablist"></div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent"></div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
 <?php include_once("footer.php") ?>
 <script src="js/selects/selectTarifa-Rebaja.js"></script>
+<script src="js/selects/selectVivienda-Tarifa.js"></script>
+<script src="js/selects/selectPoliticaCancelacion.js"></script>
 </body>
 </html>

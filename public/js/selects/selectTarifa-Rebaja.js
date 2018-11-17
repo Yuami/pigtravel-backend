@@ -14,6 +14,10 @@ class Tarifa {
         return id == this.id;
     }
 
+    toListGroupItem(){
+        return `<li class="list-group-item">Tarifa ${this.id}</li>`
+    }
+
     toOption() {
         return `<option value="${this.id}">Tarifa ${this.id}</option>`;
     }
@@ -36,6 +40,10 @@ class Tarifa {
             tbody.append(item.toRow());
         });
         return tbody;
+    }
+
+    static toListGroup(tarifas){
+        return tarifas.map(tarifa => tarifa.toListGroupItem())
     }
 
     static async getAllImport() {
@@ -112,24 +120,6 @@ class Rebaja {
         return imported;
     }
 }
-// ------------------- Start -----------------------
-let selectTarifa = $("#selectTarifa");
-let selectRebaja = $("#selectRebaja");
-let tBody = $("#listadoTarifas");
-
-let tarifas = Tarifa.getAllImport();
-tarifas.then(renderTarifas);
-tarifas.then(tarifas => renderTarifaTable(tarifas, tBody));
-
-let rebajas = Rebaja.getAllImport();
-rebajas.then(renderRebajas);
-
-selectTarifa.change(() => {
-    let tarifa = $("#selectTarifa option:selected");
-    let idTarifa = tarifa.attr("value");
-    tarifas.then(tarifas => renderTarifaTable(Tarifa.getLocal(idTarifa, tarifas), tBody));
-    rebajas.then(rebajas => renderRebajas(Rebaja.getByTarifaLocal(idTarifa, rebajas)));
-});
 
 // ------------------- Helpers -----------------------
 function renderTarifas(tarifas) {
@@ -150,3 +140,24 @@ function renderRebajas(rebajas) {
     selectRebaja.append(`<option value="" selected>Rebaja...</option>`);
     rebajas.forEach(rebaja => selectRebaja.append(rebaja.toOption()));
 }
+
+// ------------------- Start -----------------------
+let selectTarifa = $("#selectTarifa");
+let selectRebaja = $("#selectRebaja");
+let listGroup = $('#list-group-tarifa');
+let table = $("#listadoTarifas");
+
+let tarifas = Tarifa.getAllImport();
+tarifas.then(renderTarifas);
+tarifas.then(tarifas => renderTarifaTable(tarifas, table));
+tarifas.then(tarifas => listGroup.append(Tarifa.toListGroup(tarifas)));
+
+let rebajas = Rebaja.getAllImport();
+rebajas.then(renderRebajas);
+
+selectTarifa.change(() => {
+    let tarifa = $("#selectTarifa option:selected");
+    let idTarifa = tarifa.attr("value");
+    tarifas.then(tarifas => renderTarifaTable(Tarifa.getLocal(idTarifa, tarifas), table));
+    rebajas.then(rebajas => renderRebajas(Rebaja.getByTarifaLocal(idTarifa, rebajas)));
+});
