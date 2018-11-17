@@ -17,6 +17,14 @@
 
 <section class="container">
     <h1>House</h1>
+    <div class="dropdown mb-3">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Politicas Cancelacion
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="drop-down-list">
+        </div>
+    </div>
+
     <div class="input-group mb-3">
         <select class="custom-select" id="selectTarifa">
             <option value="" selected>Tarifa...</option>
@@ -39,9 +47,9 @@
         </thead>
     </table>
     <div class="container">
-        <ul class="list-group mb-5" id="list-group-tarifa"></ul>
-        <ul class="list-group mb-5" id="list-group-rebaja"></ul>
-        <ul class="list-group mb-5" id="list-group-vivienda-tarifa"></ul>
+        <ul class="list-group mb-3" id="list-group-tarifa"></ul>
+        <ul class="list-group mb-3" id="list-group-rebaja"></ul>
+        <ul class="list-group mb-3" id="list-group-vivienda-tarifa"></ul>
         <h2>Politicas Cancelacion</h2>
         <div class="row">
             <div class="col-4">
