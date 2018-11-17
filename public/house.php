@@ -37,9 +37,6 @@
             <th>Politica Cancelacion</th>
         </tr>
         </thead>
-        <tbody class="table-body">
-
-        </tbody>
     </table>
 </section>
 

@@ -1,10 +1,4 @@
-function renderTarifas(tarifas) {
-    tarifas.forEach(tarifa => selectTarifa.append(tarifa.toOption()));
-}
-
-function td(item) {
-    return `<td>${item}</td>`;
-}
+// ------------------- Tarifa -----------------------
 
 class Tarifa {
     constructor(id, fInicio, fFin, precio, general, pCancel) {
@@ -14,6 +8,10 @@ class Tarifa {
         this.precio = precio;
         this.general = general === "1";
         this.pCancel = pCancel;
+    }
+
+    isMe(id){
+        return id == this.id;
     }
 
     toOption() {
@@ -33,6 +31,7 @@ class Tarifa {
 
     static toTBody(tarifas) {
         let tbody = $("<tbody>");
+        tbody.addClass("table-body");
         tarifas.forEach(item => {
             tbody.append(item.toRow());
         });
@@ -56,16 +55,18 @@ class Tarifa {
         return await response.json();
     }
 
-    static async get(id) {
+    static async getServer(id) {
         const response = await fetch(`info/selectTarifas.php?idTarifa=${id}`);
         return await response.json();
     }
 
-    static getByRebaja(rebaja) {
-        return rebaja.getTarifa();
+    static getLocal(id, tarifas){
+        if (id == "" || id == null || id == undefined)
+            return tarifas;
+        return tarifas.filter(tarifa => tarifa.isMe(id));
     }
 }
-
+// ------------------- Rebaja -----------------------
 class Rebaja {
     constructor(id, dias, porcentaje, fInicio, fFin, fCreacion, activa, idTarifa) {
         this.id = id;
@@ -78,15 +79,74 @@ class Rebaja {
         this.idTarifa = idTarifa;
     }
 
-    getTarifa(){
+    toOption() {
+        return `<option value="${this.id}">Rebaja ${this.id}</option>`
+    }
 
+    static import(JSON) {
+        return JSON.map(item => {
+            return new Rebaja(item.id, item.dias, item.porcentaje, item.fInicio, item.fFin, item.fCreacion, item.activa, item.idTarifa);
+        });
+    }
+
+    static async getAll() {
+        let response = await fetch("info/selectRebajas.php");
+        return await response.json();
+    }
+
+    static async getByTarifaServer(id) {
+        const response = await fetch(`info/selectRebajas.php?idTarifa=${id}`);
+        return await response.json();
+    }
+
+    static getByTarifaLocal(idTarifa, rebajas) {
+        if (idTarifa == "" || idTarifa == null || idTarifa == undefined)
+            return rebajas;
+
+        return rebajas.filter(rebaja => rebaja.idTarifa == idTarifa);
+    }
+
+    static async getAllImport() {
+        let imported = null;
+        await Rebaja.getAll().then(res => imported = Rebaja.import(res));
+        return imported;
     }
 }
-
+// ------------------- Start -----------------------
 let selectTarifa = $("#selectTarifa");
 let selectRebaja = $("#selectRebaja");
+let tBody = $("#listadoTarifas");
 
-let tarifas = Tarifa.getAllImport().then(tarifas => {
-    renderTarifas(tarifas);
-    return tarifas;
+let tarifas = Tarifa.getAllImport();
+tarifas.then(renderTarifas);
+tarifas.then(tarifas => renderTarifaTable(tarifas, tBody));
+
+let rebajas = Rebaja.getAllImport();
+rebajas.then(renderRebajas);
+
+selectTarifa.change(() => {
+    let tarifa = $("#selectTarifa option:selected");
+    let idTarifa = tarifa.attr("value");
+    tarifas.then(tarifas => renderTarifaTable(Tarifa.getLocal(idTarifa, tarifas), tBody));
+    rebajas.then(rebajas => renderRebajas(Rebaja.getByTarifaLocal(idTarifa, rebajas)));
 });
+
+// ------------------- Helpers -----------------------
+function renderTarifas(tarifas) {
+    tarifas.forEach(tarifa => selectTarifa.append(tarifa.toOption()));
+}
+
+function renderTarifaTable(tarifas, table) {
+    table.find('tbody').remove();
+    table.append(Tarifa.toTBody(tarifas));
+}
+
+function td(item) {
+    return `<td>${item}</td>`;
+}
+
+function renderRebajas(rebajas) {
+    selectRebaja.empty();
+    selectRebaja.append(`<option value="" selected>Rebaja...</option>`);
+    rebajas.forEach(rebaja => selectRebaja.append(rebaja.toOption()));
+}
