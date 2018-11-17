@@ -39,8 +39,8 @@
         </thead>
     </table>
     <div class="container">
-
         <ul class="list-group mb-5" id="list-group-tarifa"></ul>
+        <ul class="list-group mb-5" id="list-group-rebaja"></ul>
         <ul class="list-group mb-5" id="list-group-vivienda-tarifa"></ul>
         <h2>Politicas Cancelacion</h2>
         <div class="row">

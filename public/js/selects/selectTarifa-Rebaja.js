@@ -15,7 +15,11 @@ class Tarifa {
     }
 
     toListGroupItem(){
-        return `<li class="list-group-item">Tarifa ${this.id}</li>`
+        return `<li class="list-group-item">Tarifa: <strong>${this.id}</strong> Precio: <strong>${this.precio}</strong> Politica Cancelacion: <strong>${this.pCancel}</strong> General: <strong>${this.general ? "Sí": "No"}</strong> Inicio: <strong>${this.fInicio}</strong> Fin: <strong>${this.fFin}</strong></li>`
+    }
+
+    static toListGroup(tarifas){
+        return tarifas.map(tarifa => tarifa.toListGroupItem());
     }
 
     toOption() {
@@ -40,10 +44,6 @@ class Tarifa {
             tbody.append(item.toRow());
         });
         return tbody;
-    }
-
-    static toListGroup(tarifas){
-        return tarifas.map(tarifa => tarifa.toListGroupItem())
     }
 
     static async getAllImport() {
@@ -83,7 +83,7 @@ class Rebaja {
         this.fInicio = fInicio;
         this.fFin = fFin;
         this.fCreacion = fCreacion;
-        this.activa = activa;
+        this.activa = activa == "1";
         this.idTarifa = idTarifa;
     }
 
@@ -93,7 +93,7 @@ class Rebaja {
 
     static import(JSON) {
         return JSON.map(item => {
-            return new Rebaja(item.id, item.dias, item.porcentaje, item.fInicio, item.fFin, item.fCreacion, item.activa, item.idTarifa);
+            return new Rebaja(item.id, item.dias, item.porcentaje, item.fechaInicio, item.fechaFin, item.fechaCreacion, item.activa, item.idTarifa);
         });
     }
 
@@ -119,6 +119,14 @@ class Rebaja {
         await Rebaja.getAll().then(res => imported = Rebaja.import(res));
         return imported;
     }
+
+    toListGroupItem(){
+        return `<li class="list-group-item">Rebaja: <strong>${this.id}</strong> Dias: <strong>${this.dias}</strong> Porcentaje: <strong>${this.porcentaje}</strong> Tarifa: <strong>${this.idTarifa}</strong> Activa: <strong>${this.activa ? "Sí": "No"}</strong> Creacion: <strong>${this.fCreacion}</strong> Inicio: <strong>${this.fInicio}</strong> Fin: <strong>${this.fFin}</strong></li>`
+    }
+
+    static toListGroup(rebajas){
+        return rebajas.map(rebaja => rebaja.toListGroupItem());
+    }
 }
 
 // ------------------- Helpers -----------------------
@@ -141,23 +149,41 @@ function renderRebajas(rebajas) {
     rebajas.forEach(rebaja => selectRebaja.append(rebaja.toOption()));
 }
 
+function updateListaRebajas(rebajas){
+    listGroupRebaja.empty();
+    listGroupRebaja.append(Rebaja.toListGroup(rebajas));
+}
+
+function updateListaTarifas(tarifas){
+    listGroupTarifa.empty();
+    listGroupTarifa.append(Tarifa.toListGroup(tarifas));
+}
+
 // ------------------- Start -----------------------
+// Variables
 let selectTarifa = $("#selectTarifa");
 let selectRebaja = $("#selectRebaja");
-let listGroup = $('#list-group-tarifa');
+let listGroupTarifa = $('#list-group-tarifa');
+let listGroupRebaja = $('#list-group-rebaja');
 let table = $("#listadoTarifas");
 
+//Fetch data
 let tarifas = Tarifa.getAllImport();
+let rebajas = Rebaja.getAllImport();
+// Represent Data
 tarifas.then(renderTarifas);
 tarifas.then(tarifas => renderTarifaTable(tarifas, table));
-tarifas.then(tarifas => listGroup.append(Tarifa.toListGroup(tarifas)));
+tarifas.then(updateListaTarifas);
 
-let rebajas = Rebaja.getAllImport();
 rebajas.then(renderRebajas);
+rebajas.then(updateListaRebajas);
 
+// Update Data
 selectTarifa.change(() => {
     let tarifa = $("#selectTarifa option:selected");
     let idTarifa = tarifa.attr("value");
     tarifas.then(tarifas => renderTarifaTable(Tarifa.getLocal(idTarifa, tarifas), table));
+    tarifas.then(tarifas => updateListaTarifas(Tarifa.getLocal(idTarifa, tarifas)));
     rebajas.then(rebajas => renderRebajas(Rebaja.getByTarifaLocal(idTarifa, rebajas)));
+    rebajas.then(rebajas => updateListaRebajas(Rebaja.getByTarifaLocal(idTarifa, rebajas)));
 });

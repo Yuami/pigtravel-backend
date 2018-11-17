@@ -30,7 +30,7 @@
 
     </table>
 </section>
-
+<h1><a href="house.php">House</a></h1>
 
 <?php include_once("footer.php") ?>
 <script src="js/selects/selectViviendas.js"></script>
