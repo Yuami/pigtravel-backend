@@ -26,8 +26,20 @@
         </select>
     </div>
 
-    <table class="table table-striped" id="listadoViviendas">
+    <table class="table table-striped" id="listadoTarifas">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Precio</th>
+            <th>General</th>
+            <th>Politica Cancelacion</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
 
+        </tbody>
     </table>
 </section>
 
