@@ -33,6 +33,10 @@ body {
     margin-bottom: 0;
 }
 
+.icoNav {
+    display: none;
+}
+
 .head {
     background-color: #9FD9DA;
     margin-left: auto;
@@ -51,13 +55,14 @@ body {
 #header-right {
     margin: 0 0 0 auto;
 }
+
 #nav-ul li:first-child {
     margin-left: 70px !important;
 }
 
 nav li .nav-link {
     color: #000000 !important;
-    font-size: 16px;
+    font-size: 18px;
     margin-left: 30px !important;
 
 }
@@ -82,4 +87,29 @@ text-align: right !important;
 
 .premium-text {
     color: #ff0000;
+}
+
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .icoNav {
+        display: block;
+    }
+    .textNav {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .icoNav {
+        display: inline-block;
+    }
+
+    #nav-ul li:first-child {
+        margin-left: 0px !important;
+    }
+
+    .header-profile-sm {
+        margin: 0 auto !important;
+        transform: translate(26%);
+    }
 }
