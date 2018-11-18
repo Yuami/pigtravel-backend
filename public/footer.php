@@ -1,4 +1,4 @@
-<footer class="foot mt-5">
+<footer class="foot">
     <p>COPYRIGHT &copy; 2018 TRAVEL PIG</p>
 </footer>
 
