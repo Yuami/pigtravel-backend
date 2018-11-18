@@ -109,7 +109,7 @@ text-align: right !important;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .icoNav {
         display: inline-block;
     }
