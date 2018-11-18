@@ -17,6 +17,15 @@
 <h1><a href="house.php">House</a></h1>
 <section>
     <h1>Houses</h1>
+
+    <div class="dropdown">
+        <button  type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Tipo Viviendas
+        </button>
+        <div class="dropdown-menu" id="dropdownidTipoVivienda">
+        </div>
+    </div>
+
     <div class="input-group mb-3">
         <select class="custom-select" id="selectVendedor">
             <option selected>Vendedor...</option>
@@ -29,9 +38,18 @@
     <table class="table table-striped" id="listadoViviendas">
 
     </table>
+
+    <div id="llistaReserves">
+
+    </div>
+
+
 </section>
 
 <?php include_once("footer.php") ?>
+<script src="js/selects/selectTipoVivienda.js"></script>
+
+<script src="js/selects/selectViviendaLista.js"></script>
 <script src="js/selects/selectViviendas.js"></script>
 <script src="js/selects/selectVendedorsViviendas.js"></script>
 

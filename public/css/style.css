@@ -1,3 +1,5 @@
+/* GENERAL */
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -18,24 +20,7 @@ body {
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-.foot {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 12px;
-    color: #ffffff;
-    background-color: #000000;
-    text-align: center;
-}
-
-.foot p {
-    margin-bottom: 0;
-}
-
-.icoNav {
-    display: none;
-}
+/* HEADER */
 
 .head {
     background-color: #9FD9DA;
@@ -43,12 +28,16 @@ body {
     margin-right: auto;
 }
 
+.head-brand {
+    padding-top: 0;
+}
+
 .header-logo {
     height: 60px;
 }
 
 .header-profile-img {
-    height: calc(55px - 3px);
+    height: calc(55px - 10px);
     border: 3px solid #e7717d;
 }
 
@@ -67,15 +56,35 @@ nav li .nav-link {
 
 }
 
-.head-brand {
-    padding-top: 0;
-}
-
 .head-brand-text {
     margin: 0 !important;
     font-size: 1.5em;
     font-weight: bold;
 }
+
+.icoNav {
+    display: none;
+}
+
+/* FOOTER */
+
+.foot {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 12px;
+    color: #ffffff;
+    background-color: #000000;
+    text-align: center;
+}
+
+.foot p {
+    margin-bottom: 0;
+}
+
+
+/* OTHER */
 
 .algn-l{
 text-align: left !important;
@@ -89,6 +98,7 @@ text-align: right !important;
     color: #ff0000;
 }
 
+/* CUSTOM MEDIA QUERIES */
 
 @media (min-width: 768px) and (max-width: 1000px) {
     .icoNav {
@@ -108,8 +118,14 @@ text-align: right !important;
         margin-left: 0px !important;
     }
 
-    .header-profile-sm {
-        margin: 0 auto !important;
-        transform: translate(26%);
+    /*.header-profile-sm {*/
+        /*!*margin: 0 auto !important;*!*/
+        /*!*transform: translate(26%);*!*/
+    /*}*/
+
+    .header-profile-img {
+        width: 1.25em !important;
+        height: 1.25em !important;
+        border: 0;
     }
 }

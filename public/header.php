@@ -17,7 +17,7 @@
                     <li class="nav-item">
                         <a href="houselist.php" class="nav-link">
                             <span class="icoNav">
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home fa-fw"></i>
                             </span>
                             <span class="textNav">HOUSES</span>
                         </a>
@@ -26,7 +26,7 @@
                     <li class="nav-item">
                         <a href="reservations.php" class="nav-link">
                             <span class="icoNav">
-                                <i class="fas fa-list-alt"></i>
+                                <i class="fas fa-list-alt fa-fw"></i>
                             </span>
                             <span class="textNav">RESERVATIONS</span>
                         </a>
@@ -34,7 +34,7 @@
                     <li class="nav-item">
                         <a href="support.php" class="nav-link">
                                 <span class="icoNav">
-                            <i class="fas fa-question-circle"></i>
+                            <i class="fas fa-question-circle fa-fw"></i>
                                 </span>
                             <span class="textNav">SUPPORT</span>
                         </a>
@@ -42,18 +42,20 @@
                 </ul>
                 <ul id="nav-ul" class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="messages.php" class="nav-link"><i class="far fa-comments"></i>
+                        <a href="messages.php" class="nav-link"><i class="far fa-comments fa-fw"></i>
                             <span class="textRightNav d-md-none">MESSAGES</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="notifications.php" class="nav-link"><i class="far fa-bell"></i>
+                        <a href="notifications.php" class="nav-link"><i class="far fa-bell fa-fw"></i>
                             <span class="textRightNav d-md-none">NOTIFICATIONS</span>
                         </a>
                     </li>
+                </ul>
+                <ul class="navbar-nav">
                     <li class="nav-item ml-md-3 header-profile-sm">
-                        <a href="profile.php">
-                            <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle mx-auto">
+                        <a href="profile.php" class="nav-link">
+                            <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle"><span class="textRightNav d-md-none"> PROFILE</span>
                         </a>
                     </li>
                 </ul>
