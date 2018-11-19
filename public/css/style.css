@@ -83,30 +83,30 @@ nav li .nav-link {
     margin-bottom: 0;
 }
 
-/* HOUSE */
-.carousel {
-    max-height: 600px;
-    overflow: hidden;
-}
-
-.item img {
-    width: 100%;
-    object-fit: cover;
-}
-
-
 /* OTHER */
 
-.algn-l {
+.algn-l{
     text-align: left !important;
 }
 
-.algn-r {
+.algn-r{
     text-align: right !important;
 }
 
 .premium-text {
     color: #ff0000;
+}
+
+/* CUSTOM MEDIA QUERIES */
+
+.dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
+
+#dropdownHeaderButton {
+    background-color: transparent !important;
+    box-shadow: none;
 }
 
 /* CUSTOM MEDIA QUERIES */

@@ -80,10 +80,19 @@
                         </a>
                     </li>
                 </ul>
-                <a href="profile.php" class="nav-link nav-item ml-md-3 header-profile-sm d-sm-none d-md-block">
-                    <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle"><span
-                            class="textRightNav d-md-none"> PROFILE</span>
-                </a>
+                <div class="dropdown">
+                    <button id="dropdownHeaderButton" type="button"
+                            class="nav-link nav-item ml-md-3 header-profile-sm d-sm-none d-md-block btn dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown">
+                        <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
+                    </button>
+                    <div class="dropdown-menu text-center">
+                        <h6>Philipp Vujic</h6>
+                        <p>Mallorca, ES</p>
+                        <a class="dropdown-item text-danger" href="premium.php">MANAGE PREMIUM</a>
+                        <a class="dropdown-item" href="settings.php">SETTINGS</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </div>
