@@ -80,9 +80,9 @@
                         </a>
                     </li>
                 </ul>
-                <div class="dropdown">
+                <div class="dropdown d-none d-md-block ">
                     <button id="dropdownHeaderButton" type="button"
-                            class="nav-link nav-item ml-md-3 header-profile-sm d-sm-none d-md-block btn dropdown-toggle dropdown-toggle-split"
+                            class="nav-link nav-item ml-md-3 header-profile-sm btn dropdown-toggle dropdown-toggle-split"
                             data-toggle="dropdown">
                         <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
                     </button>
