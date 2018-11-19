@@ -17,6 +17,43 @@
 
 <section class="container">
     <h1>House</h1>
+
+    <div id="carouselCasas" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#carouselCasas" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselCasas" data-slide-to="1"></li>
+            <li data-target="#carouselCasas" data-slide-to="2"></li>
+            <li data-target="#carouselCasas" data-slide-to="3"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/casas/house1.jpg" alt="Los Angeles House">
+            </div>
+            <div class="carousel-item">
+                <img src="img/casas/house2.jpg" alt="Los Angeles House">
+            </div>
+            <div class="carousel-item">
+                <img src="img/casas/house3.jpg" alt="Los Angeles House">
+            </div>
+            <div class="carousel-item">
+                <img src="img/casas/house4.jpg" alt="Los Angeles House">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#carouselCasas" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselCasas" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+
     <div class="dropdown mb-3">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Politicas Cancelacion

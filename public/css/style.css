@@ -83,15 +83,26 @@ nav li .nav-link {
     margin-bottom: 0;
 }
 
+/* HOUSE */
+.carousel {
+    max-height: 600px;
+    overflow: hidden;
+}
+
+.item img {
+    width: 100%;
+    object-fit: cover;
+}
+
 
 /* OTHER */
 
-.algn-l{
-text-align: left !important;
+.algn-l {
+    text-align: left !important;
 }
 
-.algn-r{
-text-align: right !important;
+.algn-r {
+    text-align: right !important;
 }
 
 .premium-text {
@@ -104,6 +115,7 @@ text-align: right !important;
     .icoNav {
         display: block;
     }
+
     .textNav {
         display: none;
     }
@@ -119,10 +131,9 @@ text-align: right !important;
     }
 
     /*.header-profile-sm {*/
-        /*!*margin: 0 auto !important;*!*/
-        /*!*transform: translate(26%);*!*/
+    /*!*margin: 0 auto !important;*!*/
+    /*!*transform: translate(26%);*!*/
     /*}*/
-
     .header-profile-img {
         width: 1.25em !important;
         height: 1.25em !important;
