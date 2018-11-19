@@ -89,10 +89,10 @@
         <ul class="list-group mb-3" id="list-group-vivienda-tarifa"></ul>
         <h2>Politicas Cancelacion</h2>
         <div class="row">
-            <div class="col-4">
+            <div class="col-md-4 mb-3">
                 <div class="list-group" id="list-group-politica-cancelacion" role="tablist"></div>
             </div>
-            <div class="col-8">
+            <div class="col-md-8">
                 <div class="tab-content" id="nav-tabContent"></div>
             </div>
         </div>
