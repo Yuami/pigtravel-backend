@@ -15,6 +15,26 @@
             <div class="navbar-collapse collapse justify-content-stretch" id="mainNavbar">
                 <ul id="nav-ul" class="navbar-nav">
                     <li class="nav-item">
+                        <ul class="navbar-nav d-xs-block d-md-none">
+                            <li class="nav-item ml-md-3 header-profile-sm">
+                                <a href="profile.php" class="nav-link">
+                                    <img src="img/tempprofile.jpg" alt=""
+                                         class="header-profile-img rounded-circle"><span class="textRightNav d-md-none"> PROFILE</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item d-xs-block d-md-none">
+                        <a href="premium.php" class="nav-link">
+                            <span class="icoNav">
+                                <i class="text-danger fas fa-award fa-fw"></i>
+                            </span>
+                            <span class="textNav text-danger">MANAGE PREMIUM</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="houselist.php" class="nav-link">
                             <span class="icoNav">
                                 <i class="fas fa-home fa-fw"></i>
@@ -51,14 +71,19 @@
                             <span class="textRightNav d-md-none">NOTIFICATIONS</span>
                         </a>
                     </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item ml-md-3 header-profile-sm">
-                        <a href="profile.php" class="nav-link">
-                            <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle"><span class="textRightNav d-md-none"> PROFILE</span>
+                    <li class="nav-item">
+                        <a href="settings.php" class="nav-link d-xs-block d-md-none">
+                            <span class="icoNav">
+                                <i class="fas fa-cog fa-fw"></i>
+                            </span>
+                            <span class="textNav">SETTINGS</span>
                         </a>
                     </li>
                 </ul>
+                <a href="profile.php" class="nav-link nav-item ml-md-3 header-profile-sm d-sm-none d-md-block">
+                    <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle"><span
+                            class="textRightNav d-md-none"> PROFILE</span>
+                </a>
             </div>
         </nav>
     </div>
