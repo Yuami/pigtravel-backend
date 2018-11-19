@@ -83,6 +83,16 @@ nav li .nav-link {
     margin-bottom: 0;
 }
 
+/* HOUSE */
+.carousel {
+    max-height: 600px;
+    overflow: hidden;
+}
+.item img {
+    width: 100%;
+    object-fit: cover;
+}
+
 /* OTHER */
 
 .algn-l{
