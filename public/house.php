@@ -71,7 +71,7 @@
         </select>
     </div>
 
-    <table class="table table-striped" id="listadoTarifas">
+    <table class="table table-striped table-responsive" id="listadoTarifas">
         <thead>
         <tr>
             <th>ID</th>
