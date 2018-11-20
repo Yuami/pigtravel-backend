@@ -10,12 +10,14 @@ html {
     padding: 0;
     height: 100%;
     box-sizing: border-box;
+    min-height: 667px;
+
 }
 
 body {
     position: relative;
     margin: 0;
-    padding-bottom: 6rem;
+    padding-bottom: 48px;
     min-height: 100%;
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
@@ -94,6 +96,26 @@ nav li .nav-link {
     margin-bottom: 0;
 }
 
+/* LOGIN */
+#landingPage {
+    position: relative;
+    background: url("../img/landingpage/house.jpg") no-repeat center;
+    background-size: cover;
+    height: 100%;
+}
+
+#loginForm {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px !important;
+    border: solid black 1px;
+    border-radius: 10px;
+    background: rgba(255,255,255, 0.7);
+    padding: 0 60px;
+}
+
 /* HOUSE */
 .carousel {
     max-height: 600px;
@@ -104,6 +126,7 @@ nav li .nav-link {
     width: 100%;
     object-fit: cover;
 }
+
 
 /* OTHER */
 
@@ -161,13 +184,20 @@ nav li .nav-link {
         margin-left: 0px !important;
     }
 
-    /*.header-profile-sm {*/
-    /*!*margin: 0 auto !important;*!*/
-    /*!*transform: translate(26%);*!*/
-    /*}*/
     .header-profile-img {
         width: 1.25em !important;
         height: 1.25em !important;
         border: 0;
+    }
+
+    #landingPage {
+        background: rgba(241,241,241, 1.0);
+    }
+
+    #loginForm {
+        width: 100%;
+        max-height: calc(100% - 76px);
+        border: 0;
+        background: 0;
     }
 }
