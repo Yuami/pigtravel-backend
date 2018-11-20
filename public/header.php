@@ -1,12 +1,12 @@
 <header class="head">
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md navbar-dark">
             <div class="head-brand">
-                <h2 class="algn-r head-brand-text" href="#">ADMIN</h2>
+                <h2 class="algn-r head-brand-text active" href="#">ADMIN</h2>
                 <p class="algn-r mb-0"><span class="premium-text">Premium</span></p>
             </div>
             <a href="index.php">
-                <img src="img/logotemporal2.png" alt="" class="header-logo">
+                <img src="img/logotemporal2.png" alt="" class="header-logo ml-md-1">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -28,9 +28,9 @@
                     <li class="nav-item d-xs-block d-md-none">
                         <a href="premium.php" class="nav-link">
                             <span class="icoNav">
-                                <i class="text-danger fas fa-award fa-fw"></i>
+                                <i class="premium-text fas fa-award fa-fw"></i>
                             </span>
-                            <span class="textNav text-danger">MANAGE PREMIUM</span>
+                            <span class="textNav premium-text">MANAGE PREMIUM</span>
                         </a>
                     </li>
 
@@ -39,7 +39,7 @@
                             <span class="icoNav">
                                 <i class="fas fa-home fa-fw"></i>
                             </span>
-                            <span class="textNav">HOUSES</span>
+                            <span class="textNav active">HOUSES</span>
                         </a>
                     </li>
 
@@ -80,16 +80,16 @@
                         </a>
                     </li>
                 </ul>
-                <div class="dropdown d-none d-md-block ">
+                <div class="dropdown d-none d-md-block">
                     <button id="dropdownHeaderButton" type="button"
                             class="nav-link nav-item ml-md-3 header-profile-sm btn dropdown-toggle dropdown-toggle-split"
                             data-toggle="dropdown">
                         <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
                     </button>
-                    <div class="dropdown-menu text-center">
+                    <div id="dropdownHeaderMenu" class="dropdown-menu text-center">
                         <h6>Philipp Vujic</h6>
                         <p>Mallorca, ES</p>
-                        <a class="dropdown-item text-danger" href="premium.php">MANAGE PREMIUM</a>
+                        <a class="dropdown-item premium-text" href="premium.php">MANAGE PREMIUM</a>
                         <a class="dropdown-item" href="settings.php">SETTINGS</a>
                     </div>
                 </div>
