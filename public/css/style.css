@@ -23,9 +23,15 @@ body {
 /* HEADER */
 
 .head {
-    background-color: #9FD9DA;
+    /*background-color: #9FD9DA;*/
+    /*background-color: #2387d3;*/
+    background-color: #5e7175;
     margin-left: auto;
     margin-right: auto;
+}
+
+.head * {
+    color: #ffffff;
 }
 
 .head-brand {
@@ -38,7 +44,8 @@ body {
 
 .header-profile-img {
     height: calc(55px - 10px);
-    border: 3px solid #e7717d;
+    /*border: 3px solid #e7717d;*/
+    border: 3px solid #41a653;
 }
 
 #header-right {
@@ -104,7 +111,8 @@ nav li .nav-link {
 }
 
 .premium-text {
-    color: #ff0000;
+    /*color: #59ff7b;*/
+    color: #f9c642;
 }
 
 /* CUSTOM MEDIA QUERIES */
@@ -117,6 +125,10 @@ nav li .nav-link {
 #dropdownHeaderButton {
     background-color: transparent !important;
     box-shadow: none;
+}
+
+.bg-color-background {
+    background-color: #f1f1f1;
 }
 
 /* CUSTOM MEDIA QUERIES */

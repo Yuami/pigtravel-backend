@@ -12,7 +12,7 @@
     <title>House</title>
 </head>
 
-<body>
+<body class="bg-color-background">
 <?php include_once("header.php") ?>
 
 <section class="container">

@@ -4,6 +4,7 @@ class Tarifa {
     private $id;
     private $fechaInicio;
     private $fechaFin;
+    private $dao;
 
     /**
      * Tarifa constructor.
@@ -15,6 +16,7 @@ class Tarifa {
         $this->id = $id;
         $this->fechaInicio = $fechaInicio;
         $this->fechaFin = $fechaFin;
+        $this->dao =  new TarifaDAO();
     }
 
     /**
@@ -43,6 +45,10 @@ class Tarifa {
      */
     public function setFechaFin($fechaFin): void {
         $this->fechaFin = $fechaFin;
+    }
+
+    public function getID($id){
+        return $this->dao->getById($id);
     }
 
 

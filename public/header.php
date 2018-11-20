@@ -6,7 +6,7 @@
                 <p class="algn-r mb-0"><span class="premium-text">Premium</span></p>
             </div>
             <a href="index.php">
-                <img src="img/logo.png" alt="" class="header-logo">
+                <img src="img/logotemporal2.png" alt="" class="header-logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
                 <span class="navbar-toggler-icon"></span>

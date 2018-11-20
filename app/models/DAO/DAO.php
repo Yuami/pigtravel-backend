@@ -10,7 +10,7 @@ abstract class DAO extends PDO {
     private static $instance = null;
 
 
-    private function __construct() {
+    public function __construct() {
         $config = Config::singleton();
         $dsn = 'mysql:host=' . $config->get('dbhost') . ';dbname=' . $config->get('dbname');
         $user = $config->get('dbuser');
