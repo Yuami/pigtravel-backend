@@ -87,6 +87,14 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
                                 <span class="textNav">SETTINGS</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="logout.php" class="nav-link d-xs-block d-md-none">
+                            <span class="icoNav">
+                                <i class="fas fa-door-open fa-fw  text-danger"></i>
+                            </span>
+                                <span class="textNav text-danger">LOGOUT</span>
+                            </a>
+                        </li>
                     </ul>
                     <div class="dropdown d-none d-md-block">
                         <button id="dropdownHeaderButton" type="button"
