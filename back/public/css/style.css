@@ -127,7 +127,33 @@ nav li .nav-link {
     object-fit: cover;
 }
 
+/* MESSAGES */
 
+.location {
+    padding: 20px;
+}
+
+.filtro{
+    background-color: transparent;
+    border: none;
+    padding-left: 25px;
+}
+i {
+    color: gray;
+}
+.mensajes{
+    border: black;
+}
+
+.gran{
+    margin-left: 100px ;
+    margin-top: 50px;
+    margin-right: 100px;
+}
+
+table{
+    border: black 2px solid;
+}
 /* OTHER */
 
 .algn-l {
