@@ -22,6 +22,7 @@ class Vivienda {
     private $reservas;
     private $habitaciones;
     private $localizacion;
+    private $bloqueos;
 
     /**
      * Vivienda constructor.
@@ -49,9 +50,11 @@ class Vivienda {
         $this->idPropietario = $idPropietario;
 
         $this->initLocalizacion($x, $y, $calle, $idCiudad);
-        $this->habitaciones = $this->getAllHabitaciones();
-        $this->valoraciones = Valoracion::getAllValoraciones();
-        $this->reservas = Reserva::getAllReservas();
+        $this->habitaciones = Habitacion::getAllByVivienda($this->id);
+        $this->valoraciones = Valoracion_Vivienda::getAllByVivienda($this->id);
+        $this->reservas = Reserva::getAllByVivienda($this->id);
+        $this->bloqueos = Bloqueo::getAllByVivienda($this->id);
+        $this->baños = Baño::getAllByVivienda($this->id);
     }
 
 
