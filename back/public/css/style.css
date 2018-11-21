@@ -183,6 +183,9 @@ table{
 #dropdownHeaderButton {
     background-color: transparent !important;
     box-shadow: none;
+    color:#f1f1f1 !important;
+    padding-left: 5px;
+    padding-right: 0;
 }
 
 .bg-color-background {

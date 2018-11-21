@@ -15,8 +15,19 @@
 <body>
 <?php include_once("header.php") ?>
 
-<section>
-    <h1>Profile</h1>
+<section class="container">
+    <div class="row">
+        <div class="col-12 col-md-4 offset-md-2">
+            <input type="text">
+            <input type="text">
+
+        </div>
+        <div class="col-md-4">
+            <input type="text">
+            <input type="text">
+
+        </div>
+    </div>
 </section>
 
 
