@@ -13,15 +13,19 @@
 </head>
 
 <body>
-<?php include_once("header.php") ?>
+    <?php include_once("header.php") ?>
 
-<section>
-    <h1>Reservations</h1>
+    <section>
+        <h1>Reservations</h1>
+        <div id="cardscasa" class="container">
+            <h2>Cards Reserva </h2>
+        </div>
 
-</section>
+    </section>
 
 
-<?php include_once("footer.php") ?>
-
+    <?php include_once("footer.php") ?>
+    <script src="js/selects/selectReservaById.js"></script>
 </body>
+
 </html>
