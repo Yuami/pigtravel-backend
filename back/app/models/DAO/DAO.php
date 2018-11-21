@@ -7,8 +7,6 @@
  */
 
 abstract class DAO extends PDO {
-    private static $instance = null;
-
 
     public function __construct() {
         $config = Config::singleton();
