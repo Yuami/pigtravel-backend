@@ -26,4 +26,60 @@ class Localizacion {
         $this->ciudad = $ciudad;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getX() {
+        return $this->x;
+    }
+
+    /**
+     * @param mixed $x
+     */
+    public function setX($x): void {
+        $this->x = $x;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getY() {
+        return $this->y;
+    }
+
+    /**
+     * @param mixed $y
+     */
+    public function setY($y): void {
+        $this->y = $y;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCalle() {
+        return $this->calle;
+    }
+
+    /**
+     * @param mixed $calle
+     */
+    public function setCalle($calle): void {
+        $this->calle = $calle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCiudad() {
+        return $this->ciudad;
+    }
+
+    /**
+     * @param mixed $ciudad
+     */
+    public function setCiudad($ciudad): void {
+        $this->ciudad = $ciudad;
+    }
+
 }

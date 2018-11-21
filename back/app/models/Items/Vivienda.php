@@ -5,7 +5,6 @@
  * Date: 21/11/2018
  * Time: 8:38
  */
-
 class Vivienda {
     private $id;
     private $nombre;
@@ -15,7 +14,7 @@ class Vivienda {
     private $horaSalida;
     private $alquilerAutomatico;
     private $destacada;
-    private $idPropietario;
+    private $idVendeor;
 
     private $baños;
     private $valoraciones;
@@ -35,10 +34,10 @@ class Vivienda {
      * @param $calle
      * @param $alquilerAutomatico
      * @param $destacada
-     * @param $idPropietario
+     * @param $idVendedor
      */
     public function __construct($id, $nombre, $capacidad, $mCuadrados, $horaEntrada, $horaSalida, $x, $y, $calle,
-                                $alquilerAutomatico, $destacada, $idPropietario, $idCiudad) {
+                                $alquilerAutomatico, $destacada, $idVendedor, $idCiudad) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->capacidad = $capacidad;
@@ -47,14 +46,14 @@ class Vivienda {
         $this->horaSalida = $horaSalida;
         $this->alquilerAutomatico = $alquilerAutomatico;
         $this->destacada = $destacada;
-        $this->idPropietario = $idPropietario;
+        $this->idVendeor = $idVendedor;
 
         $this->initLocalizacion($x, $y, $calle, $idCiudad);
-        $this->habitaciones = Habitacion::getAllByVivienda($this->id);
-        $this->valoraciones = Valoracion_Vivienda::getAllByVivienda($this->id);
-        $this->reservas = Reserva::getAllByVivienda($this->id);
-        $this->bloqueos = Bloqueo::getAllByVivienda($this->id);
-        $this->baños = Baño::getAllByVivienda($this->id);
+//        $this->habitaciones = Habitacion::getAllByVivienda($this->id);
+//        $this->valoraciones = Valoracion_Vivienda::getAllByVivienda($this->id);
+//        $this->reservas = Reserva::getAllByVivienda($this->id);
+//        $this->bloqueos = Bloqueo::getAllByVivienda($this->id);
+//        $this->baños = Baño::getAllByVivienda($this->id);
     }
 
 
@@ -237,4 +236,20 @@ class Vivienda {
         $this->localizacion = new Localizacion($x, $y, $calle, $ciudad);
     }
 
+
+
+    public static function getByVendedor($idVendedor){
+        //TODO: implement method
+    }
+
+    public static function getByCiudad($ciudad){
+        //TODO: implement method
+    }
+
+    public static function getAll(){
+        return ViviendaDAO::getAll();
+    }
+
 }
+
+echo json_encode(Vivienda::getAll());

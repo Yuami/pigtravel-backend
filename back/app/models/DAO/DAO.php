@@ -6,9 +6,10 @@
  * Time: 12:20
  */
 
-abstract class DAO extends PDO {
+class DAO extends PDO {
+    private static $instance;
 
-    public function __construct() {
+    private function __construct() {
         $config = Config::singleton();
         $dsn = 'mysql:host=' . $config->get('dbhost') . ';dbname=' . $config->get('dbname');
         $user = $config->get('dbuser');
@@ -16,48 +17,60 @@ abstract class DAO extends PDO {
         parent::__construct($dsn, $user, $pass);
     }
 
-    public function getAll($table) {
-        $statement = parent::prepare("SELECT * FROM :table");
+    public static function instance(){
+        if (!isset(self::$instance)){
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    public static function getAll($table) {
+        $conn = self::instance();
+        $statement = $conn->prepare("SELECT * FROM :table");
         $statement->bindValue(":table", $table);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getById($table, $id) {
-        $statement = parent::prepare("SELECT * FROM :table WHERE id=:id");
+    public static function getById($table, $id) {
+        $conn = self::instance();
+        $statement = $conn->prepare("SELECT * FROM :table WHERE id=:id");
         $statement->bindValue(":id", $id);
         $statement->bindValue(":table", $table);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getBy($table, $column, $value) {
-        $statement = parent::prepare("SELECT * FROM :table WHERE :column=':value'");
+    public static function getBy($table, $column, $value) {
+        $conn = self::instance();
+        $statement = $conn->prepare("SELECT * FROM :table WHERE :column=':value'");
         $statement->bindValue(":column", $column);
         $statement->bindValue(":value", $value);
         $statement->bindValue(":table", $table);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deleteById($table, $id) {
-        $statement = parent::prepare("DELETE FROM :table WHERE id=:id");
+    public static function deleteById($table, $id) {
+        $conn = self::instance();
+        $statement = $conn->prepare("DELETE FROM :table WHERE id=:id");
         $statement->bindValue(":table", $table);
         $statement->bindValue(":id", $id);
         $statement->execute();
-        return $statement->fetchAll();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deleteBy($table, $column, $value) {
-        $statement = parent::query("DELETE FROM :table WHERE :column=':value'");
+    public static function deleteBy($table, $column, $value) {
+        $conn = self::instance();
+        $statement = $conn->query("DELETE FROM :table WHERE :column=':value'");
         $statement->bindValue(":table", $table);
         $statement->bindValue(":column", $column);
         $statement->bindValue(":value", $value);
         $statement->execute();
-        return $statement->fetchAll();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
