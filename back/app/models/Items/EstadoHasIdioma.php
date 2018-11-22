@@ -6,7 +6,6 @@
  * Time: 9:17
  */
 
-class EstadoHasIdioma
-{
+class EstadoHasIdioma {
 
 }

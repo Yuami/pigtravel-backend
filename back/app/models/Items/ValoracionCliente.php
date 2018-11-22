@@ -1,12 +1,12 @@
 <?php
+include "../DAO/ValoracionClienteDAO.php";
 
 class ValoracionCliente
 {
-
-    private $idVendedor;
-    private $idCliente;
-    private $mensaje;
-    private $bien;
+    private static $idVendedor;
+    private static $idCliente;
+    private static $mensaje;
+    private static $bien;
 
     public function __construct($idVendedor, $idCliente, $mensaje, $bien)
     {
@@ -47,4 +47,15 @@ class ValoracionCliente
         $this->bien = $bien;
     }
 
+    public static function getByIdCliente($idCliente)
+    {
+        return ValoracionClienteDAO::getByIdCliente($idCliente);
+    }
+
+    public static function getByIdClienteTime($idCliente)
+    {
+        return ValoracionClienteDAO::getByIdClienteTime($idCliente);
+    }
 }
+
+echo json_encode(ValoracionCliente::getByIdCliente(3));

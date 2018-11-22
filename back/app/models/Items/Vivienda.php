@@ -236,8 +236,6 @@ class Vivienda {
         $this->localizacion = new Localizacion($x, $y, $calle, $ciudad);
     }
 
-
-
     public static function getByVendedor($idVendedor){
         //TODO: implement method
     }
