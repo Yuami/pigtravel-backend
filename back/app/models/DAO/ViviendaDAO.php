@@ -12,4 +12,3 @@ class ViviendaDAO extends DAO{
     protected static $table = "vivienda";
     protected static $class = "Vivienda";
 }
-var_dump(ViviendaDAO::getAll());
