@@ -1,81 +1,59 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: j_for
- * Date: 21/11/2018
- * Time: 8:38
- */
 class Vivienda {
     private $id;
     private $nombre;
     private $capacidad;
-    private $mCuadrados;
+    private $coordX;
+    private $coordY;
+    private $metrosCuadrados;
+    private $calle;
     private $horaEntrada;
     private $horaSalida;
     private $alquilerAutomatico;
     private $destacada;
-    private $idVendeor;
-
-    private $baños;
-    private $valoraciones;
-    private $reservas;
-    private $habitaciones;
-    private $localizacion;
-    private $bloqueos;
+    private $idTipoVivienda;
+    private $idCiudad;
+    private $idVendedor;
 
     /**
      * Vivienda constructor.
      * @param $id
      * @param $nombre
      * @param $capacidad
-     * @param $mCuadrados
+     * @param $coordX
+     * @param $coordY
+     * @param $metrosCuadrados
+     * @param $calle
      * @param $horaEntrada
      * @param $horaSalida
-     * @param $calle
      * @param $alquilerAutomatico
      * @param $destacada
+     * @param $idTipoVivienda
+     * @param $idCiudad
      * @param $idVendedor
      */
-    public function __construct($id, $nombre, $capacidad, $mCuadrados, $horaEntrada, $horaSalida, $x, $y, $calle,
-                                $alquilerAutomatico, $destacada, $idVendedor, $idCiudad) {
-        $this->id = $id;
-        $this->nombre = $nombre;
-        $this->capacidad = $capacidad;
-        $this->mCuadrados = $mCuadrados;
-        $this->horaEntrada = $horaEntrada;
-        $this->horaSalida = $horaSalida;
-        $this->alquilerAutomatico = $alquilerAutomatico;
-        $this->destacada = $destacada;
-        $this->idVendeor = $idVendedor;
-
-        $this->initLocalizacion($x, $y, $calle, $idCiudad);
-//        $this->habitaciones = Habitacion::getAllByVivienda($this->id);
-//        $this->valoraciones = Valoracion_Vivienda::getAllByVivienda($this->id);
-//        $this->reservas = Reserva::getAllByVivienda($this->id);
-//        $this->bloqueos = Bloqueo::getAllByVivienda($this->id);
-//        $this->baños = Baño::getAllByVivienda($this->id);
-    }
-
+//    public function __construct($id, $nombre, $capacidad, $coordX, $coordY, $metrosCuadrados, $calle, $horaEntrada, $horaSalida, $alquilerAutomatico, $destacada, $idTipoVivienda, $idCiudad, $idVendedor) {
+//        $this->id = $id;
+//        $this->nombre = $nombre;
+//        $this->capacidad = $capacidad;
+//        $this->coordX = $coordX;
+//        $this->coordY = $coordY;
+//        $this->metrosCuadrados = $metrosCuadrados;
+//        $this->calle = $calle;
+//        $this->horaEntrada = $horaEntrada;
+//        $this->horaSalida = $horaSalida;
+//        $this->alquilerAutomatico = $alquilerAutomatico;
+//        $this->destacada = $destacada;
+//        $this->idTipoVivienda = $idTipoVivienda;
+//        $this->idCiudad = $idCiudad;
+//        $this->idVendedor = $idVendedor;
+//    }
 
     /**
      * @return mixed
      */
     public function getId() {
         return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getValoraciones() {
-        return $this->valoraciones;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getReservas() {
-        return $this->reservas;
     }
 
     /**
@@ -109,15 +87,57 @@ class Vivienda {
     /**
      * @return mixed
      */
-    public function getMCuadrados() {
-        return $this->mCuadrados;
+    public function getCoordX() {
+        return $this->coordX;
     }
 
     /**
-     * @param mixed $mCuadrados
+     * @param mixed $coordX
      */
-    public function setMCuadrados($mCuadrados): void {
-        $this->mCuadrados = $mCuadrados;
+    public function setCoordX($coordX): void {
+        $this->coordX = $coordX;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoordY() {
+        return $this->coordY;
+    }
+
+    /**
+     * @param mixed $coordY
+     */
+    public function setCoordY($coordY): void {
+        $this->coordY = $coordY;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMetrosCuadrados() {
+        return $this->metrosCuadrados;
+    }
+
+    /**
+     * @param mixed $metrosCuadrados
+     */
+    public function setMetrosCuadrados($metrosCuadrados): void {
+        $this->metrosCuadrados = $metrosCuadrados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCalle() {
+        return $this->calle;
+    }
+
+    /**
+     * @param mixed $calle
+     */
+    public function setCalle($calle): void {
+        $this->calle = $calle;
     }
 
     /**
@@ -151,20 +171,6 @@ class Vivienda {
     /**
      * @return mixed
      */
-    public function getCalle() {
-        return $this->calle;
-    }
-
-    /**
-     * @param mixed $calle
-     */
-    public function setCalle($calle): void {
-        $this->calle = $calle;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getAlquilerAutomatico() {
         return $this->alquilerAutomatico;
     }
@@ -193,61 +199,71 @@ class Vivienda {
     /**
      * @return mixed
      */
-    public function getBaños() {
-        return $this->baños;
+    public function getIdTipoVivienda() {
+        return $this->idTipoVivienda;
     }
 
     /**
-     * @param mixed $baños
+     * @param mixed $idTipoVivienda
      */
-    public function setBaños($baños): void {
-        $this->baños = $baños;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHabitaciones() {
-        return $this->habitaciones;
-    }
-
-    /**
-     * @param mixed $habitaciones
-     */
-    public function setHabitaciones($habitaciones): void {
-        $this->habitaciones = $habitaciones;
+    public function setIdTipoVivienda($idTipoVivienda): void {
+        $this->idTipoVivienda = $idTipoVivienda;
     }
 
     /**
      * @return mixed
      */
-    public function getLocalizacion() {
-        return $this->localizacion;
+    public function getIdCiudad() {
+        return $this->idCiudad;
     }
 
     /**
-     * @param mixed $localizacion
+     * @param mixed $idCiudad
      */
-    public function setLocalizacion($localizacion): void {
-        $this->localizacion = $localizacion;
+    public function setIdCiudad($idCiudad): void {
+        $this->idCiudad = $idCiudad;
     }
 
-    private function initLocalizacion($x, $y, $calle, $ciudad) {
-        $this->localizacion = new Localizacion($x, $y, $calle, $ciudad);
+    /**
+     * @return mixed
+     */
+    public function getIdVendedor() {
+        return $this->idVendedor;
     }
 
-    public static function getByVendedor($idVendedor){
-        //TODO: implement method
+    public function __toString() {
+        return "Prueba ". $this->id . " nombre: ". $this->nombre;
     }
-
-    public static function getByCiudad($ciudad){
-        //TODO: implement method
-    }
-
-    public static function getAll(){
-        return ViviendaDAO::getAll();
-    }
-
 }
 
-echo json_encode(Vivienda::getAll());
+
+//
+//header("Content-Type: application/json");
+//
+//function reservaRandom(){
+//    $precio = random_int(40,200);
+//    $clientes = random_int(1,6);
+//    $cliente = random_int(1,10);
+//    $checkIn = randomFecha();
+//    $checkOut = randomFecha();
+//    $fechaReserva = randomFecha();
+//    return new Reserva(1, $checkIn, $checkOut, $fechaReserva, $precio, $clientes,1,2,$cliente);
+//}
+//
+//function randomFecha(){
+//    return random_int(1,28) . "-" . random_int(1,12) . "-" . random_int(10,18);
+//}
+//
+//function arrayReservas() : array {
+//    $random = random_int(1,20);
+//    for ($i = 0; $i < $random; $i++){
+//        $arr[] = reservaRandom();
+//    }
+//    return $arr;
+//}
+//
+//$resevas = arrayReservas();
+//$vivienda = new Vivienda(1,"Hola",3,200,"13:00","12:00",234,
+//    456,"Mi calle", true, false, 1,2, arrayReservas());
+//
+//echo json_encode($vivienda->json());
