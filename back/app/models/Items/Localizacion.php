@@ -82,4 +82,12 @@ class Localizacion {
         $this->ciudad = $ciudad;
     }
 
+    public function json() {
+        return [
+            "x" => $this->x,
+            "y" => $this->y,
+            "calle" => $this->calle,
+            "ciudad" => $this->ciudad,
+        ];
+    }
 }
