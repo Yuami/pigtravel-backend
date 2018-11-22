@@ -15,12 +15,20 @@
 <body>
 <?php include_once("header.php") ?>
 
-<section class="container">
+<section class="container-fluid">
+    <div class="row breadcrumb-row">
+        <div class="col-md-10 offset-md-1">
+            <h1>Profile</h1>
+            <ol class="bg-transparent pt-0 breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            </ol>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12 col-md-4 offset-md-2">
             <input type="text">
             <input type="text">
-
         </div>
         <div class="col-md-4">
             <input type="text">
