@@ -16,40 +16,6 @@ class Vivienda {
     private $idVendedor;
 
     /**
-     * Vivienda constructor.
-     * @param $id
-     * @param $nombre
-     * @param $capacidad
-     * @param $coordX
-     * @param $coordY
-     * @param $metrosCuadrados
-     * @param $calle
-     * @param $horaEntrada
-     * @param $horaSalida
-     * @param $alquilerAutomatico
-     * @param $destacada
-     * @param $idTipoVivienda
-     * @param $idCiudad
-     * @param $idVendedor
-     */
-//    public function __construct($id, $nombre, $capacidad, $coordX, $coordY, $metrosCuadrados, $calle, $horaEntrada, $horaSalida, $alquilerAutomatico, $destacada, $idTipoVivienda, $idCiudad, $idVendedor) {
-//        $this->id = $id;
-//        $this->nombre = $nombre;
-//        $this->capacidad = $capacidad;
-//        $this->coordX = $coordX;
-//        $this->coordY = $coordY;
-//        $this->metrosCuadrados = $metrosCuadrados;
-//        $this->calle = $calle;
-//        $this->horaEntrada = $horaEntrada;
-//        $this->horaSalida = $horaSalida;
-//        $this->alquilerAutomatico = $alquilerAutomatico;
-//        $this->destacada = $destacada;
-//        $this->idTipoVivienda = $idTipoVivienda;
-//        $this->idCiudad = $idCiudad;
-//        $this->idVendedor = $idVendedor;
-//    }
-
-    /**
      * @return mixed
      */
     public function getId() {
@@ -235,35 +201,3 @@ class Vivienda {
         return "Prueba ". $this->id . " nombre: ". $this->nombre;
     }
 }
-
-
-//
-//header("Content-Type: application/json");
-//
-//function reservaRandom(){
-//    $precio = random_int(40,200);
-//    $clientes = random_int(1,6);
-//    $cliente = random_int(1,10);
-//    $checkIn = randomFecha();
-//    $checkOut = randomFecha();
-//    $fechaReserva = randomFecha();
-//    return new Reserva(1, $checkIn, $checkOut, $fechaReserva, $precio, $clientes,1,2,$cliente);
-//}
-//
-//function randomFecha(){
-//    return random_int(1,28) . "-" . random_int(1,12) . "-" . random_int(10,18);
-//}
-//
-//function arrayReservas() : array {
-//    $random = random_int(1,20);
-//    for ($i = 0; $i < $random; $i++){
-//        $arr[] = reservaRandom();
-//    }
-//    return $arr;
-//}
-//
-//$resevas = arrayReservas();
-//$vivienda = new Vivienda(1,"Hola",3,200,"13:00","12:00",234,
-//    456,"Mi calle", true, false, 1,2, arrayReservas());
-//
-//echo json_encode($vivienda->json());
