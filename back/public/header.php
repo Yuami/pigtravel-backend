@@ -96,11 +96,15 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
                             </a>
                         </li>
                     </ul>
+
+                    <a href="profile.php" class="ml-md-3">
+                        <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
+                    </a>
                     <div class="dropdown d-none d-md-block">
                         <button id="dropdownHeaderButton" type="button"
-                                class="nav-link nav-item ml-md-3 header-profile-sm btn dropdown-toggle-split"
+                                class="nav-link nav-itemheader-profile-sm btn dropdown-toggle-split dropdown-toggle"
                                 data-toggle="dropdown">
-                            <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
+
                         </button>
                         <div id="dropdownHeaderMenu" class="dropdown-menu text-center">
                             <h6>Philipp Vujic</h6>

@@ -14,13 +14,11 @@
 
 <body>
     <?php include_once("header.php") ?>
-
     <section>
         <h1>Reservations</h1>
         <div id="cardscasa" class="container">
             <h2>Cards Reserva </h2>
         </div>
-
     </section>
 
 
