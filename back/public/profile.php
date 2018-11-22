@@ -16,6 +16,12 @@
 <?php include_once("header.php") ?>
 
 <section class="container">
+    <div class="row" class="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+    </div>
     <div class="row">
         <div class="col-12 col-md-4 offset-md-2">
             <input type="text">
