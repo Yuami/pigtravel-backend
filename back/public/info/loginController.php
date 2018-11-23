@@ -1,7 +1,7 @@
 <?php
 require_once "../../app/models/DAO/DB.php";
 require_once "../../app/config/Session.php";
-session_start();
+Session::start();
 
 if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
     $email = $_POST['emailLogin'];

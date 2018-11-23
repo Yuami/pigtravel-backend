@@ -13,12 +13,8 @@ class Session {
         self::$session = session_start();
     }
 
-    public static function set($key, $value): bool {
-        if (self::$session) {
+    public static function set($key, $value) {
             $_SESSION[$key] = $value;
-            return true;
-        }
-        return false;
     }
 
     public static function get($key) {
