@@ -1,10 +1,9 @@
 $(document).ready(function () {
 
-    function loadCardscasa() {
+    function loadCardsCasa() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                $("#demo").html(this.responseText);
                 var casa = JSON.parse(this.responseText);
                 var i = 0;
                 for (x in casa) {
@@ -19,7 +18,7 @@ $(document).ready(function () {
 
                     var id = casa[x].id;
                     var nom = casa[x].fechaReserva;
-                    var foto = "img/casas/house" + casa[x].idVivienda+".jpg";
+                    var foto = "img/casas/house" + casa[x].idVivienda + ".jpg";
                     var preu = casa[x].precio + " €";
                     var url = "info/selectReservaById.php?id=" + id;
 
@@ -64,6 +63,6 @@ $(document).ready(function () {
         xhttp.send();
     }
 
-    loadCardscasa();
+    loadCardsCasa();
 
 });
