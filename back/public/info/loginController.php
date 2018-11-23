@@ -1,5 +1,6 @@
 <?php
 require_once "../../app/models/DAO/DB.php";
+require_once "../../app/config/Session.php";
 session_start();
 
 if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
@@ -22,7 +23,7 @@ if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
         header("Location: ../login.php");
     }
 }
- else {
+else {
     if (!Session::isSet('login')) {
         Session::set('loginStatus', 'noData');
         header("Location: ../login.php");
