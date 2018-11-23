@@ -15,8 +15,7 @@
 <body>
 <div id="landingPage">
     <?php include_once("header.php") ?>
-    <div class="container">
-
+    <div class="container pt-md-5">
         <section id="landingPageSection">
             <div class="row" id="loginForm">
                 <div class="col-12 col-xs-8 offset-xs-2 text-center">
@@ -46,12 +45,38 @@
                     <a href="#" class="btn btn-primary btn-block mb-4">REGISTER</a>
                 </div>
             </div>
+            <div id="loginError">
+                <div id="loginErrorModal"class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Modal body text goes here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </div>
-
     <?php include_once("footer.php") ?>
 </div>
+
+<?php if (isset($_SESSION['loginStatus'])) { ?>
+    <script type="text/javascript">
+        $('#loginErrorModal').modal('show');
+    </script>
+<?php } unset($_SESSION['loginStatus']); ?>
 <script src="js/validation/bootstrap-validator.js"></script>
 <script src="js/validation/validation.js"></script>
 </body>

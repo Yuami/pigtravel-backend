@@ -8,15 +8,6 @@ class ValoracionCliente
     private static $mensaje;
     private static $bien;
 
-    public function __construct($idVendedor, $idCliente, $mensaje, $bien)
-    {
-        $this->idVendedor = $idVendedor;
-        $this->idCliente = $idCliente;
-        $this->mensaje = $mensaje;
-        $this->bien = $bien;
-    }
-
-
     public function getIdVendedor()
     {
         return $this->idVendedor;
@@ -58,4 +49,3 @@ class ValoracionCliente
     }
 }
 
-echo json_encode(ValoracionCliente::getByIdCliente(3));

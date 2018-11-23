@@ -15,13 +15,16 @@ if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
 
     if ($count) {
         $_SESSION['userID'] = $email;
+        $_SESSION['loginStatus'] = 'successfull';
         header("Location: ../index.php");
     } else {
+        $_SESSION['loginStatus'] = 'wrongData';
         header("Location: ../login.php");
     }
 }
  else {
     if (!isset($_SESSION['login'])) {
+        $_SESSION['loginStatus'] = 'noData';
         header("Location: ../login.php");
     } else {
         header("Location: ../index.php");
