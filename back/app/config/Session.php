@@ -22,17 +22,21 @@ class Session {
     }
 
     public static function get($key) {
-        if (isset($_SESSION[$key]))
+        if (self::isSet($key))
             return $_SESSION[$key];
         return null;
     }
 
     public static function delete($key) : bool {
-        if (isset($_SESSION[$key])) {
+        if (self::isSet($key)) {
             unset($_SESSION[$key]);
             return true;
         }
         return false;
+    }
+
+    public static function isSet($key) {
+        return isset($_SESSION[$key]);
     }
 
     public static function destroy() {
