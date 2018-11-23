@@ -6,7 +6,7 @@ Session::start();
 if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
     $email = $_POST['emailLogin'];
     $pass = $_POST['passwordLogin'];
-    $_COOKIE[] = $_SERVER
+    $_COOKIE[] = $_SERVER;
     $statement = DB::conn()->prepare("select correo, password from persona where correo = :email and password = :password");
     $statement->bindValue(':email', $email);
     $statement->bindValue(':password', $pass);
