@@ -1,5 +1,5 @@
 <?php
-
+include "conf.php";
 class Config {
  private $vars;
  private static $instance;
