@@ -1,11 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: j_for
- * Date: 22/11/2018
- * Time: 13:00
- */
-include "../../config/Config.php";
+
+include_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/config/Config.php";
 class DB {
     private static $conn;
 

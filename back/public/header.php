@@ -1,8 +1,9 @@
 <?php
-session_start();
+require_once $_SERVER["DOCUMENT_ROOT"] . "/back/app/config/Session.php";
+Session::start();
 
 if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
-    if (!isset($_SESSION['userID'])) {
+    if (!Session::isSet('userID')) {
         header("Location: login.php");
     } ?>
     <header class="head">
@@ -119,7 +120,7 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
         </div>
     </header>
 <?php else :
-    if (isset($_SESSION['login'])) {
+    if (Session::isSet('userID')) {
         header("Location: index.php");
     } ?>
     <header class="head">

@@ -1,9 +1,9 @@
 <?php
 $config = Config::singleton();
 
-$config->set('controllersFolder', 'app/controllers/');
-$config->set('modelsFolder', 'app/models/');
-$config->set('viewsFolder', 'app/views/');
+$config->set('controllersFolder', '/back/app/controllers/');
+$config->set('modelsFolder', '/back/app/models/');
+$config->set('viewsFolder', '/back/app/views/');
 
 $config->set('dbhost', 'sql142.main-hosting.eu');
 $config->set('dbname', 'u333704226_pigtr');
