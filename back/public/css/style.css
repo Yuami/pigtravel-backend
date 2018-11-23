@@ -105,16 +105,14 @@ nav li .nav-link {
 }
 
 #loginForm {
-<<<<<<< HEAD
+
     position: absolute;
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px !important;
-=======
     margin: auto;
     max-width: 400px !important;
->>>>>>> 280769ca7513de67b666a0649e0344da636f949f
     border: solid black 1px;
     border-radius: 10px;
     background: rgba(255,255,255, 0.7);
