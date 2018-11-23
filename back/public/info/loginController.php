@@ -1,12 +1,12 @@
 <?php
-require_once("conn.php");
+require_once "../../app/models/DAO/DB.php";
 session_start();
 
 if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
     $email = $_POST['emailLogin'];
     $pass = $_POST['passwordLogin'];
 
-    $statement = $conn->prepare("select correo, password from persona where correo = :email and password = :password");
+    $statement = DB::conn()->prepare("select correo, password from persona where correo = :email and password = :password");
     $statement->bindValue(':email', $email);
     $statement->bindValue(':password', $pass);
 
@@ -14,17 +14,17 @@ if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
     $count = $statement->rowCount();
 
     if ($count) {
-        $_SESSION['userID'] = $email;
-        $_SESSION['loginStatus'] = 'successfull';
+        Session::set('userID', $email);
+        Session::delete('loginStatus');
         header("Location: ../index.php");
     } else {
-        $_SESSION['loginStatus'] = 'wrongData';
+        Session::set('loginStatus', 'wrongData');
         header("Location: ../login.php");
     }
 }
  else {
-    if (!isset($_SESSION['login'])) {
-        $_SESSION['loginStatus'] = 'noData';
+    if (!Session::isSet('login')) {
+        Session::set('loginStatus', 'noData');
         header("Location: ../login.php");
     } else {
         header("Location: ../index.php");

@@ -72,11 +72,11 @@
     <?php include_once("footer.php") ?>
 </div>
 
-<?php if (isset($_SESSION['loginStatus'])) { ?>
+<?php if (Session::isSet('loginStatus')) { ?>
     <script type="text/javascript">
         $('#loginErrorModal').modal('show');
     </script>
-<?php } unset($_SESSION['loginStatus']); ?>
+<?php } Session::delete('loginStatus'); ?>
 <script src="js/validation/bootstrap-validator.js"></script>
 <script src="js/validation/validation.js"></script>
 </body>

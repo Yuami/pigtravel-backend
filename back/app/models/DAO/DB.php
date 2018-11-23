@@ -5,7 +5,7 @@
  * Date: 22/11/2018
  * Time: 13:00
  */
-include "../../config/Config.php";
+require_once "../../config/Config.php";
 class DB {
     private static $conn;
 
