@@ -46,21 +46,22 @@
                 </div>
             </div>
             <div id="loginError">
-                <div id="loginErrorModal"class="modal" tabindex="-1" role="dialog">
+                <div id="loginErrorModal" class="modal fade" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Modal title</h5>
+                                <h5 class="modal-title">Access Denied</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>Modal body text goes here.</p>
+                                <p id="modal-text"><?php echo $_SESSION['loginStatus'] ?></p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Try Again</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Forgot Password
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -76,7 +77,8 @@
     <script type="text/javascript">
         $('#loginErrorModal').modal('show');
     </script>
-<?php } Session::delete('loginStatus'); ?>
+<?php }
+Session::delete('loginStatus'); ?>
 <script src="js/validation/bootstrap-validator.js"></script>
 <script src="js/validation/validation.js"></script>
 </body>
