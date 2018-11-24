@@ -28,7 +28,11 @@
                                 <span class="fas fa-user text-danger mr-1 ml-2"></span>Email
                             </label>
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
-                                   aria-describedby="emailHelp" placeholder="Enter email">
+                                   aria-describedby="emailHelp" placeholder="Enter email" value="
+                                   <?php if (isset($_COOKIE['lastEmail'])) {
+                                       echo $_COOKIE['lastEmail'];
+                                   }
+                            ?>">
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">
