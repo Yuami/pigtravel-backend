@@ -121,12 +121,13 @@ footer>p{
 
 #loginForm {
     margin: auto;
-    width: 400px !important;
+    max-width: 400px !important;
     border: solid black 1px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.7);
     padding: 0 60px;
 }
+
 
 /* PROFILE */
 

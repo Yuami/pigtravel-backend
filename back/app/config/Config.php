@@ -1,17 +1,19 @@
 <?php
-include "conf.php";
-class Config {
- private $vars;
- private static $instance;
- 
- private function __construct() {
-    $this->vars = array();
- }
+include_once "conf.php";
+
+class Config
+{
+    private $vars;
+    private static $instance;
+
+    private function __construct()
+    {
+        $this->vars = array();
+    }
 
     public function set($name, $value)
     {
-        if(!isset($this->vars[$name]))
-        {
+        if (!isset($this->vars[$name])) {
             $this->vars[$name] = $value;
         }
     }
@@ -19,8 +21,7 @@ class Config {
     //Con get('nombre_de_la_variable') recuperamos un valor.
     public function get($name)
     {
-        if(isset($this->vars[$name]))
-        {
+        if (isset($this->vars[$name])) {
             return $this->vars[$name];
         }
     }

@@ -15,8 +15,7 @@
 <body>
 <div id="landingPage">
     <?php include_once("header.php") ?>
-    <div class="container">
-
+    <div class="container pt-md-5">
         <section id="landingPageSection">
             <div class="row" id="loginForm">
                 <div class="col-12 col-xs-8 offset-xs-2 text-center">
@@ -29,14 +28,18 @@
                                 <span class="fas fa-user text-danger mr-1 ml-2"></span>Email
                             </label>
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
-                                   aria-describedby="emailHelp" placeholder="Enter email">
+                                   aria-describedby="emailHelp" placeholder="Enter email" value="
+                                   <?php if (isset($_COOKIE['lastEmail'])) {
+                                       echo $_COOKIE['lastEmail'];
+                                   }
+                            ?>" required>
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">
                                 <span class="fas fa-lock text-danger mr-1 ml-2"></span>Password
                             </label>
                             <input type="password" class="form-control" name="passwordLogin" id="passwordLogin"
-                                   aria-describedby="emailHelp" placeholder="Enter password">
+                                   aria-describedby="emailHelp" placeholder="Enter password" required>
                         </div>
                         <p class="text-right"><a href="#">Forgot Password</a></p>
                         <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
@@ -46,12 +49,39 @@
                     <a href="#" class="btn btn-primary btn-block mb-4">REGISTER</a>
                 </div>
             </div>
+            <div id="loginError">
+                <div id="loginErrorModal" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Access Denied</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p id="modal-text"><?php echo $_SESSION['loginStatus'] ?></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="btn btn-primary">Try Again</button>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </div>
-
     <?php include_once("footer.php") ?>
 </div>
+
+<?php if (Session::isSet('loginStatus')) { ?>
+    <script type="text/javascript">
+        $('#loginErrorModal').modal('show');
+    </script>
+<?php }
+Session::delete('loginStatus'); ?>
 <script src="js/validation/bootstrap-validator.js"></script>
 <script src="js/validation/validation.js"></script>
 </body>
