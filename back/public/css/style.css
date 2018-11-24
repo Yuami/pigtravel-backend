@@ -10,14 +10,19 @@ html {
     padding: 0;
     height: 100%;
     box-sizing: border-box;
-    min-height: 667px;
 
 }
 
+.container {
+    padding:10px;
+    padding-bottom:60px;
+}
+
 body {
-    position: relative;
+    margin:0;
+    padding:0;
+    height:100%;
     margin: 0;
-    padding-bottom: 48px;
     min-height: 100%;
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
@@ -83,17 +88,26 @@ nav li .nav-link {
 
 .foot {
     position: absolute;
-    right: 0;
     bottom: 0;
-    left: 0;
-    padding: 12px;
-    color: #ffffff;
-    background-color: #000000;
     text-align: center;
+    background: black;
+    color:white;
+    font-size: 1em;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+footer>p{
+    margin-top: calc(20px - 0.5em);
+    height: auto;
 }
 
-.foot p {
+/* BREADCRUMBS */
+.breadcrumb-row h1 {
     margin-bottom: 0;
+    padding-top: 16px;
+    padding-left: 16px;
+    font-size: 22px;
 }
 
 /* LOGIN */
@@ -101,30 +115,22 @@ nav li .nav-link {
     position: relative;
     background: url("../img/landingpage/house.jpg") no-repeat center;
     background-size: cover;
-    height: 100%;
+    min-height:100%;
+    position:relative;
 }
 
 #loginForm {
-
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px !important;
     margin: auto;
     max-width: 400px !important;
     border: solid black 1px;
     border-radius: 10px;
-    background: rgba(255,255,255, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     padding: 0 60px;
 }
-/* RESERVATIONS */
-.text-orange{
-    color: #c69500;
-}
-#missatge{
-    padding-top: 22.5px;
-}
+
+
+/* PROFILE */
+
 /* HOUSE */
 .carousel {
     max-height: 600px;
@@ -142,27 +148,30 @@ nav li .nav-link {
     padding: 20px;
 }
 
-.filtro{
+.filtro {
     background-color: transparent;
     border: none;
     padding-left: 25px;
 }
+
 i {
     color: gray;
 }
-.mensajes{
+
+.mensajes {
     border: black;
 }
 
-.gran{
-    margin-left: 100px ;
+.gran {
+    margin-left: 100px;
     margin-top: 50px;
     margin-right: 100px;
 }
 
-table{
+table {
     border: black 2px solid;
 }
+
 /* OTHER */
 
 .algn-l {
@@ -192,7 +201,7 @@ table{
 #dropdownHeaderButton {
     background-color: transparent !important;
     box-shadow: none;
-    color:#f1f1f1 !important;
+    color: #f1f1f1 !important;
     padding-left: 5px;
     padding-right: 0;
 }
@@ -229,7 +238,7 @@ table{
     }
 
     #landingPage {
-        background: rgba(241,241,241, 1.0);
+        background: rgba(241, 241, 241, 1.0);
     }
 
     #loginForm {

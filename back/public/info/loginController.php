@@ -1,12 +1,14 @@
 <?php
-require_once $hostname . "/back/app/models/DAO/DB.php";
-require_once $hostname . "/back/app/config/Session.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/models/DAO/DB.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/config/Session.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/config/Cookie.php";
+
 Session::start();
 
 if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
     $email = $_POST['emailLogin'];
     $pass = $_POST['passwordLogin'];
-    setcookie('lastEmail', $_POST['emailLogin'], time() + 1 * 3600, '/');
+    Cookie::set("lastEmail", $email, 30);
 
     $statement = DB::conn()->prepare("select correo, password from persona where correo = :email and password = :password");
     $statement->bindValue(':email', $email);

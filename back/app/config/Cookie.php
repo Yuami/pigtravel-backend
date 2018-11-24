@@ -20,8 +20,8 @@ class Cookie {
     }
 
     public static function set($key, $value, $timeInDays) {
-        $timeToDays = time() + $timeInDays * 24 * 60 * 60 * 60;
-        setcookie($key, $value, $timeToDays);
+        $timeToDays = time() + $timeInDays * 24 * 60 * 60;
+        setcookie($key, $value, $timeToDays, "/");
     }
 
     public static function delete($key) {
