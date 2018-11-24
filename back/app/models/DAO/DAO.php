@@ -7,7 +7,7 @@
  */
 include "DB.php";
 
-class DAO {
+abstract class DAO {
     protected static $table;
     protected static $class;
 
@@ -50,5 +50,7 @@ class DAO {
         $statement->bindValue(":value", $value);
         $statement->execute();
     }
+
+    public abstract static function insert();
 
 }

@@ -7,10 +7,11 @@
  */
 
 class Session {
-    private static $session;
+    private static $session = false;
 
     public static function start() {
-        self::$session = session_start();
+        if (!self::$session)
+            self::$session = session_start();
     }
 
     public static function set($key, $value) {
@@ -23,7 +24,7 @@ class Session {
         return null;
     }
 
-    public static function delete($key) : bool {
+    public static function delete($key): bool {
         if (self::isSet($key)) {
             unset($_SESSION[$key]);
             return true;
@@ -37,5 +38,6 @@ class Session {
 
     public static function destroy() {
         session_destroy();
+        $_SESSION = null;
     }
 }
