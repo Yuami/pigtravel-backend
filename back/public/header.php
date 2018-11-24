@@ -1,5 +1,6 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/back/app/config/Session.php";
+$hostname = $_SERVER['DOCUMENT_ROOT'];
+require_once $hostname . "/back/app/config/Session.php";
 Session::start();
 
 if (basename($_SERVER['REQUEST_URI']) != 'login.php') :

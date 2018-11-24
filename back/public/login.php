@@ -31,7 +31,7 @@
                                    aria-describedby="emailHelp" placeholder="Enter email" value="
                                    <?php if (isset($_COOKIE['lastEmail'])) {
                                        echo $_COOKIE['lastEmail'];
-                                   }                                        echo $_COOKIE['lastEmail'];
+                                   }
                             ?>">
                         </div>
                         <div class="form-group mt-4">
