@@ -1,7 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/models/DAO/DB.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/config/Session.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/config/Cookie.php";
+require_once $_SERVER['HTTP_HOST'] . "/back/app/models/DAO/DB.php";
+require_once $_SERVER['HTTP_HOST'] . "/back/app/config/Session.php";
+require_once $_SERVER['HTTP_HOST'] . "/back/app/config/Cookie.php";
 
 Session::start();
 

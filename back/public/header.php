@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/back/app/config/Session.php";
+require_once $_SERVER['HTTP_HOST'] . "/back/app/config/Session.php";
 Session::start();
 
 if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
