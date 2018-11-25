@@ -130,6 +130,13 @@ footer>p{
 
 
 /* PROFILE */
+#profilePage .form-control {
+
+}
+
+#profilePage .form-control:focus {
+    box-shadow: none;
+}
 
 /* HOUSE */
 .carousel {
