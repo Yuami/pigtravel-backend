@@ -130,12 +130,28 @@ footer>p{
 
 
 /* PROFILE */
-#profilePage .form-control {
-
+#profilePage .input-h6 {
+    text-align: right;
 }
 
 #profilePage .form-control:focus {
     box-shadow: none;
+}
+
+#profileForm .input-group-text {
+    background-color: transparent;
+    border-right: 0;
+}
+
+#profileForm .form-control {
+    border-left: 0;
+}
+
+#profileImageChange {
+    height: 120px;
+}
+#changePasswordText {
+    font-size: 14px;
 }
 
 /* HOUSE */
@@ -253,5 +269,12 @@ table {
         max-height: calc(100% - 76px);
         border: 0;
         background: 0;
+    }
+    #profilePage .input-h6 {
+        text-align: left;
+    }
+
+    #profileForm {
+        padding: 10px 20px;
     }
 }
