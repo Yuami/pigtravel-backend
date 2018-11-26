@@ -8,4 +8,15 @@
 
 class Auth {
 
+    public static function login() {
+
+    }
+
+    public static function verifyCredentials($email, $password) {
+
+    }
+
+    public static function logout() {
+
+    }
 }

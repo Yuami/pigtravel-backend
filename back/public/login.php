@@ -28,14 +28,18 @@
                                 <span class="fas fa-user text-danger mr-1 ml-2"></span>Email
                             </label>
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
-                                   aria-describedby="emailHelp" placeholder="Enter email">
+                                   aria-describedby="emailHelp" placeholder="Enter email" value="
+                                   <?php if (isset($_COOKIE['lastEmail'])) {
+                                       echo $_COOKIE['lastEmail'];
+                                   }
+                            ?>" required>
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">
                                 <span class="fas fa-lock text-danger mr-1 ml-2"></span>Password
                             </label>
                             <input type="password" class="form-control" name="passwordLogin" id="passwordLogin"
-                                   aria-describedby="emailHelp" placeholder="Enter password">
+                                   aria-describedby="emailHelp" placeholder="Enter password" required>
                         </div>
                         <p class="text-right"><a href="#">Forgot Password</a></p>
                         <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
@@ -59,8 +63,7 @@
                                 <p id="modal-text"><?php echo $_SESSION['loginStatus'] ?></p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Try Again</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Forgot Password
+                                <button type="button" data-dismiss="modal" class="btn btn-primary">Try Again</button>
                                 </button>
                             </div>
                         </div>

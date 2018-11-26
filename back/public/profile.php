@@ -15,7 +15,7 @@
 <body>
 <?php include_once("header.php") ?>
 
-<section class="container-fluid">
+<section id="profilePage" class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
             <h1>Profile</h1>
@@ -25,17 +25,76 @@
             </ol>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 col-md-4 offset-md-2">
-            <input type="text">
-            <input type="text">
+    <form>
+        <div class="row">
+            <div class="col-12 col-md-4 offset-md-2">
+                <div class="row">
+                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
+                        </div>
+                        <input type="text" class="form-control" id="fullNameForm">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
+                        </div>
+                        <input type="text" class="form-control" id="fullNameForm">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
+                        </div>
+                        <input type="text" class="form-control" id="fullNameForm">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
+                        </div>
+                        <input type="text" class="form-control" id="fullNameForm">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
+                        </div>
+                        <input type="text" class="form-control" id="fullNameForm">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
+                        </div>
+                        <input type="text" class="form-control" id="fullNameForm">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="text">
+                <input type="text">
+            </div>
         </div>
-        <div class="col-md-4">
-            <input type="text">
-            <input type="text">
-
-        </div>
-    </div>
+    </form>
 </section>
 
 
