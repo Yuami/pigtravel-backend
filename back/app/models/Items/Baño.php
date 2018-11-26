@@ -4,13 +4,13 @@ class Baño
 {
     private $id;
     private $tipoBaño;
-    private $serveis = array();
+    private $idServicioBano;
 
-    public function __construct($id, $tipoBaño,$serveis)
+    public function __construct($id, $tipoBaño,$idServicioBano)
     {
         $this->id = $id;
         $this->tipoBaño = $tipoBaño;
-        $this->serveis=getServicioBaño(id);
+        $this->idServicioBano=idServicioBano;
     }
 
     public function getTipoBaño()
@@ -22,20 +22,8 @@ class Baño
     {
         $this->tipoBaño = $tipoBaño;
     }
-    public function getServicioBaño($idBaño){
-
-        $statement = mysqli_query("SELECT 	idServicioBano FROM baño where id='idBaño'");
-        $servicio = array();
-        while($row = mysqli_fetch_assoc($statement))
-        {
-            if (is_null($row)){
-                $servicio[] = null;
-            }
-        else
-            $servicio[] = $row;
-        }
-        return $servicio->fetchAll(PDO::FETCH_ASSOC);
+    public function getServicioBaño()
+    {
+        return $this->idServicioBano;
     }
-
-
 }
