@@ -29,63 +29,53 @@
         <div class="row">
             <div class="col-12 col-md-4 offset-md-2">
                 <div class="row">
-                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <label class="sr-only" for="fullNameForm">Name</label>
                     <div class="input-group mb-2 mr-sm-2">
-                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <h6 class="my-auto mr-sm-3 col-md-4">Name</h6>
                         <div class="input-group-prepend">
                             <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
                         </div>
-                        <input type="text" class="form-control" id="fullNameForm">
+                        <input type="text" class="form-control col-md-8" id="fullNameForm" style="width: 80px;">
                     </div>
                 </div>
                 <div class="row">
-                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <label class="sr-only" for="locationForm">Location</label>
                     <div class="input-group mb-2 mr-sm-2">
-                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <h6 class="my-auto mr-sm-3 col-md-4">Location</h6>
                         <div class="input-group-prepend">
                             <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
                         </div>
-                        <input type="text" class="form-control" id="fullNameForm">
+                        <input type="text" class="form-control col-md-8" id="locationForm">
                     </div>
                 </div>
                 <div class="row">
-                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <label class="sr-only" for="emailForm">E-Mail</label>
                     <div class="input-group mb-2 mr-sm-2">
-                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <h6 class="my-auto mr-sm-3 col-md-4">E-Mail</h6>
                         <div class="input-group-prepend">
                             <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
                         </div>
-                        <input type="text" class="form-control" id="fullNameForm">
+                        <input type="text" class="form-control col-md-8" id="emailForm">
                     </div>
                 </div>
                 <div class="row">
-                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <label class="sr-only" for="telephoneForm">Telephone</label>
                     <div class="input-group mb-2 mr-sm-2">
-                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <h6 class="my-auto mr-3 col-md-4">Telephone</h6>
                         <div class="input-group-prepend">
                             <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
                         </div>
-                        <input type="text" class="form-control" id="fullNameForm">
+                        <input type="text" class="form-control col-md-8" id="telephoneForm">
                     </div>
                 </div>
                 <div class="row">
-                    <label class="sr-only" for="fullNameForm">Username</label>
+                    <label class="sr-only" for="passwordForm">Password</label>
                     <div class="input-group mb-2 mr-sm-2">
-                        <h6 class="my-auto mr-sm-3">Name</h6>
+                        <h6 class="my-auto mr-sm-3 col-md-4">Password</h6>
                         <div class="input-group-prepend">
                             <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
                         </div>
-                        <input type="text" class="form-control" id="fullNameForm">
-                    </div>
-                </div>
-                <div class="row">
-                    <label class="sr-only" for="fullNameForm">Username</label>
-                    <div class="input-group mb-2 mr-sm-2">
-                        <h6 class="my-auto mr-sm-3">Name</h6>
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><span class="fas fa-user text-danger"></span></div>
-                        </div>
-                        <input type="text" class="form-control" id="fullNameForm">
+                        <input type="text" class="form-control col-md-8" id="passwordForm">
                     </div>
                 </div>
             </div>
