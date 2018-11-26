@@ -1,6 +1,7 @@
 <?php
 
-class Bloqueo {
+class Bloqueo
+{
 
     private $id;
     private $activo;
@@ -20,22 +21,6 @@ class Bloqueo {
         $this->activo = $activo;
         $this->fechaInicio = $fechaInicio;
         $this->fechaFin = $fechaFin;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**

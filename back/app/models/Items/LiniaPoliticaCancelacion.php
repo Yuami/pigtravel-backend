@@ -1,6 +1,7 @@
 <?php
 
-class LiniaPoliticaCancelacion{
+class LiniaPoliticaCancelacion
+{
 
     private $idPoliticaCancelacion;
     private $dias;
@@ -17,22 +18,6 @@ class LiniaPoliticaCancelacion{
         $this->idPoliticaCancelacion = $idPoliticaCancelacion;
         $this->dias = $dias;
         $this->porcentaje = $porcentaje;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdPoliticaCancelacion()
-    {
-        return $this->idPoliticaCancelacion;
-    }
-
-    /**
-     * @param mixed $idPoliticaCancelacion
-     */
-    public function setIdPoliticaCancelacion($idPoliticaCancelacion)
-    {
-        $this->idPoliticaCancelacion = $idPoliticaCancelacion;
     }
 
     /**
