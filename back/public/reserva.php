@@ -47,7 +47,7 @@
                                     <div class="row">
                                         <img src="img/tempprofile.jpg" alt="" class="vivienda-img rounded-circle">
                                         <h5 class="ml-2 mt-3">Nombre cliente (Pero la foto de Phil mola 😅)</h5>
-                                        <a href="house.php" class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
+                                        <a href="#nothing" class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
                                     </div>
                                 </div>
                             </div>
@@ -98,10 +98,10 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <a href="house.php" class="btn btn-primary mt-3 col-12">CHAT CON (NOMBRE CLIENTE)</a>
-                <a href="house.php" class="btn btn-primary mt-3 col-12">EDITAR/OFERTA</a>
-                <a href="house.php" class="btn btn-primary mt-3 col-12">ACEPTAR</a>
-                <a href="house.php" class="btn btn-danger mt-3 col-12">CANCELAR</a>
+                <a href="messages.php?idCliente=id" class="btn btn-primary mt-3 col-12">CHAT CON (NOMBRE CLIENTE)</a>
+                <a href="#nothing" class="btn btn-primary mt-3 col-12">EDITAR/OFERTA</a>
+                <a href="#nothing" class="btn btn-primary mt-3 col-12">ACEPTAR</a>
+                <a href="#nothing" class="btn btn-danger mt-3 col-12">CANCELAR</a>
             </div>
         </div>
     </div>
