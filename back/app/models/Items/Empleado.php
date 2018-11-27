@@ -9,25 +9,16 @@ class Empleado {
         $this->idRol = $idRol;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIdPersona()
     {
         return $this->idPersona;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIdRol()
     {
         return $this->idRol;
     }
 
-    /**
-     * @param mixed $idRol
-     */
     public function setIdRol($idRol): void
     {
         $this->idRol = $idRol;
