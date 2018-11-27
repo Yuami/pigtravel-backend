@@ -8,5 +8,6 @@
 
 class CiudadHasIdiomaDAO
 {
-
+    protected static $table = "CiudadHasIdioma";
+    protected static $class = "CiudaHasIdioma";
 }
