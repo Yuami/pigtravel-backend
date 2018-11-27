@@ -22,23 +22,11 @@
     <div class="row">
         <p> <a href="index.php">Menu</a> > Messages</p>
     </div>
-    <div class="row">
-        <div class="dropdown">
-            <button  type="button" class="filtro dropdown-toggle" data-toggle="dropdown">
-                <i class="fas fa-home"></i>
-            </button>
-            <div class="dropdown-menu" id="dropdownidTipoVivienda">
-            </div>
-        </div>
-        <div>
-            <button type="button" class="filtro">
-                <i class="far fa-eye"></i>
-            </button>
-        </div>
-        <div>
-            <button  type="button" class="filtro">
-                <i class="fas fa-paper-plane"></i>
-            </button>
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Tipo
+        </button>
+        <div class="dropdown-menu" id="dropdownidTipoVivienda">
         </div>
     </div>
     <div class="table-responsive">
@@ -50,6 +38,7 @@
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script>
+
     $(document).ready(function() {
         $('#datatable_demo').DataTable( {
             "processing": true,
@@ -62,11 +51,21 @@
             "columns": [
                 { "data": "mensaje" }
 
-            ]
+            ],
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "searching": false,
+            "paging": false,
+            "info": false
         });
     });
 </script>
-
-
+<script src="js/selects/selectTipoVivienda.js"></script>
+<script src="js/selects/selectViviendaLista.js"></script>
+<script src="js/selects/selectViviendas.js"></script>
+<script src="js/selects/selectVendedorsViviendas.js"></script>
 </body>
 </html>

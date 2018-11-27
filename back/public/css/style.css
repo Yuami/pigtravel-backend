@@ -178,7 +178,9 @@ i {
 table {
     border: black 2px solid;
 }
-
+thead{
+    display: none;
+}
 /* OTHER */
 
 .algn-l {
