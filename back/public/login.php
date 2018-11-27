@@ -14,8 +14,9 @@
 
 <body>
 <section>
+    <?php include_once("header.php") ?>
+
     <div id="landingPage">
-        <?php include_once("header.php") ?>
             <section id="landingPageSection">
                 <div class="row" id="loginForm">
                     <div class="col-12 col-xs-8 offset-xs-2 text-center">
@@ -72,9 +73,9 @@
                     </div>
                 </div>
             </section>
-        <?php include_once("footer.php") ?>
-    </div>
 </section>
+<?php include_once("footer.php") ?>
+
 <?php if (Session::isSet('loginStatus')) { ?>
     <script type="text/javascript">
         $('#loginErrorModal').modal('show');
