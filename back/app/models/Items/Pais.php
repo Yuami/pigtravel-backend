@@ -1,4 +1,4 @@
 <?php
-class Pais{
-
+class Pais
+{
 }

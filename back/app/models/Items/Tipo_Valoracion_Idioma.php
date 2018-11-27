@@ -11,11 +11,15 @@ class Tipo_Valoracion_Idioma
 
     private $id;
     private $nombre;
+    private $idIdioma;
+    private $idTipoValoracion;
 
-    public function __construct($id, $nombre)
+    public function __construct($id, $nombre,$idIdioma,$idTipoValoracion)
     {
         $this->id = $id;
         $this->nombre = $nombre;
+        $this->idIdioma=$idIdioma;
+        $this->idTipoValoracion=$idTipoValoracion;
     }
 
     public function getNombre()
@@ -26,6 +30,15 @@ class Tipo_Valoracion_Idioma
     public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
+    }
+    public function getIdIdioma()
+    {
+        return $this->idIdioma;
+    }
+
+    public function getIdTipoValoracion()
+    {
+        return $this->idTipoValoracion;
     }
 }
 

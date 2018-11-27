@@ -4,18 +4,20 @@ class Ciudad
 {
     private $id;
     private $cp;
-    public function __construct($id, $cp)
+    private $idPais;
+    public function __construct($id, $cp,$idPais)
     {
         $this->id = $id;
         $this->cp = $cp;
+        $this->idPais=$idPais;
     }
     public function getCP()
     {
         return $this->cp;
     }
-    public function setCp($cp): void
+    public function getPais()
     {
-        $this->cp= $cp;
+        return $this->idPais;
     }
 }
 

@@ -27,10 +27,10 @@ abstract class DAO {
     }
 
     public static function getBy($column, $value) {
-        $statement = DB::conn()->prepare("SELECT * FROM " . static::$table . " WHERE :column=':value'");
-        $statement->bindValue(":column", $column);
-        $statement->bindValue(":value", $value);
-        $statement->bindValue(":table", static::$table);
+        $statement = DB::conn()->prepare("SELECT * FROM " . static::$table . " WHERE :column = :value ");
+        $statement->bindValue(":column", $column, PDO::PARAM_STR);
+        $statement->bindValue(":value", $value, PDO::PARAM_STR);
+        $statement->bindValue(":table", static::$table,PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_CLASS, static::$class);

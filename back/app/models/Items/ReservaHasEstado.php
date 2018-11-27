@@ -8,5 +8,19 @@
 
 class ReservaHasEstado
 {
+    private static $estadoReserva;
+
+
+    public static function getEstadoReserva()
+    {
+        return self::$estadoReserva;
+    }
+
+
+    public static function setEstadoReserva($estadoReserva): void
+    {
+        self::$estadoReserva = $estadoReserva;
+    }
+
 
 }

@@ -1,23 +1,40 @@
 <?php
 
-class CiudadHAsIdioma {
+class CiudadHAsIdioma
+{
 
     private $idIdioma;
     private $idCiudad;
     private $nombre;
 
-    public function __construct($idCiudad,$idIdioma,$nombre){
-
-        $this->idIdioma=$idIdioma;
-        $this->idCiudad=$idCiudad;
-        $this->nombre=$nombre;
+    /**
+     * CiudadHAsIdioma constructor.
+     * @param $idIdioma
+     * @param $idCiudad
+     * @param $nombre
+     */
+    public function __construct($idIdioma, $idCiudad, $nombre)
+    {
+        $this->idIdioma = $idIdioma;
+        $this->idCiudad = $idCiudad;
+        $this->nombre = $nombre;
     }
-    
-    public function getNombre(){
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
         return $this->nombre;
     }
-    public function setNombre(){
-        $this->nombre=$nombre;
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
     }
-    
+
+
 }

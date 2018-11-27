@@ -11,11 +11,15 @@ class Tipo_Subscripcion_Idioma
 
     private $id;
     private $nombre;
+    private $idIdioma;
+    private $idPremium;
 
-    public function __construct($id, $nombre)
+    public function __construct($id, $nombre,$idPremium,$idIdioma)
     {
         $this->id = $id;
         $this->nombre = $nombre;
+        $this->idPremium=$idPremium;
+        $this->idIdioma=$idIdioma;
     }
 
     public function getNombre()
@@ -26,6 +30,15 @@ class Tipo_Subscripcion_Idioma
     public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
+    }
+    public function getIdIdioma()
+    {
+        return $this->idIdioma;
+    }
+
+    public function getIdPremium()
+    {
+        return $this->idPremium;
     }
 }
 

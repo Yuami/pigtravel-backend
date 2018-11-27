@@ -2,10 +2,10 @@
 include "DAO.php";
 include_once ("../Items/ValoracionCliente.php");
 
-class ValoracionClienteDAO extends DAO {
+class ValoracionClienteDAO extends DAO{
 
     protected static $table = "valoracion_cliente";
-    protected static $class = "Valoracion_Cliente";
+    protected static $class = "ValoracionCliente";
 
     public static function getByIdCliente($id) {
         $statement = DB::conn()->prepare("SELECT * FROM " . self::$table . " WHERE idCliente=:id");
@@ -22,5 +22,10 @@ class ValoracionClienteDAO extends DAO {
 
         return $statement->fetchAll();
     }
+
+    public static function insert()
+    {
+        // TODO: Implement insert() method.
+    }
 }
-echo json_encode(ValoracionClienteDAO::getBy("idCliente",3));
+var_dump(ValoracionClienteDAO::getBy("idCliente",3));

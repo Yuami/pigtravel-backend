@@ -1,31 +1,55 @@
 <?php
 
-class LiniaPoliticaCancelacion {
+class LiniaPoliticaCancelacion
+{
 
     private $idPoliticaCancelacion;
     private $dias;
     private $porcentaje;
 
-    public function __construct($dias,$idPoliticaCancelacion,$porcentaje){
-
-        $this->dias=$dias;
-        $this->idPoliticaCancelacion=$idPoliticaCancelacion;
-        $this->porcentaje=$porcentaje;
+    /**
+     * LiniaPoliticaCancelacion constructor.
+     * @param $idPoliticaCancelacion
+     * @param $dias
+     * @param $porcentaje
+     */
+    public function __construct($idPoliticaCancelacion, $dias, $porcentaje)
+    {
+        $this->idPoliticaCancelacion = $idPoliticaCancelacion;
+        $this->dias = $dias;
+        $this->porcentaje = $porcentaje;
     }
-    
-    public function getDias(){
+
+    /**
+     * @return mixed
+     */
+    public function getDias()
+    {
         return $this->dias;
     }
 
-    public function setDias(){
-        $this->dias=$dias;
+    /**
+     * @param mixed $dias
+     */
+    public function setDias($dias)
+    {
+        $this->dias = $dias;
     }
 
-    public function getPorcentaje(){
+    /**
+     * @return mixed
+     */
+    public function getPorcentaje()
+    {
         return $this->porcentaje;
     }
 
-    public function setPorcentaje(){
-        $this->porcentaje=$porcentaje;
+    /**
+     * @param mixed $porcentaje
+     */
+    public function setPorcentaje($porcentaje)
+    {
+        $this->porcentaje = $porcentaje;
     }
+
 }
