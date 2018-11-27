@@ -14,8 +14,8 @@
 
 <body>
 <?php include_once("header.php") ?>
-<h1><a href="house.php">House</a></h1>
 <section>
+    <h1><a href="house.php">House</a></h1>
     <h1>Houses</h1>
 
     <div class="dropdown">
