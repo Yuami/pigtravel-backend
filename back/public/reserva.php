@@ -60,7 +60,9 @@
                             <div class="card-body">
                                 <div class="card-text">
                                     <div class="row">
-                                        <p class="ml-2 mt-3"><b>FECHAS:</b> ENTRADA 23-12-18 -> SALIDA 28-12-18</p>
+                                        <p class="ml-2 mt-3"><b>FECHAS:</b></p>
+                                        <p class="ml-2 mt-3">ENTRADA 23-12-18</p>
+                                        <p class="ml-2 mt-3">SALIDA 28-12-18</p>
                                         <p class="ml-2 ml-md-5 mt-3"><b>INQUILINOS:</b> 3</p>
                                     </div>
                                 </div>
@@ -75,7 +77,7 @@
                                 <div class="card-text">
                                     <div class="row">
                                         <p class="ml-2 mt-3"><b>ENTRADA:</b> 13:00</p>
-                                        <p class="ml-5 mt-3"><b>SALIDA:</b> 12:00</p>
+                                        <p class="ml-2 mt-3"><b>SALIDA:</b> 12:00</p>
                                     </div>
                                 </div>
                             </div>
