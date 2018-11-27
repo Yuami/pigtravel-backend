@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/jasny-bootstrap.min.css">
     <title>Profile</title>
+
 </head>
 
 <body>
@@ -110,7 +112,15 @@
             </div>
             <div class="col-md-6 order-0 order-md-1">
                 <div class="row">
-                    <img src="img/tempprofile.jpg" id="profileImageChange" alt="" class="rounded-circle">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                        <div>
+                            <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">Select image</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" class="form-control" id="avatarForm" name="..."></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,5 +129,7 @@
 
 
 <?php include_once("footer.php") ?>
+<script src="js/jasny-bootstrap.min.js"></script>
+
 </body>
 </html>
