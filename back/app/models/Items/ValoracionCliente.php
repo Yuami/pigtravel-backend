@@ -1,5 +1,4 @@
 <?php
-include "../DAO/ValoracionClienteDAO.php";
 
 class ValoracionCliente
 {
