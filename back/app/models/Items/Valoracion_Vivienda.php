@@ -10,11 +10,15 @@ class Valoracion_Vivienda
 {
     private $id;
     private $mensaje;
+    private $idPersona;
+    private $idVivienda;
 
-    public function __construct($id, $mensaje)
+    public function __construct($id, $mensaje,$idPersona,$idVivienda)
     {
         $this->id = $id;
         $this->mensaje = $mensaje;
+        $this->idPersona=$idPersona;
+        $this->idVivienda=$idVivienda;
     }
 
     public function getMensaje()
@@ -27,5 +31,13 @@ class Valoracion_Vivienda
         $this->nombre = $mensaje;
     }
 
+    public function getIdPersona()
+    {
+        return $this->idPersona;
+    }
+    public function getIdVivienda()
+    {
+        return $this->idVivienda;
+    }
 
 }
