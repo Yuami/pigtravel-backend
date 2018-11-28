@@ -49,8 +49,9 @@
                 "dataSrc": "records"
             },
             "columns": [
-                { "data": "mensaje" }
-
+                { "data": "nombre" },
+                { "data": "mensaje" },
+                { "data": "fechaEnviado" }
             ],
             "bPaginate": false,
             "bLengthChange": false,
@@ -63,9 +64,5 @@
         });
     });
 </script>
-<script src="js/selects/selectTipoVivienda.js"></script>
-<script src="js/selects/selectViviendaLista.js"></script>
-<script src="js/selects/selectViviendas.js"></script>
-<script src="js/selects/selectVendedorsViviendas.js"></script>
 </body>
 </html>
