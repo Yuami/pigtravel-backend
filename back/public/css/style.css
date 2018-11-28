@@ -5,7 +5,6 @@
 }
 
 html {
-    position: relative;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -21,6 +20,11 @@ body {
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
+body::after {
+    content: '';
+    display: block;
+    height: 56px;
+}
 /* HEADER */
 
 .head {
@@ -89,19 +93,10 @@ nav li .nav-link {
 /* FOOTER */
 
 .foot {
+    clear: both;
     width: 100%;
-    text-align: center;
-    background: black;
-    color:white;
-    font-size: 1em;
-    height: 40px;
-    overflow: hidden;
     position: absolute;
     bottom: 0;
-}
-footer>p{
-    margin-top: calc(20px - 0.5em);
-    height: auto;
 }
 
 /* BREADCRUMBS */
@@ -113,7 +108,7 @@ footer>p{
 }
 
 /* LOGIN */
-#landingPage {
+body#landingBody {
     position: relative;
     background: url("../img/landingpage/house.jpg") no-repeat center;
     background-size: cover;

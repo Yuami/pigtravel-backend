@@ -98,7 +98,7 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
                         </li>
                     </ul>
 
-                    <a href="profile.php" class="ml-md-3">
+                    <a href="profile.php" class="ml-md-3 d-none d-md-block">
                         <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
                     </a>
                     <div class="dropdown d-none d-md-block">

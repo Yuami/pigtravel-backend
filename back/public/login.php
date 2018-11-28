@@ -12,7 +12,7 @@
     <title>Log in</title>
 </head>
 
-<body>
+<body id="landingBody">
 <section>
     <?php include_once("header.php") ?>
 
