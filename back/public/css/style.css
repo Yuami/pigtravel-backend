@@ -118,12 +118,15 @@ body#landingBody {
 #loginForm {
     margin: auto;
     max-width: 400px !important;
-    border: solid black 1px;
+    border: solid white
+    1px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.7);
     padding: 0 60px;
 }
-
+.ch-100{
+    height: calc(100vh - 76px - 40px);
+}
 
 /* PROFILE */
 #profilePage .input-h6 {

@@ -11,5 +11,28 @@ class ViviendaDAO extends DAO{
         // TODO: Implement insert() method.
     }
 
+    public static function getByTipoVivienda($tipo)
+    {
+        return parent::getBy("idTipoVvienda", $tipo);
+    }
 
+    public static function getByAlquilerAutomatico($bool)
+    {
+        return parent::getBy("alquilerAutomatico", $bool);
+    }
+
+    public static function getByIDCiudad($id)
+    {
+        return parent::getBy("idCiudad", $id);
+    }
+
+    public static function getByDestacada($bool)
+    {
+        return parent::getBy("destacada", $bool);
+    }
+
+    public static function getByCapacidad($capacidad)
+    {
+        $statement = DB::conn()->prepare("SELECT ");
+    }
 }
