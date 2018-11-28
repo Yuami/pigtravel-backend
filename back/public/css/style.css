@@ -112,7 +112,7 @@ body#landingBody {
     position: relative;
     background: url("../img/landingpage/house.jpg") no-repeat center;
     background-size: cover;
-    min-height:100%;
+    min-height:100vh;
 }
 
 #loginForm {
@@ -267,7 +267,7 @@ thead{
         border: 0;
     }
 
-    #landingPage {
+    body#landingBody {
         background: rgba(241, 241, 241, 1.0);
     }
 

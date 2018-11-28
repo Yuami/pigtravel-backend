@@ -61,7 +61,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p id="modal-text"><?php echo $_SESSION['loginStatus'] ?></p>
+                                    <p id="modal-text"><?php if (isset($_SESSION['loginStatus'])) { echo $_SESSION['loginStatus']; }?></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" data-dismiss="modal" class="btn btn-primary">Try Again
