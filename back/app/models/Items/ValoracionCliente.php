@@ -1,4 +1,5 @@
 <?php
+include ('../DAO/ValoracionClienteDAO.php');
 
 class ValoracionCliente
 {
@@ -48,3 +49,4 @@ class ValoracionCliente
     }
 }
 
+print_r (ValoracionCliente::getByIdCliente(2));

@@ -23,9 +23,9 @@ class ValoracionClienteDAO extends DAO{
         return $statement->fetchAll();
     }
 
+
     public static function insert()
     {
         // TODO: Implement insert() method.
     }
 }
-var_dump(ValoracionClienteDAO::getBy("idCliente",3));
