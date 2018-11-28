@@ -14,6 +14,7 @@
 
 <body>
 <?php include_once("header.php") ?>
+<a href="reserva.php"><h1>RESERVA</h1></a>
 <!--  <section>
      <h1>Reservations</h1>
      <div id="cardscasa" class="container">
