@@ -1,22 +1,26 @@
 <?php
 require_once("conn.php");
-$sql = "SELECT persona.nombre, 
-       mensajes.mensaje,
+$sql = "SELECT persona.nombre as nombreSender, 
+       vivienda.nombre as nombreCasa,
+       concat(substring(mensajes.mensaje,1,2),'...') as mensaje,
        mensajes.fechaEnviado 
 FROM mensajes
   inner join persona on persona.id=mensajes.idSender 
-order by mensajes.fechaEnviado desc ";
+inner join vivienda on vivienda.id=mensajes.idVivienda 
+order by mensajes.fechaEnviado desc";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
 $return_arr = array();
 $columns = array(
-    0 =>'nombre',
-    1 =>'mensaje',
-    2 =>'fechaEnviado'
+    0 =>'nombreSender',
+    1 =>'nombreCasa',
+    2 =>'mensaje',
+    3 =>'fechaEnviado'
 );
 foreach ($stmt as $row) {
-    $row_array['nombre'] = $row['nombre'];
+    $row_array['nombreSender'] = $row['nombreSender'];
+    $row_array['nombreCasa'] = $row['nombreCasa'];
     $row_array['mensaje'] = $row['mensaje'];
     $row_array['fechaEnviado'] = $row['fechaEnviado'];
     array_push($return_arr,$row_array);

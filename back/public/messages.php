@@ -49,10 +49,17 @@
                 "dataSrc": "records"
             },
             "columns": [
-                { "data": "nombre" },
+                {
+                    "data": "fotoPerfil",
+                    "render": function (data, type, row) {
+                        return '<img src="' + data + '" />';
+                    }
+                },
+                { "data": "nombreSender" },
+                { "data": "nombreCasa" },
                 { "data": "mensaje" },
                 { "data": "fechaEnviado" }
-            ],
+                ],
             "bPaginate": false,
             "bLengthChange": false,
             "bFilter": true,
@@ -62,6 +69,10 @@
             "paging": false,
             "info": false
         });
+        function getImg(data, type, full, meta) {
+            //
+            return '<img  src="your image path(imgsrc )" />';
+        }
     });
 </script>
 </body>
