@@ -17,12 +17,10 @@ body {
     margin:0;
     padding:0;
     min-height: 100vh;
+    position: relative;
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-section {
-    min-height: calc(100vh - 76px - 40px);
-}
 /* HEADER */
 
 .head {
@@ -98,6 +96,8 @@ nav li .nav-link {
     font-size: 1em;
     height: 40px;
     overflow: hidden;
+    position: absolute;
+    bottom: 0;
 }
 footer>p{
     margin-top: calc(20px - 0.5em);

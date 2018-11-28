@@ -113,7 +113,9 @@
             <div class="col-md-6 order-0 order-md-1">
                 <div class="row">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput">
+                            <img src="https://placeimg.com/250/250/people" />
+                        </div>
                         <div>
                             <span class="btn btn-default btn-file">
                                 <span class="fileinput-new">Select image</span>
