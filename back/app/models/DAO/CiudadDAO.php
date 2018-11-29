@@ -5,8 +5,6 @@
  * Date: 27/11/2018
  * Time: 18:47
  */
-include "DAO.php";
-include_once ("../Items/Ciudad.php");
 
 class CiudadDAO extends DAO{
   protected static $table = "ciudad";
@@ -18,27 +16,27 @@ class CiudadDAO extends DAO{
 }
     public static function getById($id)
 {
-    return parent::getById("ciudad", $id);
+    return parent::getById( $id);
 }
 
     public static function getAll()
 {
-    return parent::getAll("ciudad");
+    return parent::getAll();
 }
 
     public static function deleteById($id)
 {
-    return parent::deleteById("baño", $id);
+    return parent::deleteById( $id);
 }
 
     public static function getByPais($idPais)
 {
-    return parent::getBy("ciudad", idPais, $idPais);
+    return parent::getBy( idPais, $idPais);
 }
 
     public static function deleteByPais($idPais)
 {
-    return parent::deleteBy("ciudad", $idPais, $idPais);
+    return parent::deleteBy( $idPais, $idPais);
 
 }
 

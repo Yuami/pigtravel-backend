@@ -9,7 +9,7 @@
 class TipoValoracionHasIdiomaDAO extends DAO
 {
     protected static $table = "tipo_valoracion_has_idioma";
-    protected static $class = "TipoValoracionHasIdiomaDAO";
+    protected static $class = "Tipo_Valoracion_Idioma";
 
     public static function insert()
     {
@@ -17,24 +17,24 @@ class TipoValoracionHasIdiomaDAO extends DAO
     }
     public static function getByIdIdioma($idIdioma)
     {
-        return parent::getBy("tipo_valoracion_has_idioma", idIdioma, $idIdioma);
+        return parent::getBy(idIdioma, $idIdioma);
     }
 
     public static function deleteByIdIdioma($idIdioma)
     {
-        return parent::deleteBy("tipo_valoracion_has_idioma",idIdioma,$idIdioma);
+        return parent::deleteBy(idIdioma,$idIdioma);
     }
     public static function getByIdTipoValoracion($idTipoValoracion)
     {
-        return parent::getBy("tipo_valoracion_has_idioma", idTipoValoracion, $idTipoValoracion);
+        return parent::getBy(idTipoValoracion, $idTipoValoracion);
     }
 
     public static function deleteByIdTipoValoracion($idTipoValoracion)
     {
-        return parent::deleteBy("tipo_valoracion_has_idioma",idTipoValoracion,$idTipoValoracion);
+        return parent::deleteBy(idTipoValoracion,$idTipoValoracion);
     }
     public static function getByNombre($nombre)
     {
-        return parent::getBy("tipo_valoracion_has_idioma", nombre, $nombre);
+        return parent::getBy(nombre, $nombre);
     }
 }

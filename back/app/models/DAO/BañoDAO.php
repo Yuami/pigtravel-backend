@@ -12,27 +12,27 @@ class BañoDAO extends DAO {
     }
     public static function getById($id)
     {
-        return parent::getById("baño", $id);
+        return parent::getById( $id);
     }
 
     public static function getAll()
     {
-        return parent::getAll("baño");
+        return parent::getAll();
     }
 
     public static function deleteById($id)
     {
-        return parent::deleteById("baño", $id);
+        return parent::deleteById( $id);
     }
 
     public static function getByServicioBaño($idServicioBaño)
     {
-        return parent::getBy("baño", idServicioBaño, $idServicioBaño);
+        return parent::getBy(idServicioBaño, $idServicioBaño);
     }
 
     public static function deleteByServicioBaño($idServicioBaño)
     {
-        return parent::deleteBy("baño", idServicioBaño, $idServicioBaño);
+        return parent::deleteBy(idServicioBaño, $idServicioBaño);
 
     }
 

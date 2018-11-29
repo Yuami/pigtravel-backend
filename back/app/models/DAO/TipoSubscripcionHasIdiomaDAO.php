@@ -9,7 +9,7 @@
 class TipoSubscripcionHasIdiomaDAO extends DAO
 {
     protected static $table = "tipo_subscripcion_has_idioma";
-    protected static $class = "TipoSubscripcionHasIdiomaDAO";
+    protected static $class = "Tipo_Subscripcion_Idioma";
 
     public static function insert()
     {
@@ -17,24 +17,24 @@ class TipoSubscripcionHasIdiomaDAO extends DAO
     }
     public static function getByIdIdioma($idIdioma)
     {
-        return parent::getBy("tipo_subscripcion_has_idioma", idIdioma, $idIdioma);
+        return parent::getBy( idIdioma, $idIdioma);
     }
 
     public static function deleteByIdIdioma($idIdioma)
     {
-        return parent::deleteBy("tipo_subscripcion_has_idioma",idIdioma,$idIdioma);
+        return parent::deleteBy(idIdioma,$idIdioma);
     }
     public static function getByIdPremium($idPremium)
     {
-        return parent::getBy("tipo_subscripcion_has_idioma", idPremium, $idPremium);
+        return parent::getBy( idPremium, $idPremium);
     }
 
     public static function deleteByIdPremium($idPremium)
     {
-        return parent::deleteBy("tipo_subscripcion_has_idioma",idPremium,$idPremium);
+        return parent::deleteBy(idPremium,$idPremium);
     }
     public static function getByNombre($nombre)
     {
-        return parent::getBy("tipo_subscripcion_has_idioma", nombre, $nombre);
+        return parent::getBy( nombre, $nombre);
     }
 }

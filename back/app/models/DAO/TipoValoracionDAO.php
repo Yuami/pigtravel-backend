@@ -5,15 +5,11 @@
  * Date: 28/11/2018
  * Time: 9:37
  */
-
-include "DAO.php";
-include_once ("../Items/Tipo_Valoracion.php");
-
 class TipoValoracionDAO extends DAO
 {
 
     protected static $table = "tipo_valoracion";
-    protected static $class = "TipoValoracionDAO";
+    protected static $class = "Tipo_Valoracion";
 
     public static function insert()
     {
@@ -22,7 +18,7 @@ class TipoValoracionDAO extends DAO
 
     public static function getById($id)
     {
-        return parent::getById("tipo_valoracion", $id);
+        return parent::getById($id);
     }
 
     public static function getAll()
@@ -32,6 +28,6 @@ class TipoValoracionDAO extends DAO
 
     public static function deleteById($id)
     {
-        return parent::deleteById("tipo_valoracion", $id);
+        return parent::deleteById( $id);
     }
 }

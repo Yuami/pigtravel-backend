@@ -21,16 +21,16 @@ class PaisDAO extends DAO
 
     public static function getById($id)
     {
-        return parent::getById("pais", $id);
+        return parent::getById( $id);
     }
 
     public static function getAll()
     {
-        return parent::getAll("pais");
+        return parent::getAll();
     }
 
     public static function deleteById($id)
     {
-        return parent::deleteById("pais", $id);
+        return parent::deleteById( $id);
     }
 }

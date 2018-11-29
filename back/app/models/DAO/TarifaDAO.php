@@ -12,35 +12,35 @@ class TarifaDAO extends DAO
 
     public static function getAll()
     {
-        return parent::getAll("tarifa");
+        return parent::getAll();
     }
 
     public static function deleteById($id)
     {
-        return parent::deleteById("tarifa", $id);
+        return parent::deleteById( $id);
     }
 
     public static function getByFechaInicio($fechaInicio)
     {
-        return parent::getBy("tarifa", fechaInicio, $fechaInicio);
+        return parent::getBy(fechaInicio, $fechaInicio);
     }
 
     public static function getByFechaFin($fechaFin)
     {
-        return parent::getBy("tarifa", fechaFin, $fechaFin);
+        return parent::getBy( fechaFin, $fechaFin);
     }
     public static function getByGeneral($general)
     {
-        return parent::getBy("tarifa", general, $general);
+        return parent::getBy( general, $general);
     }
     public static function getByIdPoliticaCancelacion($idPoliticaCancelacion)
     {
-        return parent::getBy("tarifa", idPoliticaCancelacion, $idPoliticaCancelacion);
+        return parent::getBy(idPoliticaCancelacion, $idPoliticaCancelacion);
     }
 
     public static function deleteByIdPoliticaCancelacion($idPoliticaCancelacion)
     {
-        return parent::deleteBy("tarifa",idPoliticaCancelacion,$idPoliticaCancelacion);
+        return parent::deleteBy(idPoliticaCancelacion,$idPoliticaCancelacion);
     }
 
 }

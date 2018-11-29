@@ -2,28 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: Pep Toni
- * Date: 28/11/2018
- * Time: 9:43
+ * Date: 29/11/2018
+ * Time: 12:33
  */
 
-class ValoracionViviendaDAO extends DAO
+class ViviendaHasServicioDAO extends DAO
 {
-    protected static $table = "valoracion_vivienda";
-    protected static $class = "Valoracion_Vivienda";
+    protected static $table = "vivienda_has_servicio";
+    protected static $class = "ViviendaHasServicio";
 
     public static function insert()
     {
         // TODO: Implement insert() method.
     }
 
-    public static function getByIdPersona($idPersona)
+    public static function getByIdServicio($idServicio)
     {
-        return parent::getBy( idPersona, $idPersona);
+        return parent::getBy(idServicio, $idServicio);
     }
 
-    public static function deleteByIdPersona($idPersona)
+    public static function deleteByIdServicio($idServicio)
     {
-        return parent::deleteBy(idPersona, $idPersona);
+        return parent::deleteBy(idServicio, $idServicio);
     }
     public static function getByIdVivienda($idVivienda)
     {
