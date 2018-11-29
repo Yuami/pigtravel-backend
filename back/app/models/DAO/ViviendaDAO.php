@@ -33,6 +33,10 @@ class ViviendaDAO extends DAO{
 
     public static function getByCapacidad($capacidad)
     {
-        $statement = DB::conn()->prepare("SELECT ");
+        $statement = DB::conn()->prepare("SELECT * FROM vivienda where capacidad <= :capacidad");
+        $statement->bindValue(":capacidad", $capacidad, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, self::$table);
     }
 }
