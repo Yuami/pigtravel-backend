@@ -137,9 +137,10 @@ body#landingBody {
     box-shadow: none;
 }
 
-#profileForm .input-group-text {
+.input-group-prepend .input-group-text {
     background-color: transparent;
     border-right: 0;
+    width: 38px;
 }
 
 #profileForm .form-control {
@@ -151,16 +152,14 @@ body#landingBody {
 }
 #changePasswordText {
     font-size: 14px;
+    margin: 0 !important;
 }
 
-.fileinput-preview {
-    width: 100px;
+#imageForm {
     height: 100px;
+    width: 100px;
 }
 
-.fileinput {
-    margin-left: 150px !important;
-}
 
 /* HOUSE */
 .carousel {
