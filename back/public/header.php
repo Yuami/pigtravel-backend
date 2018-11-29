@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../app/config/Session.php";
 Session::start();
 
-if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
+if (parse_url(basename($_SERVER['REQUEST_URI']), PHP_URL_PATH) != 'login.php') :
     if (!Session::isSet('userID')) {
         header("Location: login.php");
     } ?>
@@ -48,7 +48,7 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
                             <span class="icoNav">
                                 <i class="fas fa-home fa-fw"></i>
                             </span>
-                                <span class="textNav active">HOUSES</span>
+                                <span class="textNav">HOUSES</span>
                             </a>
                         </li>
 
