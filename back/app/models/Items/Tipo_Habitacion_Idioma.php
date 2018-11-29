@@ -6,13 +6,15 @@ class Tipo_Habitacion_Idioma
     private $idIdioma;
     private $idTipo_habitacion;
     private $nombre;
+    private $descripcion;
 
-    public function __construct($id,$idIdioma,$idTipo_habitacion,$nombre)
+    public function __construct($id,$idIdioma,$idTipo_habitacion,$nombre,$descripcion)
     {
         $this->id = $id;
         $this->idIdioma=$idIdioma;
         $this->idTipo_habitacion=$idTipo_habitacion;
         $this->nombre = $nombre;
+        $this->descripcion=$descripcion;
     }
 
     public function getNombre()
@@ -23,6 +25,15 @@ class Tipo_Habitacion_Idioma
     public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
+    }
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion($descripcion): void
+    {
+        $this->descripcion = $descripcion;
     }
     public function getIdIdioma()
     {
