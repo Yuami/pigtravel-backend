@@ -1,32 +1,45 @@
-$(function () {
-    function loadMensajes() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var mensajes = JSON.parse(this.responseText);
-                for (mensajeX in mensajes) {
-                    let idSender = mensajes[mensajeX].idSender;
-                    let mensaje = mensajes[mensajeX].mensaje;
-                    let fechaEnviado = mensajes[mensajeX].fechaEnviado;
 
-                    let item =
-                        "<tr>" +
-                        "<td value=" + idSender + " scope='row'>" + idSender + "</td>" +
-                        "<td value=" + mensaje +" scope='row'>" + mensaje + "</td>" +
-                        "<td value=" + fechaEnviado +" scope='row'>" + fechaEnviado + "</td>" +
-                        "</tr>";
-                    addToTable(item);
-                }
-                addToTable("</tbody>");
-            }
-        };
-        xhttp.open("GET", "info/selectMensajes.php", true);
-        xhttp.send();
-    }
+$(document).ready(function () {
 
-    function addToTable(item) {
-        $("#llistaMensajes").append(item);
-    }
+    $("#example").one("preInit.dt", function () {
+        $sel = $("<select></select>");
+        $sel.html("<option value='-1'>Select Column</option>");
+        $.each(columns, function (i, opt) {
 
-    loadMensajes();
+            $sel.append("<option value='" + opt.title + "'>" + opt.title + "</option>");
+        });
+        $("#example_ddl").append($sel);
+
+    });
+   $('#example').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "info/selectMensajes.php",
+                "type": "POST",
+                "dataSrc": "records"
+
+            },
+            "columns": [
+                {
+                    "foto": "fotoPerfil",
+                    "render": function (foto, type, row) {
+                        return '<img src="' + foto + '" />';
+                    }
+                },
+                { "data": "nombreSender" },
+                { "data": "nombreCasa" },
+                { "data": "mensaje" },
+                { "data": "fechaEnviado" }
+            ],
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "searching": false,
+            "paging": false,
+            "responsive": true,
+            "info": false
+        });
 });
