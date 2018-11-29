@@ -15,6 +15,11 @@ $(document).ready(function () {
         language: {
             url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Catalan.json"
         },
-        select: true
+        select: true,
+        dom: 'lrtip'
+    });
+
+    $('#table-filter').on('change', function () {
+        table.search(this.value).draw();
     });
 });

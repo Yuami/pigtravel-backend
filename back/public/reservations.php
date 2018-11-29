@@ -38,10 +38,16 @@
 <div class="container col-10">
     <div class="row">
         <div class="col">
+            <div class="form-group col-2 form-check-inline">
+                <h6>Show:</h6>
+                <select id="filterEst" class="form-control">
+
+                </select>
+            </div>
             <table id="taula" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Casa</th>
                     <th>Clientes</th>
                     <th>Estado</th>
                     <th>Fecha</th>
@@ -54,6 +60,7 @@
 </div>
 <?php //include_once("footer.php") ?>
 <script src="js/selects/selectReservasList.js"></script>
+<script src="js/selects/selectEstado.js"></script>
 
 
 </body>
