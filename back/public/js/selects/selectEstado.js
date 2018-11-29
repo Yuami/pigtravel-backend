@@ -6,8 +6,8 @@ $(document).ready(function () {
                 var estats = JSON.parse(this.responseText);
                 for (i in estats) {
                     var nomEstat = estats[i].nombre;
-                    var item = $("<a/>", {class: 'dropdown-item', text: nomEstat});
-                    $("#dropEst").append(item);
+                    var item = $("<option/>", {text: nomEstat});
+                    $("#filterEst").append(item);
                 }
             }
         };
