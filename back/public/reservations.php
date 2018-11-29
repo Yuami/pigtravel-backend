@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:color="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -38,6 +38,15 @@
 <div class="container col-10">
     <div class="row">
         <div class="col">
+            <h3>Gestio Reservas</h3>
+            <ul class="bg-transparent breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Pagina Principal</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a href="#">Gestio Reservas</a>
+                </li>
+            </ul>
             <div class="form-group col-2 form-check-inline">
                 <h6>Show:</h6>
                 <select id="filterEst" class="form-control">
