@@ -7,5 +7,5 @@
  */
 
 class Estado {
-
+    private $id;
 }
