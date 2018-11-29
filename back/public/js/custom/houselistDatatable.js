@@ -1,11 +1,19 @@
-$(function() {
-    $('#listaCasas').DataTable( {
-        "processing" : true,
-        "serverSide" : true,
-        "order" : [],
-        "ajax" : {
-            url:"info/selectViviendas.php",
-            type:"POST"
-    }
-    })
+$(function () {
+    $('#listaCasas').show();
+    $('#listaCasas').DataTable({
+        ajax: {
+            url: 'info/selectViviendasFull.php',
+            dataSrc: '',
+            type: "POST",
+        },
+        columns: [
+            {data: 'Name'},
+            {data: 'HouseType'},
+            {data: 'MaxPax'},
+            {data: 'Street'},
+            {data: 'City'},
+            {data: 'CheckIn'}
+        ]
+    });
 });
+
