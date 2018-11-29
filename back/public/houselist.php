@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/datatables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <title>List of houses</title>
 </head>
 
