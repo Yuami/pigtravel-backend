@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
- <?php include_once("libraries.php") ?>
+    <?php include_once("libraries.php") ?>
     <!-- css -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"/>
@@ -43,11 +43,22 @@
                     <a href="#">Gestio Reservas</a>
                 </li>
             </ul>
-            <div class="form-group col-2 form-check-inline">
-                <h6>Show:</h6>
-                <select id="filterEst" class="form-control">
+            <div class="row">
+                <div class=" col-2">
+                    <button id="clean" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <div class="form-group col-3 form-check-inline">
+                    <h6 class="col-4">Filtrar por</h6>
+                    <select id="filterEst" class="form-control">
 
-                </select>
+                    </select>
+                </div>
+                <div class="form-group col-3 form-check-inline">
+                    <h6 class="col-4">Filtrar por</h6>
+                    <select id="filterViv" class="form-control">
+
+                    </select>
+                </div>
             </div>
             <table id="taula" class="table table-striped table-bordered">
                 <thead>
@@ -65,7 +76,7 @@
 </div>
 <?php //include_once("footer.php") ?>
 <script src="js/selects/selectReservasList.js"></script>
-<script src="js/selects/selectEstado.js"></script>
+<script src="js/selects/selectEstadoFiltro.js"></script>
 
 
 </body>
