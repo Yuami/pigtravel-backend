@@ -53,7 +53,7 @@
 
                     </select>
                 </div>
-                <div class="form-group col-3 form-check-inline">
+               <div class="form-group col-3 form-check-inline">
                     <h6 class="col-4">Filtrar por</h6>
                     <select id="filterViv" class="form-control">
 
