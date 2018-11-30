@@ -15,13 +15,13 @@
 
 <body>
 <?php include_once("header.php") ?>
-<section>
+<section class="container-fluid">
     <h1><a href="house.php">House</a></h1>
     <h1>Houses</h1>
 
     <div class="row">
         <div class="col">
-            <table id="listaCasas" class="display table table-striped table-bordered" style="width: 100%;">
+            <table id="listaCasas" class="table table-striped table-bordered nowrap" style="width: 100%;">
                 <thead>
                 <tr>
                     <th>House</th>
@@ -33,6 +33,7 @@
                     <th>Check Out</th>
                     <th>Alquiler Automatico</th>
                     <th>Square Meters</th>
+                    <th></th>
                 </tr>
                 </thead>
             </table>
