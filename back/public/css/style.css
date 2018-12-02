@@ -75,6 +75,18 @@ nav li .nav-link {
 
 }
 
+#dropdownHeaderMenu .header-profile-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 3px solid #FFB4A2;
+    margin: 0;
+}
+
+#dropdownHeaderMenu .col-4, #dropdownHeaderMenu .col-8 {
+    padding: 0;
+}
+
 .textNav, .textRightNav, .fa-fw {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -173,7 +185,6 @@ body#landingBody {
     width: 100px;
 }
 
-
 /* HOUSE */
 .carousel {
     max-height: 600px;
@@ -233,8 +244,12 @@ table {
 /* CUSTOM MEDIA QUERIES */
 
 #dropdownHeaderMenu {
-    right: 0 !important;
+    right: 15px !important;
     left: auto !important;
+    width: 200px;
+    margin-top: -45px;
+    padding: 10px;
+
 }
 
 .dropdown-menu h6, .dropdown-menu p {
