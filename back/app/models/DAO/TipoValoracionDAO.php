@@ -2,17 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Pep Toni
- * Date: 27/11/2018
- * Time: 19:04
+ * Date: 28/11/2018
+ * Time: 9:37
  */
-include "DAO.php";
-include_once ("../Items/Pais.php");
-
-class PaisDAO extends DAO
+class TipoValoracionDAO extends DAO
 {
 
-    protected static $table = "pais";
-    protected static $class = "Pais";
+    protected static $table = "tipo_valoracion";
+    protected static $class = "Tipo_Valoracion";
 
     public static function insert()
     {
@@ -21,12 +18,12 @@ class PaisDAO extends DAO
 
     public static function getById($id)
     {
-        return parent::getById( $id);
+        return parent::getById($id);
     }
 
     public static function getAll()
     {
-        return parent::getAll();
+        return parent::getAll("tipo_valoracion");
     }
 
     public static function deleteById($id)

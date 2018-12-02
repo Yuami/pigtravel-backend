@@ -5,8 +5,6 @@
  * Date: 27/11/2018
  * Time: 18:47
  */
-include "DAO.php";
-include_once ("../Items/Cliente.php");
 
 class ClienteDAO extends DAO
 {
@@ -20,16 +18,16 @@ class ClienteDAO extends DAO
 
     public static function getByPersona($idPersona)
     {
-        return parent::getById("cliente", $idPersona);
+        return parent::getById($idPersona);
     }
 
     public static function getAll()
     {
-        return parent::getAll("cliente");
+        return parent::getAll();
     }
 
     public static function deleteById($idPersona)
     {
-        return parent::deleteById("cliente", $idPersona);
+        return parent::deleteById( $idPersona);
     }
 }

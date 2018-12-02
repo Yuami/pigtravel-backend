@@ -6,7 +6,6 @@
  * Time: 12:34
  */
 
-class EmpleadoDAO
-{
+class EmpleadoDAO {
 
 }

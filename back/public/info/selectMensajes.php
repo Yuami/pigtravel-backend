@@ -3,7 +3,8 @@ require_once("conn.php");
 $sql = "SELECT persona.nombre as nombreSender, 
        vivienda.nombre as nombreCasa,
        concat(substring(mensajes.mensaje,1,2),'...') as mensaje,
-       mensajes.fechaEnviado 
+       mensajes.fechaEnviado ,
+       mensajes.leido
 FROM mensajes
   inner join persona on persona.id=mensajes.idSender 
 inner join vivienda on vivienda.id=mensajes.idVivienda 
@@ -16,13 +17,15 @@ $columns = array(
     0 =>'nombreSender',
     1 =>'nombreCasa',
     2 =>'mensaje',
-    3 =>'fechaEnviado'
+    3 =>'fechaEnviado',
+    4 =>'leido'
 );
 foreach ($stmt as $row) {
     $row_array['nombreSender'] = $row['nombreSender'];
     $row_array['nombreCasa'] = $row['nombreCasa'];
     $row_array['mensaje'] = $row['mensaje'];
     $row_array['fechaEnviado'] = $row['fechaEnviado'];
+    $row_array['leido'] = $row['leido'];
     array_push($return_arr,$row_array);
 }
 $json_data = array(

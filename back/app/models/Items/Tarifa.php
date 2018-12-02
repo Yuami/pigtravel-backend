@@ -5,6 +5,8 @@ class Tarifa {
     private $fechaInicio;
     private $fechaFin;
     private $dao;
+    private $precio;
+    private $general;
 
     /**
      * Tarifa constructor.
@@ -51,5 +53,17 @@ class Tarifa {
         return $this->dao->getById($id);
     }
 
+    public function getPrecio() {
+        return $this->precio;
+    }
 
+    public function setPrecio($precio): void {
+        $this->precio = $precio;
+    }
+    public function getGeneral() {
+        return $this->general;
+    }
+    public function setGeneral($general): void{
+        $this->general=$general;
+    }
 }

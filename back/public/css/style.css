@@ -13,8 +13,8 @@ html {
 }
 
 body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     position: relative;
     font-family: "Helvetica Neue", Arial, sans-serif;
@@ -25,6 +25,7 @@ body::after {
     display: block;
     height: 56px;
 }
+
 /* HEADER */
 
 .head {
@@ -87,9 +88,11 @@ nav li .nav-link {
 .icoNav {
     display: none;
 }
-.bg-main{
+
+.bg-main {
     background-color: #FFB4A2 !important;
 }
+
 /* FOOTER */
 
 .foot {
@@ -112,20 +115,29 @@ body#landingBody {
     position: relative;
     background: url("../img/landingpage/house.jpg") no-repeat center;
     background-size: cover;
-    min-height:100vh;
+    min-height: 100vh;
 }
 
 #loginForm {
     margin: auto;
     max-width: 400px !important;
-    border: solid white
-    1px;
+    border: solid white 1px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.7);
     padding: 0 60px;
 }
-.ch-100{
+
+.ch-100 {
     height: calc(100vh - 76px - 40px);
+}
+
+/* REGISTER */
+#registerForm {
+    max-height: 100%;
+    margin-top: 60px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 25px 60px 30px 60px;
 }
 
 /* PROFILE */
@@ -137,9 +149,10 @@ body#landingBody {
     box-shadow: none;
 }
 
-#profileForm .input-group-text {
+.input-group-prepend .input-group-text {
     background-color: transparent;
     border-right: 0;
+    width: 38px;
 }
 
 #profileForm .form-control {
@@ -149,18 +162,17 @@ body#landingBody {
 #profileImageChange {
     height: 120px;
 }
+
 #changePasswordText {
     font-size: 14px;
+    margin: 0 !important;
 }
 
-.fileinput-preview {
-    width: 100px;
+#imageForm {
     height: 100px;
+    width: 100px;
 }
 
-.fileinput {
-    margin-left: 150px !important;
-}
 
 /* HOUSE */
 .carousel {
@@ -202,9 +214,7 @@ i {
 table {
     border: black 2px solid;
 }
-thead{
-    display: none;
-}
+
 /* OTHER */
 
 .algn-l {
@@ -280,6 +290,7 @@ thead{
         border: 0;
         background: 0;
     }
+
     #profilePage .input-h6 {
         text-align: left;
     }

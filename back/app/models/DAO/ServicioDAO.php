@@ -22,16 +22,16 @@ class ServicioDAO extends DAO
 
     public static function getById($id)
     {
-        return parent::getById("servicio", $id);
+        return parent::getById( $id);
     }
 
     public static function getAll()
     {
-        return parent::getAll("servicio");
+        return parent::getAll();
     }
 
     public static function deleteById($id)
     {
-        return parent::deleteById("servicio", $id);
+        return parent::deleteById($id);
     }
 }

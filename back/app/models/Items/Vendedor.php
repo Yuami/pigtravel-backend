@@ -6,6 +6,6 @@
  * Time: 9:19
  */
 
-class VendedorVivienda {
-
+class Vendedor {
+    private $idPersona;
 }

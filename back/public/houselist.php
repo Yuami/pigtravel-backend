@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/datatables.min.css">
     <title>List of houses</title>
 </head>
 
@@ -18,8 +19,28 @@
     <h1><a href="house.php">House</a></h1>
     <h1>Houses</h1>
 
+    <div class="row">
+        <div class="col">
+            <table id="listaCasas" class="display table table-striped table-bordered" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>House</th>
+                    <th>Tipo Vivienda</th>
+                    <th>Capacity</th>
+                    <th>Street</th>
+                    <th>Ciudad</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Alquiler Automatico</th>
+                    <th>Square Meters</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
     <div class="dropdown">
-        <button  type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             Tipo Viviendas
         </button>
         <div class="dropdown-menu" id="dropdownidTipoVivienda">
@@ -48,10 +69,11 @@
 
 <?php include_once("footer.php") ?>
 <script src="js/selects/selectTipoVivienda.js"></script>
-
 <script src="js/selects/selectViviendaLista.js"></script>
 <script src="js/selects/selectViviendas.js"></script>
 <script src="js/selects/selectVendedorsViviendas.js"></script>
-
+<script src="js/datatables.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/custom/houselistDatatable.js"></script>
 </body>
 </html>
