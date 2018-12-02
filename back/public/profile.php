@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="css/jasny-bootstrap.min.css">
     <title>Profile</title>
 
 </head>
@@ -125,7 +124,7 @@
 
 
 <?php include_once("footer.php") ?>
-<script src="js/jasny-bootstrap.min.js"></script>
+
 <script src="js/custom/modifyProfile.js"></script>
 </body>
 </html>

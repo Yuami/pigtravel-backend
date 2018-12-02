@@ -13,8 +13,8 @@ html {
 }
 
 body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     position: relative;
     font-family: "Helvetica Neue", Arial, sans-serif;
@@ -25,6 +25,7 @@ body::after {
     display: block;
     height: 56px;
 }
+
 /* HEADER */
 
 .head {
@@ -74,6 +75,18 @@ nav li .nav-link {
 
 }
 
+#dropdownHeaderMenu .header-profile-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 3px solid #FFB4A2;
+    margin: 0;
+}
+
+#dropdownHeaderMenu .col-4, #dropdownHeaderMenu .col-8 {
+    padding: 0;
+}
+
 .textNav, .textRightNav, .fa-fw {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -87,9 +100,11 @@ nav li .nav-link {
 .icoNav {
     display: none;
 }
-.bg-main{
+
+.bg-main {
     background-color: #FFB4A2 !important;
 }
+
 /* FOOTER */
 
 .foot {
@@ -112,19 +127,19 @@ body#landingBody {
     position: relative;
     background: url("../img/landingpage/house.jpg") no-repeat center;
     background-size: cover;
-    min-height:100vh;
+    min-height: 100vh;
 }
 
 #loginForm {
     margin: auto;
     max-width: 400px !important;
-    border: solid white
-    1px;
+    border: solid white 1px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.7);
     padding: 0 60px;
 }
-.ch-100{
+
+.ch-100 {
     height: calc(100vh - 76px - 40px);
 }
 
@@ -150,6 +165,7 @@ body#landingBody {
 #profileImageChange {
     height: 120px;
 }
+
 #changePasswordText {
     font-size: 14px;
     margin: 0 !important;
@@ -159,7 +175,6 @@ body#landingBody {
     height: 100px;
     width: 100px;
 }
-
 
 /* HOUSE */
 .carousel {
@@ -201,6 +216,7 @@ i {
 table {
     border: black 2px solid;
 }
+
 /* OTHER */
 
 .algn-l {
@@ -219,8 +235,12 @@ table {
 /* CUSTOM MEDIA QUERIES */
 
 #dropdownHeaderMenu {
-    right: 0 !important;
+    right: 15px !important;
     left: auto !important;
+    width: 200px;
+    margin-top: -45px;
+    padding: 10px;
+
 }
 
 .dropdown-menu h6, .dropdown-menu p {
@@ -276,6 +296,7 @@ table {
         border: 0;
         background: 0;
     }
+
     #profilePage .input-h6 {
         text-align: left;
     }
