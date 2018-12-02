@@ -16,10 +16,17 @@ $(document).ready(function () {
             url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Catalan.json"
         },
         select: true,
+        paging: true,
+        ordering: false,
+        info: true,
+        searching: true,
         dom: 'lrtip'
     });
 
-    $('#table-filter').on('change', function () {
-        table.search(this.value).draw();
+    $('#filterEst').on('change', function () {
+        t.search(this.value).draw();
+    });
+    $('#clean').on('click', function(){
+        t.search( '' ).columns().search( '' ).draw();
     });
 });
