@@ -46,7 +46,7 @@
                     </form>
                     <hr class="mb-4">
                     <p>No account yet?</p>
-                    <a href="#" class="btn btn-primary btn-block mb-4">REGISTER</a>
+                    <a href="register.php" class="btn btn-primary btn-block mb-4">REGISTER</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var t = $('#taula').DataTable({
+
         ajax: {
             url: 'info/selectReservasList.php',
             dataSrc: '',
@@ -15,10 +16,12 @@ $(document).ready(function () {
         language: {
             url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Catalan.json"
         },
-        select: true,
-        paging: true,
+        lengthChange: false,
+        bFilter: false,
+        select: false,
+        paging: false,
         ordering: false,
-        info: true,
+        info: false,
         searching: true,
         dom: 'lrtip'
     });
@@ -26,7 +29,7 @@ $(document).ready(function () {
     $('#filterEst').on('change', function () {
         t.search(this.value).draw();
     });
-    $('#clean').on('click', function(){
-        t.search( '' ).columns().search( '' ).draw();
+    $('#clean').on('click', function () {
+        t.search('').columns().search('').draw();
     });
 });
