@@ -1,4 +1,5 @@
 @import "bootstrap/bootstrap.scss";
+@import "fontawesome/fontawesome.scss";
 /* GENERAL */
 
 * {
@@ -65,14 +66,19 @@ body {
   margin: 0 0 0 auto;
 }
 
-#nav-ul li:first-child {
+header #nav-ul li:first-child {
   margin-left: 70px !important;
 }
 
-nav li .nav-link {
+header nav li .nav-link {
   color: #000000 !important;
   font-size: 18px;
   margin-left: 30px !important;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+  color: #fff;
+  background-color: #428bca;
 }
 
 #dropdownHeaderMenu {
@@ -88,7 +94,7 @@ nav li .nav-link {
   }
 }
 
-.textNav, .textRightNav, .fa-fw {
+header .textNav, .textRightNav, .fa-fw {
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -98,7 +104,7 @@ nav li .nav-link {
   font-weight: bold;
 }
 
-.icoNav {
+header .icoNav {
   display: none;
 }
 
@@ -159,9 +165,6 @@ body#landingBody {
 /* PROFILE */
 
 #profilePage {
-  .input-h6 {
-    text-align: right;
-  }
   .form-control:focus {
     box-shadow: none;
   }
@@ -279,19 +282,19 @@ table {
 /* CUSTOM MEDIA QUERIES */
 
 @media (min-width: 768px) and (max-width: 1000px) {
-  .icoNav {
+  header  .icoNav {
     display: block;
   }
-  .textNav {
+  header  .textNav {
     display: none;
   }
 }
 
 @media (max-width: 767px) {
-  .icoNav {
+  header .icoNav {
     display: inline-block;
   }
-  #nav-ul li:first-child {
+  header #nav-ul li:first-child {
     margin-left: 0px !important;
   }
   .header-profile-img {
