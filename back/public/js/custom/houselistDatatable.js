@@ -32,7 +32,6 @@ $(function () {
             selector: ':not(:last-child)',
             info: false
         },
-        lengthChange: false,
         buttons: [{
             extend: 'excel',
             exportOptions: {
