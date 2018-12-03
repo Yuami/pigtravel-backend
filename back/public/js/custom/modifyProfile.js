@@ -1,9 +1,11 @@
 $(function(){
     $("#changePasswordText").click(function () {
-        if ($("#collapseProfile").hasClass("show")) {
-            $('#passwordForm').attr('disabled', '');
-        } else {
-            $('#passwordForm').removeAttr('disabled');
+        if (!$("#collapseProfile").hasClass("collapsing")) {
+            if ($("#collapseProfile").hasClass("show")) {
+                $('#passwordForm').attr('disabled', '');
+            } else {
+                $('#passwordForm').removeAttr('disabled');
+            }
         }
     });
 });

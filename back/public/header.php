@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../app/config/Session.php";
 Session::start();
 
-if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
+if (parse_url(basename($_SERVER['REQUEST_URI']), PHP_URL_PATH) != 'login.php') :
     if (!Session::isSet('userID')) {
         header("Location: login.php");
     } ?>
@@ -48,7 +48,7 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
                             <span class="icoNav">
                                 <i class="fas fa-home fa-fw"></i>
                             </span>
-                                <span class="textNav active">HOUSES</span>
+                                <span class="textNav">HOUSES</span>
                             </a>
                         </li>
 
@@ -101,18 +101,40 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
                     <a href="profile.php" class="ml-md-3 d-none d-md-block">
                         <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
                     </a>
+
                     <div class="dropdown d-none d-md-block">
                         <button id="dropdownHeaderButton" type="button"
                                 class="nav-link nav-itemheader-profile-sm btn dropdown-toggle-split dropdown-toggle"
                                 data-toggle="dropdown">
 
                         </button>
-                        <div id="dropdownHeaderMenu" class="dropdown-menu text-center">
-                            <h6>Philipp Vujic</h6>
-                            <p>Mallorca, ES</p>
-                            <a class="dropdown-item premium-text" href="premium.php">MANAGE PREMIUM</a>
-                            <a class="dropdown-item" href="settings.php">SETTINGS</a>
-                            <a class="dropdown-item text-danger" href="logout.php">LOGOUT</a>
+                        <div>
+                            <div id="dropdownHeaderMenu" class="dropdown-menu text-center">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-4">
+                                                <img src="img/tempprofile.jpg" alt=""
+                                                     class="header-profile-img rounded-circle"><span
+                                                        class="textRightNav d-md-none"> PROFILE</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <p class="text-left"><strong>Philipp Vujic</strong></p>
+                                            <p class="text-left small">Mallorca, ES</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="settings.php"
+                                           class="btn btn-primary btn-block btn-sm">Settings</a>
+                                        <a href="premium.php"
+                                           class="btn btn-warning text-white btn-sm btn-block">Manage
+                                            Premium</a>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="row">
+                                        <a href="logout.php" class="btn btn-sm btn-danger btn-block">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
