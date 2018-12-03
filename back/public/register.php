@@ -11,7 +11,7 @@
 </head>
 <body id="landingBody">
 <?php include_once("header.php") ?>
-<div class="container col-sm-4">
+<div class="container col-sm-8 col-md-8 col-lg-4">
     <div class="row" id="registerForm">
         <form action="" method="get" class="col">
             <h2>Register</h2>
@@ -55,7 +55,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Register Now</button>
             </div>
 
-            <div class="text-center">Already have an account? <a href="#">Sign in</a></div>
+            <div class="text-center">Already have an account? <a href="login.php">Sign in</a></div>
         </form>
     </div>
 </div>
