@@ -5,7 +5,7 @@ class TipoVivienda
     private $id;
 
     /**
-     * TipoVivienda constructor.
+     * TipoViviendaDAO constructor.
      * @param $id
      */
     public function __construct($id)
