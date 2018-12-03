@@ -32,14 +32,14 @@ $(document).ready(function () {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                var reserva = JSON.parse(this.responseText);
+                var vivienda = JSON.parse(this.responseText);
                 var item0 = $("<option/>", {
                     value: "0",
                     text: "Selecciona"
                 });
                 $("#filterViv").append(item0);
-                for (i in reserva) {
-                    var nomV = reserva[i].nomVivienda;
+                for (i in vivienda) {
+                    var nomV = vivienda[i].nom;
                     var item = $("<option/>", {
                         text: nomV
                     });
@@ -47,7 +47,7 @@ $(document).ready(function () {
                 }
             }
         };
-        xhttp.open("GET", "info/selectReservasList.php?vivienda=" + estado, true);
+        xhttp.open("GET", "info/selectReservasList.php?vivienda=" + estado , true);
         xhttp.send();
     }
 
