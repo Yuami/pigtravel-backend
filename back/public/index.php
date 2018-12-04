@@ -23,7 +23,6 @@ if (!Session::isSet('userID')) {
     $finalView = $controller == "register" ? "register.php" : "login.php";
     include_once VIEW . $finalView;
 } else {
-    echo "why";
     $router = new Router($controller, $params);
 
     switch ($router->getController()) {

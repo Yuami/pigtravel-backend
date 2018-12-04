@@ -15,6 +15,7 @@ class Session {
     }
 
     public static function set($key, $value) {
+        if (is_string($key))
             $_SESSION[$key] = $value;
     }
 
@@ -24,7 +25,7 @@ class Session {
         return null;
     }
 
-    public static function delete($key): bool {
+    public static function delete($key) : bool {
         if (self::isSet($key)) {
             unset($_SESSION[$key]);
             return true;
@@ -33,6 +34,7 @@ class Session {
     }
 
     public static function isSet($key) {
+        if (!is_string($key)) return false;
         return isset($_SESSION[$key]);
     }
 
