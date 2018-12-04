@@ -11,7 +11,7 @@ $(function () {
                     var tipoVivienda = reserves[reserva].tipo;
                     var ciudadVivienda = reserves[reserva].ciudad;
 
-                    var url = "house.php?id=" + idReserva;
+                    var url = "HouseController.php?id=" + idReserva;
                     appendToLlista("<ul>");
                     appendToLlista($("<a/>", {href:url,class:'list-group-item list-group-item-action active', text:idReserva}));
                     appendToLlista($("<a/>", {href:url,class:'list-group-item list-group-item-action', text:nomVivenda}));
