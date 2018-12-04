@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-social.css">
-    <link rel="stylesheet" href="/css/font-awesome.css">
+    <?php include_once(ROOT . "libraries.php") ?>
     <title>Log in</title>
 </head>
 
@@ -31,10 +28,7 @@
                             </label>
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
                                    aria-describedby="emailHelp" placeholder="Enter email" value="
-                                   <?php if (isset($_COOKIE['lastEmail'])) {
-                                echo $_COOKIE['lastEmail'];
-                            }
-                            ?>" required>
+                                   <?php (Cookie::get('lastEmail')); ?>" required>
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">
@@ -63,9 +57,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p id="modal-text"><?php if (isset($_SESSION['loginStatus'])) {
-                                    echo $_SESSION['loginStatus'];
-                                } ?></p>
+                            <p id="modal-text"><?php Err::get("loginStatus"); ?></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-primary">Try Again</button>

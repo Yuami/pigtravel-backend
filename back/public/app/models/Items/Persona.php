@@ -1,7 +1,6 @@
 <?php
 
 class Persona {
-    private $tipoPersona= array();
     private $nombre;
     private $id;
     private $apellido1;
@@ -12,64 +11,7 @@ class Persona {
     private $password;
     private $fechaNacimiento;
 
-    /**
-     * Persona constructor.
-     * @param array $tipoPersona
-     * @param $nombre
-     * @param $id
-     * @param $apellido1
-     * @param $apellido2
-     * @param $DNI
-     * @param $tlf
-     * @param $correo
-     * @param $password
-     * @param $fechaNacimiento
-     */
-    public function __construct(array $tipoPersona, $nombre, $id, $apellido1, $apellido2, $DNI, $tlf, $correo, $password, $fechaNacimiento)
-    {
-        $this->tipoPersona = $tipoPersona;
-        $this->nombre = $nombre;
-        $this->id = $id;
-        $this->apellido1 = $apellido1;
-        $this->apellido2 = $apellido2;
-        $this->DNI = $DNI;
-        $this->tlf = $tlf;
-        $this->correo = $correo;
-        $this->password = $password;
-        $this->fechaNacimiento = $fechaNacimiento;
-    }
 
-    /**
-     * @return array
-     */
-    public function getTipoPersona()
-    {
-        return $this->tipoPersona;
-    }
-
-    /**
-     * @param array $tipoPersona
-     */
-    public function setTipoPersona($tipoPersona)
-    {
-        $this->tipoPersona = $tipoPersona;
-    }
-
-    public function isCliente(){
-        return $this->tipoPersona['cliente'];
-    }
-
-    public function isEmpleado(){
-        return $this->tipoPersona['empleado'];
-    }
-
-    public function isVendedor(){
-        return $this->tipoPersona['vendedor'];
-    }
-
-    /**
-     * @return mixed
-     */
     public function getNombre()
     {
         return $this->nombre;

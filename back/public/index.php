@@ -1,13 +1,6 @@
 <?php
-define("ROOT", $_SERVER['DOCUMENT_ROOT']);
-define("APP", ROOT . "/app/");
-define("CONFIG", APP . "config/");
-define("CONTROLLER", APP . "controller/");
-define("MODEL", APP . "models/");
-define("VIEW", APP . "views/");
-
-require_once CONFIG . "Router.php";
-require_once CONFIG . "/Session.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/basicVars.php";
+require_once ROOT. "basicIncludes.php";
 
 Session::start();
 $controller = "";
