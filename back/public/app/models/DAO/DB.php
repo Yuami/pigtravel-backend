@@ -1,6 +1,5 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/../app/config/Config.php";
 class DB {
     private static $conn;
 

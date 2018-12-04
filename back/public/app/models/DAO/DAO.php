@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: j_for
- * Date: 16/11/2018
- * Time: 12:20
- */
-include "DB.php";
 
 abstract class DAO {
     protected static $table;
@@ -23,7 +16,7 @@ abstract class DAO {
         $statement->bindValue(":id", $id, PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS, static::$class);
+        return $statement->fetchAll(PDO::FETCH_CLASS, static::$class)[0];
     }
 
     public static function getBy($column, $value) {

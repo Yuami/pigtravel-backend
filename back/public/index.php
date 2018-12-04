@@ -1,13 +1,21 @@
 <?php
-define("ROOT", $_SERVER['DOCUMENT_ROOT']);
-define("APP", ROOT . "/app/");
+
+define("ROOT", $_SERVER['DOCUMENT_ROOT'] . "/");
+define("APP", ROOT . "app/");
 define("CONFIG", APP . "config/");
 define("CONTROLLER", APP . "controller/");
 define("MODEL", APP . "models/");
 define("VIEW", APP . "views/");
-
+define("INFO", ROOT . "info/");
+require_once CONFIG . "Config.php";
+require_once CONFIG . "conf.php";
+require_once CONFIG . "Err.php";
+require_once CONFIG . "Cookie.php";
 require_once CONFIG . "Router.php";
-require_once CONFIG . "/Session.php";
+require_once CONFIG . "Session.php";
+
+require_once MODEL . "DAO/DAO.php";
+require_once MODEL . "DAO/DB.php";
 
 Session::start();
 $controller = "";
