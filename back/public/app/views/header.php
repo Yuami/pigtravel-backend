@@ -1,11 +1,19 @@
 <?php
-require_once CONFIG . "/Session.php";
-Session::start();
-
-if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
-    if (!Session::isSet('userID')) {
-        header("Location: login.php");
-    } ?>
+if (!Session::isSet('userID')) {
+    ?>
+    <header class="head">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a href="index.phplic/routes.php">
+                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
+                </a>
+                <div class="head-brand">
+                    <h6 class="active" href="#">ADMINISTRATION PANEL</h6>
+                </div>
+            </nav>
+        </div>
+    </header>
+<?php } else { ?>
     <header class="head">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
@@ -119,20 +127,4 @@ if (basename($_SERVER['REQUEST_URI']) != 'login.php') :
             </nav>
         </div>
     </header>
-<?php else :
-    if (Session::isSet('userID')) {
-        header("Location: main.php");
-    } ?>
-    <header class="head">
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-md navbar-dark">
-                <a href="index.phplic/routes.php">
-                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
-                </a>
-                <div class="head-brand">
-                    <h6 class="active" href="#">ADMINISTRATION PANEL</h6>
-                </div>
-            </nav>
-        </div>
-    </header>
-<?php endif; ?>
+<?php } ?>

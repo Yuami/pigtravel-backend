@@ -1,7 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../app/models/DAO/DB.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../app/config/Session.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../app/config/Cookie.php";
+require_once MODEL . "DAO/DB.php";
+require_once CONFIG . "Session.php";
+require_once CONFIG . "Cookie.php";
 
 Session::start();
 
@@ -20,7 +20,7 @@ if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
     if ($count) {
         Session::set('userID', $email);
         Session::delete('loginStatus');
-        header("Location: ../main.php");
+        header("Location: /main");
     } else {
         Session::set('loginStatus', 'Wrong email or password!');
         header("Location: ../login.php");
