@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<?php include_once("header.php") ?>
+
 <div class="container">
     <div class="row">
         <h1>Messages</h1>
@@ -35,8 +35,10 @@
             <button class="form-control filtrosMensajes" id="botonLeido">leido</button>
         </div>
     </div>
-    <div id="cardsmensajes" class="row cardMessages">
-    </div>
+
+       <div id="cardsmensajes">
+       </div>
+
 </div>
 <script type="text/javascript" src="js/selects/selectMensajes.js"></script>
 </body>

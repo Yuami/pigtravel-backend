@@ -24,7 +24,7 @@ $(function () {
                       if(botonLeido==true) {
                           if(leido==1) {
                               ccard =
-                                  "<div class='card-body missatge'>" +
+                                  "<div class='card-body missatgeCard'>" +
                                   "<div class='row'>" +
                                   "<div class='col-md-4'>" + nombre + "</div>" +
                                   "<div class='col-md-6'>" + mensaje + "</div>" +
@@ -40,7 +40,7 @@ $(function () {
                       }else{
                           if(leido==1) {
                               ccard =
-                                  "<div class='card-body missatge'>" +
+                                  "<div class='card-body missatgeCard'>" +
                                   "<div class='row'>" +
                                   "<div class='col-md-4'>" + nombre + "</div>" +
                                   "<div class='col-md-6'>" + mensaje + "</div>" +
@@ -52,7 +52,7 @@ $(function () {
                                   "</div>";
                           }else {
                           ccard =
-                              "<div class='card-body missatge'>" +
+                              "<div class='card-body missatgeCard'>" +
                               "<div class='row'>" +
                               "<div class='col-md-4'><b>" + nombre + "</b></div>" +
                               "<div class='col-md-6'><b>" + mensaje + "</b></div>" +
@@ -82,7 +82,7 @@ $(function () {
     loadCardsMensajes();
 
     $("#botonLeido").click( function() {
-            $(".cardMessages").empty();
+            $(".cardMessages").remove();
             if(botonLeido==false){
                 botonLeido=true;
             }else{
@@ -110,7 +110,7 @@ $(function () {
 
     loadViviendasDropdown();
     document.getElementById("listaViviendas").onchange = function() {
-        $(".cardMessages").empty();
+        $(".cardMessages").remove();
         viviendaID=this.value;
         botonLeido=false;
         if(viviendaID==-1) {

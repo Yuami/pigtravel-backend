@@ -8638,6 +8638,15 @@ body::after {
   height: 56px;
 }
 
+/* Messages */
+.card-body {
+  width: 100%;
+}
+
+.missatgeCard {
+  width: 100%;
+}
+
 /* HEADER */
 .head {
   background-color: #5f5f5f;
