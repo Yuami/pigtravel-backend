@@ -44,20 +44,21 @@
                 </li>
             </ul>
             <div class="row">
-                <div class=" col-2">
-                    <button id="clean" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
-                </div>
+
                 <div class="form-group col-3 form-check-inline">
                     <h6 class="col-4">Filtrar por</h6>
                     <select id="filterEst" class="form-control">
 
                     </select>
                 </div>
-               <div class="form-group col-3 form-check-inline">
+                <div class="form-group col-3 form-check-inline">
                     <h6 class="col-4">Filtrar por</h6>
                     <select id="filterViv" class="form-control">
 
                     </select>
+                </div>
+                <div class=" col-2">
+                    <button id="clean" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
                 </div>
             </div>
             <table id="taula" class="table table-striped table-bordered">
@@ -74,7 +75,7 @@
         </div>
     </div>
 </div>
-<?php //include_once("footer.php") ?>
+<?php include_once("footer.php") ?>
 <script src="js/selects/selectReservasList.js"></script>
 <script src="js/selects/selectEstadoFiltro.js"></script>
 
