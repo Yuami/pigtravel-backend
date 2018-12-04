@@ -71,12 +71,14 @@
 
 <?php include_once("footer.php") ?>
 
-<?php if (Session::isSet('loginStatus')) { ?>
+<?php
+session_start();
+if (Err::get('loginStatus')) { ?>
     <script type="text/javascript">
         $('#loginErrorModal').modal('show');
     </script>
 <?php }
-Session::delete('loginStatus'); ?>
+Err::delete('loginStatus'); ?>
 <script src="/js/validation/bootstrap-validator.js"></script>
 <script src="/js/validation/validation.js"></script>
 </body>

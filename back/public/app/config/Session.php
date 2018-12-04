@@ -7,12 +7,6 @@
  */
 
 class Session {
-    private static $session = false;
-
-    public static function start() {
-        if (!self::$session)
-            self::$session = session_start();
-    }
 
     public static function set($key, $value) {
         if (is_string($key))

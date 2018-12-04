@@ -17,7 +17,7 @@ class PersonaDAO extends DAO {
     public static function getByCorreo($correo) {
         $res = parent::getBy("correo", $correo);
         if (isset($res))
-            return $res;
+            return $res[0];
         return null;
     }
 }

@@ -8,22 +8,15 @@
 
 include_once MODEL . "DAO/LoginDAO.php";
 
-class LoginController
-{
-    public static function isLoggable(): bool
-    {
-        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
-            $correoPost = $_POST['emailLogin'];
-            $passwordPost = $_POST['passwordLogin'];
+class LoginController {
+    public static function isLoggable($correoPost, $passwordPost) : bool {
+        $credentials = LoginDAO::credentials($correoPost);
+        if (isset($credentials)) {
+            $correo = $credentials["correo"];
+            $password = $credentials["password"];
 
-            $credentials = LoginDAO::credentials($correoPost);
-            if ($credentials != null) {
-                $correo = $credentials["correo"];
-                $password = $credentials["password"];
-
-                if ($correo == $correoPost && $passwordPost == $password) {
-                    return true;
-                }
+            if ($correo == $correoPost && $passwordPost == $password) {
+                return true;
             }
             Err::set("loginStatus", 'Wrong email or password!');
             return false;
@@ -32,9 +25,9 @@ class LoginController
         return false;
     }
 
-    public static function login() : bool{
-        Session::start();
-        if (self::isLoggable()) {
+    public static function login($correoPost, $passwordPost) : bool {
+        session_start();
+        if (self::isLoggable($correoPost, $passwordPost)) {
             Session::set("userID", $_POST['emailLogin']);
             return true;
         }
