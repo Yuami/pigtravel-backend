@@ -51,7 +51,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Registrate Ahora</button>
             </div>
 
-            <div class="text-center">Ya tienes una cuenta? <a href="login.php">Log in</a></div>
+            <div class="text-center">Ya tienes una cuenta? <a href="../../index.php">Log in</a></div>
         </form>
     </div>
 </div>

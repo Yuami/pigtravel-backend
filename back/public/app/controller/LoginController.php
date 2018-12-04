@@ -17,11 +17,13 @@ class LoginController
             $passwordPost = $_POST['passwordLogin'];
 
             $credentials = LoginDAO::credentials($correoPost);
-            $correo = $credentials["correo"];
-            $password = $credentials["password"];
+            if ($credentials != null) {
+                $correo = $credentials["correo"];
+                $password = $credentials["password"];
 
-            if ($correo == $correoPost && $passwordPost == $password) {
-                return true;
+                if ($correo == $correoPost && $passwordPost == $password) {
+                    return true;
+                }
             }
             Err::set("loginStatus", 'Wrong email or password!');
             return false;

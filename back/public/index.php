@@ -1,9 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/basicVars.php";
-require_once ROOT. "basicIncludes.php";
+require_once ROOT . "basicIncludes.php";
 
 Session::start();
 $controller = "";
+
 if (isset($_SERVER['REDIRECT_URL'])) {
     $url = $_SERVER['REDIRECT_URL'];
     $method = $_SERVER['REQUEST_METHOD'];
@@ -11,23 +12,21 @@ if (isset($_SERVER['REDIRECT_URL'])) {
     $params = explode("/", $url);
     $controller = $params[1];
     $params = array_splice($params, 2);
-} else {
-
 }
 
-if ($controller != "login" || $controller != "register") {
-    if (!Session::isSet('userID')) {
-        include VIEW . "login.php";
+if (!Session::isSet('userID')) {
+    var_dump(Session::get('userID'));
+    $errors = Err::getAll();
+    foreach ($errors as $key => $value){
+        echo "Key: $key Value: $value";
     }
-} else if (!isset($_SERVER['REDIRECT_URL'])) {
-    include VIEW . "main.php";
+    $finalView = $controller == "register" ? "register.php" : "login.php";
+    include_once VIEW . $finalView;
 } else {
+    echo "why";
     $router = new Router($controller, $params);
 
     switch ($router->getController()) {
-        case "":
-
-            break;
         case "houses":
             require_once CONTROLLER . "HouseController.php";
             $controller = new HouseController();
@@ -42,7 +41,6 @@ if ($controller != "login" || $controller != "register") {
 
             break;
         default:
-            echo "Error 404 pagina no encontrada";
+            include VIEW . "main.php";
     }
-
 }
