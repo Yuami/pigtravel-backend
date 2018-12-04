@@ -1,8 +1,6 @@
 $(function () {
-    let t = $('#listaCasas').DataTable({
-        dom: "<'row'<'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'f>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+     t = $('#listaCasas').DataTable({
+        dom: "Bftrip",
         ajax: {
             url: 'info/selectViviendasFull.php',
             dataSrc: '',
@@ -21,7 +19,7 @@ $(function () {
             {data: 'SquareMeters'},
             {
                 render: function (data, type, row, meta) {
-                    return `<button type='button' class='btn btn-info btn-block' data-toggle='modal' data-id="` + row['id'] + `" data-target='#viviendasEditModal'>Edit</button>`;
+                    return `<button type='button' class='editbutton btn btn-info btn-block' data-toggle='modal' data-id="` + row['id'] + `" data-target='#viviendasEditModal'>Edit</button>`;
                 },
                 orderable: false,
                 searchable: false
@@ -54,5 +52,13 @@ $(function () {
             {responsivePriority: 1, targets: -1},
         ],
     });
+
+    $(document).on("click", ".editbutton", function () {
+        var selectedID = $(this).data('id');
+        $(".modal-body #viviendaID").val(selectedID);
+        // $('#viviendasEditModal').modal('show');
+    });
+
 });
+
 
