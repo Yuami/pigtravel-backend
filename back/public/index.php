@@ -1,26 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+define("ROOT", $_SERVER['DOCUMENT_ROOT']);
+define("APP", ROOT . "/app/");
+define("CONFIG", APP . "config/");
+define("CONTROLLER", APP . "controller/");
+define("MODEL", APP . "models/");
+define("VIEW", APP . "views/");
+require_once CONFIG . "Router.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-social.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <title>Plantilla para backend</title>
-</head>
 
-<body>
-<?php include_once("header.php") ?>
+require_once CONFIG . "/Session.php";
+Session::start();
 
-<section>
-    <h1>Index</h1>
+if (!Session::isSet('userID')) {
+    include VIEW . "login.php";
+} else {
 
-</section>
+    if (!isset($_SERVER['REDIRECT_URL'])) {
+        include VIEW . "main.php";
+    } else {
+        $url = $_SERVER['REDIRECT_URL'];
+        $method = $_SERVER['REQUEST_METHOD'];
 
-<?php include_once("footer.php") ?>
+        $params = explode("/", $url);
+        $controller = $params[1];
+        $params = array_splice($params, 2);
 
-</body>
-</html>
+        $router = new Router($controller, $params);
+
+        switch ($router->getController()) {
+            case "":
+
+                break;
+            case "houses":
+                require_once CONTROLLER . "HouseController.php";
+                $controller = new HouseController();
+                $controller->show();
+                break;
+            case "reservations":
+                Router::controller($controller);
+
+                break;
+            case "":
+                Router::controller($controller);
+
+                break;
+            default:
+                echo "Error 404 pagina no encontrada";
+        }
+
+    }
+}

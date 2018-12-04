@@ -20,16 +20,16 @@ if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
     if ($count) {
         Session::set('userID', $email);
         Session::delete('loginStatus');
-        header("Location: ../index.php");
+        header("Location: ../main.php");
     } else {
         Session::set('loginStatus', 'Wrong email or password!');
         header("Location: ../login.php");
     }
 } else {
-    if (!Session::isSet('login')) {
+    if (!Session::isSet('LoginController')) {
         Session::set('loginStatus', 'No data has been entered!');
         header("Location: ../login.php");
     } else {
-        header("Location: ../index.php");
+        header("Location: ../main.php");
     }
 }
