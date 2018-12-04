@@ -23,17 +23,19 @@ class LoginController
             if ($correo == $correoPost && $passwordPost == $password) {
                 return true;
             }
-            Err::set(loginStatus, 'Wrong email or password!');
+            Err::set("loginStatus", 'Wrong email or password!');
             return false;
         }
-        Err::set(loginStatus, 'No data has been entered!');
+        Err::set("loginStatus", 'No data has been entered!');
         return false;
     }
 
-    public static function login(){
+    public static function login() : bool{
         Session::start();
         if (self::isLoggable()) {
             Session::set("userID", $_POST['emailLogin']);
+            return true;
         }
+        return false;
     }
 }
