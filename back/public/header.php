@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../app/config/Session.php";
 Session::start();
-if (parse_url(basename($_SERVER['REQUEST_URI']), PHP_URL_PATH) != 'login.php') :
+if ((parse_url(basename($_SERVER['REQUEST_URI']), PHP_URL_PATH) != 'login.php') && (parse_url(basename($_SERVER['REQUEST_URI']), PHP_URL_PATH) != 'register.php')) :
     if (!Session::isSet('userID')) {
         header("Location: login.php");
     } ?>
@@ -97,14 +97,13 @@ if (parse_url(basename($_SERVER['REQUEST_URI']), PHP_URL_PATH) != 'login.php') :
                         </li>
                     </ul>
 
-                    <a href="profile.php" class="ml-md-3 d-none d-md-block">
-                        <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
-                    </a>
+
 
                     <div class="dropdown d-none d-md-block">
                         <button id="dropdownHeaderButton" type="button"
-                                class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle"
+                                class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
+                                <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle mr-md-1">
                         </button>
                         <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
                             <div class="container-fluid">
