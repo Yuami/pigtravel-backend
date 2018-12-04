@@ -120,7 +120,7 @@ if (!Session::isSet('userID')) {
                             <p>Mallorca, ES</p>
                             <a class="dropdown-item premium-text" href="premium">MANAGE PREMIUM</a>
                             <a class="dropdown-item" href="settings">SETTINGS</a>
-                            <a class="dropdown-item text-danger" href="logout">LOGOUT</a>
+                            <a class="dropdown-item text-danger" href="/app/views/logout.php">LOGOUT</a>
                         </div>
                     </div>
                 </div>

@@ -42,7 +42,7 @@
                     </form>
                     <hr class="mb-4">
                     <p>No account yet?</p>
-                    <a href="#" class="btn btn-primary btn-block mb-4">REGISTER</a>
+                    <a href="register" class="btn btn-primary btn-block mb-4">REGISTER</a>
                 </div>
             </div>
         </div>
@@ -72,7 +72,6 @@
 <?php include_once("footer.php") ?>
 
 <?php
-session_start();
 if (Err::get('loginStatus')) { ?>
     <script type="text/javascript">
         $('#loginErrorModal').modal('show');
