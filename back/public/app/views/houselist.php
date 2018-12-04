@@ -5,76 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-social.css">
-    <link rel="stylesheet" href="/css/font-awesome.css">
-    <link rel="stylesheet" href="/css/datatables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <?php include_once("libraries.php") ?>
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/datatables.min.css">
+
     <title>List of houses</title>
 </head>
 
 <body>
 <?php include_once("header.php") ?>
-<section>
-    <h1><a href="house.phplic/routes.php">House</a></h1>
-    <h1>Houses</h1>
-
-    <div class="row">
-        <div class="col">
-            <table id="listaCasas" class="display table table-striped table-bordered" style="width: 100%;">
-                <thead>
-                <tr>
-                    <th>House</th>
-                    <th>Tipo Vivienda</th>
-                    <th>Capacity</th>
-                    <th>Street</th>
-                    <th>Ciudad</th>
-                    <th>Check In</th>
-                    <th>Check Out</th>
-                    <th>Alquiler Automatico</th>
-                    <th>Square Meters</th>
-                </tr>
-                </thead>
-            </table>
+<section class="container-fluid">
+    <div class="row breadcrumb-row">
+        <div class="col-md-10 offset-md-1">
+            <h1>Gestio Cases</h1>
+            <ol class="bg-transparent pt-0 breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Gestio Cases</li>
+            </ol>
         </div>
     </div>
-
-    <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            Tipo Viviendas
-        </button>
-        <div class="dropdown-menu" id="dropdownidTipoVivienda">
-        </div>
-    </div>
-
-    <div class="input-group mb-3">
-        <select class="custom-select" id="selectVendedor">
-            <option selected>Vendedor...</option>
-        </select>
-        <select class="custom-select" id="selectCasas">
-            <option selected>Tipo de Casa...</option>
-        </select>
-    </div>
-
-    <table class="table table-striped" id="listadoViviendas">
-
-    </table>
-
-    <div id="llistaReserves">
+    <div class="row" id="cardCasa">
 
     </div>
-
 
 </section>
 
 <?php include_once("footer.php") ?>
-<script src="/js/selects/selectTipoVivienda.js"></script>
-<script src="/js/selects/selectViviendaLista.js"></script>
-<script src="/js/selects/selectViviendas.js"></script>
-<script src="/js/selects/selectVendedorsViviendas.js"></script>
-<script src="/js/datatables.min.js"></script>
-<script src="/js/jquery.dataTables.js"></script>
-<script src="/js/custom/houselistDatatable.js"></script>
+<script src="js/selects/selectViviendaLista.js"></script>
+<script src="js/datatables.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/custom/houselistDatatable.js"></script>
 </body>
 </html>
