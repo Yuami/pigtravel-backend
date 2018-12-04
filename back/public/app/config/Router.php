@@ -11,7 +11,10 @@ class Router {
         $params = array_splice($params, 2);
 
         $this->controller = $controller;
-        $this->params = $params;
+        if (isset($params))
+            $this->params = $params;
+        else
+            $this->params = [];
         $this->method = $method;
     }
 
