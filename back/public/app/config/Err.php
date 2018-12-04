@@ -16,6 +16,11 @@ class Err
             self::$error[$errorKey] = $errorMessage;
     }
 
+    public static function getAll()
+    {
+        return self::$error;
+    }
+
     public static function get($errorKey)
     {
         if (self::isSet($errorKey))
