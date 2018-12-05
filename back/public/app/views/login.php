@@ -42,7 +42,7 @@
                     </form>
                     <hr class="mb-4">
                     <p>No account yet?</p>
-                    <a href="#" class="btn btn-primary btn-block mb-4">REGISTER</a>
+                    <a href="register" class="btn btn-primary btn-block mb-4">REGISTER</a>
                 </div>
             </div>
         </div>
@@ -71,12 +71,13 @@
 
 <?php include_once("footer.php") ?>
 
-<?php if (Session::isSet('loginStatus')) { ?>
+<?php
+if (Err::get('loginStatus')) { ?>
     <script type="text/javascript">
         $('#loginErrorModal').modal('show');
     </script>
 <?php }
-Session::delete('loginStatus'); ?>
+Err::delete('loginStatus'); ?>
 <script src="/js/validation/bootstrap-validator.js"></script>
 <script src="/js/validation/validation.js"></script>
 </body>
