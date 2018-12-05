@@ -4,8 +4,8 @@ if (!Session::isSet('userID')) {
     <header class="head">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
-                <a href="main">
-                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
+                <a href="index">
+                    <img src="img/logotemporal2.png" alt="" class="header-logo ml-md-1">
                 </a>
                 <div class="head-brand">
                     <h6 class="active" href="#">ADMINISTRATION PANEL</h6>
@@ -21,8 +21,8 @@ if (!Session::isSet('userID')) {
                     <h2 class="algn-r head-brand-text active" href="#">ADMIN</h2>
                     <p class="algn-r mb-0"><span class="premium-text">Premium</span></p>
                 </div>
-                <a href="main">
-                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
+                <a href="index">
+                    <img src="img/logotemporal2.png" alt="" class="header-logo ml-md-1">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -33,8 +33,8 @@ if (!Session::isSet('userID')) {
                         <li class="nav-item">
                             <ul class="navbar-nav d-xs-block d-md-none">
                                 <li class="nav-item ml-md-3 header-profile-sm">
-                                    <a href="profile" class="nav-link">
-                                        <img src="/img/tempprofile.jpg" alt=""
+                                    <a href="profile.php" class="nav-link">
+                                        <img src="img/tempprofile.jpg" alt=""
                                              class="header-profile-img rounded-circle"><span
                                                 class="textRightNav d-md-none"> PROFILE</span>
                                     </a>
@@ -56,7 +56,7 @@ if (!Session::isSet('userID')) {
                             <span class="icoNav">
                                 <i class="fas fa-home fa-fw"></i>
                             </span>
-                                <span class="textNav active">HOUSES</span>
+                                <span class="textNav">HOUSES</span>
                             </a>
                         </li>
 
@@ -97,7 +97,7 @@ if (!Session::isSet('userID')) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="logout.php" class="nav-link d-xs-block d-md-none">
+                            <a href="logout" class="nav-link d-xs-block d-md-none">
                             <span class="icoNav">
                                 <i class="fas fa-door-open fa-fw  text-danger"></i>
                             </span>
@@ -106,21 +106,39 @@ if (!Session::isSet('userID')) {
                         </li>
                     </ul>
 
-                    <a href="profile" class="ml-md-3 d-none d-md-block">
-                        <img src="/img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle">
-                    </a>
+
+
                     <div class="dropdown d-none d-md-block">
                         <button id="dropdownHeaderButton" type="button"
-                                class="nav-link nav-itemheader-profile-sm btn dropdown-toggle-split dropdown-toggle"
+                                class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
-
+                            <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle mr-md-1">
                         </button>
-                        <div id="dropdownHeaderMenu" class="dropdown-menu text-center">
-                            <h6>Philipp Vujic</h6>
-                            <p>Mallorca, ES</p>
-                            <a class="dropdown-item premium-text" href="premium">MANAGE PREMIUM</a>
-                            <a class="dropdown-item" href="settings">SETTINGS</a>
-                            <a class="dropdown-item text-danger" href="/app/views/logout.php">LOGOUT</a>
+                        <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img src="img/tempprofile.jpg" alt=""
+                                             class="header-profile-img rounded-circle"><span
+                                                class="textRightNav d-md-none"> PROFILE</span>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="text-left"><strong>Philipp Vujic</strong></p>
+                                        <p class="text-left small">Mallorca, ES</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <a href="settings"
+                                       class="btn btn-primary btn-block btn-sm">Settings</a>
+                                    <a href="premium"
+                                       class="btn btn-warning text-white btn-sm btn-block">Manage
+                                        Premium</a>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="row">
+                                    <a href="logout" class="btn btn-sm btn-danger btn-block">Logout</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

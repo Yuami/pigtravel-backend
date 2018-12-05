@@ -63,6 +63,10 @@ class Router {
             case "reservations":
                 include_once VIEW . "reservations.php";
                 break;
+            case "profile":
+            case "settings":
+                include_once VIEW ."profile.php";
+                break;
             case "support":
                 include_once VIEW . "support.php";
                 break;
@@ -74,6 +78,9 @@ class Router {
                 break;
             case "login":
                 include_once VIEW . "login.php";
+                break;
+            case "logout":
+                include_once VIEW . "logout.php";
                 break;
             case "register":
                 include_once VIEW . "register.php";

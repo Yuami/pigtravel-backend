@@ -13,28 +13,85 @@
 <body>
 <?php include_once("header.php") ?>
 <section class="container-fluid">
-    <div class="row breadcrumb-row">
-        <div class="col-md-10 offset-md-1">
-            <h1>Gestio Cases</h1>
-            <ol class="bg-transparent pt-0 breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Gestio Cases</li>
-            </ol>
+    <h1><a href="house.php">House</a></h1>
+    <h1>Houses</h1>
+
+    <div class="row">
+        <div class="col">
+            <table id="listaCasas" class="table table-striped table-bordered nowrap" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>House</th>
+                    <th>Tipo Vivienda</th>
+                    <th>Capacity</th>
+                    <th>Street</th>
+                    <th>Ciudad</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Alquiler Automatico</th>
+                    <th>Square Meters</th>
+                    <th></th>
+                </tr>
+                </thead>
+            </table>
         </div>
     </div>
-    <div class="row" id="cardCasa">
+    <div class="modal fade" id="viviendasEditModal" tabindex="-1" role="dialog" aria-labelledby="viviendasEditModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modify House</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="viviendaID" id="viviendaID" disabled/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Tipo Viviendas
+        </button>
+        <div class="dropdown-menu" id="dropdownidTipoVivienda">
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <select class="custom-select" id="selectVendedor">
+            <option selected>Vendedor...</option>
+        </select>
+        <select class="custom-select" id="selectCasas">
+            <option selected>Tipo de Casa...</option>
+        </select>
+    </div>
+
+    <table class="table table-striped" id="listadoViviendas">
+
+    </table>
+
+    <div id="llistaReserves">
 
     </div>
+
 
 </section>
 
 <?php include_once("footer.php") ?>
-<script src="/js/selects/selectTipoVivienda.js"></script>
-<script src="/js/selects/selectViviendaLista.js"></script>
-<script src="/js/selects/selectViviendas.js"></script>
-<script src="/js/selects/selectVendedorsViviendas.js"></script>
-<script src="/js/datatables.min.js"></script>
-<script src="/js/jquery.dataTables.js"></script>
-<script src="/js/custom/houselistDatatable.js"></script>
+<script src="js/selects/selectTipoVivienda.js"></script>
+<script src="js/selects/selectViviendaLista.js"></script>
+<script src="js/selects/selectViviendas.js"></script>
+<script src="js/selects/selectVendedorsViviendas.js"></script>
+<script src="js/datatables.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/custom/houselistDatatable.js"></script>
 </body>
 </html>

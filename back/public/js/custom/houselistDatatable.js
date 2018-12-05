@@ -1,5 +1,5 @@
 $(function () {
-     t = $('#listaCasas').DataTable({
+    t = $('#listaCasas').DataTable({
         dom: "Bftrip",
         ajax: {
             url: 'info/selectViviendasFull.php',
@@ -60,5 +60,3 @@ $(function () {
     });
 
 });
-
-
