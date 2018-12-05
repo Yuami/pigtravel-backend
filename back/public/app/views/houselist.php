@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:class="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -23,9 +23,22 @@
         </div>
     </div>
     <div class="row" id="cardCasa">
-
+      <!--  <a href="" class=" card col-8 align-self-center" style="text-decoration: none;color: inherit">
+            <div class="card-body row">
+                <div class="card-img col-4">
+                    <img src="" alt="">
+                </div>
+                <div class="col-4">
+                    <p class="col font-weight-bold py-5 text-center">NOM</p>
+                    <p class="col font-weight-bold py-5 text-center">NOM</p>
+                </div>
+                <div class="col-4">
+                    <p class="col font-weight-bold py-5 text-center">NOM</p>
+                    <p class="col font-weight-bold py-5 text-center">NOM</p>
+                </div>
+            </div>
+        </a>-->
     </div>
-
 </section>
 
 <?php include_once("footer.php") ?>

@@ -21,10 +21,10 @@ $(function () {
                         var newCImg = $("<div/>", {class: 'card-image col-4'});
                         var newI = $("<img/>", {src: "img/casas/house" + idReserva + ".jpg", style: 'max-width: 60%'});
                         var newCCont = $("<div/>", {class: 'row col-8 '});
-                        var newPN = $("<p/>", {text: nomVivenda, class: 'col font-weight-bold list-group-item py-5 text-center'});
-                        var newPC = $("<p/>", {text: ciudadVivienda, class: 'col font-weight-bold list-group-item'});
-                        var newPP = $("<p/>", {text: "Peticiones Reserva", class: 'col font-weight-bold list-group-item'});
-                        var newPM = $("<p/>", {text: "Mensajes", class: 'col font-weight-bold list-group-item'});
+                        var newPN = $("<p/>", {text: nomVivenda, class: 'col font-weight-bold  py-5 text-center'});
+                        var newPC = $("<p/>", {text: ciudadVivienda, class: 'col font-weight-bold py-5 text-center'});
+                        var newPP = $("<p/>", {text: "Peticiones Reserva", class: 'col font-weight-bold py-5 text-center'});
+                        var newPM = $("<p/>", {text: "Mensajes", class: 'col font-weight-bold py-5 text-center'});
                         newCCont.append(newPN, newPC, newPP, newPM);
                         newCImg.append(newI);
                         newCBody.append(newCImg, newCCont);
