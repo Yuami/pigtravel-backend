@@ -7,7 +7,16 @@ $(document).ready(function () {
             type: "GET",
         },
         columns: [
-            {data: 'nomVivienda'},
+            {
+                data: "nomVivienda",
+                render: function (data, type, row, meta) {
+                    if (type === 'display') {
+                        data = '<a href="reserva.php" style="text-decoration: none; color: black ">' + data + '</a>';
+                    }
+
+                    return data;
+                }
+            },
             {data: 'nomPersona'},
             {data: 'nomEstat'},
             {data: 'fechaReserva'},
@@ -17,8 +26,6 @@ $(document).ready(function () {
             url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Catalan.json"
         },
         lengthChange: false,
-        bFilter: false,
-        select: false,
         paging: false,
         ordering: false,
         info: false,
