@@ -11,4 +11,8 @@ class HouseController {
         include_once VIEW . "houselist.php";
     }
 
+    public static function showHouse() {
+        include_once VIEW . "house.php";
+    }
+
 }

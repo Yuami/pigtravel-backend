@@ -59,12 +59,12 @@ class Tarifa {
     }
 
     static async getAll() {
-        const response = await fetch("info/selectTarifas.php");
+        const response = await fetch("/info/selectTarifas.php");
         return await response.json();
     }
 
     static async getServer(id) {
-        const response = await fetch(`info/selectTarifas.php?idTarifa=${id}`);
+        const response = await fetch(`/info/selectTarifas.php?idTarifa=${id}`);
         return await response.json();
     }
 
@@ -98,12 +98,12 @@ class Rebaja {
     }
 
     static async getAll() {
-        let response = await fetch("info/selectRebajas.php");
+        let response = await fetch("/info/selectRebajas.php");
         return await response.json();
     }
 
     static async getByTarifaServer(id) {
-        const response = await fetch(`info/selectRebajas.php?idTarifa=${id}`);
+        const response = await fetch(`/info/selectRebajas.php?idTarifa=${id}`);
         return await response.json();
     }
 

@@ -2,7 +2,7 @@ let lPolCancel = $('#list-group-politica-cancelacion');
 let navTab = $('#nav-tabContent');
 let dropdown = $('#drop-down-list');
 let first = true;
-let lPolCancelResponse = fetch("info/politicaCancelacion-mas-linias.php");
+let lPolCancelResponse = fetch("/info/politicaCancelacion-mas-linias.php");
 let pCancel = lPolCancelResponse.then(response => response.json());
 pCancel
     .then(pCancel => {

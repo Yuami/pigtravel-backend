@@ -47,7 +47,7 @@ taula6 = c(taula6);
 function e(lang = "English") {
     return {
         ajax: {
-            url: "http://localhost:63342/lloguer_vacacional/controller/LoginController.phproller.php,
+            url: "http://localhost:63342/lloguer_vacacional/controller/LoginController.phproller.php",
             dataSrc: '',
             type: 'GET'
         },

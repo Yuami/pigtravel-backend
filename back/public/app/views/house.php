@@ -98,8 +98,8 @@
 
 
 <?php include_once("footer.php") ?>
-<script src="../js/selects/selectTarifa-Rebaja.js"></script>
-<script src="../js/selects/selectVivienda-Tarifa.js"></script>
-<script src="../js/selects/selectPoliticaCancelacion.js"></script>
+<script src="/js/selects/selectTarifa-Rebaja.js"></script>
+<script src="/js/selects/selectVivienda-Tarifa.js"></script>
+<script src="/js/selects/selectPoliticaCancelacion.js"></script>
 </body>
 </html>

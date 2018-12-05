@@ -66,12 +66,12 @@ class Router
             case "houses":
                 switch ($this->getMethod()) {
                     case "GET":
+                        require_once CONTROLLER . "HouseController.php";
+                        $controller = new HouseController();
                         if ($this->getParams() == true) {
-                            include_once VIEW . "house.php";
+                            $controller->showHouse();
                             break;
                         } else {
-                            require_once CONTROLLER . "HouseController.php";
-                            $controller = new HouseController();
                             $controller->show();
                             break;
                         }

@@ -11,7 +11,7 @@ $(function () {
                         var tipoVivienda = reserves[reserva].tipo;
                         var ciudadVivienda = reserves[reserva].ciudad;
 
-                        var url = "house.php?id=" + idReserva;
+                        var url = "houses/" + idReserva;
                         var newA = $("<a/>", {
                             href: url,
                             class: 'card col-8 align-self-center',

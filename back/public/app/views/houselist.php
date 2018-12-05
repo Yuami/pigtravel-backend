@@ -45,6 +45,6 @@
 <script src="js/selects/selectViviendaLista.js"></script>
 <script src="js/datatables.min.js"></script>
 <script src="js/jquery.dataTables.js"></script>
-<script src="js/custom/houselistDatatable.js"></script>
+<script src="../../../../front/js/houselistDatatable.js"></script>
 </body>
 </html>

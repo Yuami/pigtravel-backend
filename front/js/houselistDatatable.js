@@ -2,7 +2,7 @@ $(function () {
     t = $('#listaCasas').DataTable({
         dom: "Bftrip",
         ajax: {
-            url: 'info/selectViviendasFull.php',
+            url: 'selectViviendasFull.php',
             dataSrc: '',
             type: "POST",
         },

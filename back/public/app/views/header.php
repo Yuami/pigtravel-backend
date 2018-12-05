@@ -4,8 +4,8 @@ if (!Session::isSet('userID')) {
     <header class="head">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
-                <a href="index">
-                    <img src="img/logotemporal2.png" alt="" class="header-logo ml-md-1">
+                <a href="/">
+                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
                 </a>
                 <div class="head-brand">
                     <h6 class="active" href="#">ADMINISTRATION PANEL</h6>
@@ -21,8 +21,8 @@ if (!Session::isSet('userID')) {
                     <h2 class="algn-r head-brand-text active" href="#">ADMIN</h2>
                     <p class="algn-r mb-0"><span class="premium-text">Premium</span></p>
                 </div>
-                <a href="index">
-                    <img src="img/logotemporal2.png" alt="" class="header-logo ml-md-1">
+                <a href="/">
+                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -33,8 +33,8 @@ if (!Session::isSet('userID')) {
                         <li class="nav-item">
                             <ul class="navbar-nav d-xs-block d-md-none">
                                 <li class="nav-item ml-md-3 header-profile-sm">
-                                    <a href="profile.php" class="nav-link">
-                                        <img src="img/tempprofile.jpg" alt=""
+                                    <a href="/profile.php" class="nav-link">
+                                        <img src="/img/tempprofile.jpg" alt=""
                                              class="header-profile-img rounded-circle"><span
                                                 class="textRightNav d-md-none"> PROFILE</span>
                                     </a>
@@ -43,7 +43,7 @@ if (!Session::isSet('userID')) {
                         </li>
 
                         <li class="nav-item d-xs-block d-md-none">
-                            <a href="premium" class="nav-link">
+                            <a href="/premium" class="nav-link">
                             <span class="icoNav">
                                 <i class="premium-text fas fa-award fa-fw"></i>
                             </span>
@@ -52,7 +52,7 @@ if (!Session::isSet('userID')) {
                         </li>
 
                         <li class="nav-item">
-                            <a href="houses" class="nav-link">
+                            <a href="/houses" class="nav-link">
                             <span class="icoNav">
                                 <i class="fas fa-home fa-fw"></i>
                             </span>
@@ -61,7 +61,7 @@ if (!Session::isSet('userID')) {
                         </li>
 
                         <li class="nav-item">
-                            <a href="reservations" class="nav-link">
+                            <a href="/reservations" class="nav-link">
                             <span class="icoNav">
                                 <i class="fas fa-list-alt fa-fw"></i>
                             </span>
@@ -69,7 +69,7 @@ if (!Session::isSet('userID')) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="support" class="nav-link">
+                            <a href="/support" class="nav-link">
                                 <span class="icoNav">
                             <i class="fas fa-question-circle fa-fw"></i>
                                 </span>
@@ -79,17 +79,17 @@ if (!Session::isSet('userID')) {
                     </ul>
                     <ul id="nav-ul" class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="messages" class="nav-link"><i class="far fa-comments fa-fw"></i>
+                            <a href="/messages" class="nav-link"><i class="far fa-comments fa-fw"></i>
                                 <span class="textRightNav d-md-none">MESSAGES</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="notifications" class="nav-link"><i class="far fa-bell fa-fw"></i>
+                            <a href="/notifications" class="nav-link"><i class="far fa-bell fa-fw"></i>
                                 <span class="textRightNav d-md-none">NOTIFICATIONS</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="settings" class="nav-link d-xs-block d-md-none">
+                            <a href="/settings" class="nav-link d-xs-block d-md-none">
                             <span class="icoNav">
                                 <i class="fas fa-cog fa-fw"></i>
                             </span>
@@ -97,7 +97,7 @@ if (!Session::isSet('userID')) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="logout" class="nav-link d-xs-block d-md-none">
+                            <a href="/logout" class="nav-link d-xs-block d-md-none">
                             <span class="icoNav">
                                 <i class="fas fa-door-open fa-fw  text-danger"></i>
                             </span>
@@ -112,13 +112,13 @@ if (!Session::isSet('userID')) {
                         <button id="dropdownHeaderButton" type="button"
                                 class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
-                            <img src="img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle mr-md-1">
+                            <img src="/img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle mr-md-1">
                         </button>
                         <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="img/tempprofile.jpg" alt=""
+                                        <img src="/img/tempprofile.jpg" alt=""
                                              class="header-profile-img rounded-circle"><span
                                                 class="textRightNav d-md-none"> PROFILE</span>
                                     </div>
@@ -128,15 +128,15 @@ if (!Session::isSet('userID')) {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <a href="settings"
+                                    <a href="/settings"
                                        class="btn btn-primary btn-block btn-sm">Settings</a>
-                                    <a href="premium"
+                                    <a href="/premium"
                                        class="btn btn-warning text-white btn-sm btn-block">Manage
                                         Premium</a>
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <div class="row">
-                                    <a href="logout" class="btn btn-sm btn-danger btn-block">Logout</a>
+                                    <a href="/logout" class="btn btn-sm btn-danger btn-block">Logout</a>
                                 </div>
                             </div>
                         </div>
