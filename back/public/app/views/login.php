@@ -28,7 +28,7 @@
                             </label>
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
                                    aria-describedby="emailHelp" placeholder="Enter email" value="
-                                   <?php (Cookie::get('lastEmail')); ?>" required>
+                                   <?php echo (Cookie::get('lastEmail')); ?>" required>
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">
@@ -57,7 +57,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p id="modal-text"><?php Err::get("loginStatus"); ?></p>
+                            <p id="modal-text"><?php echo Session::get("loginStatus"); ?></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-primary">Try Again</button>
@@ -72,12 +72,12 @@
 <?php include_once("footer.php") ?>
 
 <?php
-if (Err::get('loginStatus')) { ?>
+if (Session::get('loginStatus')) { ?>
     <script type="text/javascript">
         $('#loginErrorModal').modal('show');
     </script>
 <?php }
-Err::delete('loginStatus'); ?>
+Session::delete('loginStatus'); ?>
 <script src="/js/validation/bootstrap-validator.js"></script>
 <script src="/js/validation/validation.js"></script>
 </body>

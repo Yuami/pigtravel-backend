@@ -6,4 +6,4 @@ define("CONTROLLER", APP . "controller/");
 define("MODEL", APP . "models/");
 define("VIEW", APP . "views/");
 define("INFO", ROOT . "info/");
-define("DOMAIN", "http://admin.pigtravel.top");
+define("DOMAIN", "http://back.pig.test");

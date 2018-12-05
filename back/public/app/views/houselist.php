@@ -13,7 +13,7 @@
 <body>
 <?php include_once("header.php") ?>
 <section class="container-fluid">
-    <h1><a href="house.php">House</a></h1>
+    <h1><a href="houses/1">House</a></h1>
     <h1>Houses</h1>
 
     <div class="row">
