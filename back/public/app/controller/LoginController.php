@@ -18,10 +18,10 @@ class LoginController {
             if ($correo == $correoPost && $passwordPost == $password) {
                 return true;
             }
-            Err::set("loginStatus", 'Wrong email or password!');
+            Session::set("loginStatus", 'Wrong email or password!');
             return false;
         }
-        Err::set("loginStatus", 'No data has been entered!');
+        Session::set("loginStatus", 'No data has been entered!');
         return false;
     }
 

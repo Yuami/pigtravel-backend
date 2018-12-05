@@ -1,11 +1,13 @@
 <?php
 
-class Router {
+class Router
+{
     private $controller;
     private $params;
     private $method;
 
-    public function __construct($url, $method) {
+    public function __construct($url, $method)
+    {
         $params = explode("/", $url);
         $controller = $params[1];
         $params = array_splice($params, 2);
@@ -21,51 +23,66 @@ class Router {
     /**
      * @return mixed
      */
-    public function getMethod() {
+    public function getMethod()
+    {
         return $this->method;
     }
 
     /**
      * @return mixed
      */
-    public function getController() {
+    public function getController()
+    {
         return $this->controller;
     }
 
     /**
      * @param mixed $controller
      */
-    public function setController($controller) : void {
+    public function setController($controller): void
+    {
         $this->controller = $controller;
     }
 
     /**
      * @return mixed
      */
-    public function getParams() {
+    public function getParams()
+    {
         return $this->params;
     }
 
     /**
      * @param mixed $params
      */
-    public function setParams($params) : void {
+    public function setParams($params): void
+    {
         $this->params = $params;
     }
 
-    public function redirect() {
+    public function redirect()
+    {
         switch ($this->getController()) {
             case "houses":
-                require_once CONTROLLER . "HouseController.php";
-                $controller = new HouseController();
-                $controller->show();
+                switch ($this->getMethod()) {
+                    case "GET":
+                        if ($this->getParams() == true) {
+                            include_once VIEW . "house.php";
+                            break;
+                        } else {
+                            require_once CONTROLLER . "HouseController.php";
+                            $controller = new HouseController();
+                            $controller->show();
+                            break;
+                        }
+                }
                 break;
             case "reservations":
                 include_once VIEW . "reservations.php";
                 break;
             case "profile":
             case "settings":
-                include_once VIEW ."profile.php";
+                include_once VIEW . "profile.php";
                 break;
             case "support":
                 include_once VIEW . "support.php";
