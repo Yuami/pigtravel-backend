@@ -12,13 +12,13 @@
 
 <body>
 <?php include_once("header.php") ?>
-<section>
-    <h1><a href="house.phplic/routes.php">House</a></h1>
+<section class="container-fluid">
+    <h1><a href="house.php">House</a></h1>
     <h1>Houses</h1>
 
     <div class="row">
         <div class="col">
-            <table id="listaCasas" class="display table table-striped table-bordered" style="width: 100%;">
+            <table id="listaCasas" class="table table-striped table-bordered nowrap" style="width: 100%;">
                 <thead>
                 <tr>
                     <th>House</th>
@@ -30,11 +30,32 @@
                     <th>Check Out</th>
                     <th>Alquiler Automatico</th>
                     <th>Square Meters</th>
+                    <th></th>
                 </tr>
                 </thead>
             </table>
         </div>
     </div>
+    <div class="modal fade" id="viviendasEditModal" tabindex="-1" role="dialog" aria-labelledby="viviendasEditModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modify House</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="viviendaID" id="viviendaID" disabled/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="dropdown">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -65,12 +86,12 @@
 </section>
 
 <?php include_once("footer.php") ?>
-<script src="/js/selects/selectTipoVivienda.js"></script>
-<script src="/js/selects/selectViviendaLista.js"></script>
-<script src="/js/selects/selectViviendas.js"></script>
-<script src="/js/selects/selectVendedorsViviendas.js"></script>
-<script src="/js/datatables.min.js"></script>
-<script src="/js/jquery.dataTables.js"></script>
-<script src="/js/custom/houselistDatatable.js"></script>
+<script src="js/selects/selectTipoVivienda.js"></script>
+<script src="js/selects/selectViviendaLista.js"></script>
+<script src="js/selects/selectViviendas.js"></script>
+<script src="js/selects/selectVendedorsViviendas.js"></script>
+<script src="js/datatables.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/custom/houselistDatatable.js"></script>
 </body>
 </html>
