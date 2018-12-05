@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/basicVars.php";
+require_once ROOT . "basicIncludes.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <title>Plantilla para backend</title>
-</head>
+session_start();
 
-<body>
-<?php include_once("header.php") ?>
+if (isset($_SERVER['REDIRECT_URL'])) {
+    $r = new Router($_SERVER['REDIRECT_URL'], $_SERVER['REQUEST_METHOD']);
+} else {
+    $r = new Router(DOMAIN . "main", []);
+}
+$c = $r->getController();
 
-<section>
-    <h1>Index</h1>
+if (!Session::isSet('userID')) {
+    if ($c != "register" && $c != "login")
+        header("Location: " . DOMAIN . "/login");
+} else {
+    if ($c == "register" || $c == "login"){
+        header("Location: " . DOMAIN);
+    }
+}
 
-</section>
-
-<?php include_once("footer.php") ?>
-
-</body>
-</html>
+$r->redirect();
