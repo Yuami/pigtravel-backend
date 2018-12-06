@@ -13,9 +13,9 @@
 
 <?php include_once("header.php") ?>
 
-<section class="w-100">
+<section>
     <div class="container-fluid">
-        <div class="row ch-100">
+        <div class="row m-2 m-md-5">
             <div class="col-12 col-xs-8 offset-xs-2 my-auto text-center">
                 <div id="loginForm">
                     <h5 class="mt-3">Pig Travel</h5>
