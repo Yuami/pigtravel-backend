@@ -1,11 +1,13 @@
 $(function () {
     var botonLeido=false;
+    var mensajesEnviados=false;
     var viviendaID;
-    function loadCardsMensajes(botonLeido,viviendaId) {
+    function loadCardsMensajes(botonLeido,viviendaId, mensajesEnviados) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var mensajeX = JSON.parse(this.responseText);
+
                 var ccard="";
                 for (x in mensajeX) {
 
@@ -70,17 +72,27 @@ $(function () {
 
             }
         };
-         if(viviendaId!=null) {
-             xhttp.open("GET", "info/selectMensajes.php?idVivienda=" + viviendaId, true);
-             xhttp.send();
-         }else{
-             xhttp.open("GET", "info/selectMensajes.php", true);
-             xhttp.send();
-         }
+       if(mensajesEnviados==false) {
+           if (viviendaId != null) {
+               xhttp.open("GET", "info/selectMensajes.php?idVivienda=" + viviendaId + "?enviados=" + mensajesEnviados, true);
+               xhttp.send();
+           } else {
+               xhttp.open("GET", "info/selectMensajes.php", true);
+               xhttp.send();
+           }
+       }else{
+
+           if (viviendaId != null) {
+               xhttp.open("GET", "info/selectMensajesEnviados.php?idVivienda=" + viviendaId + "?enviados=" + mensajesEnviados, true);
+               xhttp.send();
+           } else {
+               xhttp.open("GET", "info/selectMensajesEnviados.php", true);
+               xhttp.send();
+           }
+       }
     }
 
     loadCardsMensajes();
-
     $("#botonLeido").click( function() {
             $(".cardMessages").remove();
             if(botonLeido==false){
@@ -88,9 +100,8 @@ $(function () {
             }else{
                 botonLeido=false;
             }
-            loadCardsMensajes(botonLeido,viviendaID);
-        }
-    );
+            loadCardsMensajes(botonLeido,viviendaID,mensajesEnviados);
+        });
     function loadViviendasDropdown() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {

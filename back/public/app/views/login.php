@@ -29,6 +29,7 @@
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
                                    aria-describedby="emailHelp" placeholder="Enter email" value="
                                    <?php echo (Cookie::get('lastEmail')); ?>" required>
+
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">

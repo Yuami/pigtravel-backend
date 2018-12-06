@@ -9,6 +9,7 @@
   }
 }
 
+
 html {
   margin: 0;
   padding: 0;
@@ -30,11 +31,79 @@ body {
 }
 
 /* Messages */
-.card-body{
+
+.mensajes{
+  margin: 50px;
+}
+#cardsmensajes{
   width: 100%;
 }
-.missatgeCard{
-  width: 100%;
+
+/* Subscripciones */
+
+
+.subscripciones{
+  font-family: Quicksand;
+  margin: 30px;
+
+}
+
+.descripcionSubscripcion {
+  background-image: radial-gradient(farthest-corner at 40px 40px,
+          #c0def6 0%, #60b3f6 100%);
+  color: white;
+  font-family: Quicksand;
+}
+.subscripcion1 {
+  background-image: linear-gradient(#f2c2a2 ,#f0f0f0);
+  text-align: center;
+  border: 0px;
+  height: 300px;
+}
+
+.subscripcion2 {
+  background-image: linear-gradient(#f8acf2 ,#f0f0f0);
+  text-align: center;
+  border: 0px;
+  height: 300px;
+}
+.subscripcion3 {
+  background-image: linear-gradient(#b0ffbd ,#f0f0f0);
+  text-align: center;
+  border: 0px;
+  height: 300px;
+
+}
+.center {
+  display: block;
+  text-align: center;
+}
+.card-subs{
+  background-color:rgba(51, 170, 51,  0);
+  border: 0px;
+  color: white;
+  text-align: center;
+}
+
+.glyphicon {
+  font-size: 100px;
+}
+
+.tituloSubscripciones{
+  font-size: 40px;
+}
+.fa{
+  font-size: 100px !important;
+}
+
+.iconosDescripcio{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.iconoSubscripciones{
+  padding: 15%;
+  height: 55%;
+  color: black;
 }
 
 /* HEADER */
