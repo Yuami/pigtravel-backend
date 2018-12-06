@@ -21,7 +21,7 @@ body {
   padding: 0;
   min-height: 100vh;
   position: relative;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
   &::after {
     content: '';
     display: block;
