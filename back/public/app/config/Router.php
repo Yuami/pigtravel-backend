@@ -1,17 +1,14 @@
 <?php
-
 class Router
 {
     private $controller;
     private $params;
     private $method;
-
     public function __construct($url, $method)
     {
         $params = explode("/", $url);
         $controller = $params[1];
         $params = array_splice($params, 2);
-
         $this->controller = $controller;
         if (isset($params))
             $this->params = $params;
@@ -19,7 +16,6 @@ class Router
             $this->params = [];
         $this->method = $method;
     }
-
     /**
      * @return mixed
      */
@@ -27,7 +23,6 @@ class Router
     {
         return $this->method;
     }
-
     /**
      * @return mixed
      */
@@ -35,7 +30,6 @@ class Router
     {
         return $this->controller;
     }
-
     /**
      * @param mixed $controller
      */
@@ -43,7 +37,6 @@ class Router
     {
         $this->controller = $controller;
     }
-
     /**
      * @return mixed
      */
@@ -51,7 +44,6 @@ class Router
     {
         return $this->params;
     }
-
     /**
      * @param mixed $params
      */
@@ -59,26 +51,35 @@ class Router
     {
         $this->params = $params;
     }
-
     public function redirect()
     {
+        $params = $this->getParams();
         switch ($this->getController()) {
             case "houses":
                 switch ($this->getMethod()) {
                     case "GET":
                         require_once CONTROLLER . "HouseController.php";
                         $controller = new HouseController();
-                        if ($this->getParams() == true) {
+                        if (!empty($params[0]) && empty($params[1])) {
                             $controller->showHouse();
                             break;
                         } else {
                             $controller->show();
-                            break;
                         }
                 }
                 break;
             case "reservations":
-                include_once VIEW . "reservations.php";
+                switch ($this->getMethod()) {
+                    case "GET":
+                        require_once CONTROLLER . "ReservationController.php";
+                        $controller = new ReservationController();
+                        if (!empty($params[0]) && empty($params[1])) {
+                            $controller->showReservation();
+                            break;
+                        } else {
+                            $controller->show();
+                        }
+                }
                 break;
             case "profile":
             case "settings":
