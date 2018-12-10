@@ -27,8 +27,10 @@ class LoginController {
 
     public static function login($correoPost, $passwordPost) : bool {
         session_start();
+        $email = $_POST['emailLogin'];
         if (self::isLoggable($correoPost, $passwordPost)) {
-            Session::set("userID", $_POST['emailLogin']);
+            Session::set("userID", PersonaDAO::getByCorreo($email));
+            Session::set("email", $email);
             return true;
         }
         return false;
