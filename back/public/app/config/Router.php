@@ -62,34 +62,23 @@ class Router
 
     public function redirect()
     {
-        $params = $this->getParams();
-
         switch ($this->getController()) {
             case "houses":
                 switch ($this->getMethod()) {
                     case "GET":
                         require_once CONTROLLER . "HouseController.php";
                         $controller = new HouseController();
-                        if (!empty($params[0]) && empty($params[1])) {
+                        if ($this->getParams() == true) {
                             $controller->showHouse();
                             break;
                         } else {
                             $controller->show();
+                            break;
                         }
                 }
                 break;
             case "reservations":
-                switch ($this->getMethod()) {
-                    case "GET":
-                        require_once CONTROLLER . "ReservationController.php";
-                        $controller = new ReservationController();
-                        if (!empty($params[0]) && empty($params[1])) {
-                            $controller->showReservation();
-                            break;
-                        } else {
-                            $controller->show();
-                        }
-                }
+                include_once VIEW . "reservations.php";
                 break;
             case "profile":
             case "settings":
