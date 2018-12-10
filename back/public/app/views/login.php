@@ -13,9 +13,9 @@
 
 <?php include_once("header.php") ?>
 
-<section class="w-100">
+<section>
     <div class="container-fluid">
-        <div class="row ch-100">
+        <div class="row m-2 m-md-5">
             <div class="col-12 col-xs-8 offset-xs-2 my-auto text-center">
                 <div id="loginForm">
                     <h5 class="mt-3">Pig Travel</h5>
@@ -28,8 +28,7 @@
                             </label>
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
                                    aria-describedby="emailHelp" placeholder="Enter email" value="
-                                   <?php echo (Cookie::get('lastEmail')); ?>" required>
-
+                                   <?php echo(Cookie::get('lastEmail')); ?>" required>
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">
@@ -38,7 +37,8 @@
                             <input type="password" class="form-control" name="passwordLogin" id="passwordLogin"
                                    aria-describedby="emailHelp" placeholder="Enter password" required>
                         </div>
-                        <p class="text-right"><a href="#">Forgot Password</a></p>
+                        <p class="text-right"><a href="#" id="forgotPasswordButton" data-toggle="modal"
+                                                 data-target="#forgotPasswordModal">Forgot Password</a></p>
                         <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
                     </form>
                     <hr class="mb-4">
@@ -63,6 +63,30 @@
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-primary">Try Again</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="forgotPassword">
+            <div id="forgotPasswordModal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form class="form-group" id="forgotPasswordForm" action="#">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Forgot Password</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="mb-1">Email</p>
+                                <input class="form-control mb-1" type="text">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Recover</button>
+
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

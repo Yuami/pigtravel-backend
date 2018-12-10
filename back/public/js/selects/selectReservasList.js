@@ -11,7 +11,7 @@ $(document).ready(function () {
                 data: "nomVivienda",
                 render: function (data, type, row, meta) {
                     if (type === 'display') {
-                        data = '<a href="../../app/views/house.php" style="text-decoration: none; color: black ">' + data + '</a>';
+                        data = '<a href="/reservations/1" style="text-decoration: none; color: black ">' + data + '</a>';
                     }
 
                     return data;

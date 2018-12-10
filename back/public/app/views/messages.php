@@ -39,6 +39,6 @@
 
 </div>
 <?php include_once("footer.php") ?>
-<script type="text/javascript" src="js/selects/selectMensajes.js"></script>
+<script src="/js/selects/selectMensajes.js"></script>
 </body>
 </html>
