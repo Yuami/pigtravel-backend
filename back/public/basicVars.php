@@ -6,5 +6,7 @@ define("CONTROLLER", APP . "controller/");
 define("MODEL", APP . "models/");
 define("VIEW", APP . "views/");
 define("INFO", ROOT . "info/");
+define("PERFIL", "img/perfil/");
+
 define("CALENDAR", ROOT . "calendarInclude.php");
 define("DOMAIN", "http://" . $_SERVER['HTTP_HOST']);

@@ -11,6 +11,15 @@ class Persona {
     private $password;
     private $fechaNacimiento;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
 
     public function getNombre()
     {

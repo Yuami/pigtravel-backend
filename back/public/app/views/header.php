@@ -1,6 +1,5 @@
 <?php
-if (!Session::isSet('userID')) {
-    ?>
+if (!Session::isSet('userID')) { ?>
     <header class="head">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
@@ -13,7 +12,10 @@ if (!Session::isSet('userID')) {
             </nav>
         </div>
     </header>
-<?php } else { ?>
+<?php } else {
+    $user = unserialize(Session::get('userID'));
+    $profileImage = File::getProfileImage($user);
+    ?>
     <header class="head">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
@@ -102,13 +104,13 @@ if (!Session::isSet('userID')) {
                         <button id="dropdownHeaderButton" type="button"
                                 class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
-                            <img src="/img/tempprofile.jpg" alt="" class="header-profile-img rounded-circle mr-md-1">
+                            <img src="<?php echo $profileImage ?>" alt="" class="header-profile-img rounded-circle mr-md-1">
                         </button>
                         <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="/img/tempprofile.jpg" alt=""
+                                        <img src="<?php echo $profileImage ?>" alt=""
                                              class="header-profile-img rounded-circle"><span
                                                 class="textRightNav d-md-none"> PROFILE</span>
                                     </div>
