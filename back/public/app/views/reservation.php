@@ -107,31 +107,66 @@
         </div>
     </div>
 </section>
-<?php include_once CALENDAR?>
+<?php include_once CALENDAR ?>
 <div class="container">
-    <div id="calendar"></div>
+    <table width="100%" cellpadding="5" cellspacing="5">
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <input type="button" id="myprevbutton" value="&nbsp;&#9668;&nbsp;"/>&nbsp;
+                <input type="button" id="mynextbutton" value="&nbsp;&#9658;&nbsp;"/>&nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td width="33%">
+                <div id="prevCalendar"></div>
+            </td>
+            <td width="33%">
+                <div id="mainCalendar"></div>
+            </td>
+            <td width="33%">
+                <div id="nextCalendar"></div>
+            </td>
+        </tr>
+    </table>
 </div>
 <script>
-    $(() => {
-        $("#calendar").fullCalendar({
+    function initCalendar($calendarDiv, displayDate, isMain, events){
+        $calendarDiv.fullCalendar({
             themeSystem: 'bootstrap4',
-            defaultDate: '2016-12-10',
-            events: [
-                {
-                    title: 'Entrada',
-                    start: '2016-12-10T13:00',
-                },
-                {
-                    title: 'Salida',
-                    start: '2016-12-16T12:00',
-                },
-                {
-                    start: '2016-12-10',
-                    end: '2016-12-17',
-                    rendering: 'background'
-                }
-            ]
+            defaultDate: displayDate,
+            header : {
+                right : isMain ? 'today prev,next', ''
+            },
+            events: events
         });
+    }
+    $(() => {
+        let fechaInicioReserva =  '2016-11-10';
+        let fechaFinReserva =  '2016-12-10';
+
+        initCalendar($('#prevCalendar'), moment('2016-11-10'), false, []);
+        initCalendar($('#mainCalendar'), '2016-12-10', true, [
+            {
+                title: 'Entrada',
+                start: '2016-12-10T13:00',
+            },
+            {
+                title: 'Salida',
+                start: '2016-12-16T12:00',
+            },
+            {
+                start: '2016-12-10',
+                end: '2016-12-17',
+                rendering: 'background'
+            }
+        ]);
+        initCalendar($('#nextCalendar'), '2017-01-1', false, []);
     })
 </script>
 <?php include_once("footer.php") ?>
