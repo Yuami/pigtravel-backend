@@ -29,7 +29,8 @@
                                     <div class="row">
                                         <img src="/img/casas/house1.jpg" alt="" class="vivienda-img rounded-circle">
                                         <h5 class="ml-2 mt-3">Nombre de la casa</h5>
-                                        <a href="house.phplic/routes.php" class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
+                                        <a href="house.phplic/routes.php"
+                                           class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +98,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <a href="messages.php/routes.php?idCliente=id" class="btn btn-primary mt-3 col-12">CHAT CON (NOMBRE CLIENTE)</a>
+                <a href="messages.php/routes.php?idCliente=id" class="btn btn-primary mt-3 col-12">CHAT CON (NOMBRE
+                    CLIENTE)</a>
                 <a href="#nothing" class="btn btn-primary mt-3 col-12">EDITAR/OFERTA</a>
                 <a href="#nothing" class="btn btn-primary mt-3 col-12">ACEPTAR</a>
                 <a href="#nothing" class="btn btn-danger mt-3 col-12">CANCELAR</a>
@@ -105,7 +107,33 @@
         </div>
     </div>
 </section>
-
+<?php include_once CALENDAR?>
+<div class="container">
+    <div id="calendar"></div>
+</div>
+<script>
+    $(() => {
+        $("#calendar").fullCalendar({
+            themeSystem: 'bootstrap4',
+            defaultDate: '2016-12-10',
+            events: [
+                {
+                    title: 'Entrada',
+                    start: '2016-12-10T13:00',
+                },
+                {
+                    title: 'Salida',
+                    start: '2016-12-16T12:00',
+                },
+                {
+                    start: '2016-12-10',
+                    end: '2016-12-17',
+                    rendering: 'background'
+                }
+            ]
+        });
+    })
+</script>
 <?php include_once("footer.php") ?>
 
 </body>
