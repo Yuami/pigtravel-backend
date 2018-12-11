@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<?php include_once("header.php") ?>
+<?php include_once "header.php" ?>
 
 <section>
     <div class="container my-3">
@@ -53,36 +53,6 @@
                     </div>
 
                     <div class="mt-3">
-                        <h6>INFORMACIÓN</h6>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <div class="row">
-                                        <p class="ml-2 mt-3"><b>FECHAS:</b></p>
-                                        <p class="ml-2 mt-3">ENTRADA 23-12-18</p>
-                                        <p class="ml-2 mt-3">SALIDA 28-12-18</p>
-                                        <p class="ml-2 ml-md-5 mt-3"><b>INQUILINOS:</b> 3</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-3">
-                        <h6>HORAS</h6>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <div class="row">
-                                        <p class="ml-2 mt-3"><b>ENTRADA:</b> 13:00</p>
-                                        <p class="ml-2 mt-3"><b>SALIDA:</b> 12:00</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-3">
                         <h6>INGRESOS</h6>
                         <div class="card">
                             <div class="card-body">
@@ -105,29 +75,28 @@
                 <a href="#nothing" class="btn btn-danger mt-3 col-12">CANCELAR</a>
             </div>
         </div>
+        <!-- CALENDARS -->
+        <div class="row pb-3">
+            <div class="col-md-6">
+                <div id="mainCalendar"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="nextCalendar"></div>
+            </div>
+        </div>
+
+        <button type="button" class="fc-prev-button btn btn-primary" id="prevMonth">
+            <span class="fa fa-chevron-left"></span> PREV
+        </button>
+
+        <button type="button" class="fc-prev-button btn btn-primary" id="nextMonth">
+            NEXT <span class="fa fa-chevron-right"></span>
+        </button>
     </div>
 </section>
+
+<?php include_once "footer.php" ?>
 <?php include_once CALENDAR ?>
-<div class="container py-3">
-    <div class="row pb-3">
-        <div class="col-md-6">
-            <div id="mainCalendar"></div>
-        </div>
-        <div class="col-md-6">
-            <div id="nextCalendar"></div>
-        </div>
-    </div>
-
-    <button type="button" class="fc-prev-button btn btn-primary" id="prevMonth">
-        <span class="fa fa-chevron-left"></span> PREV
-    </button>
-
-    <button type="button" class="fc-prev-button btn btn-primary" id="nextMonth">
-        NEXT <span class="fa fa-chevron-right"></span>
-    </button>
-</div>
 <script src="/js/calendar.js"></script>
-<?php include_once("footer.php") ?>
-
 </body>
 </html>

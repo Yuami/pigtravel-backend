@@ -9,6 +9,14 @@ function initCalendar($calendarDiv, displayDate, isMain, events) {
     });
 }
 
+function day(fecha) {
+    return fecha.split("-")[2];
+}
+
+function nextDay(fecha) {
+    return moment(fecha).add(1, 'days');
+}
+
 function month(fecha) {
     return fecha.split("-")[1];
 }
@@ -24,17 +32,17 @@ function nextMonth(fecha) {
 function setCalendar(mainCalendar, nextCalendar, fInicio, fFin) {
     let event = [
         {
-            start: fInicio,
-            end: fFin,
-            rendering: 'background',
-        },
-        {
             title: 'Entrada',
-            start: fInicio,
+            start: fInicio
         },
         {
             title: 'Salida',
-            start: fFin,
+            start: fFin
+        },
+        {
+            start: moment(fInicio).startOf('day').format('YYYY-MM-DD'),
+            end: moment(fFin).add(1, 'day').startOf('day').format('YYYY-MM-DD'),
+            rendering: 'background',
         }
     ];
     return [
@@ -42,6 +50,7 @@ function setCalendar(mainCalendar, nextCalendar, fInicio, fFin) {
         initCalendar(nextCalendar, nextMonth(fInicio), false, event)
     ];
 }
+
 
 $(() => {
     let calendars = setCalendar($('#mainCalendar'), $('#nextCalendar'), '2018-11-12T13:00', '2018-11-17T12:00');
