@@ -14,7 +14,7 @@
 
 <section>
     <div class="container my-3">
-        <h2>Reserva
+        <h2>Reserva #(Numero Reserva)
             <small><span class="badge badge-pill badge-secondary">Pendiente</span></small>
         </h2>
         <div class="row">
@@ -29,7 +29,7 @@
                                     <div class="row">
                                         <img src="/img/casas/house1.jpg" alt="" class="vivienda-img rounded-circle">
                                         <h5 class="ml-2 mt-3">Nombre de la casa</h5>
-                                        <a href="house.phplic/routes.php"
+                                        <a href="/houses/id"
                                            class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                     <div class="row">
                                         <img src="/img/tempprofile.jpg" alt="" class="vivienda-img rounded-circle">
                                         <h5 class="ml-2 mt-3">Nombre cliente (Pero la foto de Phil mola 😅)</h5>
-                                        <a href="#nothing" class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
+                                        <a href="/profile/id" class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <a href="messages.php/routes.php?idCliente=id" class="btn btn-primary mt-3 col-12">CHAT CON (NOMBRE
+                <a href="/messages/id1/id2" class="btn btn-primary mt-3 col-12">CHAT CON (NOMBRE
                     CLIENTE)</a>
                 <a href="#nothing" class="btn btn-primary mt-3 col-12">EDITAR/OFERTA</a>
                 <a href="#nothing" class="btn btn-primary mt-3 col-12">ACEPTAR</a>
@@ -107,33 +107,26 @@
         </div>
     </div>
 </section>
-<?php include_once CALENDAR?>
-<div class="container">
-    <div id="calendar"></div>
+<?php include_once CALENDAR ?>
+<div class="container py-3">
+    <div class="row pb-3">
+        <div class="col-md-6">
+            <div id="mainCalendar"></div>
+        </div>
+        <div class="col-md-6">
+            <div id="nextCalendar"></div>
+        </div>
+    </div>
+
+    <button type="button" class="fc-prev-button btn btn-primary" id="prevMonth">
+        <span class="fa fa-chevron-left"></span> PREV
+    </button>
+
+    <button type="button" class="fc-prev-button btn btn-primary" id="nextMonth">
+        NEXT <span class="fa fa-chevron-right"></span>
+    </button>
 </div>
-<script>
-    $(() => {
-        $("#calendar").fullCalendar({
-            themeSystem: 'bootstrap4',
-            defaultDate: '2016-12-10',
-            events: [
-                {
-                    title: 'Entrada',
-                    start: '2016-12-10T13:00',
-                },
-                {
-                    title: 'Salida',
-                    start: '2016-12-16T12:00',
-                },
-                {
-                    start: '2016-12-10',
-                    end: '2016-12-17',
-                    rendering: 'background'
-                }
-            ]
-        });
-    })
-</script>
+<script src="/js/calendar.js"></script>
 <?php include_once("footer.php") ?>
 
 </body>
