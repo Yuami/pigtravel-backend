@@ -1,25 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/datatables.min.css">
-    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <?php require_once "libraries.php" ?>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <title>List of houses</title>
 </head>
-<body>
 
-<section class="container">
+<body>
+<section class="container-fluid">
     <h1><a href="house.php">House</a></h1>
     <h1>Houses</h1>
 
     <div class="row">
         <div class="col">
-            <table id="listaCasas" class="table table-striped table-bordered nowrap" style="width: 100%;">
+            <table id="listaCasas" class="responsive table table-striped table-bordered nowrap" style="width: 100%;">
                 <thead>
                 <tr>
                     <th>House</th>
@@ -48,6 +46,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" name="viviendaID" id="viviendaID" disabled/>
+                    <input type="text" name="nombre" id="nombreModal"/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -56,10 +55,12 @@
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="js/datatables.min.js"></script>
-    <script src="js/jquery.dataTables.js"></script>
-    <script src="js/houselistDatatable.js"></script>
-    </body>
+
+
+</section>
+
+<script src="js/datatables.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/houselistDatatable.js"></script>
+</body>
 </html>

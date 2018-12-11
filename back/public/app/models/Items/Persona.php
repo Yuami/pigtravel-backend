@@ -10,6 +10,40 @@ class Persona {
     private $correo;
     private $password;
     private $fechaNacimiento;
+    private $descripcion;
+    private $idCiudad;
+
+    /**
+     * @return mixed
+     */
+    public function getIdCiudad()
+    {
+        return $this->idCiudad;
+    }
+
+    /**
+     * @param mixed $idCiudad
+     */
+    public function setIdCiudad($idCiudad): void
+    {
+        $this->idCiudad = $idCiudad;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param mixed $descripcion
+     */
+    public function setDescripcion($descripcion): void
+    {
+        $this->descripcion = $descripcion;
+    }
 
     public function getId()
     {

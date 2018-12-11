@@ -6,9 +6,8 @@ $(function () {
             dataSrc: '',
             type: "POST",
         },
-        responsive: true,
         columns: [
-            {data: 'Name'},
+            {data: 'nombre'},
             {data: 'HouseType'},
             {data: 'MaxPax'},
             {data: 'Street'},
@@ -41,6 +40,12 @@ $(function () {
                 exportOptions: {
                     columns: 'th:not(:last-child)'
                 }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: 'th:not(:last-child)'
+                }
             }
         ],
         language: {
@@ -55,7 +60,10 @@ $(function () {
 
     $(document).on("click", ".editbutton", function () {
         var selectedID = $(this).data('id');
+        var nombre = $(this).data('nombre');
         $(".modal-body #viviendaID").val(selectedID);
+        $(".modal-body #nombreModal").val(nombre);
+
         // $('#viviendasEditModal').modal('show');
     });
 

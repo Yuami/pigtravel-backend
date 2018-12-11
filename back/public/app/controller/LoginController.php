@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: j_for
- * Date: 04/12/2018
- * Time: 16:17
- */
 
 include_once MODEL . "DAO/LoginDAO.php";
 
