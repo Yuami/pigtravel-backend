@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: j_for
- * Date: 04/12/2018
- * Time: 16:17
- */
 
 include_once MODEL . "DAO/LoginDAO.php";
 
@@ -29,7 +23,8 @@ class LoginController {
         session_start();
         $email = $_POST['emailLogin'];
         if (self::isLoggable($correoPost, $passwordPost)) {
-            Session::set("userID", PersonaDAO::getByCorreo($email));
+            Session::set("user", serialize(PersonaDAO::getByCorreo($email)));
+            Session::set("userID", serialize(PersonaDAO::getByCorreo($email)->getId()));
             Session::set("email", $email);
             return true;
         }
