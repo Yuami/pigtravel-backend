@@ -4,6 +4,8 @@ define("APP", ROOT . "app/");
 define("CONFIG", APP . "config/");
 define("CONTROLLER", APP . "controller/");
 define("MODEL", APP . "models/");
+define("ITEM", MODEL . "items/");
+define("DAO", MODEL . "DAO/");
 define("VIEW", APP . "views/");
 define("INFO", ROOT . "info/");
 define("CALENDAR", ROOT . "calendarInclude.php");

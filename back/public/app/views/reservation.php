@@ -44,7 +44,7 @@
                                 <div class="card-text">
                                     <div class="row">
                                         <img src="/img/tempprofile.jpg" alt="" class="vivienda-img rounded-circle">
-                                        <h5 class="ml-2 mt-3">Nombre cliente (Pero la foto de Phil mola 😅)</h5>
+                                        <h5 class="ml-2 mt-3">Nombre cliente</h5>
                                         <a href="/profile/id" class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
                                     </div>
                                 </div>
