@@ -12,7 +12,8 @@
 </head>
 
 <body>
-<?php include_once("header.php") ?>
+<?php include_once("header.php"); ?>
+
 <div class="container mensajes">
     <div class="row">
         <h2>Messages</h2>
