@@ -29,7 +29,7 @@
             <div class="order-0 order-md-1 offset-md-1 col-md-3 side-menu">
                 <div class="picture-container">
                     <div class="picture">
-                        <img src="https://placeimg.com/250/250/people" class="picture-src" id="wizardPicturePreview"
+                        <img src="<?php echo File::getProfileImage($user); ?>" class="picture-src" id="wizardPicturePreview"
                              title="">
                         <input name="imgForm" type="file" id="wizard-picture" class="">
                     </div>
@@ -41,15 +41,27 @@
                 <form id="profileForm">
                     <div class="col-12 order-1 order-md-0">
                         <div class="row">
-                            <label class="sr-only" for="fullNameForm">Name</label>
+                            <label class="sr-only" for="firstNameForm">Name</label>
                             <div class="input-group mb-2 mr-sm-2">
                                 <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Name</h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span class="fas fa-user text-danger"></span>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" id="fullNameForm" name="fullNameForm"
-                                       style="width: 80px;" value="Philipp Vujic">
+                                <input type="text" class="form-control" id="firstNameForm" name="firstNameForm"
+                                       style="width: 80px;" value="<?php echo $user->getNombre();?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="sr-only" for="surnameForm">Surname</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Surname</h6>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><span class="fas fa-user text-danger"></span>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="surnameForm" name="surnameForm"
+                                       style="width: 80px;" value="<?php echo $user->getApellido1();?>">
                             </div>
                         </div>
                         <div class="row">
@@ -74,7 +86,7 @@
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" id="emailForm" name="emailForm"
-                                       value="newtimestube@gmail.com">
+                                       value="<?php echo $user->getCorreo();?>">
                             </div>
                         </div>
                         <div class="row">
@@ -86,7 +98,7 @@
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" id="telephoneForm" name="telephoneForm"
-                                       value="666554422">
+                                       value="<?php echo $user->getTlf();?>">
                             </div>
                         </div>
                         <div class="row">

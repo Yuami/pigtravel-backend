@@ -1,23 +1,40 @@
 <?php
 
-class File {
+class File
+{
 
-    public static function exists($nombre, $ruta = ""){
-        if (file_exists($ruta . $nombre)) {
+    public static function exists($file)
+    {
+        if (file_exists($file)) {
             return true;
         }
         return false;
     }
 
+    public static function setProfileImage($id, $image)
+    {
+        $file = "/" . PERFIL . $id . ".png";
+        file_put_contents(ROOT . $file, $image);
+        return $file;
+    }
 
-    public static function getProfileImage($id) : string {
+    public static function setRandomImageByName($name, $surname, $id, $size = 128)
+    {
+        return self::setProfileImage($id, file_get_contents("https://ui-avatars.com/api/?name=" . $name . "+" . $surname .  "&size=" . $size));
+    }
+
+    public static function getProfileImage($persona): string
+    {
         $imageType = array('.png', '.jpg', '.jpeg');
+        $id = $persona->getId();
+        $name = $persona->getNombre();
+        $surname = $persona->getApellido1();
 
         foreach ($imageType as $type) {
-            if (self::exists($id . $imageType[$type], PERFIL)) {
-                return PERFIL . $id . $imageType[$type];
+            if (self::exists(PERFIL . $id . $type)) {
+                return "/" . PERFIL . $id . $type;
             }
         }
-        return "https://api.adorable.io/avatars/285/" . $id . ".png";
+        return self::setRandomImageByName($name, $surname, $id);
     }
 }

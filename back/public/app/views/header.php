@@ -13,7 +13,7 @@ if (!Session::isSet('userID')) { ?>
         </div>
     </header>
 <?php } else {
-    $user = unserialize(Session::get('userID'));
+    $user = unserialize(Session::get('user'));
     $profileImage = File::getProfileImage($user);
     ?>
     <header class="head">
