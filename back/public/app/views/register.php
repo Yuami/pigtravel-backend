@@ -5,60 +5,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php include_once("libraries.php") ?>
-    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
-    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="/js/validation/bootstrap-validator.js"></script>
+    <script src="/js/validation/validation.js"></script>
     <title>Register</title>
+    <style>
+        #regForm {
+            background-color: rgba(255, 255, 255, 0.7);
+            margin: 70px auto;
+            padding: 40px;
+            width: 100%;
+            min-width: 600px;
+            border-radius: 10px;
+        }
+
+
+        /* Hide all steps by default: */
+        .window {
+            display: none;
+            height: 100%;
+        }
+
+        /* Step marker: Place in the form. */
+        .step {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: green;
+            border: none;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid: */
+        .step.finish {
+            background-color:;
+        }
+    </style>
 </head>
 <body id="landingBody">
 <?php include_once("header.php") ?>
-<div class="container col-sm-8 col-lg-4">
-    <div class="row" id="registerForm">
-        <form action="" method="get" class="col">
-            <h2>Registro</h2>
-            <p class="hint-text">Create una cuenta,para una mejor expriencia</p>
-            <div class="form-group">
-                <input type="text" class="form-control" name="first_name" placeholder="Nombre" required="required">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="last_name" placeholder="Apellidos" required="required">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="last_name" placeholder="DNI" required="required">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="last_name" placeholder="Telefono" required="required">
-            </div>
-            <div class="form-group">
-                <input class="form-control" placeholder="Fecha de Nacimiento" id="datepicker"/>
-            </div>
-            <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Contraseña"
-                       required="required">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="confirm_password" placeholder="Confirmar Contraseña"
-                       required="required">
-            </div>
-            <div class="form-group">
-                <label class="checkbox-inline"><input type="checkbox" required="required"> Acepto <a href="#">Los
-                        Terminos de Uso
-                    </a> &amp; <a href="#">Politicas Pivacidad</a></label>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Registrate Ahora</button>
-            </div>
+<div class="container-fluid col-md-6 col-md-offset-3">
 
-            <div class="text-center">Ya tienes una cuenta? <a href="login">Log in</a></div>
-        </form>
-    </div>
+    <form id="regForm" action="/submit_page.php">
+        <h1 class="text-center">Registro</h1>
+        <div class="form-group window">
+            <div class="row ">
+                <div class="form-group col">
+                    <label for="">Nom</label>
+                    <input class="form-control" placeholder="Nom..."
+                           oninput="this.className = 'form-control'"
+                           name="lname">
+                </div>
+                <div class="form-group col">
+                    <label for="">Primer Llinatge:</label>
+                    <input class="form-control" placeholder="Primer Llinatge..."
+                           oninput="this.className = 'form-control'"
+                           name="lname">
+                </div>
+                <div class="form-group col">
+                    <label for="">Segon Llinatge:</label>
+                    <input class="form-control" placeholder="Segon Llinatge..."
+                           oninput="this.className = 'form-control'"
+                           name="lname">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col">
+                    <label for="">DNI</label>
+                    <input class="form-control" placeholder="DNI..."
+                           oninput="this.className = 'form-control'"
+                           name="lname">
+                </div>
+                <div class="form-group col">
+                    <label for="">Fecha Nacimiento</label>
+                    <input class="form-control" placeholder="00/00/0000"
+                           oninput="this.className = 'form-control'"
+                           name="lname">
+                </div>
+            </div>
+        </div>
+        <div class="form-group window">
+            <div class="form-group col">
+                <label for="emailLogin">Email:</label>
+                <input type="email" id="emailLogin" class="form-control" placeholder="E-mail..."
+                       oninput="this.className = 'form-control'"
+                       name="emailRegister" required>
+            </div>
+            <div class="form-group col">
+                <label for="">Phone:</label>
+                <input class="form-control" placeholder="Phone..." oninput="this.className = 'form-control'"
+                       name="phone">
+            </div>
+        </div>
+        <div class="form-group window">
+            <div class="row ">
+                <div class="form-group col">
+                    <label for="">Usuario:</label>
+                    <input class="form-control " placeholder="Usuario..." oninput="this.className = 'form-control'"
+                           name="email">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col">
+                    <label for="">Contraseña:</label>
+                    <input class="form-control " placeholder="Contraseña..." oninput="this.className = 'form-control'"
+                           name="phone">
+                </div>
+                <div class="form-group col">
+                    <label for="">Confirmar contraseña:</label>
+                    <input class="form-control " placeholder="Confirmar contraseña..."
+                           oninput="this.className = 'form-control'"
+                           name="phone">
+                </div>
+            </div>
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button class="btn btn-danger" type="button" id="prevBtn" onclick="nextPrev(-1)">Atras</button>
+                <button class="btn btn-success" type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div class="text-center">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </form>
 </div>
 <script>
-    $('#datepicker').datepicker({
-        uiLibrary: 'bootstrap4'
+
+    $('.btn').click(function (event) {
+        event.preventDefault();
+        var target = $(this).data('target');
+        // console.log('#'+target);
+        $('#click-alert').html('data-target= ' + target).fadeIn(50).delay(3000).fadeOut(1000);
     });
+
+
+    // Multi-Step Form
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the crurrent tab
+
+    function showTab(n) {
+        // This function will display the specified tab of the form...
+        var x = document.getElementsByClassName("window");
+        x[n].style.display = "block";
+        //... and fix the Previous/Next buttons:
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Confirmar";
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Siguiente";
+        }
+        //... and run a function that will display the correct step indicator:
+        fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("window");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form...
+        if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            document.getElementById("regForm").submit();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        // This function deals with validation of the form fields
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("window");
+        y = x[currentTab].getElementsByTagName("input");
+        // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value === "") {
+                // add an "invalid" class to the field:
+                y[i].className += " invalid";
+                // and set the current valid status to false
+                valid = false;
+            }
+        }
+        // If the valid status is true, mark the step as finished and valid:
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class on the current step:
+        x[n].className += " active";
+    }
 </script>
 
 <?php include_once("footer.php") ?>

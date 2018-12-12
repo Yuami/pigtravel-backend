@@ -22,22 +22,43 @@
             </ol>
         </div>
     </div>
-    <div class="row" id="cardCasa">
-      <!--  <a href="" class=" card col-8 align-self-center" style="text-decoration: none;color: inherit">
-            <div class="card-body row">
-                <div class="card-img col-4">
-                    <img src="" alt="">
-                </div>
-                <div class="col-4">
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                </div>
-                <div class="col-4">
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                </div>
+    <!-- <div class="row" id="cardCasa">
+
+     </div>-->
+    <div class="row justify-content-center col-12" id="cardCasa">
+        <!-- Card -->
+        <div class="card col-3">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
             </div>
-        </a>-->
+            <!-- Button -->
+            <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i class="fa fa-chevron-right pl-1"></i></a>
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title">Card title</h4>
+                <hr>
+                <!-- Text -->
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+            <!-- Card footer -->
+            <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                <ul class="list-unstyled list-inline font-small">
+                    <li class="list-inline-item pr-2 white-text"><i class="fa fa-clock-o pr-1"></i>05/10/2015</li>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i
+                                    class="fa fa-comments-o pr-1"></i>12</a></li>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i
+                                    class="fa fa-facebook pr-1"> </i>21</a></li>
+                    <li class="list-inline-item"><a href="#" class="white-text"><i class="fa fa-twitter pr-1"> </i>5</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 
