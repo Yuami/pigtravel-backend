@@ -1,8 +1,8 @@
 <?php
 header("Content-Type: application/json");
-session_start();
 require_once("conn.php");
 if (isset($_GET["idVivienda"])){
+    session_start();
     $idVivienda = $_GET["idVivienda"];
     $sql = "SELECT upper(persona.nombre) as nombreSender, 
        vivienda.id as viviendaID,
@@ -13,11 +13,12 @@ if (isset($_GET["idVivienda"])){
 FROM mensajes
   inner join persona on persona.id=mensajes.idSender 
 inner join vivienda on vivienda.id=mensajes.idVivienda 
-where mensajes.idVivienda= :idVivienda and mensajes.idSender=".$_SESSION["userId"]."
+where mensajes.idVivienda= :idVivienda and mensajes.idSender=".$_SESSION["userID"]."
 order by mensajes.fechaEnviado desc";
     $statement = $conn->prepare($sql);
     $statement->bindValue(":idVivienda", $idVivienda);
 } else {
+    session_start();
     $sql = "SELECT upper(persona.nombre) as nombreSender, 
        vivienda.id as viviendaID,
        upper(vivienda.nombre) as nombreCasa,
@@ -27,7 +28,7 @@ order by mensajes.fechaEnviado desc";
 FROM mensajes
   inner join persona on persona.id=mensajes.idSender 
 inner join vivienda on vivienda.id=mensajes.idVivienda 
-where mensajes.idSender=".$_SESSION["userId"]."
+where mensajes.idSender=".$_SESSION["userID"]."
 order by mensajes.fechaEnviado desc";
     $statement = $conn->prepare($sql);
 }

@@ -8,27 +8,26 @@ $(function () {
                     for (reserva in reserves) {
                         var idReserva = reserves[reserva].id;
                         var nomVivenda = reserves[reserva].vivienda;
-                        var tipoVivienda = reserves[reserva].tipo;
                         var ciudadVivienda = reserves[reserva].ciudad;
 
                         var url = "houses/" + idReserva;
                         var newA = $("<a/>", {
                             href: url,
-                            class: 'card col-8 align-self-center',
-                            style: 'color: inherit; margin-left: 17%; text-decoration:none;'
+                            class: 'card col-3 m-2 p-0',
+                            style: 'color: inherit; text-decoration:none;'
                         });
-                        var newCBody = $("<div/>", {class: 'card-body row'});
-                        var newCImg = $("<div/>", {class: 'card-image col-4'});
-                        var newI = $("<img/>", {src: "img/casas/house" + idReserva + ".jpg", style: 'max-width: 60%'});
-                        var newCCont = $("<div/>", {class: 'row col-8 '});
+                        var newCBody = $("<div/>", {class: 'card-body'});
+                        var newCImg = $("<div/>", {class: 'view overlay'});
+                        var newI = $("<img/>", {class: 'card-img-top', src: "img/casas/house" + idReserva + ".jpg"});
                         var newPN = $("<p/>", {text: nomVivenda, class: 'col font-weight-bold  py-5 text-center'});
-                        var newPC = $("<p/>", {text: ciudadVivienda, class: 'col font-weight-bold py-5 text-center'});
-                        var newPP = $("<p/>", {text: "Peticiones Reserva", class: 'col font-weight-bold py-5 text-center'});
+                        var newPC = $("<p/>", {
+                            text: ciudadVivienda,
+                            class: 'col font-weight-bold py-5 text-center'
+                        });
                         var newPM = $("<p/>", {text: "Mensajes", class: 'col font-weight-bold py-5 text-center'});
-                        newCCont.append(newPN, newPC, newPP, newPM);
                         newCImg.append(newI);
-                        newCBody.append(newCImg, newCCont);
-                        newA.append(newCBody);
+                        newCBody.append(newPN, newPM, newPC);
+                        newA.append(newCImg, newCBody);
                         appendToLlista(newA);
 
                     }

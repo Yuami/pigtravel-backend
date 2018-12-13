@@ -24,8 +24,9 @@ class LoginController {
         $email = $_POST['emailLogin'];
         if (self::isLoggable($correoPost, $passwordPost)) {
             Session::set("user", serialize(PersonaDAO::getByCorreo($email)));
-            Session::set("userID", serialize(PersonaDAO::getByCorreo($email)->getId()));
+            Session::set("userID", PersonaDAO::getByCorreo($email)->getId());
             Session::set("email", $email);
+            $_SESSION["userID"]=PersonaDAO::getByCorreo($email)->getId();
             return true;
         }
         return false;

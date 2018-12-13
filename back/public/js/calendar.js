@@ -1,4 +1,4 @@
-function initCalendar($calendarDiv, displayDate, isMain, events) {
+function initCalendar($calendarDiv, displayDate, events) {
     return $calendarDiv.fullCalendar({
         themeSystem: 'bootstrap4',
         defaultDate: displayDate,
@@ -53,7 +53,10 @@ function setCalendar(mainCalendar, nextCalendar, fInicio, fFin) {
 
 
 $(() => {
-    let calendars = setCalendar($('#mainCalendar'), $('#nextCalendar'), '2018-11-12T13:00', '2018-11-17T12:00');
+    let mainC = $('#mainCalendar');
+    let nextC = $('#nextCalendar');
+    let calendars = setCalendar(mainC, nextC, '2018-11-12T13:00', '2018-11-17T12:00');
+
     let next = $('#nextMonth');
     let prev = $('#prevMonth');
     next.click(() => {

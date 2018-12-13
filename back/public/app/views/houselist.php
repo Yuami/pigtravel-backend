@@ -22,29 +22,15 @@
             </ol>
         </div>
     </div>
-    <div class="row" id="cardCasa">
-      <!--  <a href="" class=" card col-8 align-self-center" style="text-decoration: none;color: inherit">
-            <div class="card-body row">
-                <div class="card-img col-4">
-                    <img src="" alt="">
-                </div>
-                <div class="col-4">
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                </div>
-                <div class="col-4">
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                    <p class="col font-weight-bold py-5 text-center">NOM</p>
-                </div>
-            </div>
-        </a>-->
+
+    <div class="row justify-content-center" id="cardCasa">
     </div>
 </section>
 
 <?php include_once("footer.php") ?>
-<script src="js/selects/selectViviendaLista.js"></script>
-<script src="js/datatables.min.js"></script>
-<script src="js/jquery.dataTables.js"></script>
-<script src="../../../../front/js/houselistDatatable.js"></script>
+<script src="/js/selects/selectViviendaLista.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script src="/js/jquery.dataTables.js"></script>
+<script src="/js/houselistDatatable.js"></script>
 </body>
 </html>
