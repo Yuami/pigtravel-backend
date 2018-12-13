@@ -13,7 +13,7 @@ class File
 
     public static function setProfileImage($id, $image)
     {
-        $file = "/" . PERFIL . $id . ".png";
+        $file = PERFIL . $id . ".png";
         file_put_contents(ROOT . $file, $image);
         return $file;
     }
