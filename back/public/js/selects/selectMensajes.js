@@ -1,6 +1,6 @@
 $(function () {
     var botonLeido = false;
-    var mensajesEnviados = true;
+    var mensajesEnviados = false;
     var viviendaID=null;
 
     function loadCardsMensajes(botonLeido, viviendaId, mensajesEnviados) {
@@ -107,6 +107,12 @@ $(function () {
             botonLeido = false;
         }
         loadCardsMensajes(botonLeido, viviendaID, mensajesEnviados);
+
+
+    });
+
+    $("button").click(function(){
+        $(this).find("i").removeClass("fa-eye-slash").addClass("fa-eye");
     });
 
     function loadViviendasDropdown() {
@@ -132,7 +138,7 @@ $(function () {
         viviendaID = this.value;
         botonLeido = false;
         if (viviendaID == -1) {
-            loadCardsMensajes(botonLeido, null, mensajesEnviados);
+            loadCardsMensajes(false, null, false);
         } else {
             loadCardsMensajes(botonLeido, viviendaID, mensajesEnviados);
         }
