@@ -11,4 +11,4 @@ define("INFO", ROOT . "info/");
 
 define("CALENDAR", ROOT . "calendarInclude.php");
 define("DOMAIN", "https://" . $_SERVER['HTTP_HOST']);
-define("PERFIL", "img/perfil/");
+define("PERFIL", ROOT . "img/perfil/");
