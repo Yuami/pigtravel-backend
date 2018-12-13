@@ -10,5 +10,5 @@ define("VIEW", APP . "views/");
 define("INFO", ROOT . "info/");
 
 define("CALENDAR", ROOT . "calendarInclude.php");
-define("DOMAIN", "http://" . $_SERVER['HTTP_HOST']);
+define("DOMAIN", "https://" . $_SERVER['HTTP_HOST']);
 define("PERFIL", "img/perfil/");
