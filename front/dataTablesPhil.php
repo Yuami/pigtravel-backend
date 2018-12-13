@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php require_once "libraries.php" ?>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.css"/>
+
     <title>List of houses</title>
 </head>
 
@@ -45,12 +45,54 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" name="viviendaID" id="viviendaID" disabled/>
-                    <input type="text" name="nombre" id="nombreModal"/>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Id de la casa:</label>
+                                <input type="text" name="viviendaID" id="viviendaID" disabled/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Nombre:</label>
+                                <input type="text" name="nombreModal" id="nombreModal"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>House Type:</label>
+                                <input type="text" name="typeModal" id="typeModal" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Capacity:</label>
+                                <input type="text" name="capacityModal" id="capacityModal" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Street:</label>
+                                <input type="text" name="streetModal" id="streetModal"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Ciudad:</label>
+                                <input type="text" name="ciudadModal" id="ciudadModal" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Check In:</label>
+                                <input type="text" name="checkInModal" id="checkInModal"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Check Out:</label>
+                                <input type="text" name="checkOutModal" id="checkOutModal" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Alquiler Automatico:</label>
+                                <input type="text" name="aaModal" id="aaModal" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Square Meters:</label>
+                                <input type="text" name="squareModal" id="squareModal"/>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button id="modalSubmit" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -59,8 +101,10 @@
 
 </section>
 
-<script src="js/datatables.min.js"></script>
-<script src="js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
+
 <script src="js/houselistDatatable.js"></script>
 </body>
 </html>

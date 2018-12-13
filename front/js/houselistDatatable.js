@@ -26,7 +26,7 @@ $(function () {
         ],
         select: {
             style: 'single',
-            selector: ':not(:last-child)',
+            selector: 'td:not(:last-child)',
             info: false
         },
         buttons: [{
@@ -59,12 +59,39 @@ $(function () {
     });
 
     $(document).on("click", ".editbutton", function () {
-        var selectedID = $(this).data('id');
-        var nombre = $(this).data('nombre');
-        $(".modal-body #viviendaID").val(selectedID);
-        $(".modal-body #nombreModal").val(nombre);
+        var data = t.row($(this).parents('tr')).data();
+        $(".modal-body #viviendaID").val(data['id']);
+        idModal = data['id']
+        $(".modal-body #nombreModal").val(data['nombre']);
+        nombreModal = data['nombre'];
 
-        // $('#viviendasEditModal').modal('show');
+        $(".modal-body #typeModal").val(data['HouseType']);
+        $(".modal-body #capacityModal").val(data['MaxPax']);
+        $(".modal-body #streetModal").val(data['Street']);
+        $(".modal-body #ciudadModal").val(data['City']);
+        $(".modal-body #checkInModal").val(data['CheckIn']);
+        $(".modal-body #checkOutModal").val(data['CheckOut']);
+        $(".modal-body #aaModal").val(data['StandardPrice']);
+        $(".modal-body #squareModal").val(data['SquareMeters']);
     });
 
+    $(document).on("click", "#modalSubmit", function () {
+        var idModal, nombreModal;
+        idModal = $("#viviendaID").val();
+        nombreModal = $("#nombreModal").val();
+
+        let init = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: idModal,
+                nombre: nombreModal,
+            })
+        };
+        fetch('updateViviendasFull.php', init).then(res => console.log(res.text()));
+
+    });
 });
