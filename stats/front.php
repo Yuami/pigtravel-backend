@@ -26,10 +26,8 @@
             margin-left: 64px;
         }
 
-        .btn-group .button(:last-child) {
-            background-color: red;
-            border-right: none; /* Prevent double borders */
-            margin-left: 64px;
+        .active {
+            background-color: red !important;
         }
 
         .btn-group .button:hover {
@@ -40,7 +38,7 @@
 <body>
 <div class="btn-group">
 <a href="index.php" class="button"><span>BACK</span></a>
-<a href="front.php" class="button"><span>FRONT</span></a>
+<a href="front.php" class="active button"><span>FRONT</span></a>
 </div>
 <?php include_once "front.html" ?>
 
