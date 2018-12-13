@@ -22,7 +22,12 @@
         }
 
         .btn-group .button:not(:last-child) {
-            background-color: red !important;
+            border-right: none; /* Prevent double borders */
+            margin-left: 64px;
+        }
+
+        .btn-group .button(:last-child) {
+            background-color: red;
             border-right: none; /* Prevent double borders */
             margin-left: 64px;
         }
@@ -37,7 +42,7 @@
 <a href="index.php" class="button"><span>BACK</span></a>
 <a href="front.php" class="button"><span>FRONT</span></a>
 </div>
-<?php include_once "back.html" ?>
+<?php include_once "front.html" ?>
 
 </body>
 </html>
