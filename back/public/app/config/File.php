@@ -23,8 +23,7 @@ class File
         return self::setProfileImage($id, file_get_contents("https://ui-avatars.com/api/?name=" . $name . "+" . $surname .  "&size=" . $size));
     }
 
-    public static function getProfileImage($persona): string
-    {
+    public static function getProfileImage($persona): string {
         $imageType = array('.png', '.jpg', '.jpeg');
         $id = $persona->getId();
         $name = $persona->getNombre();
