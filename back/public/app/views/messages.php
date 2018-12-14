@@ -26,8 +26,10 @@
                 <button class="form-control filtrosMensajes border-0" id="botonEnviado"><i class="fas fa-paper-plane"></i></button>
             </div>
                 <select id="listaViviendas" class="form-control border-0">
-                    <option value="-1">	<p>Houses</p></option>
+                    <option value="-1"><p>Houses</p></option>
+
                 </select>
+            <?php echo MensajesDAO::getAll()  ;?>
 
         </div>
     </div>
