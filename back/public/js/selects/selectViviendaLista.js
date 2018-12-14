@@ -14,19 +14,19 @@ $(function () {
                         var newA = $("<a/>", {
                             href: url,
                             class: 'card col-3 m-2 p-0',
-                            style: 'color: inherit; text-decoration:none;'
+                            style: 'color: inherit; text-decoration:none;max-width:100%'
                         });
                         var newCBody = $("<div/>", {class: 'card-body'});
                         var newCImg = $("<div/>", {class: 'view overlay'});
                         var newI = $("<img/>", {class: 'card-img-top', src: "img/casas/house" + idReserva + ".jpg"});
-                        var newPN = $("<p/>", {text: nomVivenda, class: 'col font-weight-bold  py-5 text-center'});
+                        var newPN = $("<p/>", {text: nomVivenda, class: 'col font-weight-bold  text-center'});
                         var newPC = $("<p/>", {
                             text: ciudadVivienda,
-                            class: 'col font-weight-bold py-5 text-center'
+                            class: 'col font-weight-bold text-center'
                         });
-                        var newPM = $("<p/>", {text: "Mensajes", class: 'col font-weight-bold py-5 text-center'});
+                        var newPM = $("<p/>", {text: "Mensajes", class: 'col font-weight-bold text-center'});
                         newCImg.append(newI);
-                        newCBody.append(newPN, newPM, newPC);
+                        newCBody.append(newPN,newPC,newPM);
                         newA.append(newCImg, newCBody);
                         appendToLlista(newA);
 

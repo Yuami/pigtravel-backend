@@ -41,7 +41,7 @@
         <div class="form-group col-3 form-check-inline">
             <h6 class="col-4">Filtrar por</h6>
             <select id="filterEst" class="form-control">
-
+                <option value="">--- Selecciona ---</option>
             </select>
         </div>
         <div class="form-group col-3 form-check-inline">

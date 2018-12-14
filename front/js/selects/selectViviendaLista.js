@@ -8,7 +8,6 @@ $(function () {
                     for (reserva in reserves) {
                         var idReserva = reserves[reserva].id;
                         var nomVivenda = reserves[reserva].vivienda;
-                        var tipoVivienda = reserves[reserva].tipo;
                         var ciudadVivienda = reserves[reserva].ciudad;
 
                         var url = "houses/" + idReserva;
