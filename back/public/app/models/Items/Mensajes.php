@@ -1,21 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Phil
- * Date: 21/11/2018
- * Time: 9:19
- */
 
 class Mensajes
 {
+
     private static $idSender;
     private static $idReceiver;
     private static $mensaje;
     private static $fechaEnviado;
 
-    /**
-     * @return mixed
-     */
     public static function getIdSender()
     {
         return self::$idSender;
@@ -76,7 +68,5 @@ class Mensajes
     {
         self::$fechaEnviado = $fechaEnviado;
     }
-
-
 
 }

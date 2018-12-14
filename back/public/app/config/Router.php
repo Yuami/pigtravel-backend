@@ -89,7 +89,14 @@ class Router
                 include_once VIEW . "support.php";
                 break;
             case "messages":
-                include_once VIEW . "messages.php";
+                switch ($this->getMethod()) {
+                    case "GET":
+                        require_once CONTROLLER . "MessagesController.php";
+                        $controller = new MessagesController();
+                        $controller->show();
+                            break;
+
+                }
                 break;
             case "notifications":
                 include_once VIEW . "notifications.php";
