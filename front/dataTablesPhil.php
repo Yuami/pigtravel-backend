@@ -149,7 +149,14 @@
 
     </div>
 
-
+    <ul class="list-group">
+        <li class="list-group-item">Bed and breakfast chill house</li>
+        <li class="list-group-item">B&B your home</li>
+        <li class="list-group-item">Chill and resort</li>
+        <li class="list-group-item">Casa con buenas vistas</li>
+        <li class="list-group-item">Casa Blanca</li>
+        <li class="list-group-item">Casa Paraiso</li>
+    </ul>
 
 </section>
 

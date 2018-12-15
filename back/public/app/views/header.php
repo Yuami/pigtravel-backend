@@ -115,8 +115,8 @@ if (!Session::isSet('userID')) { ?>
                                                 class="textRightNav d-md-none"> PROFILE</span>
                                     </div>
                                     <div class="col-8">
-                                        <p class="text-left"><strong>Philipp Vujic</strong></p>
-                                        <p class="text-left small">Mallorca, ES</p>
+                                        <p class="text-left ml-md-1"><strong><?php echo $user->getNombre(); ?></strong><br><span class="text-left small">Mallorca, ES</span></p>
+
                                     </div>
                                 </div>
                                 <div class="row">
