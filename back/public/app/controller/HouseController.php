@@ -7,12 +7,16 @@
  */
 
 class HouseController {
-    public static function show() {
+    public static function index() {
         include_once VIEW . "houselist.php";
     }
 
     public static function showHouse() {
         include_once VIEW . "house.php";
+    }
+
+    public static function create() {
+        include_once VIEW . "houseAdd.php";
     }
 
 }

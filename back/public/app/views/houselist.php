@@ -29,8 +29,5 @@
 
 <?php include_once("footer.php") ?>
 <script src="/js/selects/selectViviendaLista.js"></script>
-<script src="/js/datatables.min.js"></script>
-<script src="/js/jquery.dataTables.js"></script>
-<script src="/js/houselistDatatable.js"></script>
 </body>
 </html>

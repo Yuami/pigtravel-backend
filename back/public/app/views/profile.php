@@ -160,7 +160,7 @@
                                 </div>
                                 <textarea type="text" rows="7" class="form-control" id="descriptionForm"
                                           name="descriptionForm"
-                                          placeholder="Tell us something about you!"></textarea>
+                                          placeholder="Tell us something about you!"><?php echo $user->getDescripcion(); ?></textarea>
                             </div>
                         </div>
                         <div class="row">

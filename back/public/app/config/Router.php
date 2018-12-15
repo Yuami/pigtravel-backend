@@ -1,9 +1,11 @@
 <?php
+
 class Router
 {
     private $controller;
     private $params;
     private $method;
+
     public function __construct($url, $method)
     {
         $params = explode("/", $url);
@@ -16,6 +18,7 @@ class Router
             $this->params = [];
         $this->method = $method;
     }
+
     /**
      * @return mixed
      */
@@ -23,6 +26,7 @@ class Router
     {
         return $this->method;
     }
+
     /**
      * @return mixed
      */
@@ -30,6 +34,7 @@ class Router
     {
         return $this->controller;
     }
+
     /**
      * @param mixed $controller
      */
@@ -37,6 +42,7 @@ class Router
     {
         $this->controller = $controller;
     }
+
     /**
      * @return mixed
      */
@@ -44,6 +50,7 @@ class Router
     {
         return $this->params;
     }
+
     /**
      * @param mixed $params
      */
@@ -51,6 +58,7 @@ class Router
     {
         $this->params = $params;
     }
+
     public function redirect()
     {
         $params = $this->getParams();
@@ -60,11 +68,14 @@ class Router
                     case "GET":
                         require_once CONTROLLER . "HouseController.php";
                         $controller = new HouseController();
-                        if (!empty($params[0]) && empty($params[1])) {
-                            $controller->showHouse();
+                        if (!empty($params[0]) && $params[0] == "create") {
+                            $controller->create();
+                        } else if (!empty($params[0])) {
+                            if ($params)
+                                $controller->showHouse();
                             break;
                         } else {
-                            $controller->show();
+                            $controller->index();
                         }
                 }
                 break;

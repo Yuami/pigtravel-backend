@@ -5,11 +5,11 @@ abstract class DAO {
     protected static $class;
 
     public static function getAll() {
-        $statement = DB::conn()->prepare("SELECT * FROM " . static::$table);
-        $statement->execute();
+    $statement = DB::conn()->prepare("SELECT * FROM " . static::$table);
+    $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS, static::$class);
-    }
+    return $statement->fetchAll(PDO::FETCH_CLASS, static::$class);
+}
 
     public static function getById($id) {
         $statement = DB::conn()->prepare("SELECT * FROM " . static::$table . " WHERE id = :id");
