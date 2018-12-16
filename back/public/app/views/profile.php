@@ -39,7 +39,7 @@
             </div>
             <div class="order-1 order-md-0 col-md-8">
                 <form id="profileForm">
-                    <div class="col-12 order-1 order-md-0">
+                    <div class="col-12 order-1 order-md-0 ">
                         <div class="row">
                             <label class="sr-only" for="firstNameForm">Name</label>
                             <div class="input-group mb-2 mr-sm-2">

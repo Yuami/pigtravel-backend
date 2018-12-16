@@ -18,7 +18,8 @@ $(function () {
             {data: 'SquareMeters'},
             {
                 render: function (data, type, row, meta) {
-                    return `<button type='button' class='editbutton btn btn-info btn-block' data-toggle='modal' data-id="` + row['id'] + `" data-target='#viviendasEditModal'>Edit</button>`;
+                    return `<button type='button' class='editbutton btn btn-info btn-block' data-toggle='modal' data-id="` + row['id'] + `" data-target='#viviendasEditModal'>Edit</button>
+                            <button type='button' class='deletebutton btn btn-danger btn-block' data-toggle='modal' data-id="\` + row['id'] + \`">Delete</button>`;
                 },
                 orderable: false,
                 searchable: false
@@ -75,6 +76,23 @@ $(function () {
         $(".modal-body #squareModal").val(data['SquareMeters']);
     });
 
+    $(document).on("click", ".deletebutton", function () {
+        var data = t.row($(this).parents('tr')).data();
+        var id = data['id'];
+        console.log(id);
+        let init = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+            })
+        };
+        fetch('deleteViviendasFull.php', init).then(res => console.log(res.text()));
+    });
+
     $(document).on("click", "#modalSubmit", function () {
         var idModal, nombreModal;
         idModal = $("#viviendaID").val();
@@ -91,7 +109,19 @@ $(function () {
                 nombre: nombreModal,
             })
         };
-        fetch('updateViviendasFull.php', init).then(res => console.log(res.text()));
-
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "deleteViviendasFull.php",
+            data: id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                if (json.response.status == 'success') {
+                    alert("error")
+                } else {
+                    alert("error")
+                }
+            }
+        });
     });
 });

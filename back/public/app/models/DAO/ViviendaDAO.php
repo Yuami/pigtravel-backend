@@ -11,10 +11,7 @@ class ViviendaDAO extends DAO{
         // TODO: Implement insert() method.
     }
 
-    /**
-     * @param $tipo
-     * @return array
-     */
+
     public static function getByTipoVivienda($tipo)
     {
         return parent::getBy("idTipoVvienda", $tipo);

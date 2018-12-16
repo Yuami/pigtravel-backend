@@ -11,7 +11,7 @@ class HouseController {
         include_once VIEW . "houselist.php";
     }
 
-    public static function showHouse() {
+    public static function show() {
         include_once VIEW . "house.php";
     }
 
@@ -19,4 +19,8 @@ class HouseController {
         include_once VIEW . "houseAdd.php";
     }
 
+    public static function store() {
+        include_once DAO . "ViviendaDAO.php";
+        header("Location: " . DOMAIN . "/houses");
+    }
 }
