@@ -72,11 +72,15 @@ class Router
                             $controller->create();
                         } else if (!empty($params[0])) {
                             if ($params)
-                                $controller->showHouse();
+                                $controller->show();
                             break;
                         } else {
                             $controller->index();
                         }
+                    case "POST":
+                        require_once CONTROLLER . "HouseController.php";
+                        $controller = new HouseController();
+                        $controller->store();
                 }
                 break;
             case "reservations":

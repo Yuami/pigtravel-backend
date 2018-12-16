@@ -9,7 +9,6 @@
   }
 }
 
-
 html {
   margin: 0;
   padding: 0;
@@ -32,16 +31,17 @@ body {
 
 /* Messages */
 
-.mensajes{
+.mensajes {
   margin: 50px;
 }
-#cardsmensajes{
+
+#cardsmensajes {
   width: 100%;
 }
+
 /* Subscripciones */
 
-
-.subscripciones{
+.subscripciones {
   font-family: Quicksand;
   margin: 30px;
 
@@ -53,32 +53,36 @@ body {
   color: white;
   font-family: Quicksand;
 }
+
 .subscripcion1 {
-  background-image: linear-gradient(#f2c2a2 ,#f0f0f0);
+  background-image: linear-gradient(#f2c2a2, #f0f0f0);
   text-align: center;
   border: 0px;
   height: 300px;
 }
 
 .subscripcion2 {
-  background-image: linear-gradient(#f8acf2 ,#f0f0f0);
+  background-image: linear-gradient(#f8acf2, #f0f0f0);
   text-align: center;
   border: 0px;
   height: 300px;
 }
+
 .subscripcion3 {
-  background-image: linear-gradient(#b0ffbd ,#f0f0f0);
+  background-image: linear-gradient(#b0ffbd, #f0f0f0);
   text-align: center;
   border: 0px;
   height: 300px;
 
 }
+
 .center {
   display: block;
   text-align: center;
 }
-.card-subs{
-  background-color:rgba(51, 170, 51,  0);
+
+.card-subs {
+  background-color: rgba(51, 170, 51, 0);
   border: 0px;
   color: white;
   text-align: center;
@@ -88,18 +92,20 @@ body {
   font-size: 100px;
 }
 
-.tituloSubscripciones{
+.tituloSubscripciones {
   font-size: 40px;
 }
-.fa{
+
+.fa {
   font-size: 100px !important;
 }
 
-.iconosDescripcio{
+.iconosDescripcio {
   padding-left: 50px;
   padding-right: 50px;
 }
-.iconoSubscripciones{
+
+.iconoSubscripciones {
   padding: 15%;
   height: 55%;
   color: black;
@@ -152,7 +158,7 @@ header nav li .nav-link {
   margin-left: 30px !important;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
   color: #fff;
   background-color: #428bca;
 }
@@ -338,7 +344,67 @@ body#landingBody {
 }
 
 /* ADD HOUSE */
+$color_1: #ffffff;
+$font_family_1: Raleway;
+$background_color_1: #ffffff;
+$background_color_2: #ffdddd;
+$background_color_3: #4CAF50;
+$background_color_4: #bbbbbb;
 
+#addHouseForm {
+  background-color: $background_color_1;
+  margin: 10px auto 0 auto;
+  font-family: $font_family_1;
+  padding: 40px;
+  min-width: 300px;
+  h1 {
+    text-align: center;
+  }
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: $font_family_1;
+    border: 1px solid #aaaaaa;
+  }
+  input.invalid {
+    background-color: $background_color_2;
+  }
+  .tab {
+    display: none;
+  }
+  button {
+    background-color: $background_color_3;
+    color: $color_1;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: $font_family_1;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  #prevBtn {
+    background-color: $background_color_4;
+  }
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: $background_color_4;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  .step.active {
+    opacity: 1;
+  }
+  .step.finish {
+    background-color: $background_color_3;
+  }
+}
 
 /* OTHER */
 
@@ -383,14 +449,13 @@ body#landingBody {
   background-color: #f1f1f1;
 }
 
-
 /* CUSTOM MEDIA QUERIES */
 
 @media (min-width: 768px) and (max-width: 1000px) {
-  header  .icoNav {
+  header .icoNav {
     display: block;
   }
-  header  .textNav {
+  header .textNav {
     display: none;
   }
 }

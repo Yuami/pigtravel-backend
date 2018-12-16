@@ -14198,6 +14198,61 @@ body#landingBody {
 }
 
 /* ADD HOUSE */
+#addHouseForm {
+  background-color: #ffffff;
+  margin: 10px auto 0 auto;
+  font-family: Raleway;
+  padding: 40px;
+  min-width: 300px;
+}
+#addHouseForm h1 {
+  text-align: center;
+}
+#addHouseForm input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+#addHouseForm input.invalid {
+  background-color: #ffdddd;
+}
+#addHouseForm .tab {
+  display: none;
+}
+#addHouseForm button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+#addHouseForm button:hover {
+  opacity: 0.8;
+}
+#addHouseForm #prevBtn {
+  background-color: #bbbbbb;
+}
+#addHouseForm .step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+#addHouseForm .step.active {
+  opacity: 1;
+}
+#addHouseForm .step.finish {
+  background-color: #4CAF50;
+}
+
 /* OTHER */
 .algn-l {
   text-align: left !important;
