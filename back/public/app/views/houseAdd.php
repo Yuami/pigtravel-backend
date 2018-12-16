@@ -25,7 +25,7 @@
     </div>
     <div class="container-fluid">
 
-        <form id="addHouseForm" method="post" action="/houses">
+        <form id="addHouseForm" method="POST" action="/houses">
             <div class="row px-md-5">
                 <div class="col-md-8 col-12">
                     <div class="tab form-group">
@@ -50,10 +50,10 @@
                         </select>
                         <label for="street">Address</label>
                         <input id="street" type="text" class="form-control mb-1" placeholder="Son Juan 23"
-                               name="Street">
+                               name="street">
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
-                            <option value="Manacor">Manacor</option>
+                            <option value="21">Manacor</option>
                         </select>
                     </div>
                     <div class="tab form-group">

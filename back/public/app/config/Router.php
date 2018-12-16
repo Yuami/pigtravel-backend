@@ -64,10 +64,10 @@ class Router
         $params = $this->getParams();
         switch ($this->getController()) {
             case "houses":
+                require_once CONTROLLER . "HouseController.php";
+                $controller = new HouseController();
                 switch ($this->getMethod()) {
                     case "GET":
-                        require_once CONTROLLER . "HouseController.php";
-                        $controller = new HouseController();
                         if (!empty($params[0]) && $params[0] == "create") {
                             $controller->create();
                         } else if (!empty($params[0])) {
@@ -77,17 +77,17 @@ class Router
                         } else {
                             $controller->index();
                         }
+                        break;
                     case "POST":
-                        require_once CONTROLLER . "HouseController.php";
-                        $controller = new HouseController();
                         $controller->store();
+                        break;
                 }
                 break;
             case "reservations":
+                require_once CONTROLLER . "ReservationController.php";
+                $controller = new ReservationController();
                 switch ($this->getMethod()) {
                     case "GET":
-                        require_once CONTROLLER . "ReservationController.php";
-                        $controller = new ReservationController();
                         if (!empty($params[0]) && empty($params[1])) {
                             $controller->showReservation();
                             break;
@@ -104,12 +104,12 @@ class Router
                 include_once VIEW . "support.php";
                 break;
             case "messages":
+                require_once CONTROLLER . "MessagesController.php";
                 switch ($this->getMethod()) {
                     case "GET":
-                        require_once CONTROLLER . "MessagesController.php";
                         $controller = new MessagesController();
                         $controller->show();
-                            break;
+                        break;
 
                 }
                 break;

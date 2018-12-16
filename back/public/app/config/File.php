@@ -36,4 +36,15 @@ class File
         }
         return self::setRandomImageByName($name, $surname, $id);
     }
+
+    public static function getMainHouseImage($houseID): string {
+        $imageType = array('.png', '.jpg', '.jpeg');
+
+        foreach ($imageType as $type) {
+            if (self::exists(PERFIL . $houseID . $type)) {
+                return "/" . PERFIL . $houseID . $type;
+            }
+        }
+        return "/" . HOUSEIMG . "placeholder.jpg";
+    }
 }
