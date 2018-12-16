@@ -79,4 +79,19 @@ $(function () {
         fetch('safeViviendaTarifa.php', init).then(res => console.log(res.text()));
     });
 
+    $('#borrar').click(() => {
+        let id = $('#viviendaID');
+        let init = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id.val(),
+            })
+        };
+        fetch('deleteViviendaTarifa.php', init).then(res => console.log(res.text()));
+    });
+
 });
