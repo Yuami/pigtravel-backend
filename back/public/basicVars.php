@@ -13,4 +13,3 @@ define("CALENDAR", ROOT . "calendarInclude.php");
 define("DOMAIN", "http://" . $_SERVER['HTTP_HOST']);
 
 define("PERFIL", "img/perfil/");
-define("HOUSEIMG", "img/casas/");

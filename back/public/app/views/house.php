@@ -29,16 +29,16 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/img/casas/house1.jpg" alt="Los Angeles House">
+                <img src="/img/casas/1.jpg" alt="Los Angeles House">
             </div>
             <div class="carousel-item">
-                <img src="/img/casas/house2.jpg" alt="Los Angeles House">
+                <img src="/img/casas/2.jpg" alt="Los Angeles House">
             </div>
             <div class="carousel-item">
-                <img src="/img/casas/house3.jpg" alt="Los Angeles House">
+                <img src="/img/casas/3.jpg" alt="Los Angeles House">
             </div>
             <div class="carousel-item">
-                <img src="/img/casas/house4.jpg" alt="Los Angeles House">
+                <img src="/img/casas/4.jpg" alt="Los Angeles House">
             </div>
         </div>
 

@@ -100,7 +100,7 @@
                     <div class="row">
                         <div class="card-header w-100"><h3 id="houseNameCard" class="text-center mb-0">Your House</h3></div>
                     </div>
-                    <img class="card-img-top mt-2" src="/img/casas/house1.jpg" alt="Card image cap">
+                    <img class="card-img-top mt-2" src="/img/casas/1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p id="personCard" class="mb-0"></p>
                         <p id="streetCard"></p>

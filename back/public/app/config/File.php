@@ -24,27 +24,34 @@ class File
     }
 
     public static function getProfileImage($persona): string {
-        $imageType = array('.png', '.jpg', '.jpeg');
         $id = $persona->getId();
         $name = $persona->getNombre();
         $surname = $persona->getApellido1();
 
-        foreach ($imageType as $type) {
-            if (self::exists(PERFIL . $id . $type)) {
-                return "/" . PERFIL . $id . $type;
-            }
+        $img = self::getIMG(PERFIL, $id);
+        if ($img != null){
+            return $img;
         }
         return self::setRandomImageByName($name, $surname, $id);
     }
 
-    public static function getMainHouseImage($houseID): string {
+    public static function getIMG($route, $name){
         $imageType = array('.png', '.jpg', '.jpeg');
-
+        $img = $route . $name;
         foreach ($imageType as $type) {
-            if (self::exists(PERFIL . $houseID . $type)) {
-                return "/" . PERFIL . $houseID . $type;
+            if (self::exists(ROOT . $img . $type)) {
+                return $img . $type;
             }
         }
-        return "/" . HOUSEIMG . "placeholder.jpg";
+        return null;
+    }
+
+    public static function getMainHouseImage($houseID): string {
+        define("HOUSEIMG", "img/casas/");
+        $img = self::getIMG(HOUSEIMG, $houseID);
+        if ($img != null){
+            return $img;
+        }
+        return HOUSEIMG . "placeholder.jpg";
     }
 }

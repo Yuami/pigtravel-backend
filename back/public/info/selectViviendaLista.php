@@ -15,4 +15,4 @@ where v.idVendedor =" . Session::get('userID');
 $res = DB::conn()->prepare($statement);
 $res->execute();
 $rows = $res->fetchAll(PDO::FETCH_ASSOC);
-echo json_encode($rows, JSON_PRETTY_PRINT);
+echo json_encode($rows);

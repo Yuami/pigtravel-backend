@@ -27,7 +27,7 @@
                             <div class="card-body">
                                 <div class="card-text">
                                     <div class="row">
-                                        <img src="/img/casas/house1.jpg" alt="" class="vivienda-img rounded-circle">
+                                        <img src="/img/casas/1.jpg" alt="" class="vivienda-img rounded-circle">
                                         <h5 class="ml-2 mt-3">Nombre de la casa</h5>
                                         <a href="/houses/id"
                                            class="btn btn-primary ml-auto my-3 px-4 mr-2">VER</a>
