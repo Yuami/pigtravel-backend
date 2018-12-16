@@ -20,6 +20,7 @@ class HouseController {
     }
 
     public static function store() {
+        include_once ITEM . "Vivienda.php";
         include_once DAO . "ViviendaDAO.php";
         header("Location: " . DOMAIN . "/houses");
     }
