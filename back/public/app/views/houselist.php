@@ -22,12 +22,20 @@
             </ol>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <button id="addHouse" onclick="window.location.href='/houses/create'" class="btn btn-outline-success">Añadir
+            Casa
+            <span><i class="fas fa-plus"></i></span></button>
+    </div>
+    <div class="container-fluid">
+        <div class="row" id="cardCasa">
 
-    <div class="row justify-content-center" id="cardCasa">
+        </div>
     </div>
 </section>
 
 <?php include_once("footer.php") ?>
+
 <script src="/js/selects/selectViviendaLista.js"></script>
 </body>
 </html>
