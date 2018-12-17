@@ -49,43 +49,33 @@
 </head>
 <body id="landingBody">
 <?php include_once("header.php") ?>
-<div class="container-fluid col-md-6 col-md-offset-3">
+<div class="container-fluid col-md-6 col-md-offset-3 justify-content-center">
 
-    <form id="regForm" action="/submit_page.php">
+    <form id="regForm" method="POST" action="/register">
         <h1 class="text-center">Registro</h1>
         <div class="form-group window">
             <div class="row ">
                 <div class="form-group col">
                     <label for="">Nom</label>
-                    <input class="form-control" placeholder="Nom..."
-                           oninput="this.className = 'form-control'"
-                           name="lname">
+                    <input class="form-control" placeholder="Nom..." name="nom">
                 </div>
                 <div class="form-group col">
                     <label for="">Primer Llinatge:</label>
-                    <input class="form-control" placeholder="Primer Llinatge..."
-                           oninput="this.className = 'form-control'"
-                           name="lname">
+                    <input class="form-control" placeholder="Primer Llinatge..." name="apellido1">
                 </div>
                 <div class="form-group col">
                     <label for="">Segon Llinatge:</label>
-                    <input class="form-control" placeholder="Segon Llinatge..."
-                           oninput="this.className = 'form-control'"
-                           name="lname">
+                    <input class="form-control" placeholder="Segon Llinatge..." name="apellido2">
                 </div>
             </div>
             <div class="row ">
                 <div class="form-group col">
                     <label for="">DNI</label>
-                    <input class="form-control" placeholder="DNI..."
-                           oninput="this.className = 'form-control'"
-                           name="lname">
+                    <input class="form-control" placeholder="DNI..." name="dni">
                 </div>
                 <div class="form-group col">
                     <label for="">Fecha Nacimiento</label>
-                    <input class="form-control" placeholder="00/00/0000"
-                           oninput="this.className = 'form-control'"
-                           name="lname">
+                    <input class="form-control" placeholder="00/00/0000" name="fechaN">
                 </div>
             </div>
         </div>
@@ -93,34 +83,22 @@
             <div class="form-group col">
                 <label for="emailLogin">Email:</label>
                 <input type="email" id="emailLogin" class="form-control" placeholder="E-mail..."
-                       oninput="this.className = 'form-control'"
                        name="emailRegister" required>
             </div>
             <div class="form-group col">
                 <label for="">Phone:</label>
-                <input class="form-control" placeholder="Phone..." oninput="this.className = 'form-control'"
-                       name="phone">
+                <input class="form-control" placeholder="Phone..." name="telefono">
             </div>
         </div>
         <div class="form-group window">
-            <div class="row ">
-                <div class="form-group col">
-                    <label for="">Usuario:</label>
-                    <input class="form-control " placeholder="Usuario..." oninput="this.className = 'form-control'"
-                           name="email">
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col">
+            <div class="container justify-content-center">
+                <div class="form-group col-6">
                     <label for="">Contraseña:</label>
-                    <input class="form-control " placeholder="Contraseña..." oninput="this.className = 'form-control'"
-                           name="phone">
+                    <input type="password" class="form-control " placeholder="Contraseña..." name="passw">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-6">
                     <label for="">Confirmar contraseña:</label>
-                    <input class="form-control " placeholder="Confirmar contraseña..."
-                           oninput="this.className = 'form-control'"
-                           name="phone">
+                    <input type="password" class="form-control " placeholder="Confirmar contraseña..." name="passwC">
                 </div>
             </div>
         </div>

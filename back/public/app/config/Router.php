@@ -59,7 +59,8 @@ class Router
         $this->params = $params;
     }
 
-    private function methodSelection(Controller $c){
+    private function methodSelection(Controller $c)
+    {
         $params = $this->getParams();
         switch ($this->getMethod()) {
             case "GET":
@@ -119,7 +120,8 @@ class Router
                 include_once VIEW . "logout.php";
                 break;
             case "register":
-                include_once VIEW . "register.php";
+                require_once CONTROLLER . "RegisterController.php";
+                $controller = new RegisterController();
                 break;
             case "main":
             case "":
