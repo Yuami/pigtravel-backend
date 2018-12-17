@@ -14,7 +14,6 @@ class RegisterDAO
         $persona = PersonaDAO::getBy('DNI', $dni);
         if ($persona != null) {
             header("Location: " . DOMAIN . "/register");
-
         } else {
             PersonaDAO::insert($nombre, $apellido1, $apellido2, $dni, $tlf, $correo, $password, $fechaN);
         }

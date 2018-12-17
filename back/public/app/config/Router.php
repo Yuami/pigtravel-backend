@@ -1,11 +1,13 @@
 <?php
 
-class Router {
+class Router
+{
     private $controller;
     private $params;
     private $method;
 
-    public function __construct($url, $method) {
+    public function __construct($url, $method)
+    {
         $params = explode("/", $url);
         $controller = $params[1];
         $params = array_splice($params, 2);
@@ -20,39 +22,45 @@ class Router {
     /**
      * @return mixed
      */
-    public function getMethod() {
+    public function getMethod()
+    {
         return $this->method;
     }
 
     /**
      * @return mixed
      */
-    public function getController() {
+    public function getController()
+    {
         return $this->controller;
     }
 
     /**
      * @param mixed $controller
      */
-    public function setController($controller) : void {
+    public function setController($controller): void
+    {
         $this->controller = $controller;
     }
 
     /**
      * @return mixed
      */
-    public function getParams() {
+    public function getParams()
+    {
         return $this->params;
     }
 
     /**
      * @param mixed $params
      */
-    public function setParams($params) : void {
+    public function setParams($params): void
+    {
         $this->params = $params;
     }
 
-    private function methodSelection(Controller $c) {
+    private function methodSelection(Controller $c)
+    {
         $params = $this->getParams();
         switch ($this->getMethod()) {
             case "GET":
@@ -78,7 +86,8 @@ class Router {
         }
     }
 
-    public function redirect() {
+    public function redirect()
+    {
         require_once CONTROLLER . "DummyController.php";
         $controller = new DummyController();
         switch ($this->getController()) {
@@ -111,7 +120,8 @@ class Router {
                 include_once VIEW . "logout.php";
                 break;
             case "register":
-                include_once VIEW . "register.php";
+                require_once CONTROLLER . "RegisterController.php";
+                $controller = new RegisterController();
                 break;
             case "main":
             case "":

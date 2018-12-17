@@ -27,16 +27,9 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         $stmt->bindValue(':passw', $password);
         $stmt->bindValue(':fechaN', $fechaN);
         $stmt->execute();
-        $per = PersonaDAO::getByCorreo($correo)->getId();
-        LoginController::log($per, $correo);
-        header("Location: " . DOMAIN);
+        LoginController::log($correo, $password);
+            header("Location: " . DOMAIN);
     }
-
-    public static function register()
-    {
-
-    }
-
     public static function getByCorreo($correo)
     {
         $res = parent::getBy("correo", $correo);
