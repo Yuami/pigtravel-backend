@@ -104,7 +104,7 @@ if (!Session::isSet('userID')) { ?>
                         <button id="dropdownHeaderButton" type="button"
                                 class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
-                            <img src="<?php echo $profileImage ?>" alt="" class="header-profile-img rounded-circle mr-md-1">
+                            <img src="/<?php echo $profileImage ?>" alt="" class="header-profile-img rounded-circle mr-md-1">
                         </button>
                         <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
                             <div class="container-fluid">
