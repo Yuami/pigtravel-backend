@@ -3,12 +3,12 @@
 class Mensajes
 {
 
-    private static $idSender;
-    private static $idReceiver;
-    private static $mensaje;
-    private static $fechaEnviado;
+    private $idSender;
+    private $idReceiver;
+    private $mensaje;
+    private $fechaEnviado;
 
-    public static function getIdSender()
+    public function getIdSender()
     {
         return self::$idSender;
     }
@@ -16,7 +16,7 @@ class Mensajes
     /**
      * @param mixed $idSender
      */
-    public static function setIdSender($idSender): void
+    public function setIdSender($idSender): void
     {
         self::$idSender = $idSender;
     }
@@ -24,7 +24,7 @@ class Mensajes
     /**
      * @return mixed
      */
-    public static function getIdReceiver()
+    public function getIdReceiver()
     {
         return self::$idReceiver;
     }
@@ -32,7 +32,7 @@ class Mensajes
     /**
      * @param mixed $idReceiver
      */
-    public static function setIdReceiver($idReceiver): void
+    public function setIdReceiver($idReceiver): void
     {
         self::$idReceiver = $idReceiver;
     }
@@ -40,15 +40,15 @@ class Mensajes
     /**
      * @return mixed
      */
-    public static function getMensaje()
+    public function getMensaje()
     {
-        return self::$mensaje;
+        return $this->mensaje;
     }
 
     /**
      * @param mixed $mensaje
      */
-    public static function setMensaje($mensaje): void
+    public function setMensaje($mensaje): void
     {
         self::$mensaje = $mensaje;
     }
@@ -56,7 +56,7 @@ class Mensajes
     /**
      * @return mixed
      */
-    public static function getFechaEnviado()
+    public function getFechaEnviado()
     {
         return self::$fechaEnviado;
     }
@@ -64,7 +64,7 @@ class Mensajes
     /**
      * @param mixed $fechaEnviado
      */
-    public static function setFechaEnviado($fechaEnviado): void
+    public function setFechaEnviado($fechaEnviado): void
     {
         self::$fechaEnviado = $fechaEnviado;
     }
