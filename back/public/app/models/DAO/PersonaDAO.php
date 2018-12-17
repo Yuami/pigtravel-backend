@@ -28,13 +28,8 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         $stmt->bindValue(':fechaN', $fechaN);
         $stmt->execute();
         $per = PersonaDAO::getByCorreo($correo)->getId();
-        $res = LoginController::log($per, $correo);
-        if ($res == true) {
-            header("Location: " . DOMAIN);
-        } else {
-            header("Location: " . DOMAIN . "/register");
-        }
-
+        LoginController::log($per, $correo);
+        header("Location: " . DOMAIN);
     }
 
     public static function register()

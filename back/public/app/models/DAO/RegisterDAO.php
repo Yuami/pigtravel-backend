@@ -13,7 +13,8 @@ class RegisterDAO
         include_once MODEL . "DAO/PersonaDAO.php";
         $persona = PersonaDAO::getBy('DNI', $dni);
         if ($persona != null) {
-            return false;
+            header("Location: " . DOMAIN . "/register");
+
         } else {
             PersonaDAO::insert($nombre, $apellido1, $apellido2, $dni, $tlf, $correo, $password, $fechaN);
         }
