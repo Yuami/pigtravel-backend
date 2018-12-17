@@ -4,7 +4,7 @@ class Mensajes
 {
     private $idVivienda;
     private $idSender;
-    private $idReceiver;
+    private $idReciever;
     private $mensaje;
     private $fechaEnviado;
 
@@ -17,62 +17,20 @@ class Mensajes
         return $this->idVivienda;
     }
 
-
-    /**
-     * @param mixed $idSender
-     */
-    public function setIdSender($idSender): void
+    public function getIdReciever()
     {
-        self::$idSender = $idSender;
+        return $this->idReciever;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getIdReceiver()
-    {
-        return $this->idReceiver;
-    }
-
-    /**
-     * @param mixed $idReceiver
-     */
-    public function setIdReceiver($idReceiver): void
-    {
-        self::$idReceiver = $idReceiver;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getMensaje()
     {
         return $this->mensaje;
     }
 
-    /**
-     * @param mixed $mensaje
-     */
-    public function setMensaje($mensaje): void
-    {
-        self::$mensaje = $mensaje;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getFechaEnviado()
     {
         return $this->fechaEnviado;
     }
 
-    /**
-     * @param mixed $fechaEnviado
-     */
-    public function setFechaEnviado($fechaEnviado): void
-    {
-        self::$fechaEnviado = $fechaEnviado;
-    }
 
 
 }

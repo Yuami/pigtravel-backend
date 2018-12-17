@@ -17,34 +17,38 @@
         <h2>Messages</h2>
     </div>
     <div class="row">
-        <p> <a href="index.php">Menu</a> > Messages</p>
+        <p> <a href="index.php">Menu</a> > Mensajes</p>
     </div>
     <div class="row">
         <div class="form-group form-check-inline">
             <div class="btn-group">
                 <button class="form-control border-0" id="botonLeido"><i class="far fa-eye-slash"></i></button>
-                <button class="form-control border-0" id="botonEnviado">Enviados</button>
+                <form>
+                    <input type="button" value="Enviados" class="form-control border-0" onclick="window.location.href='/messagesSent'" />
+                </form>
             </div>
-                <select id="listaViviendas" class="form-control border-0">
-                       <option value="-1"><p>Casas</p></option>
+                <select id="listaViviendas" class="form-control border-0" onchange="window.location ='/messages/'+this.value">
+                       <option selected="selected"><p>Casas</p></option>
                     <?php
                     foreach(ViviendaDAO::getBy('idVendedor',4) as $vivienda) {
                     ?>
-                    <option><?php echo $vivienda->getNombre(); ?></option>
+                    <option value="<?php echo $vivienda->getId();?>"><?php echo $vivienda->getNombre(); ?></option>
                     <?php } ?>
                 </select>
-        </div>
+            </div>
+
     </div>
     <div class="row">
          <div id="cardsmensajes">
+
              <?php
-             foreach(self::enviados($_SESSION["userID"],true,0) as $mensaje) {
+             foreach(self::recibidos($_SESSION["userID"]) as $mensaje) {
                ?>
              <div class="card cardMessages">
                  <div class='card-body missatgeCard'>
                      <div class='row'>
                          <div class='col-md-4'>
-                             <div class="row"><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?></div>
+                             <div class="row"><?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?></div>
                              <div class='row'><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></div>
                          </div>
                          <div class='col-md-6'><?php echo $mensaje->getMensaje(); ?></div>

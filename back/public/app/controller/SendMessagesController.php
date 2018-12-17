@@ -2,21 +2,17 @@
 
 include_once DAO . "MensajesDAO.php";
 
-class MessagesController extends Controller {
+class SendMessagesController extends Controller {
 
     public function show() {
-        require_once VIEW . 'messages.php';
+
     }
 
     public function index() {
-        require_once VIEW . 'messages.php';
+        require_once VIEW . 'messagesSent.php';
     }
     public static function enviados($idUsuari) {
-            $mensajes = MensajesDAO::getBy("idSender",$idUsuari);
-           return $mensajes;
-    }
-    public static function recibidos($idUsuari) {
-        $mensajes = MensajesDAO::getBy("idReciever",$idUsuari);
+        $mensajes = MensajesDAO::getBy("idSender",$idUsuari);
         return $mensajes;
     }
 
@@ -42,5 +38,4 @@ class MessagesController extends Controller {
 
 
 }
-
 
