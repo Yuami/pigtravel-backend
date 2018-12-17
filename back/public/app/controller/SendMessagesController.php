@@ -4,7 +4,7 @@ include_once DAO . "MensajesDAO.php";
 
 class SendMessagesController extends Controller {
 
-    public function show() {
+    public function show($id) {
 
     }
 
@@ -24,11 +24,11 @@ class SendMessagesController extends Controller {
         // TODO: Implement store() method.
     }
 
-    public function edit() {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update() {
+    public function update($id) {
         // TODO: Implement update() method.
     }
 
