@@ -8,7 +8,7 @@
 
 class RegisterController extends Controller
 {
-    public function edit()
+    public function edit($id)
     {
         // TODO: Implement edit() method.
     }
@@ -28,12 +28,12 @@ class RegisterController extends Controller
         include_once VIEW . "register.php";
     }
 
-    public function show()
+    public function show($id)
     {
-        $this->index();
+
     }
 
-    public function update()
+    public function update($id)
     {
         // TODO: Implement update() method.
     }
