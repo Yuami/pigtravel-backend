@@ -9,5 +9,6 @@ require_once CONFIG . "Session.php";
 
 require_once MODEL . "DAO/DAO.php";
 require_once MODEL . "DAO/DB.php";
+require_once CONTROLLER . "Controller.php";
 
 include_once (MODEL . "Items/Persona.php");

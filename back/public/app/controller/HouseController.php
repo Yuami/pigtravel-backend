@@ -1,23 +1,23 @@
 <?php
 
-class HouseController
+class HouseController extends Controller
 {
-    public static function index()
+    public function index()
     {
         include_once VIEW . "houselist.php";
     }
 
-    public static function show()
+    public function show()
     {
         include_once VIEW . "house.php";
     }
 
-    public static function create()
+    public function create()
     {
         include_once VIEW . "houseAdd.php";
     }
 
-    public static function store()
+    public function store()
     {
         include_once ITEM . "Vivienda.php";
         include_once DAO . "ViviendaDAO.php";
@@ -37,4 +37,18 @@ class HouseController
             "descripcion" => $_POST['description']]);
         header("Location: " . DOMAIN . "/houses");
     }
+
+    public function edit() {
+        // TODO: Implement edit() method.
+    }
+
+    public function update() {
+        // TODO: Implement update() method.
+    }
+
+    public function destroy() {
+        // TODO: Implement destroy() method.
+    }
+
+
 }

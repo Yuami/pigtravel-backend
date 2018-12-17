@@ -59,42 +59,43 @@ class Router
         $this->params = $params;
     }
 
+    private function methodSelection(Controller $c){
+        $params = $this->getParams();
+        switch ($this->getMethod()) {
+            case "GET":
+                if (!empty($params[0]) && $params[0] == "create") {
+                    $c->create();
+                } else if (!empty($params[0])) {
+                    if ($params)
+                        $c->show();
+                    break;
+                } else {
+                    $c->index();
+                }
+                break;
+            case "POST":
+                $c->store();
+                break;
+            case "PUT":
+            case "PATCH":
+                $c->update();
+                break;
+            case "DELETE":
+                $c->destroy();
+        }
+    }
+
     public function redirect()
     {
-        $params = $this->getParams();
+        $controller = null;
         switch ($this->getController()) {
             case "houses":
                 require_once CONTROLLER . "HouseController.php";
                 $controller = new HouseController();
-                switch ($this->getMethod()) {
-                    case "GET":
-                        if (!empty($params[0]) && $params[0] == "create") {
-                            $controller->create();
-                        } else if (!empty($params[0])) {
-                            if ($params)
-                                $controller->show();
-                            break;
-                        } else {
-                            $controller->index();
-                        }
-                        break;
-                    case "POST":
-                        $controller->store();
-                        break;
-                }
                 break;
             case "reservations":
                 require_once CONTROLLER . "ReservationController.php";
                 $controller = new ReservationController();
-                switch ($this->getMethod()) {
-                    case "GET":
-                        if (!empty($params[0]) && empty($params[1])) {
-                            $controller->showReservation();
-                            break;
-                        } else {
-                            $controller->show();
-                        }
-                }
                 break;
             case "profile":
             case "settings":
@@ -105,13 +106,7 @@ class Router
                 break;
             case "messages":
                 require_once CONTROLLER . "MessagesController.php";
-                switch ($this->getMethod()) {
-                    case "GET":
-                        $controller = new MessagesController();
-                        $controller->show();
-                        break;
-
-                }
+                $controller = new MessagesController();
                 break;
             case "notifications":
                 include_once VIEW . "notifications.php";
@@ -132,5 +127,6 @@ class Router
             default:
                 echo "<h1>404</h1><br><h2> PAGINA NO ENCONTRADA</h2>";
         }
+        $this->methodSelection($controller);
     }
 }
