@@ -7,7 +7,7 @@ class HouseController extends Controller
         include_once VIEW . "houselist.php";
     }
 
-    public function show()
+    public function show($id)
     {
         include_once VIEW . "house.php";
     }
@@ -38,11 +38,11 @@ class HouseController extends Controller
         header("Location: " . DOMAIN . "/houses");
     }
 
-    public function edit() {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update() {
+    public function update($id) {
         // TODO: Implement update() method.
     }
 

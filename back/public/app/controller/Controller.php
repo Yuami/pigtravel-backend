@@ -13,11 +13,11 @@ abstract class Controller {
 
     public abstract function store();
 
-    public  abstract function show();
+    public  abstract function show($id);
 
-    public abstract function edit();
+    public abstract function edit($id);
 
-    public  abstract function update();
+    public  abstract function update($id);
 
     public abstract function destroy();
 
