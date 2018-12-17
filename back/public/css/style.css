@@ -14197,33 +14197,60 @@ body#landingBody {
   object-fit: cover;
 }
 
-/* MESSAGES */
-.location {
-  padding: 20px;
+/* ADD HOUSE */
+#addHouseForm {
+  background-color: #ffffff;
+  margin: 10px auto 0 auto;
+  font-family: Raleway;
+  padding: 40px;
+  min-width: 300px;
 }
-
-.filtro {
-  background-color: transparent;
+#addHouseForm h1 {
+  text-align: center;
+}
+#addHouseForm input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+#addHouseForm input.invalid {
+  background-color: #ffdddd;
+}
+#addHouseForm .tab {
+  display: none;
+}
+#addHouseForm button {
+  background-color: #4CAF50;
+  color: #ffffff;
   border: none;
-  padding-left: 25px;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
 }
-
-i {
-  color: gray;
+#addHouseForm button:hover {
+  opacity: 0.8;
 }
-
-.mensajes {
-  border: black;
+#addHouseForm #prevBtn {
+  background-color: #bbbbbb;
 }
-
-.gran {
-  margin-left: 100px;
-  margin-top: 50px;
-  margin-right: 100px;
+#addHouseForm .step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
 }
-
-table {
-  border: black 2px solid;
+#addHouseForm .step.active {
+  opacity: 1;
+}
+#addHouseForm .step.finish {
+  background-color: #4CAF50;
 }
 
 /* OTHER */

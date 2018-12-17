@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <title>House</title>
 </head>
 
@@ -28,16 +29,16 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/img/casas/house1.jpg" alt="Los Angeles House">
+                <img src="/img/casas/1.jpg" alt="Los Angeles House">
             </div>
             <div class="carousel-item">
-                <img src="/img/casas/house2.jpg" alt="Los Angeles House">
+                <img src="/img/casas/2.jpg" alt="Los Angeles House">
             </div>
             <div class="carousel-item">
-                <img src="/img/casas/house3.jpg" alt="Los Angeles House">
+                <img src="/img/casas/3.jpg" alt="Los Angeles House">
             </div>
             <div class="carousel-item">
-                <img src="/img/casas/house4.jpg" alt="Los Angeles House">
+                <img src="/img/casas/4.jpg" alt="Los Angeles House">
             </div>
         </div>
 

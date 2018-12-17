@@ -1,9 +1,11 @@
 <?php
+
 class Router
 {
     private $controller;
     private $params;
     private $method;
+
     public function __construct($url, $method)
     {
         $params = explode("/", $url);
@@ -16,6 +18,7 @@ class Router
             $this->params = [];
         $this->method = $method;
     }
+
     /**
      * @return mixed
      */
@@ -23,6 +26,7 @@ class Router
     {
         return $this->method;
     }
+
     /**
      * @return mixed
      */
@@ -30,6 +34,7 @@ class Router
     {
         return $this->controller;
     }
+
     /**
      * @param mixed $controller
      */
@@ -37,6 +42,7 @@ class Router
     {
         $this->controller = $controller;
     }
+
     /**
      * @return mixed
      */
@@ -44,6 +50,7 @@ class Router
     {
         return $this->params;
     }
+
     /**
      * @param mixed $params
      */
@@ -51,35 +58,45 @@ class Router
     {
         $this->params = $params;
     }
-    public function redirect()
-    {
+
+    private function methodSelection(Controller $c){
         $params = $this->getParams();
-        switch ($this->getController()) {
-            case "houses":
-                switch ($this->getMethod()) {
-                    case "GET":
-                        require_once CONTROLLER . "HouseController.php";
-                        $controller = new HouseController();
-                        if (!empty($params[0]) && empty($params[1])) {
-                            $controller->showHouse();
-                            break;
-                        } else {
-                            $controller->show();
-                        }
+        switch ($this->getMethod()) {
+            case "GET":
+                if (!empty($params[0]) && $params[0] == "create") {
+                    $c->create();
+                } else if (!empty($params[0])) {
+                    if ($params)
+                        $c->show();
+                    break;
+                } else {
+                    $c->index();
                 }
                 break;
+            case "POST":
+                $c->store();
+                break;
+            case "PUT":
+            case "PATCH":
+                $c->update();
+                break;
+            case "DELETE":
+                $c->destroy();
+        }
+    }
+
+    public function redirect()
+    {
+        require_once CONTROLLER . "DummyController.php";
+        $controller = new DummyController();
+        switch ($this->getController()) {
+            case "houses":
+                require_once CONTROLLER . "HouseController.php";
+                $controller = new HouseController();
+                break;
             case "reservations":
-                switch ($this->getMethod()) {
-                    case "GET":
-                        require_once CONTROLLER . "ReservationController.php";
-                        $controller = new ReservationController();
-                        if (!empty($params[0]) && empty($params[1])) {
-                            $controller->showReservation();
-                            break;
-                        } else {
-                            $controller->show();
-                        }
-                }
+                require_once CONTROLLER . "ReservationController.php";
+                $controller = new ReservationController();
                 break;
             case "profile":
             case "settings":
@@ -89,14 +106,8 @@ class Router
                 include_once VIEW . "support.php";
                 break;
             case "messages":
-                switch ($this->getMethod()) {
-                    case "GET":
-                        require_once CONTROLLER . "MessagesController.php";
-                        $controller = new MessagesController();
-                        $controller->show();
-                            break;
-
-                }
+                require_once CONTROLLER . "MessagesController.php";
+                $controller = new MessagesController();
                 break;
             case "notifications":
                 include_once VIEW . "notifications.php";
@@ -117,5 +128,6 @@ class Router
             default:
                 echo "<h1>404</h1><br><h2> PAGINA NO ENCONTRADA</h2>";
         }
+        $this->methodSelection($controller);
     }
 }

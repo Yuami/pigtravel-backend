@@ -1,87 +1,97 @@
-let container = $('#table-container');
-let select = $('#select');
-let taula = $('#taula');
-
-let normal = $('#normal');
-let idOut = $('#idOut');
-let idioma = $('#idioma');
-let selectbtn = $('#selectbtn');
-let edit = $('#edit');
-
-let lastOpt = 0;
-let order = ["desc", "asc"];
-c(taula);
-
-select.change(() => {
-    let option = select.children('option:selected').val();
-    taula.order([ [lastOpt, order[o]] ]).draw();
-    lastOpt = option.val();
-});
-
-normal.click(() => {
-    taula = reset(container);
-    c(taula);
-});
-
-idOut.click(() => {
-    taula = reset(container);
-    taula.children("tBody").empty();
-    c(taula).column(0).visible(false);
-});
-
-idioma.click(() => {
-    taula = reset(container);
-    c(taula, "Catalan");
-});
-
-selectbtn.click(() =>{
-    taula = reset(container);
-    let tab = e();
-    tab.select = true;
-    n(taula,tab);
-});
-
-let taula6 = $('#taula6');
-taula6 = c(taula6);
-
-function e(lang = "English") {
-    return {
+$(function () {
+    t = $('#listaCasas').DataTable({
+        dom: "Bpftipr",
         ajax: {
-            url: "http://localhost:63342/lloguer_vacacional/controller/LoginController.phproller.php",
+            url: 'vivienda-tarifa.php',
             dataSrc: '',
-            type: 'GET'
+            type: "POST",
         },
+        responsive: true,
         columns: [
-            {data: 'id'},
-            {data: 'nombre'}
+            {data: 'vivienda'},
+            {data: 'tarifa'},
+            {
+                render: (data, type, row, meta) =>
+                    `<button type='button' class='btn btn-info btn-block edit' data-toggle='modal' data-id="` + row['id'] + `" data-target='#viviendasEditModal'>Editar</button>`,
+                orderable: false,
+                searchable: false
+            }
+        ],
+        select: {
+            style: 'single',
+            selector: ':not(:last-child)',
+            info: false
+        },
+        buttons: [{
+            extend: 'excel',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+        },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                    columns: 'th:not(:last-child)'
+                }
+            }
         ],
         language: {
-            url: `http://cdn.datatables.net/plug-ins/1.10.19/i18n/${lang}.json`
+            url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/English.json"
         }
-    }
-}
+        ,
+        columnDefs: [
+            {responsivePriority: 1, targets: 0},
+            {responsivePriority: 1, targets: -1},
+        ],
+    });
 
-function n(table, tab) {
-    table.DataTable(tab);
-}
+    let lastTarifa;
+    $(document).on("click", ".edit", function () {
+        let data = t.row($(this).parents('tr')).data();
+        let viviendaID = $("#viviendaID");
+        let vivienda = $("#vivienda");
+        let tarifa = $("#idTarifa");
 
-function c(table, lang = "English") {
-    return table.DataTable(e(lang));
-}
+        viviendaID.val(data['id']);
+        vivienda.val(data['vivienda']);
+        tarifa.val(data['tarifa']);
+        lastTarifa = tarifa.val();
+    });
 
-function reset(container) {
-    container.empty();
-    render(container);
-    return container.children("#taula");
-}
+    $('#guardar').click(() => {
+        let id = $('#viviendaID');
+        let vivienda = $('#vivienda');
+        let tarifa = $('#idTarifa');
 
-function render(container) {
-    container.append(`<table id="taula" class="table table-striped table-bordered my-3">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                </tr>
-                </thead>
-            </table>`);
-}
+        let init = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id.val(),
+                vivienda: vivienda.val(),
+                tarifa: tarifa.val(),
+                lastTarifa: lastTarifa
+            })
+        };
+        fetch('safeViviendaTarifa.php', init).then(res => console.log(res.text()));
+    });
+
+    $('#borrar').click(() => {
+        let id = $('#viviendaID');
+        let init = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id.val(),
+            })
+        };
+        fetch('deleteViviendaTarifa.php', init).then(res => console.log(res.text()));
+    });
+
+});

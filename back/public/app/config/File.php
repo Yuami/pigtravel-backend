@@ -13,8 +13,8 @@ class File
 
     public static function setProfileImage($id, $image)
     {
-        $file = "/" . PERFIL . $id . ".png";
-        file_put_contents(ROOT . $file, $image);
+        $file = PERFIL . $id . ".png";
+        file_put_contents($file, $image);
         return $file;
     }
 
@@ -23,18 +23,35 @@ class File
         return self::setProfileImage($id, file_get_contents("https://ui-avatars.com/api/?name=" . $name . "+" . $surname .  "&size=" . $size));
     }
 
-    public static function getProfileImage($persona): string
-    {
-        $imageType = array('.png', '.jpg', '.jpeg');
+    public static function getProfileImage($persona): string {
         $id = $persona->getId();
         $name = $persona->getNombre();
         $surname = $persona->getApellido1();
 
-        foreach ($imageType as $type) {
-            if (self::exists(PERFIL . $id . $type)) {
-                return "/" . PERFIL . $id . $type;
-            }
+        $img = self::getIMG(PERFIL, $id);
+        if ($img != null){
+            return $img;
         }
         return self::setRandomImageByName($name, $surname, $id);
+    }
+
+    public static function getIMG($route, $name){
+        $imageType = array('.png', '.jpg', '.jpeg');
+        $img = $route . $name;
+        foreach ($imageType as $type) {
+            if (self::exists(ROOT . $img . $type)) {
+                return $img . $type;
+            }
+        }
+        return null;
+    }
+
+    public static function getMainHouseImage($houseID): string {
+        define("HOUSEIMG", "img/casas/");
+        $img = self::getIMG(HOUSEIMG, $houseID);
+        if ($img != null){
+            return $img;
+        }
+        return HOUSEIMG . "placeholder.jpg";
     }
 }

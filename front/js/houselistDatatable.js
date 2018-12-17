@@ -18,7 +18,8 @@ $(function () {
             {data: 'SquareMeters'},
             {
                 render: function (data, type, row, meta) {
-                    return `<button type='button' class='editbutton btn btn-info btn-block' data-toggle='modal' data-id="` + row['id'] + `" data-target='#viviendasEditModal'>Edit</button>`;
+                    return `<button type='button' class='editbutton btn btn-info btn-block' data-toggle='modal' data-id="` + row['id'] + `" data-target='#viviendasEditModal'>Edit</button>
+                            <button type='button' class='deletebutton btn btn-danger btn-block' data-toggle='modal' data-id="\` + row['id'] + \`">Delete</button>`;
                 },
                 orderable: false,
                 searchable: false
@@ -26,7 +27,7 @@ $(function () {
         ],
         select: {
             style: 'single',
-            selector: ':not(:last-child)',
+            selector: 'td:not(:last-child)',
             info: false
         },
         buttons: [{
@@ -59,12 +60,68 @@ $(function () {
     });
 
     $(document).on("click", ".editbutton", function () {
-        var selectedID = $(this).data('id');
-        var nombre = $(this).data('nombre');
-        $(".modal-body #viviendaID").val(selectedID);
-        $(".modal-body #nombreModal").val(nombre);
+        var data = t.row($(this).parents('tr')).data();
+        $(".modal-body #viviendaID").val(data['id']);
+        idModal = data['id']
+        $(".modal-body #nombreModal").val(data['nombre']);
+        nombreModal = data['nombre'];
 
-        // $('#viviendasEditModal').modal('show');
+        $(".modal-body #typeModal").val(data['HouseType']);
+        $(".modal-body #capacityModal").val(data['MaxPax']);
+        $(".modal-body #streetModal").val(data['Street']);
+        $(".modal-body #ciudadModal").val(data['City']);
+        $(".modal-body #checkInModal").val(data['CheckIn']);
+        $(".modal-body #checkOutModal").val(data['CheckOut']);
+        $(".modal-body #aaModal").val(data['StandardPrice']);
+        $(".modal-body #squareModal").val(data['SquareMeters']);
     });
 
+    $(document).on("click", ".deletebutton", function () {
+        var data = t.row($(this).parents('tr')).data();
+        var id = data['id'];
+        console.log(id);
+        let init = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+            })
+        };
+        fetch('deleteViviendasFull.php', init).then(res => console.log(res.text()));
+    });
+
+    $(document).on("click", "#modalSubmit", function () {
+        var idModal, nombreModal;
+        idModal = $("#viviendaID").val();
+        nombreModal = $("#nombreModal").val();
+
+        let init = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: idModal,
+                nombre: nombreModal,
+            })
+        };
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "deleteViviendasFull.php",
+            data: id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                if (json.response.status == 'success') {
+                    alert("error")
+                } else {
+                    alert("error")
+                }
+            }
+        });
+    });
 });
