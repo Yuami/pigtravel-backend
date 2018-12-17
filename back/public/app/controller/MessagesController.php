@@ -4,7 +4,7 @@ require_once MODEL . "DAO/MensajesDAO.php";
 require_once MODEL . "Items/Reserva.php";
 class MessagesController extends Controller {
 
-    public function show() {
+    public function show($id) {
         require_once VIEW . 'messages.php';
     }
 
@@ -20,11 +20,11 @@ class MessagesController extends Controller {
         // TODO: Implement store() method.
     }
 
-    public function edit() {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update() {
+    public function update($id) {
         // TODO: Implement update() method.
     }
 
