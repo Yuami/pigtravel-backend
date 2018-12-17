@@ -21,14 +21,17 @@ class LoginController {
 
     public static function login($correoPost, $passwordPost) : bool {
         session_start();
-        $email = $_POST['emailLogin'];
         if (self::isLoggable($correoPost, $passwordPost)) {
-            Session::set("user", serialize(PersonaDAO::getByCorreo($email)));
-            Session::set("userID", PersonaDAO::getByCorreo($email)->getId());
-            Session::set("email", $email);
-            $_SESSION["userID"]=PersonaDAO::getByCorreo($email)->getId();
+            Session::set("user", serialize(PersonaDAO::getByCorreo($correoPost)));
+            $userID = PersonaDAO::getByCorreo($correoPost)->getId();
+            self::log($userID, $correoPost);
             return true;
         }
         return false;
+    }
+
+    public static function log($userID, $email) {
+        Session::set("userID",$userID);
+        Session::set("email", $email);
     }
 }

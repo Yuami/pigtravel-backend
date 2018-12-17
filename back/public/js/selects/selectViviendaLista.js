@@ -22,15 +22,18 @@ $(function () {
                         fetch('/app/handlers/houseHandler.php', init)
                             .then(res => res.text())
                             .then(text => {
+                                let newCol = $("<div/>", {
+                                    class: 'col-md-3 col-sm-6 mb-3'
+                                });
                                 let url = "houses/" + id;
                                 let newA = $("<a/>", {
                                     href: url,
-                                    class: 'card col-3 m-2 p-0',
-                                    style: 'color: inherit; text-decoration:none;max-width:100%'
+                                    class: 'card p-0',
+                                    style: 'color: inherit; text-decoration:none;'
                                 });
                                 let newCBody = $("<div/>", {class: 'card-body'});
-                                let newCImg = $("<div/>", {class: 'view overlay'});
-                                let newI = $("<img/>", {class: 'card-img-top', src: text});
+                                let newCImg = $("<div/>", {class: 'view overlay '});
+                                let newI = $("<img/>", {class: 'card-img-top', style: 'obtject-fit:cover; height:250px ; width:100%', src: text});
                                 let newPN = $("<p/>", {text: nom, class: 'col font-weight-bold  text-center'});
                                 let newPC = $("<p/>", {
                                     text: ciudad,
@@ -40,7 +43,8 @@ $(function () {
                                 newCImg.append(newI);
                                 newCBody.append(newPN, newPC, newPM);
                                 newA.append(newCImg, newCBody);
-                                appendToLlista(newA);
+                                newCol.append(newA);
+                                appendToLlista(newCol);
                             });
                     })
                 );

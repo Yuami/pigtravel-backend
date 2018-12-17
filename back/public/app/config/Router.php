@@ -1,13 +1,11 @@
 <?php
 
-class Router
-{
+class Router {
     private $controller;
     private $params;
     private $method;
 
-    public function __construct($url, $method)
-    {
+    public function __construct($url, $method) {
         $params = explode("/", $url);
         $controller = $params[1];
         $params = array_splice($params, 2);
@@ -22,53 +20,48 @@ class Router
     /**
      * @return mixed
      */
-    public function getMethod()
-    {
+    public function getMethod() {
         return $this->method;
     }
 
     /**
      * @return mixed
      */
-    public function getController()
-    {
+    public function getController() {
         return $this->controller;
     }
 
     /**
      * @param mixed $controller
      */
-    public function setController($controller): void
-    {
+    public function setController($controller) : void {
         $this->controller = $controller;
     }
 
     /**
      * @return mixed
      */
-    public function getParams()
-    {
+    public function getParams() {
         return $this->params;
     }
 
     /**
      * @param mixed $params
      */
-    public function setParams($params): void
-    {
+    public function setParams($params) : void {
         $this->params = $params;
     }
 
-    private function methodSelection(Controller $c){
+    private function methodSelection(Controller $c) {
         $params = $this->getParams();
         switch ($this->getMethod()) {
             case "GET":
                 if (!empty($params[0]) && $params[0] == "create") {
                     $c->create();
+                } else if (!empty($params[1]) && $params[1] == "edit") {
+                    $c->edit($params[0]);
                 } else if (!empty($params[0])) {
-                    if ($params)
-                        $c->show();
-                    break;
+                    $c->show($params[0]);
                 } else {
                     $c->index();
                 }
@@ -78,15 +71,14 @@ class Router
                 break;
             case "PUT":
             case "PATCH":
-                $c->update();
+                $c->update($params[0]);
                 break;
             case "DELETE":
                 $c->destroy();
         }
     }
 
-    public function redirect()
-    {
+    public function redirect() {
         require_once CONTROLLER . "DummyController.php";
         $controller = new DummyController();
         switch ($this->getController()) {

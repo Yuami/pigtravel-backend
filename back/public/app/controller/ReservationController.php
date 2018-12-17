@@ -7,7 +7,7 @@ class ReservationController extends Controller {
         require_once VIEW . 'reservations.php';
     }
 
-    public function show() {
+    public function show($id) {
         require_once VIEW . 'reservation.php';
     }
 
@@ -19,11 +19,11 @@ class ReservationController extends Controller {
         // TODO: Implement store() method.
     }
 
-    public function edit() {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update() {
+    public function update($id) {
         // TODO: Implement update() method.
     }
 

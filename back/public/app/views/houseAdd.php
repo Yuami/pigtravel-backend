@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
+    <link rel="stylesheet" href="/css/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="/js/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
     <title>Plantilla para backend</title>
 </head>
 
@@ -100,8 +105,8 @@
                     <div class="row">
                         <div class="card-header w-100"><h3 id="houseNameCard" class="text-center mb-0">Your House</h3></div>
                     </div>
-                    <img class="card-img-top mt-2" src="/img/casas/1.jpg" alt="Card image cap">
                     <div class="card-body">
+                        <div id="houseMap" style="width:auto;height:300px;margin: -36px -36px 0;"></div>
                         <p id="personCard" class="mb-0"></p>
                         <p id="streetCard"></p>
                         <p id="descriptionCard" class="card-text"></p>
@@ -110,6 +115,10 @@
         </form>
     </div>
 </section>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDufJRsYwR2Knzo2rmeamYxCTpdyeAkhl4&callback=initMap">
+</script>
 <script src="/js/custom/houseAdd.js"></script>
 <?php include_once("footer.php") ?>
 </body>

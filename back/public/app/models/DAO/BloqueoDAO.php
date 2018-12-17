@@ -11,9 +11,10 @@ class BloqueoDAO extends DAO
     protected static $table = "bloqueo";
     protected static $class = "Bloqueo";
 
-    public static function insert()
+    public static function insert($id, $activo, $fechaInicio, $fechaFin)
     {
         // TODO: Implement insert() method.
+
     }
 
     public static function getBy($column, $value)

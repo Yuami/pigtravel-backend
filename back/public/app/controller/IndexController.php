@@ -7,7 +7,7 @@
  */
 
 class IndexController extends Controller {
-    public function show() {
+    public function show($id) {
         include_once VIEW . "main.php";
     }
 
@@ -23,11 +23,11 @@ class IndexController extends Controller {
         // TODO: Implement store() method.
     }
 
-    public function edit() {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update() {
+    public function update($id) {
         // TODO: Implement update() method.
     }
 

@@ -19,15 +19,15 @@ class DummyController extends Controller {
         // TODO: Implement store() method.
     }
 
-    public function show() {
+    public function show($id) {
         // TODO: Implement show() method.
     }
 
-    public function edit() {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update() {
+    public function update($id) {
         // TODO: Implement update() method.
     }
 

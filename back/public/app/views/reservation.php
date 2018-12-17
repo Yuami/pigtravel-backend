@@ -14,7 +14,7 @@
 
 <section>
     <div class="container my-3">
-        <h2>Reserva #(Numero Reserva)
+        <h2>Reserva #<?php ?>
             <small><span class="badge badge-pill badge-secondary">Pendiente</span></small>
         </h2>
         <div class="row">
