@@ -87,7 +87,7 @@ class Router
 
     public function redirect()
     {
-        require_once Controller . "DummyController.php";
+        require_once CONTROLLER . "DummyController.php";
         $controller = new DummyController();
         switch ($this->getController()) {
             case "houses":
