@@ -1,7 +1,5 @@
 <?php
 
-include_once MODEL . "Items/Mensajes.php";
-include_once "DAO.php";
 class MensajesDAO extends DAO {
     protected static $table = "mensajes";
     protected static $class = "Mensajes";
@@ -26,12 +24,12 @@ class MensajesDAO extends DAO {
     {
         $res = parent::getBy("idVivienda", $idVivienda);
         if (isset($res))
-            return $res[0];
+            return $res;
         return null;
     }
-        public static function getAll()
+
+    public static function getAll()
         {
             return parent::getAll();
         }
-
     }

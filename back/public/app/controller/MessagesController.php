@@ -1,7 +1,7 @@
 <?php
 
-require_once MODEL . "DAO/MensajesDAO.php";
-require_once MODEL . "Items/Reserva.php";
+include_once MODEL . "DAO/MensajesDAO.php";
+include_once MODEL . "Items/Mensajes.php";
 class MessagesController {
 
     public static function show() {
