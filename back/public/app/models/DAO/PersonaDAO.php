@@ -27,9 +27,20 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         $stmt->bindValue(':passw', $password);
         $stmt->bindValue(':fechaN', $fechaN);
         $stmt->execute();
-        LoginController::log($correo, $password);
-            header("Location: " . DOMAIN);
+        self::setVendedor(PersonaDAO::getByCorreo($correo));
+        LoginController::login($correo, $password);
+        header("Location: " . DOMAIN);
     }
+
+    public static function setVendedor($id)
+    {
+        $sql = "insert into vendedor_vivienda(`idPersona`) value (:id)";
+        $stmt = DB::conn()->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+    }
+
     public static function getByCorreo($correo)
     {
         $res = parent::getBy("correo", $correo);
