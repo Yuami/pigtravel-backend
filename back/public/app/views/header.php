@@ -110,7 +110,7 @@ if (!Session::isSet('userID')) { ?>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="<?php echo $profileImage ?>" alt=""
+                                        <img src="/<?php echo $profileImage ?>" alt=""
                                              class="header-profile-img rounded-circle"><span
                                                 class="textRightNav d-md-none"> PROFILE</span>
                                     </div>
