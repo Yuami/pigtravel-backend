@@ -58,7 +58,7 @@ class Router {
             case "GET":
                 if (!empty($params[0]) && $params[0] == "create") {
                     $c->create();
-                } else if (!empty($params[0]) && $params[0] == "edit") {
+                } else if (!empty($params[1]) && $params[1] == "edit") {
                     $c->edit($params);
                 } else if (!empty($params[0])) {
                     if ($params)
