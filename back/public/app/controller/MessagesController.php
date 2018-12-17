@@ -1,16 +1,20 @@
 <?php
 
-require_once MODEL . "DAO/MensajesDAO.php";
-require_once MODEL . "Items/Reserva.php";
+include_once DAO . "MensajesDAO.php";
+
 class MessagesController extends Controller {
 
-    public function show($id) {
-        require_once VIEW . 'messages.php';
+ public function show() {
+
     }
 
     public function index() {
-        // TODO: Implement index() method.
+        require_once VIEW . 'messages.php';
     }
+    public static function enviados($idUsuari,$enviados,$leido) {
+            $mensajes = MensajesDAO::getMensajes($idUsuari,$enviados,$leido);
+           return $mensajes;
+                    }
 
     public function create() {
         // TODO: Implement create() method.
