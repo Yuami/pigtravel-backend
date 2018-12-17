@@ -7,6 +7,7 @@ class Mensajes
     private $idReciever;
     private $mensaje;
     private $fechaEnviado;
+    private $leido;
 
     public function getIdSender()
     {
@@ -30,7 +31,10 @@ class Mensajes
     {
         return $this->fechaEnviado;
     }
-
+    public function getLeido()
+    {
+        return $this->leido;
+    }
 
 
 }

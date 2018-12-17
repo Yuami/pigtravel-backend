@@ -29,7 +29,7 @@
             <select id="listaViviendas" class="form-control border-0">
                 <option value="-1"><p>Casas</p></option>
                 <?php
-                foreach(ViviendaDAO::getBy('idVendedor',4) as $vivienda) {
+                foreach(ViviendaDAO::getBy('idVendedor',$_SESSION["userID"]) as $vivienda) {
                     ?>
                     <option><?php echo $vivienda->getNombre(); ?></option>
                 <?php } ?>

@@ -20,9 +20,11 @@
         <p> <a href="index.php">Menu</a> > Mensajes</p>
     </div>
     <div class="row">
+
         <div class="form-group form-check-inline">
             <div class="btn-group">
-                <button class="form-control border-0" id="botonLeido"><i class="far fa-eye-slash"></i></button>
+                <button class="form-control border-0" id="mobilebutton"><i class="fa fa-eye-slash" id="icon"></i></button>
+
                 <form>
                     <input type="button" value="Enviados" class="form-control border-0" onclick="window.location.href='/messagesSent'" />
                 </form>
@@ -30,7 +32,7 @@
                 <select id="listaViviendas" class="form-control border-0" onchange="window.location ='/messages/'+this.value">
                        <option selected="selected"><p>Casas</p></option>
                     <?php
-                    foreach(ViviendaDAO::getBy('idVendedor',4) as $vivienda) {
+                    foreach(ViviendaDAO::getBy('idVendedor',$_SESSION['userID']) as $vivienda) {
                     ?>
                     <option value="<?php echo $vivienda->getId();?>"><?php echo $vivienda->getNombre(); ?></option>
                     <?php } ?>
@@ -43,6 +45,7 @@
 
              <?php
              foreach(self::recibidos($_SESSION["userID"]) as $mensaje) {
+             if($mensaje->getLeido()==0){
                ?>
              <div class="card cardMessages">
                  <div class='card-body missatgeCard'>
@@ -56,7 +59,20 @@
                      </div>
                  </div>
              </div>
-             <?php } ?>
+                 <?php }else{ ?>
+                 <div class="card cardMessages">
+                     <div class='card-body missatgeCard'>
+                         <div class='row'>
+                             <div class='col-md-4'>
+                                 <div class="row"><strong><?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?></strong></div>
+                                 <div class='row'><strong><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></div>
+                             </div>
+                             <div class='col-md-6'><strong><?php echo $mensaje->getMensaje(); ?></strong></div>
+                             <div class='col-md-2'><strong><?php echo $mensaje->getFechaEnviado();?></strong></div>
+                         </div>
+                     </div>
+                 </div>
+             <?php } }?>
         </div>
     </div>
 
