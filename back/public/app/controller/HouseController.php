@@ -4,7 +4,7 @@ class HouseController extends Controller
 {
     public function index()
     {
-        include_once VIEW . "houseList.php";
+        include_once VIEW . "houselist.php";
     }
 
     public function show()
