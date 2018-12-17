@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center " id="cardCasa">
+    <div class="row justify-content-center" id="cardCasa">
     </div>
 </section>
 
