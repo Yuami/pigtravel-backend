@@ -27,7 +27,7 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         $stmt->bindValue(':passw', $password);
         $stmt->bindValue(':fechaN', $fechaN);
         $stmt->execute();
-        self::setVendedor(PersonaDAO::getByCorreo($correo));
+        self::setVendedor(PersonaDAO::getByCorreo($correo)->getId());
         LoginController::login($correo, $password);
         header("Location: " . DOMAIN);
     }
