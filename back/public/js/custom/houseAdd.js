@@ -2,14 +2,13 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the crurrent tab
 
 var map = L.map('houseMap').setView([25, 0], 1);
-
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoicHJvZmV3ZWIiLCJhIjoiY2pwM3JxeHR3MGF6cjNrcXcwbmh0MGZtOCJ9.mxvmjOpVymwltGGlcxHx8g'
 }).addTo(map);
-var geocoder = new google.maps.Geocoder();
+// var geocoder = new google.maps.Geocoder();
 
 
 $('#houseName').on('change', function (e) {
@@ -29,19 +28,18 @@ $('#street').on('change', function (e) {
     let streetName = this.value;
     let city = $("#city").val();
     let address = streetName + " " + city;
-    $("#streetCard").html('<span class="fas fa-road"></span> ' + streetName + ", " + city );
-    geocoder.geocode(address, function(results, status) {
-        if (status == geocoder.GeocoderStatus.OK) {
-            latLng = new L.LatLng(results[0].center.lat, results[0].center.lng);
-            marker = new L.Marker(latLng);
-            marker.addTo(map);
-            console.log(latLng);
-        } else {
-            console.log("ERROR");
-        }
-    });
+    $("#streetCard").html('<span class="fas fa-road"></span> ' + streetName + ", " + city);
+//    geocoder.geocode(address, function(results, status) {
+//        if (status == geocoder.GeocoderStatus.OK) {
+// // // latLng = new L.LatLng(results[0].center.lat, results[0].center.lng);
+//             marker = new L.Marker(latLng);
+//             marker.addTo(map);
+//             console.log(latLng);
+//         } else {
+//             console.log("ERROR");
+//         }
+//     });
 });
-
 
 $('#description').on('change', function (e) {
     $("#descriptionCard").text(this.value);

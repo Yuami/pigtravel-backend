@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
+
     <link rel="stylesheet" href="/css/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="/js/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
 
     <title>Plantilla para backend</title>
 </head>
@@ -80,7 +82,14 @@
                     </div>
                     <div class="tab">
                         <h1 class="text-center">Images</h1>
-                        <p>Available Soon</p>
+
+                        <hr>
+                        <div class="form-group">
+                            <button class="btn btn-warning" type="button">Disable Test</button>
+                            <button class="btn btn-info" type="reset">Refresh Test</button>
+                            <button class="btn btn-primary">Submit</button>
+                            <button class="btn btn-default" type="reset">Reset</button>
+                        </div>
                     </div>
                     <div class="tab">
                         <h1 class="text-center">Services</h1>
@@ -116,9 +125,9 @@
     </div>
 </section>
 
-<script async defer
+<!-- <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDufJRsYwR2Knzo2rmeamYxCTpdyeAkhl4&callback=initMap">
-</script>
+</script> -->
 <script src="/js/custom/houseAdd.js"></script>
 <?php include_once("footer.php") ?>
 </body>
