@@ -12,27 +12,6 @@ class MensajesDAO extends DAO {
     public static function insert() {
         // TODO: Implement insert() method.
     }
-
-    public static function getByEnviados($idSender) {
-        $res = parent::getBy("idSender", $idSender);
-        if (isset($res)&& $res!=null)
-            return $res;
-        return null;
-    }
-    public static function getByRecibidos($idReciever) {
-        $res = parent::getBy("idReciever", $idReciever);
-        if (isset($res)&& $res!=null)
-            return $res;
-        return null;
-    }
-    public static function getMensajes($idUsuari,$enviados,$leido) {
-        if($enviados==true) {
-            $res = parent::getBy("idReciever", $idUsuari);
-            if (isset($res)&& $res!=null)
-                return $res;
-            return null;
-        }
-    }
     public static function getByLeido($leido) {
         $res = parent::getBy("leido", $leido);
         if (isset($res))
@@ -46,7 +25,15 @@ class MensajesDAO extends DAO {
             return $res;
         return null;
     }
+    public static function getByRecibidosIdVivienda($leido)
+    {
+        $sql = "SELECT * FROM mensajes WHERE leido :value and idReciever=".$_SESSION['userID'];
+        $statement = DB::conn()->prepare($sql);
+        $statement->bindValue(":leido", $leido);
+        $statement->execute();
 
+        return $statement->fetchAll(PDO::FETCH_CLASS, static::$class);
+    }
     public static function getAll()
         {
             return parent::getAll();
