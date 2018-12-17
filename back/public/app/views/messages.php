@@ -22,21 +22,38 @@
     <div class="row">
         <div class="form-group form-check-inline">
             <div class="btn-group">
-                <button class="form-control filtrosMensajes border-0" id="botonLeido"><i class="far fa-eye-slash"></i></button>
-                <button class="form-control filtrosMensajes border-0" id="botonEnviado"><i class="fas fa-paper-plane"></i></button>
+                <button class="form-control border-0" id="botonLeido"><i class="far fa-eye-slash"></i></button>
+                <button class="form-control border-0" id="botonEnviado">Enviados</button>
             </div>
                 <select id="listaViviendas" class="form-control border-0">
-                    <option value="-1"><p>Houses</p></option>
+                       <option value="-1"><p>Casas</p></option>
+                    <?php
+                    foreach(ViviendaDAO::getBy('idVendedor',4) as $vivienda) {
+                    ?>
+                    <option><?php echo $vivienda->getNombre(); ?></option>
+                    <?php } ?>
                 </select>
-            <?php
-
-            echo json_encode(MensajesDAO::getByIdVivienda(2)->getMensaje());
-            ?>
         </div>
     </div>
     <div class="row">
          <div id="cardsmensajes">
-    </div>
+             <?php
+             foreach(self::enviados($_SESSION["userID"],true,0) as $mensaje) {
+               ?>
+             <div class="card cardMessages">
+                 <div class='card-body missatgeCard'>
+                     <div class='row'>
+                         <div class='col-md-4'>
+                             <div class="row"><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?></div>
+                             <div class='row'><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></div>
+                         </div>
+                         <div class='col-md-6'><?php echo $mensaje->getMensaje(); ?></div>
+                         <div class='col-md-2'><?php echo $mensaje->getFechaEnviado();?></div>
+                     </div>
+                 </div>
+             </div>
+             <?php } ?>
+        </div>
     </div>
 
 </div>
