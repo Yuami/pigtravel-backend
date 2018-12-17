@@ -59,11 +59,9 @@ class Router {
                 if (!empty($params[0]) && $params[0] == "create") {
                     $c->create();
                 } else if (!empty($params[1]) && $params[1] == "edit") {
-                    $c->edit($params);
+                    $c->edit($params[0]);
                 } else if (!empty($params[0])) {
-                    if ($params)
-                        $c->show($params);
-                    break;
+                    $c->show($params[0]);
                 } else {
                     $c->index();
                 }
@@ -73,7 +71,7 @@ class Router {
                 break;
             case "PUT":
             case "PATCH":
-                $c->update($params);
+                $c->update($params[0]);
                 break;
             case "DELETE":
                 $c->destroy();
