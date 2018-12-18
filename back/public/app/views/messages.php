@@ -23,8 +23,7 @@
 
         <div class="form-group form-check-inline">
             <div class="btn-group">
-                <button class="form-control border-0" id="mobilebutton"><i class="fa fa-eye-slash" id="icon"></i></button>
-
+                <button class="form-control border-0" id="mobilebutton" value="0"><i class="fa fa-eye-slash" id="icon"></i></button>
                 <form>
                     <input type="button" value="Enviados" class="form-control border-0" onclick="window.location.href='/messagesSent'" />
                 </form>
@@ -37,17 +36,16 @@
                     <option value="<?php echo $vivienda->getId();?>"><?php echo $vivienda->getNombre(); ?></option>
                     <?php } ?>
                 </select>
-            </div>
+         </div>
 
     </div>
     <div class="row">
          <div id="cardsmensajes">
-
              <?php
              foreach(self::recibidos($_SESSION["userID"]) as $mensaje) {
              if($mensaje->getLeido()==0){
                ?>
-             <div class="card cardMessages">
+             <div class="card cardMessages" id='<?php echo $mensaje->getLeido(); ?>'>
                  <div class='card-body missatgeCard'>
                      <div class='row'>
                          <div class='col-md-4'>
@@ -60,7 +58,7 @@
                  </div>
              </div>
                  <?php }else{ ?>
-                 <div class="card cardMessages">
+                 <div class="card cardMessages" id=<?php echo $mensaje->getLeido(); ?>>
                      <div class='card-body missatgeCard'>
                          <div class='row'>
                              <div class='col-md-4'>
@@ -78,6 +76,8 @@
 
 </div>
 <?php include_once("footer.php") ?>
+
 <script src="/js/selects/selectMensajes.js"></script>
 </body>
+
 </html>
