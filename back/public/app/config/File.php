@@ -20,7 +20,7 @@ class File
 
     public static function setRandomImageByName($name, $surname, $id, $size = 128)
     {
-        return self::setProfileImage($id, file_get_contents("https://ui-avatars.com/api/?name=" . $name . "+" . $surname .  "&size=" . $size));
+        return self::setProfileImage($id, file_get_contents("https://api.adorable.io/avatars/" .  $size . "/" . $id . ".png" ));
     }
 
     public static function getProfileImage($persona): string {
@@ -33,6 +33,13 @@ class File
             return $img;
         }
         return self::setRandomImageByName($name, $surname, $id);
+    }
+
+    public static function getProfileImageById($idPersona) {
+        include_once DAO . "PersonaDAO.php";
+        include_once ITEM . "Persona.php";
+        $persona = PersonaDAO::getById($idPersona);
+        return self::getProfileImage($persona);
     }
 
     public static function getIMG($route, $name){

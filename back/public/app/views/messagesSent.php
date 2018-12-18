@@ -17,7 +17,7 @@
         <h2>Mensajes enviados</h2>
     </div>
     <div class="row">
-        <p> <a href="index.php">Menu</a> > <a href="messages.php">Mensajes</a> > Mensajes Enviados</p>
+        <p> <a href="index.php">Menu</a> > <a href="messages">Mensajes</a> > Mensajes Enviados</p>
     </div>
     <div class="row">
         <div class="form-group form-check-inline">
