@@ -67,3 +67,16 @@ $(() => {
         calendars.forEach(c => c.fullCalendar('prev'));
     });
 });
+
+function showCalendar(id) {
+    $(id).toggle("slow");
+    $('html, body').animate({
+        scrollTop: $(id).offset().top
+    }, 1000);
+}
+
+function moveTo(id) {
+    $('html, body').animate({
+        scrollTop: $(id).offset().top
+    }, 1000);
+}

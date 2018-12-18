@@ -35,6 +35,13 @@ class File
         return self::setRandomImageByName($name, $surname, $id);
     }
 
+    public static function getProfileImageById($idPersona) {
+        include_once DAO . "PersonaDAO.php";
+        include_once ITEM . "Persona.php";
+        $persona = PersonaDAO::getById($idPersona);
+        return self::getProfileImage($persona);
+    }
+
     public static function getIMG($route, $name){
         $imageType = array('.png', '.jpg', '.jpeg');
         $img = $route . $name;
