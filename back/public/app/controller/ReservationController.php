@@ -8,6 +8,7 @@ class ReservationController extends Controller {
     }
 
     public function show($id) {
+        $reserva = ReservaDAO::getById($id);
         require_once VIEW . 'reservation.php';
     }
 

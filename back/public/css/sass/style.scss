@@ -449,6 +449,11 @@ $background_color_4: #bbbbbb;
   background-color: #f1f1f1;
 }
 
+.card-show:hover {
+  box-shadow: 3px 2px 2px #000000;
+  cursor: pointer;
+}
+
 /* CUSTOM MEDIA QUERIES */
 
 @media (min-width: 768px) and (max-width: 1000px) {
