@@ -13902,9 +13902,9 @@ body::after {
   height: 56px;
 }
 
+/* Messages */
 .mensajes {
   margin: 50px;
-  padding-left: 15%;
 }
 
 #cardsmensajes {
@@ -13913,14 +13913,12 @@ body::after {
 
 /* Subscripciones */
 .subscripciones {
-  font-family: Quicksand;
   margin: 30px;
 }
 
 .descripcionSubscripcion {
   background-image: radial-gradient(farthest-corner at 40px 40px, #c0def6 0%, #60b3f6 100%);
   color: white;
-  font-family: Quicksand;
 }
 
 .subscripcion1 {
