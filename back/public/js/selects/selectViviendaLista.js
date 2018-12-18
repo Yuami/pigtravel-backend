@@ -1,9 +1,11 @@
 $(function () {
         function loadViviendasLista() {
+            let housesExist = false;
             fetch("/info/selectViviendaLista.php")
                 .then(res => res.json())
                 .then(houses =>
                     houses.forEach(house => {
+                        housesExist = true;
                         let id = house.id;
                         let nom = house.vivienda;
                         let ciudad = house.ciudad;
@@ -48,7 +50,9 @@ $(function () {
                             });
                     })
                 );
-
+            if (housesExist === false) {
+                $("#firstHouse").css("display: block !important");
+            }
         }
 
         function appendToLlista(item) {
