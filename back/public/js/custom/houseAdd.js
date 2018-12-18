@@ -24,11 +24,15 @@ $('#person').on('change', function () {
     }
 });
 
-$('#street').on('change', function (e) {
-    let streetName = this.value;
-    let city = $("#city").text();
-    let address = streetName + " " + city;
-    $("#streetCard").html('<span class="fas fa-road"></span> ' + streetName + ", " + city);
+function updateStreet(){
+    let address;
+    let streetName = $("#street").val();
+    let city = $("#city option:selected").text();
+    if (city !== $("#city option:first-child").text() && streetName){
+        address = streetName + ", " + city;
+        $("#streetCard").html('<span class="fas fa-road"></span> ' + address);
+    }
+
 //    geocoder.geocode(address, function(results, status) {
 //        if (status == geocoder.GeocoderStatus.OK) {
 // // // latLng = new L.LatLng(results[0].center.lat, results[0].center.lng);
@@ -39,6 +43,14 @@ $('#street').on('change', function (e) {
 //             console.log("ERROR");
 //         }
 //     });
+}
+
+$('#street').on('change', function (e) {
+    updateStreet();
+});
+
+$('#city').on('change', function (e) {
+    updateStreet();
 });
 
 $('#description').on('change', function (e) {
@@ -102,5 +114,36 @@ function fixStepIndicator(n) {
         x[n].className += " active";
     }
 }
+
+$(function () {
+    function loadLocalidades() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var localidades = JSON.parse(this.responseText);
+                for (tipo in localidades) {
+                    let nombre = localidades[tipo].nombre;
+                    let idCiudad = localidades[tipo].idCiudad;
+                    let item = "<option value=" + idCiudad + ">" + nombre + "</option>";
+                    addToLista(item);
+                }
+            }
+        };
+        xhttp.open("GET", "/info/selectLocalidades.php", true);
+        xhttp.send();
+    }
+
+    function addToLista(item) {
+        $("#city").append(item);
+    }
+
+    loadLocalidades();
+});
+
+
+$("#houseName").on('blur',bootstrapValidate('#houseName', 'required:Enter a name!'))
+    .on('blur',bootstrapValidate('#houseName', 'regex:^[a-zA-Z ]+$:Enter only letters!'));
+
+$("#street").on('blur',bootstrapValidate('#street', 'required:Enter a name!'));
 
 

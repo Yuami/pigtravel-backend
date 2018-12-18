@@ -14330,6 +14330,7 @@ body#landingBody {
     width: 100%;
     max-height: calc(100% - 76px);
     border: 0;
+    padding: 0 !important;
     background: 0;
   }
 
