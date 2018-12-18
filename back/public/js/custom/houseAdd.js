@@ -26,7 +26,7 @@ $('#person').on('change', function () {
 
 $('#street').on('change', function (e) {
     let streetName = this.value;
-    let city = $("#city").val();
+    let city = $("#city").text();
     let address = streetName + " " + city;
     $("#streetCard").html('<span class="fas fa-road"></span> ' + streetName + ", " + city);
 //    geocoder.geocode(address, function(results, status) {

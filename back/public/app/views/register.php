@@ -75,7 +75,7 @@
                 </div>
                 <div class="form-group col">
                     <label for="">Fecha Nacimiento</label>
-                    <input class="form-control" placeholder="00/00/0000" name="fechaN">
+                    <input class="form-control" placeholder="00-00-0000" name="fechaN">
                 </div>
             </div>
         </div>

@@ -82,14 +82,7 @@
                     </div>
                     <div class="tab">
                         <h1 class="text-center">Images</h1>
-
-                        <hr>
-                        <div class="form-group">
-                            <button class="btn btn-warning" type="button">Disable Test</button>
-                            <button class="btn btn-info" type="reset">Refresh Test</button>
-                            <button class="btn btn-primary">Submit</button>
-                            <button class="btn btn-default" type="reset">Reset</button>
-                        </div>
+                        <p>Available Soon</p>
                     </div>
                     <div class="tab">
                         <h1 class="text-center">Services</h1>
