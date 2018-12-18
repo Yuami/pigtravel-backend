@@ -110,6 +110,10 @@ class Router
                 require_once CONTROLLER . "MessagesController.php";
                 $controller = new MessagesController();
                 break;
+            case "messagesSent":
+                require_once CONTROLLER . "SendMessagesController.php";
+                $controller = new SendMessagesController();
+                break;
             case "notifications":
                 include_once VIEW . "notifications.php";
                 break;
