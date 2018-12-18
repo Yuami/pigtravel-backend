@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="/js/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
+    <script src="/js/validation/bootstrap-validator.js"></script>
 
     <title>Plantilla para backend</title>
 </head>
@@ -39,7 +39,6 @@
                         <h3 class="text-center">General Information</h3>
                         <label for="houseName">Name of the house</label>
                         <input type="text" id="houseName" class="form-control mb-1"
-                               placeholder="Amazing House on the corner of Oslo"
                                name="houseName">
                         <label for="peopleAmount">People Capacity</label>
                         <select id="person" class="form-control" name="peopleAmount" required>
@@ -56,17 +55,17 @@
                             <option value="10">10</option>
                         </select>
                         <label for="street">Address</label>
-                        <input id="street" type="text" class="form-control mb-1" placeholder="Son Juan 23"
+                        <input id="street" type="text" class="form-control mb-1"
                                name="street">
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
-                            <option value="21">Manacor</option>
+                            <option disabled selected value> -- select an option -- </option>
                         </select>
                     </div>
                     <div class="tab form-group">
                         <h1 class="text-center">Additional Information</h1>
                         <label for="squaremeters">Square Meters</label>
-                        <input type="number" class="form-control mb-1" placeholder="120" name="squaremeters">
+                        <input type="number" class="form-control mb-1" name="squaremeters">
                         <label for="checkIn">Check In Time</label>
                         <input type="time" class="form-control mb-1" name="checkIn" value="14:00">
                         <label for="checkOut">Check Out Time</label>
@@ -78,7 +77,7 @@
                     <div class="tab">
                         <h1 class="text-center">Rates</h1>
                         <label for="standardRate">Standard Rate</label>
-                        <input type="number" class="form-control mb-1" placeholder="60" name="standardRate">
+                        <input type="number" class="form-control mb-1" name="standardRate">
                     </div>
                     <div class="tab">
                         <h1 class="text-center">Images</h1>
