@@ -20,7 +20,7 @@ class File
 
     public static function setRandomImageByName($name, $surname, $id, $size = 128)
     {
-        return self::setProfileImage($id, file_get_contents("https://ui-avatars.com/api/?name=" . $name . "+" . $surname .  "&size=" . $size));
+        return self::setProfileImage($id, file_get_contents("https://api.adorable.io/avatars/" .  $size . "/" . $id . ".png" ));
     }
 
     public static function getProfileImage($persona): string {
