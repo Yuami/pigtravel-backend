@@ -21,7 +21,13 @@ class MessagesController extends Controller {
     }
 
     public function store() {
-        // TODO: Implement store() method.
+        include_once ITEM . "Mensaje.php";
+        include_once DAO . "MensajesDAO.php";
+        MensajesDAO::insert([
+            "idReciever" => $_POST['idReciever'],
+            "mensaje" => $_POST['mensajeRespuesta'],
+            "idVivienda" => $_POST['idVivienda']]);
+        header("Location: " . DOMAIN);
     }
 
     public function edit($id) {

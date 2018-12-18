@@ -13902,10 +13902,9 @@ body::after {
   height: 56px;
 }
 
-/* Messages */
 .mensajes {
   margin: 50px;
-  position: relative;
+  padding-left: 15%;
 }
 
 #cardsmensajes {

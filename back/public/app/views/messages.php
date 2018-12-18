@@ -1,3 +1,8 @@
+<?php
+if (isset($_POST['submit'])) {
+    self::store();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,15 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
-</head>
+    <title>Mensajes</title>
+ </head>
 
 <body>
 <?php include_once("header.php");?>
 <div class="container mensajes">
     <div class="row">
-        <h2>Messages</h2>
+        <h2>Mensajes</h2>
     </div>
     <div class="row">
         <p> <a href="index.php">Menu</a> > Mensajes</p>
@@ -31,7 +35,7 @@
                 <select id="listaViviendas" class="form-control border-0" onchange="window.location ='/messages/'+this.value">
                        <option selected="selected"><p>Casas</p></option>
                     <?php
-                    foreach(ViviendaDAO::getBy('idVendedor',$_SESSION['userID']) as $vivienda) {
+                    foreach(ViviendaDAO::getBy('idVendedor',Session::get('userID')) as $vivienda) {
                     ?>
                     <option value="<?php echo $vivienda->getId();?>"><?php echo $vivienda->getNombre(); ?></option>
                     <?php } ?>
@@ -42,42 +46,107 @@
     <div class="row">
          <div id="cardsmensajes">
              <?php
-             foreach(self::recibidos($_SESSION["userID"]) as $mensaje) {
+             foreach(self::recibidos(Session::get('userID')) as $mensaje) {
              if($mensaje->getLeido()==0){
                ?>
+             <a class="cardMessages openBtn">
              <div class="card cardMessages" id='<?php echo $mensaje->getLeido(); ?>'>
                  <div class='card-body missatgeCard'>
                      <div class='row'>
-                         <div class='col-md-4'>
-                             <div class="row"><?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?></div>
+                         <div class='col-md-3'>
+                             <div class="row"><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?></div>
                              <div class='row'><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></div>
                          </div>
                          <div class='col-md-6'><?php echo $mensaje->getMensaje(); ?></div>
-                         <div class='col-md-2'><?php echo $mensaje->getFechaEnviado();?></div>
+                         <div class='col-3'>
+                             <div class='row'><?php echo $mensaje->getFechaEnviado();?></div>
+                             <form method="post">
+                             <div class="modal fade" id="myModal" role="dialog">
+                                 <div class="modal-dialog">
+                                     <div class="modal-content">
+                                         <div class="modal-header">
+                                                Mensaje
+                                         </div>
+                                         <div class="modal-body">
+                                             <div class="row">
+                                                 <div class="col-6">To: <?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?></div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                      <input type="text" class="form-control" name="mensajeRespuesta" aria-describedby="basic-addon1" />
+                                                </div>
+                                             </div>
+                                         </div>
+                                         <div class="modal-footer">
+                                             <button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>
+                                             <input type="submit" class="btn btn-success" name="submit" value="Enviar" />
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             </form>
+                       </div>
+
                      </div>
                  </div>
              </div>
+             </a>
                  <?php }else{ ?>
+             <a class="cardMessages openBtn">
                  <div class="card cardMessages" id=<?php echo $mensaje->getLeido(); ?>>
                      <div class='card-body missatgeCard'>
                          <div class='row'>
-                             <div class='col-md-4'>
-                                 <div class="row"><strong><?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?></strong></div>
+                             <div class='col-md-3'>
+                                 <div class="row"><strong><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?></strong></div>
                                  <div class='row'><strong><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></div>
                              </div>
                              <div class='col-md-6'><strong><?php echo $mensaje->getMensaje(); ?></strong></div>
-                             <div class='col-md-2'><strong><?php echo $mensaje->getFechaEnviado();?></strong></div>
+                             <div class='col-3'>
+                                 <div class='row'><strong><?php echo $mensaje->getFechaEnviado();?></strong></div>
+                                 <form method="post" role="form">
+                                     <div class="modal fade" id="myModal" role="dialog">
+                                         <div class="modal-dialog">
+                                             <div class="modal-content">
+                                                 <div class="modal-header">
+                                                     Mensaje
+                                                 </div>
+                                                 <div class="modal-body">
+                                                     <div class="row">
+                                                         <div class="col-6">To: <?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?></div>
+                                                     </div>
+                                                     <div class="row">
+                                                         <input type="text" class="form-control" name="mensajeRespuesta" aria-describedby="basic-addon1" />
+                                                     </div>
+                                                 </div>
+                                                 <div class="modal-footer">
+                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>
+                                                     <input type="submit" class="btn btn-success" name="submit" value="Enviar" />
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </form>
+                             </div>
                          </div>
                      </div>
                  </div>
+             </a>
              <?php } }?>
         </div>
     </div>
 
 </div>
 <?php include_once("footer.php") ?>
+<script>
+    $('.openBtn').on('click',function(){
+            $('#myModal').modal({show:true});
 
+    });
+
+
+</script>
 <script src="/js/selects/selectMensajes.js"></script>
+
 </body>
 
 </html>
