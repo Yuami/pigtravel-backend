@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
 </head>
-
 <body>
 <?php include_once("header.php");?>
 <div class="container mensajes">
@@ -29,7 +26,7 @@
             <select id="listaViviendas" class="form-control border-0">
                 <option value="-1"><p>Casas</p></option>
                 <?php
-                foreach(ViviendaDAO::getBy('idVendedor',$_SESSION["userID"]) as $vivienda) {
+                foreach(ViviendaDAO::getBy('idVendedor',Session::get('userID')) as $vivienda) {
                     ?>
                     <option><?php echo $vivienda->getNombre(); ?></option>
                 <?php } ?>
@@ -40,7 +37,7 @@
         <div id="cardsmensajes">
 
             <?php
-            foreach(self::enviados($_SESSION["userID"]) as $mensaje) {
+            foreach(self::enviados(Session::get('userID')) as $mensaje) {
                 ?>
                 <div class="card cardMessages">
                     <div class='card-body missatgeCard'>

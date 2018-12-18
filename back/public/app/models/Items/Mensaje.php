@@ -1,14 +1,18 @@
 <?php
 
-class Mensajes
+class Mensaje
 {
+    private $id;
     private $idVivienda;
     private $idSender;
     private $idReciever;
     private $mensaje;
     private $fechaEnviado;
     private $leido;
-
+    public function getId()
+    {
+        return $this->id;
+    }
     public function getIdSender()
     {
         return $this->idSender;

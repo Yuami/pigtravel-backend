@@ -24,7 +24,7 @@
             <div class="col-4">
                 <div class="card card-subs col-md-8 offset-md-2">
                     <div class="card-body">
-                        <span class="glyphicon glyphicon-star"></span>
+                        <i class="far fa-star fa-8x"></i></span>
                         <h2 class="card-title">Recomendados</h2>
                         <h4 class="card-text">Marca tu casa para que aparezca en recomendados</h4>
                     </div>
@@ -42,7 +42,7 @@
             <div class="col-4">
                 <div class="card card-subs col-md-8 offset-md-2">
                     <div class="card-body">
-                        <i class="fa fa-line-chart"></i>
+                        <i class="fas fa-chart-line fa-8x"></i>
                         <h2 class="card-title">Visitas</h2>
                         <h4 class="card-text">Obtén más visitas con las que tendrás más beneficios</h4>
                     </div>

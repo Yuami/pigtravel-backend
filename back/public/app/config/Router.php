@@ -117,6 +117,9 @@ class Router
             case "notifications":
                 include_once VIEW . "notifications.php";
                 break;
+            case "premium":
+                include_once VIEW . "premium.php";
+                break;
             case "login":
                 include_once VIEW . "login.php";
                 break;
