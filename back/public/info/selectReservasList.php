@@ -16,7 +16,7 @@ FROM vivienda v
          on estado_has_idioma.idEstado = idReserva and estado_has_idioma.nombre ='" . $_GET['vivienda'] . "'";
     $stmt = $conn->prepare($sql);
 } else {
-    $stmt = $conn->prepare("select v.nombre nomVivienda, p.nombre nomPersona, ehi.nombre nomEstat,e.id idEstat,v.id idVivienda,fechaReserva  , precio preu
+    $stmt = $conn->prepare("select r.idVivienda idVivienda, v.nombre nomVivienda, p.nombre nomPersona, ehi.nombre nomEstat,e.id idEstat,v.id idVivienda,fechaReserva  , precio preu
 from vivienda v
        inner join reserva r on v.id = r.idVivienda
        inner join cliente c on idPersona = idCliente

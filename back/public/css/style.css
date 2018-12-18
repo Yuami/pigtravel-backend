@@ -13905,6 +13905,7 @@ body::after {
 /* Messages */
 .mensajes {
   margin: 50px;
+  position: relative;
 }
 
 #cardsmensajes {
