@@ -446,6 +446,11 @@ $background_color_4: #bbbbbb;
   background-color: #f1f1f1;
 }
 
+.card-show:hover {
+  box-shadow: 3px 2px 2px #000000;
+  cursor: pointer;
+}
+
 /* CUSTOM MEDIA QUERIES */
 
 @media (min-width: 768px) and (max-width: 1000px) {
@@ -476,6 +481,7 @@ $background_color_4: #bbbbbb;
     width: 100%;
     max-height: calc(100% - 76px);
     border: 0;
+    padding: 0 !important;
     background: 0;
   }
   #profilePage .input-h6 {

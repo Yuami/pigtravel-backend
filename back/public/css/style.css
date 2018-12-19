@@ -13902,9 +13902,9 @@ body::after {
   height: 56px;
 }
 
+/* Messages */
 .mensajes {
   margin: 50px;
-  padding-left: 15%;
 }
 
 #cardsmensajes {
@@ -13913,14 +13913,12 @@ body::after {
 
 /* Subscripciones */
 .subscripciones {
-  font-family: Quicksand;
   margin: 30px;
 }
 
 .descripcionSubscripcion {
   background-image: radial-gradient(farthest-corner at 40px 40px, #c0def6 0%, #60b3f6 100%);
   color: white;
-  font-family: Quicksand;
 }
 
 .subscripcion1 {
@@ -14292,6 +14290,11 @@ body#landingBody {
   background-color: #f1f1f1;
 }
 
+.card-show:hover {
+  box-shadow: 3px 2px 2px #000000;
+  cursor: pointer;
+}
+
 /* CUSTOM MEDIA QUERIES */
 @media (min-width: 768px) and (max-width: 1000px) {
   header .icoNav {
@@ -14325,6 +14328,7 @@ body#landingBody {
     width: 100%;
     max-height: calc(100% - 76px);
     border: 0;
+    padding: 0 !important;
     background: 0;
   }
 

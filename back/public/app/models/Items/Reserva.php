@@ -38,17 +38,6 @@ class Reserva implements InVivienda {
      * @param $idMetodoPago
      * @param $idCliente
      */
-    public function __construct($id, $checkIn, $checkOut, $fechaReserva, $precio, $totalClientes, $idVivienda, $idMetodoPago, $idCliente) {
-        $this->id = $id;
-        $this->checkIn = $checkIn;
-        $this->checkOut = $checkOut;
-        $this->fechaReserva = $fechaReserva;
-        $this->precio = $precio;
-        $this->totalClientes = $totalClientes;
-        $this->idVivienda = $idVivienda;
-        $this->idMetodoPago = $idMetodoPago;
-        $this->idCliente = $idCliente;
-    }
 
     /**
      * @return mixed
@@ -153,6 +142,18 @@ class Reserva implements InVivienda {
      */
     public function getIdCliente() {
         return $this->idCliente;
+    }
+
+    public function getVivienda() {
+        include_once DAO . "ViviendaDAO.php";
+        include_once ITEM . "Vivienda.php";
+        return ViviendaDAO::getById($this->idVivienda);
+    }
+
+    public function getCliente() {
+        include_once DAO . "PersonaDAO.php";
+        include_once ITEM . "Persona.php";
+        return PersonaDAO::getById($this->idCliente);
     }
 
     public static function getAllByVivienda($id) {

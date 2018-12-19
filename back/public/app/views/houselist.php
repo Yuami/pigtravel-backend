@@ -22,6 +22,9 @@
             </ol>
         </div>
     </div>
+    <div id="firstHouse">
+        <h1 class="text-center mb-5">Add your first house!</h1>
+    </div>
     <div class="row justify-content-center">
         <button id="addHouse" onclick="window.location.href='/houses/create'" class="btn btn-outline-success">Añadir
             Casa
