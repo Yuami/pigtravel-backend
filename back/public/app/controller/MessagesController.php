@@ -5,7 +5,6 @@ include_once DAO . "MensajesDAO.php";
 class MessagesController extends Controller {
 
     public function show($id) {
-        require_once VIEW . 'messages.php';
     }
 
     public function index() {
