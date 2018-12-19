@@ -1,8 +1,8 @@
 <?php
-$hostname='sql142.main-hosting.eu';
-$username='u333704226_pigtr';
-$password='ifc21B17*';
-$dsn = "mysql:host=$hostname;dbname=u333704226_pigtr";
+$hostname='localhost';
+$username='root';
+$password='';
+$dsn = "mysql:host=$hostname;dbname=travel";
 
 try {
 	$conn = new PDO($dsn, $username, $password);

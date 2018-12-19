@@ -18,10 +18,10 @@ if (isset($_POST['submit'])) {
 <?php include_once("header.php");?>
 <div class="container mensajes">
     <div class="row">
-        <h2>Mensajes</h2>
+        <h2>Mensajes recibidos</h2>
     </div>
     <div class="row">
-        <p> <a href="index.php">Menu</a> > Mensajes</p>
+        <p> <a href="index.php">Menu</a> > Mensajes recibidos</p>
     </div>
     <div class="row">
 
@@ -80,6 +80,8 @@ if (isset($_POST['submit'])) {
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>
                                                             <input type="submit" class="btn btn-success" name="submit" value="Enviar" />
+                                                            <input type="hidden" class="btn btn-success" name="idReciever" value="<?php echo $mensaje->getIdSender();?>" />
+                                                            <input type="hidden" class="btn btn-success" name="idVivienda" value="<?php echo $mensaje->getIdVivienda();?>" />
                                                         </div>
                                                     </div>
                                                 </div>
