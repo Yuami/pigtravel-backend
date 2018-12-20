@@ -35,7 +35,7 @@ $(document).ready(function () {
                 var vivienda = JSON.parse(this.responseText);
                 var item0 = $("<option/>", {
                     value: "0",
-                    text: "Selecciona"
+                    text: "--- Casa ---"
                 });
                 $("#filterViv").append(item0);
                 for (i in vivienda) {

@@ -39,5 +39,14 @@ $(document).ready(function () {
     });
     $('#clean').on('click', function () {
         t.search('').columns().search('').draw();
+        reset();
     });
+
+    function reset() {
+        var dropDownE = document.getElementById("filterEst");
+        var dropDownV = document.getElementById("filterViv");
+        dropDownE.selectedIndex = 0;
+        dropDownV.selectedIndex = 0;
+        dropDownV.attr('disabled', true);
+    }
 });

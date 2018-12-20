@@ -41,13 +41,13 @@
         <div class="form-group col-3 form-check-inline">
             <h6 class="col-4">Filtrar por</h6>
             <select id="filterEst" class="form-control">
-                <option value="">--- Selecciona ---</option>
+                <option value="" selected="selected">--- Estado ---</option>
             </select>
         </div>
         <div class="form-group col-3 form-check-inline">
             <h6 class="col-4">Filtrar por</h6>
             <select id="filterViv" class="form-control">
-
+                <option value="0" selected="selected">--- Casa ---</option>
             </select>
         </div>
         <div class=" col-2">
