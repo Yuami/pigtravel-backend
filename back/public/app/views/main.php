@@ -16,25 +16,17 @@
 <body>
 <?php include_once("header.php"); ?>
 
-<section>
+<section style="height:300px" class="bg-gradient-warning">
     <h1>Index</h1>
-<div id="calendar"></div>
+
 </section>
-<script>
-    $('#calendar').fullCalendar({
-        defaultDate: '2014-11-10',
-        defaultView: 'agendaWeek',
-        events: [
-            {
-                start: '2014-11-10T10:00:00',
-                end: '2014-11-10T16:00:00',
-                rendering: 'background'
-            }
-        ]
-    });
-</script>
+
 <?php include_once("footer.php") ?>
 
-
+<style>
+    .sunny-morning-gradient {
+        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    }
+</style>
 </body>
 </html>

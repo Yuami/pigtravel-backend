@@ -26,6 +26,7 @@ $(function () {
                     fetch('/app/handlers/houseHandler.php', init)
                         .then(res => res.text())
                         .then(text => {
+                            $("#firstHouse").hide();
                             let newCol = $("<div/>", {
                                 class: 'col-md-4 col-xl-3 col-sm-6 mb-3'
                             });
@@ -52,7 +53,6 @@ $(function () {
                             newCBody.append(newPN, newPC, newPM);
                             newA.append(newCImg, newCBody);
                             newCol.append(newA);
-                            housesExist = true;
                             appendToLlista(newCol);
                         });
                 })

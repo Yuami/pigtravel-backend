@@ -59,7 +59,7 @@
                                name="street">
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
-                            <option disabled selected value> -- select an option -- </option>
+                          <option disabled selected value> -- select an option -- </option>
                         </select>
                     </div>
                     <div class="tab form-group">
