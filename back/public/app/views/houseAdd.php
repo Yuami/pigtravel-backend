@@ -8,11 +8,15 @@
     <?php require_once ROOT . "libraries.php" ?>
 
     <link rel="stylesheet" href="/css/leaflet.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <link rel="stylesheet" href="/css/fileinput/fileinput.css">
+
     <script src="/js/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="/js/validation/bootstrap-validator.js"></script>
-
+    <script src="/js/fileinput/plugins/piexif.min.js"></script>
+    <script src="/js/fileinput/plugins/purify.min.js"></script>
+    <script src="/js/fileinput/fileinput.js"></script>
     <title>Plantilla para backend</title>
 </head>
 
@@ -42,7 +46,7 @@
                                name="houseName">
                         <label for="peopleAmount">People Capacity</label>
                         <select id="person" class="form-control" name="peopleAmount" required>
-                            <option disabled selected value> -- select an option -- </option>
+                            <option disabled selected value> -- select an option --</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -59,7 +63,7 @@
                                name="street">
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
-                          <option disabled selected value> -- select an option -- </option>
+                            <option disabled selected value> -- select an option --</option>
                         </select>
                     </div>
                     <div class="tab form-group">
@@ -79,9 +83,11 @@
                         <label for="standardRate">Standard Rate</label>
                         <input type="number" class="form-control mb-1" name="standardRate">
                     </div>
-                    <div class="tab">
+                    <div id="imageTab" class="tab">
                         <h1 class="text-center">Images</h1>
-                        <p>Available Soon</p>
+                        <div class="form-group">
+                            <input id="filedemo" type="file" class="file" data-show-upload="false" data-show-remove="false">
+                        </div>
                     </div>
                     <div class="tab">
                         <h1 class="text-center">Services</h1>
@@ -104,7 +110,8 @@
                 </div>
                 <div class="col-md-4 card">
                     <div class="row">
-                        <div class="card-header w-100"><h3 id="houseNameCard" class="text-center mb-0">Your House</h3></div>
+                        <div class="card-header w-100"><h3 id="houseNameCard" class="text-center mb-0">Your House</h3>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div id="houseMap" style="width:auto;height:300px;margin: -36px -36px 0;"></div>

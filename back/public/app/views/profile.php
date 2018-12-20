@@ -25,20 +25,21 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="order-0 order-md-1 offset-md-1 col-md-3 side-menu">
-                <div class="picture-container">
-                    <div class="picture">
-                        <img src="<?php echo File::getProfileImage($user); ?>" class="picture-src" id="wizardPicturePreview"
-                             title="">
-                        <input name="imgForm" type="file" id="wizard-picture" class="">
+        <form id="profileForm" method="POST">
+            <div class="row">
+                <div class="order-0 order-md-1 offset-md-1 col-md-3 side-menu">
+                    <div class="picture-container">
+                        <div class="picture">
+                            <img src="<?php echo File::getProfileImage($user); ?>" class="picture-src"
+                                 id="wizardPicturePreview"
+                                 title="">
+                            <input name="imgForm" type="file" id="wizard-picture" class="">
+                        </div>
+                        <h6 class="">Choose Picture</h6>
                     </div>
-                    <h6 class="">Choose Picture</h6>
+                    <input class="btn d-md-block d-none btn-block btn-primary mt-3" type="submit" form="profileForm"/>
                 </div>
-                <input class="btn d-md-block d-none btn-block btn-primary mt-3" type="submit" form="profileForm"/>
-            </div>
-            <div class="order-1 order-md-0 col-md-8">
-                <form id="profileForm">
+                <div class="order-1 order-md-0 col-md-8">
                     <div class="col-12 order-1 order-md-0 ">
                         <div class="row">
                             <label class="sr-only" for="firstNameForm">Name</label>
@@ -49,7 +50,7 @@
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" id="firstNameForm" name="firstNameForm"
-                                       style="width: 80px;" value="<?php echo $user->getNombre();?>">
+                                       style="width: 80px;" value="<?php echo $user->getNombre(); ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -61,7 +62,7 @@
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" id="surnameForm" name="surnameForm"
-                                       style="width: 80px;" value="<?php echo $user->getApellido1();?>">
+                                       style="width: 80px;" value="<?php echo $user->getApellido1(); ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -86,7 +87,7 @@
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" id="emailForm" name="emailForm"
-                                       value="<?php echo $user->getCorreo();?>">
+                                       value="<?php echo $user->getCorreo(); ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -98,7 +99,7 @@
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" id="telephoneForm" name="telephoneForm"
-                                       value="<?php echo $user->getTlf();?>">
+                                       value="<?php echo $user->getTlf(); ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -160,7 +161,7 @@
                                 </div>
                                 <textarea type="text" rows="7" class="form-control" id="descriptionForm"
                                           name="descriptionForm"
-                                          placeholder="Tell us something about you!"><?php echo $user->getDescripcion(); ?></textarea>
+                                          placeholder="Tell us something about you!"><?= $user->getDescripcion(); ?></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -168,9 +169,9 @@
                                    form="profileForm"/>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </section>
 
