@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
     <title>Plantilla para backend</title>
-    <link rel='stylesheet' href='../../css/fullcalendar.css' />
+    <link rel='stylesheet' href='../../public/css/fullcalendar.css' />
 
-    <script src='../../js/moment.min.js'></script>
-    <script src='../../js/fullcalendar.js'></script>
+    <script src='../../public/js/moment.min.js'></script>
+    <script src='../../public/js/fullcalendar.js'></script>
 </head>
 
 <body>

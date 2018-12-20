@@ -1,6 +1,6 @@
 <?php
 define("ROOT", $_SERVER['DOCUMENT_ROOT'] . "/");
-define("APP", ROOT . "app/");
+define("APP", ROOT . "../app/");
 define("CONFIG", APP . "config/");
 define("CONTROLLER", APP . "controller/");
 define("MODEL", APP . "models/");
