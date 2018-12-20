@@ -33,6 +33,7 @@ class Mensaje
 
     public function getFechaEnviado()
     {
+        $this->fechaEnviado= date("d/m/Y");
         return $this->fechaEnviado;
     }
     public function getLeido()

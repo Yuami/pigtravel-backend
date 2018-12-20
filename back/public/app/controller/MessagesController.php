@@ -26,7 +26,7 @@ class MessagesController extends Controller {
             "idReciever" => $_POST['idReciever'],
             "mensaje" => $_POST['mensajeRespuesta'],
             "idVivienda" => $_POST['idVivienda']]);
-        header("Location: " . DOMAIN);
+        header("Location: " . DOMAIN. "/messages");
     }
 
     public function edit($id) {

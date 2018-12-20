@@ -9,12 +9,15 @@
 </head>
 <body>
 <?php include_once("header.php");?>
-<div class="container mensajes">
-    <div class="row">
-        <h2>Mensajes enviados</h2>
-    </div>
-    <div class="row">
-        <p> <a href="index.php">Menu</a> > <a href="messages">Mensajes</a> > Mensajes Enviados</p>
+<div class="container">
+    <div class="row breadcrumb-row">
+        <div class="col-md-10">
+            <h1>Mensajes enviados</h1>
+            <ol class="bg-transparent pt-0 breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mensajes enviados</li>
+            </ol>
+        </div>
     </div>
     <div class="row">
         <div class="form-group form-check-inline">
@@ -31,28 +34,24 @@
                     <option><?php echo $vivienda->getNombre(); ?></option>
                 <?php } ?>
             </select>
+            <input type="text" class="form-control border-0" id="myInput" onkeyup="myFunction()" placeholder="Busca.." title="Type in a name">
         </div>
     </div>
     <div class="row">
-        <div id="cardsmensajes">
+        <table id="cardsmensajes" class="table table-hover">
 
             <?php
             foreach(self::enviados(Session::get('userID')) as $mensaje) {
                 ?>
-                <div class="card cardMessages">
-                    <div class='card-body missatgeCard'>
-                        <div class='row'>
-                            <div class='col-md-4'>
-                                <div class="row"><?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?></div>
-                                <div class='row'><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></div>
-                            </div>
-                            <div class='col-md-6'><?php echo $mensaje->getMensaje(); ?></div>
-                            <div class='col-md-2'><?php echo $mensaje->getFechaEnviado();?></div>
-                        </div>
-                    </div>
-                </div>
+                <tr class="openBtn"  data-leido="0" data-target="#myModal" data-toggle="modal" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>"  id="<?php echo $mensaje->getIdVivienda();?>">
+
+                    <td style="width:25%"> <?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></td>
+                    <td style="width:65%" ><?php echo $mensaje->getMensaje(); ?></td>
+                    <td style="width:10%"><?php echo $mensaje->getFechaEnviado();?></td>
+
+                </tr>
             <?php } ?>
-        </div>
+        </table>
     </div>
 
 </div>
