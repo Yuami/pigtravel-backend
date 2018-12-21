@@ -13909,6 +13909,8 @@ body::after {
 
 #cardsmensajes {
   width: 100%;
+  table-layout: fixed;
+  display: block;
 }
 
 /* Subscripciones */

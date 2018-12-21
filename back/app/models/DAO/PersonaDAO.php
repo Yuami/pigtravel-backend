@@ -32,6 +32,20 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         header("Location: " . DOMAIN);
     }
 
+    public static function modify($id, $nombre, $apellido1, $apellido2, $dni, $tlf, $correo, $fechaNacimiento)
+    {
+        $sql = "UPDATE `persona` SET `nombre` = :nombre and `apellido1` = :apellido1 and `apellido2` = :apellido2 
+and `DNI` = :DNI and `tlf` = :tlf and `correo` = :correo and `fechaNacimiento` = :fechaNacimiento";
+        $stmt = DB::conn()->prepare($sql);
+        $stmt->bindValue(':nombre', $nombre);
+        $stmt->bindValue(':apellido1', $apellido1);
+        $stmt->bindValue(':apellido2', $apellido2);
+        $stmt->bindValue(':dni', $dni);
+        $stmt->bindValue(':tlf', $tlf);
+        $stmt->bindValue(':correo', $correo);
+        $stmt->bindValue(':fechaN', $fechaNacimiento);
+        $stmt->execute();
+    }
     public static function setVendedor($id)
     {
         $sql = "insert into vendedor_vivienda(`idPersona`) value (:id)";
