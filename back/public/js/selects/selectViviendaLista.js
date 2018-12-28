@@ -23,7 +23,7 @@ $(function () {
                         })
                     };
 
-                    fetch('/app/handlers/houseHandler.php', init)
+                    fetch('/App/handlers/houseHandler.php', init)
                         .then(res => res.text())
                         .then(text => {
                             $("#firstHouse").hide();

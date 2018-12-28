@@ -181,7 +181,7 @@ function createDOMPurify() {
   /* Decide if document with <html>... should be returned */
   var WHOLE_DOCUMENT = false;
 
-  /* Track whether config is already set on this instance of DOMPurify. */
+  /* Track whether Config is already set on this instance of DOMPurify. */
   var SET_CONFIG = false;
 
   /* Decide if all elements (e.g. style, script) must be children of
@@ -224,7 +224,7 @@ function createDOMPurify() {
   /* Attributes safe for values like "javascript:" */
   var URI_SAFE_ATTRIBUTES = addToSet({}, ['alt', 'class', 'for', 'id', 'label', 'name', 'pattern', 'placeholder', 'summary', 'title', 'value', 'style', 'xmlns']);
 
-  /* Keep a reference to config to pass to hooks */
+  /* Keep a reference to Config to pass to hooks */
   var CONFIG = null;
 
   /* Ideally, do not touch anything below this line */
@@ -235,7 +235,7 @@ function createDOMPurify() {
   /**
    * _parseConfig
    *
-   * @param  {Object} cfg optional config literal
+   * @param  {Object} cfg optional Config literal
    */
   // eslint-disable-next-line complexity
   var _parseConfig = function _parseConfig(cfg) {
@@ -810,7 +810,7 @@ function createDOMPurify() {
       return dirty;
     }
 
-    /* Assign config vars */
+    /* Assign Config vars */
     if (!SET_CONFIG) {
       _parseConfig(cfg);
     }
@@ -932,7 +932,7 @@ function createDOMPurify() {
 
   /**
    * Public method to check if an attribute value is valid.
-   * Uses last set config, if any. Otherwise, uses config defaults.
+   * Uses last set Config, if any. Otherwise, uses Config defaults.
    * isValidAttribute
    *
    * @param  {string} tag Tag name of containing element.
@@ -941,7 +941,7 @@ function createDOMPurify() {
    * @return {Boolean} Returns true if `value` is valid. Otherwise, returns false.
    */
   DOMPurify.isValidAttribute = function (tag, attr, value) {
-    /* Initialize shared config vars if necessary. */
+    /* Initialize shared Config vars if necessary. */
     if (!CONFIG) {
       _parseConfig({});
     }
