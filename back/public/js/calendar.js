@@ -42,12 +42,12 @@ function setCalendar(mainCalendar, nextCalendar, fInicio, fFin) {
         {
             start: moment(fInicio).startOf('day').format('YYYY-MM-DD'),
             end: moment(fFin).add(1, 'day').startOf('day').format('YYYY-MM-DD'),
-            rendering: 'background',
+            rendering: 'background'
         }
     ];
     return [
-        initCalendar(mainCalendar, fInicio, true, event),
-        initCalendar(nextCalendar, nextMonth(fInicio), false, event)
+        initCalendar(mainCalendar, fInicio, event),
+        initCalendar(nextCalendar, nextMonth(fInicio), event)
     ];
 }
 
