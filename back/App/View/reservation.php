@@ -91,7 +91,7 @@ $cliente = $reserva->getCliente();
         <div id="calendars" style="display: none">
             <div class="row pb-3">
                 <div class="col-md-6">
-                    <div id="mainCalendar"></div>
+                    <div id="mainCalendar" data-f_inicio="<?php echo $reserva->getCheckIn(); ?>" data-f_fin="<?php echo $reserva->getCheckOut(); ?>"></div>
                 </div>
                 <div class="col-md-6">
                     <div id="nextCalendar"></div>

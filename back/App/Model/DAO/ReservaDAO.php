@@ -1,5 +1,7 @@
 <?php
 namespace Model\DAO;
+use PDO;
+
 class ReservaDAO extends DAO {
     protected static $table = "reserva";
     protected static $class = "Reserva";

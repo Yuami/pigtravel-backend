@@ -55,7 +55,7 @@ function setCalendar(mainCalendar, nextCalendar, fInicio, fFin) {
 $(() => {
     let mainC = $('#mainCalendar');
     let nextC = $('#nextCalendar');
-    let calendars = setCalendar(mainC, nextC, '2018-11-12T13:00', '2018-11-17T12:00');
+    let calendars = setCalendar(mainC, nextC, mainC.data('f_inicio'), mainC.data('f_fin'));
 
     let next = $('#nextMonth');
     let prev = $('#prevMonth');
