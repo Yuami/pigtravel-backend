@@ -2,6 +2,7 @@
 namespace Model\Items;
 
 use Model\DAO\PersonaDAO;
+use Model\DAO\ReservaHasEstadoDAO;
 use Model\DAO\ViviendaDAO;
 
 class Reserva {
@@ -148,15 +149,45 @@ class Reserva {
         return $this->idCliente;
     }
 
-    public function getVivienda() {
+    /**
+     * @return Vivienda
+     */
+    public function getVivienda() : Vivienda{
         return ViviendaDAO::getById($this->idVivienda);
     }
 
-    public function getCliente() {
+    /**
+     * @return Persona
+     */
+    public function getCliente() : Persona{
         return PersonaDAO::getById($this->idCliente);
     }
 
-    public static function getAllByVivienda($id) {
-        // TODO: Implement getAllByVivienda() method.
+    public function getCambios()
+    {
+        $estados = ReservaHasEstado::getEstadosByReserva($this);
+        $result = [];
+        foreach ($estados as $estado){
+            $result[] = ["estado" => $estado->getNombre(), "fechaCambio" => $estado->getFechaCambio()];
+        }
+        return $result;
+    }
+
+    public function getCambiosJSON()
+    {
+        $estados = ReservaHasEstado::getEstadosByReserva($this);
+        $result = [];
+        foreach ($estados as $estado){
+            $result[] = ["estado" => $estado->getNombre(), "fechaCambio" => $estado->getFechaCambio()];
+        }
+        return json_encode($result);
+    }
+
+    /**
+     * @return String
+     */
+    public function getNombreEstado()
+    {
+        return ReservaHasEstado::getLastEstado($this);
     }
 }

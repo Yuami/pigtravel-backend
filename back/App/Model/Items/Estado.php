@@ -7,6 +7,18 @@
  */
 namespace Model\Items;
 
+use Model\DAO\EstadoHasIdiomaDAO;
+
 class Estado {
     private $id;
+
+    public function getID()
+    {
+        return $this->id;
+    }
+
+    public function getNombre()
+    {
+        return EstadoHasIdiomaDAO::getNombre($this->id)->getNombre();
+    }
 }

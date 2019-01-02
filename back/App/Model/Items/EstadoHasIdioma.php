@@ -10,57 +10,56 @@ namespace Model\Items;
 class EstadoHasIdioma
 {
 
-    private static $idIdioma;
-    private static $idEstado;
-    private static $nombre;
+    private $idIdioma;
+    private $idEstado;
+    private $nombre;
 
     /**
      * @return mixed
      */
-    public static function getIdIdioma()
+    public function getIdIdioma()
     {
-        return self::$idIdioma;
+        return $this->idIdioma;
     }
 
     /**
      * @param mixed $idIdioma
      */
-    public static function setIdIdioma($idIdioma): void
+    public function setIdIdioma($idIdioma): void
     {
-        self::$idIdioma = $idIdioma;
+        $this->idIdioma = $idIdioma;
     }
 
     /**
      * @return mixed
      */
-    public static function getIdEstado()
+    public function getIdEstado()
     {
-        return self::$idEstado;
+        return $this->idEstado;
     }
 
     /**
      * @param mixed $idEstado
      */
-    public static function setIdEstado($idEstado): void
+    public function setIdEstado($idEstado): void
     {
-        self::$idEstado = $idEstado;
+        $this->idEstado = $idEstado;
     }
 
     /**
      * @return mixed
      */
-    public static function getNombre()
+    public function getNombre()
     {
-        return self::$nombre;
+        return $this->nombre;
     }
 
     /**
      * @param mixed $nombre
      */
-    public static function setNombre($nombre): void
+    public function setNombre($nombre): void
     {
-        self::$nombre = $nombre;
+        $this->nombre = $nombre;
     }
-
 
 }

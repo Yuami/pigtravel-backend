@@ -449,7 +449,7 @@ $background_color_4: #bbbbbb;
   background-color: #f1f1f1;
 }
 
-.card-show *{
+.card-show * {
   text-decoration: none;
   color: black;
 }
@@ -458,6 +458,10 @@ $background_color_4: #bbbbbb;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  & * {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 /* CUSTOM MEDIA QUERIES */

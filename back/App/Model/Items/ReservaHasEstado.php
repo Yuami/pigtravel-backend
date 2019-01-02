@@ -5,23 +5,63 @@
  * Date: 21/11/2018
  * Time: 9:18
  */
+
 namespace Model\Items;
+
+use Model\DAO\EstadoHasIdiomaDAO;
+use Model\DAO\ReservaHasEstadoDAO;
 
 class ReservaHasEstado
 {
-    private static $estadoReserva;
 
+    private $idReserva;
+    private $idEstado;
+    private $fechaCambio;
 
-    public static function getEstadoReserva()
+    /**
+     * @return mixed
+     */
+    public function getIdReserva()
     {
-        return self::$estadoReserva;
+        return $this->idReserva;
     }
 
-
-    public static function setEstadoReserva($estadoReserva): void
+    /**
+     * @return mixed
+     */
+    public function getIdEstado()
     {
-        self::$estadoReserva = $estadoReserva;
+        return $this->idEstado;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFechaCambio()
+    {
+        return $this->fechaCambio;
+    }
 
+    /**
+     * @param mixed $fechaCambio
+     */
+    public function setFechaCambio($fechaCambio): void
+    {
+        $this->fechaCambio = $fechaCambio;
+    }
+
+    public function getNombre()
+    {
+        return EstadoHasIdiomaDAO::getNombre($this->idEstado)->getNombre();
+    }
+
+    public static function getEstadosByReserva(Reserva $resesrva)
+    {
+        return ReservaHasEstadoDAO::getByIdReserva($resesrva->getId());
+    }
+
+    public static function getLastEstado(Reserva $resesrva)
+    {
+        return ReservaHasEstadoDAO::getLastEstado($resesrva->getId())->getNombre();
+    }
 }

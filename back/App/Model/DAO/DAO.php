@@ -9,8 +9,19 @@ abstract class DAO
     protected static $table;
     protected static $class;
 
-    private static function getClassName(){
+    protected static function getClassName()
+    {
         return "Model\\Items\\" . static::$class;
+    }
+
+    protected static function fetchAll(\PDOStatement $statement)
+    {
+        return $statement->fetchAll(PDO::FETCH_CLASS, self::getClassName());
+    }
+
+    protected static function fetchOne(\PDOStatement $statement)
+    {
+        return self::fetchAll($statement)[0];
     }
 
     public static function getAll()
@@ -18,7 +29,7 @@ abstract class DAO
         $statement = DB::conn()->prepare("SELECT * FROM " . static::$table);
         $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS, self::getClassName());
+        return self::fetchAll($statement);
     }
 
     public static function getById($id)
@@ -27,17 +38,24 @@ abstract class DAO
         $statement->bindValue(":id", $id, PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS, self::getClassName())[0];
+        return self::fetchOne($statement);
     }
 
-    public static function getBy($column, $value)
+    public static function getBy($column, $value, $order = false, $orderCol = "", $orderType = "asc")
     {
-        $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value";
+        if (!$order) {
+            $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value";
+        } else {
+            if ($orderCol != "")
+                $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value order by $orderCol $orderType";
+            else
+                $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value";
+        }
         $statement = DB::conn()->prepare($sql);
         $statement->bindValue(":value", $value);
         $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS, self::getClassName());
+        return self::fetchAll($statement);
     }
 
     public static function deleteById($id)
