@@ -18,7 +18,7 @@ $(function () {
                         });
                         var newCBody = $("<div/>", {class: 'card-body row'});
                         var newCImg = $("<div/>", {class: 'card-image col-4'});
-                        var newI = $("<img/>", {src: "img/casas/house" + idReserva + ".jpg", style: 'max-width: 60%'});
+                        var newI = $("<img/>", {src: "img/casas/" + idReserva + ".jpg", style: 'max-width: 60%'});
                         var newCCont = $("<div/>", {class: 'row col-8 '});
                         var newPN = $("<p/>", {text: nomVivenda, class: 'col font-weight-bold  py-5 text-center'});
                         var newPC = $("<p/>", {text: ciudadVivienda, class: 'col font-weight-bold py-5 text-center'});
