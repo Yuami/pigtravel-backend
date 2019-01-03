@@ -42,12 +42,12 @@ function setCalendar(mainCalendar, nextCalendar, fInicio, fFin) {
         {
             start: moment(fInicio).startOf('day').format('YYYY-MM-DD'),
             end: moment(fFin).add(1, 'day').startOf('day').format('YYYY-MM-DD'),
-            rendering: 'background',
+            rendering: 'background'
         }
     ];
     return [
-        initCalendar(mainCalendar, fInicio, true, event),
-        initCalendar(nextCalendar, nextMonth(fInicio), false, event)
+        initCalendar(mainCalendar, fInicio, event),
+        initCalendar(nextCalendar, nextMonth(fInicio), event)
     ];
 }
 
@@ -55,7 +55,7 @@ function setCalendar(mainCalendar, nextCalendar, fInicio, fFin) {
 $(() => {
     let mainC = $('#mainCalendar');
     let nextC = $('#nextCalendar');
-    let calendars = setCalendar(mainC, nextC, '2018-11-12T13:00', '2018-11-17T12:00');
+    let calendars = setCalendar(mainC, nextC, mainC.data('f_inicio'), mainC.data('f_fin'));
 
     let next = $('#nextMonth');
     let prev = $('#prevMonth');
@@ -67,16 +67,3 @@ $(() => {
         calendars.forEach(c => c.fullCalendar('prev'));
     });
 });
-
-function showCalendar(id) {
-    $(id).toggle("slow");
-    $('html, body').animate({
-        scrollTop: $(id).offset().top
-    }, 1000);
-}
-
-function moveTo(id) {
-    $('html, body').animate({
-        scrollTop: $(id).offset().top
-    }, 1000);
-}

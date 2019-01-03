@@ -13903,14 +13903,6 @@ body::after {
 }
 
 /* Messages */
-.mensajes {
-  margin: 50px;
-}
-
-#cardsmensajes {
-  width: 100%;
-}
-
 /* Subscripciones */
 .subscripciones {
   font-family: Quicksand;

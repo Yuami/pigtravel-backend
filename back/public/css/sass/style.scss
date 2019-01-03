@@ -33,19 +33,17 @@ body {
 
 .mensajes {
   margin: 50px;
-    position: relative;
-
-
 }
 
 #cardsmensajes {
   width: 100%;
+  table-layout: fixed;
+  display: block;
 }
 
 /* Subscripciones */
 
 .subscripciones {
-  font-family: Quicksand;
   margin: 30px;
 
 }
@@ -54,7 +52,6 @@ body {
   background-image: radial-gradient(farthest-corner at 40px 40px,
           #c0def6 0%, #60b3f6 100%);
   color: white;
-  font-family: Quicksand;
 }
 
 .subscripcion1 {
@@ -452,9 +449,19 @@ $background_color_4: #bbbbbb;
   background-color: #f1f1f1;
 }
 
+.card-show * {
+  text-decoration: none;
+  color: black;
+}
+
 .card-show:hover {
-  box-shadow: 3px 2px 2px #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  & * {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 /* CUSTOM MEDIA QUERIES */
@@ -487,6 +494,7 @@ $background_color_4: #bbbbbb;
     width: 100%;
     max-height: calc(100% - 76px);
     border: 0;
+    padding: 0 !important;
     background: 0;
   }
   #profilePage .input-h6 {

@@ -29,4 +29,3 @@ $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $json = json_encode($result);
 echo $json;
-?>

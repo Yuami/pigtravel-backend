@@ -1,12 +1,12 @@
 <?php
 define("ROOT", $_SERVER['DOCUMENT_ROOT'] . "/");
-define("APP", ROOT . "app/");
-define("CONFIG", APP . "config/");
-define("CONTROLLER", APP . "controller/");
-define("MODEL", APP . "models/");
+define("APP", ROOT . "../App/");
+define("CONFIG", APP . "Config/");
+define("CONTROLLER", APP . "Controller/");
+define("MODEL", APP . "Model/");
 define("ITEM", MODEL . "Items/");
 define("DAO", MODEL . "DAO/");
-define("VIEW", APP . "views/");
+define("VIEW", APP . "View/");
 define("INFO", ROOT . "info/");
 
 define("CALENDAR", ROOT . "calendarInclude.php");
