@@ -181,5 +181,11 @@ class Persona {
         $this->fechaNacimiento = $fechaNacimiento;
     }
 
+    public function getNombreCompleto()
+    {
+        $string = $this->nombre . " " . $this->apellido1 . " ";
+        $string .= $this->apellido2 == null ? "" : $this->apellido2;
+        return $string;
+    }
 
 }
