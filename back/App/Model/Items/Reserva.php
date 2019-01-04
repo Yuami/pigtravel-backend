@@ -190,4 +190,28 @@ class Reserva {
     {
         return ReservaHasEstado::getLastEstado($this);
     }
+
+    public function getCalculo()
+    {
+        return $this->precio . " * 0.95 - 5 = " . $this->getIngreso();
+    }
+
+    public function getDias()
+    {
+        $checkIn = new \DateTime($this->checkIn);
+        $checkOut = new \DateTime($this->checkOut);
+        $diff = date_diff($checkIn, $checkOut, true);
+
+        return  $diff->days;
+    }
+
+    public function getMedia()
+    {
+        return $this->precio / $this->getDias();
+    }
+
+    public function getIngreso()
+    {
+        return $this->precio * 0.95 - 5;
+    }
 }
