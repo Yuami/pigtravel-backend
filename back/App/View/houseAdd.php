@@ -9,14 +9,10 @@
 
     <link rel="stylesheet" href="/css/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
-    <link rel="stylesheet" href="/css/fileinput/fileinput.css">
-
     <script src="/js/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="/js/validation/bootstrap-validator.js"></script>
-    <script src="/js/fileinput/plugins/piexif.min.js"></script>
-    <script src="/js/fileinput/plugins/purify.min.js"></script>
-    <script src="/js/fileinput/fileinput.js"></script>
+
     <title>Plantilla para backend</title>
 </head>
 
@@ -37,6 +33,7 @@
     <div class="container-fluid">
 
         <form id="addHouseForm" method="POST" action="/houses">
+
             <div class="row px-md-5">
                 <div class="col-md-8 col-12">
                     <div class="tab form-group">
@@ -45,25 +42,13 @@
                         <input type="text" id="houseName" class="form-control mb-1"
                                name="houseName">
                         <label for="peopleAmount">People Capacity</label>
-                        <select id="person" class="form-control" name="peopleAmount" required>
-                            <option disabled selected value> -- select an option --</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
+                        <input type="number" id="peopleAmount" class="form-control mb-1"
+                               name="peopleAmount">
                         <label for="street">Address</label>
                         <input id="street" type="text" class="form-control mb-1"
                                name="street">
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
-                            <option disabled selected value> -- select an option --</option>
                         </select>
                     </div>
                     <div class="tab form-group">
@@ -85,9 +70,7 @@
                     </div>
                     <div id="imageTab" class="tab">
                         <h1 class="text-center">Images</h1>
-                        <div class="form-group">
-                            <input id="filedemo" type="file" class="file" data-show-upload="false" data-show-remove="false">
-                        </div>
+
                     </div>
                     <div class="tab">
                         <h1 class="text-center">Services</h1>
@@ -128,6 +111,12 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDufJRsYwR2Knzo2rmeamYxCTpdyeAkhl4&callback=initMap">
 </script> -->
 <script src="/js/custom/houseAdd.js"></script>
+<script src="/js/custom/loadLocalidades.js"></script>
+<script>
+    $(function () {
+        loadLocalidades();
+    });
+</script>
 <?php include_once("footer.php") ?>
 </body>
 </html>

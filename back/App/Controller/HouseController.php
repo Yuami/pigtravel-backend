@@ -1,6 +1,8 @@
 <?php
+
 namespace Controller;
 
+use Config\Session;
 use Model\DAO\ViviendaDAO;
 
 class HouseController extends Controller
@@ -12,6 +14,7 @@ class HouseController extends Controller
 
     public function show($id)
     {
+        $vInfo = ViviendaDAO::getById($id);
         include_once VIEW . "house.php";
     }
 
@@ -39,15 +42,30 @@ class HouseController extends Controller
         header("Location: " . DOMAIN . "/houses");
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         // TODO: Implement edit() method.
     }
 
-    public function update($id) {
-        // TODO: Implement update() method.
+    public function update($id)
+    {
+        ViviendaDAO::update([
+            "id" => $id,
+            "nombre" => $_POST['houseName'],
+            "capacidad" => $_POST['peopleAmount'],
+            "metrosCuadrados" => $_POST['squaremeters'],
+            "calle" => $_POST['street'],
+            "horaEntrada" => $_POST['checkIn'],
+            "horaSalida" => $_POST['checkOut'],
+            "alquilerAutomatico" => $_POST['standardRate'],
+            "idTipoVivienda" => 1,
+            "idCiudad" => $_POST['city'],
+            "descripcion" => $_POST['description']]);
+        header("Location: " . DOMAIN . "/houses/" . $id);
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         // TODO: Implement destroy() method.
     }
 

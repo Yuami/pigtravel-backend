@@ -1,7 +1,11 @@
 <?php
+
+use Config\Session;
+use Model\DAO\DB;
+
 header("Content-Type: application/json; charset=UTF-8");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/basicVars.php");
-require_once(ROOT . "basicIncludes.php");
+
 session_start();
 
 $statement ="select v.id, v.nombre vivienda, tvhi.nombre tipo, chi.nombre ciudad

@@ -16,6 +16,24 @@ class Vivienda {
     private $idTipoVivienda;
     private $idCiudad;
     private $idVendedor;
+    private $descripcion;
+
+    /**
+     * @return mixed
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param mixed $descripcion
+     */
+    public function setDescripcion($descripcion): void
+    {
+        $this->descripcion = $descripcion;
+    }
+
 
     /**
      * @return mixed

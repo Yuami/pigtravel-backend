@@ -13,3 +13,9 @@ define("CALENDAR", ROOT . "calendarInclude.php");
 define("DOMAIN", "http://" . $_SERVER['HTTP_HOST']);
 
 define("PERFIL", "img/perfil/");
+
+spl_autoload_register(function($class) {
+    $className = str_replace("\\", "/", $class);
+    include_once APP . $className . '.php';
+});
+require_once CONFIG . "conf.php";
