@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <button class="col-12 btn btn-success text-uppercase btn-spacing"><i class="fa fa-arrow-up" aria-hidden="true"></i> Guardar</button>
+    </div>
+    <div class="row my-3">
+        <div id="drop-area" class="col-12">
+            <form class="my-form">
+                <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed
+                    region</p>
+                <input type="file" id="fileElem" multiple accept="image/jpeg|image/png" onchange="handleFiles(this.files)">
+                <label class="button" for="fileElem">Select some files</label>
+                <div id="drop-area-alert" class="alert " role="alert"></div>
+            </form>
+            <div class="progress">
+                <div id="progressbar-gallery" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-3" id="gallery">
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/font-awesome.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
