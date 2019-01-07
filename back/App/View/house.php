@@ -1,8 +1,4 @@
-<?php
 
-use Model\DAO\ViviendaDAO;
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

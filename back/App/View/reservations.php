@@ -57,7 +57,6 @@
     <table id="taula" class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Casa</th>
             <th>Cliente</th>
             <th>Estado</th>
@@ -65,11 +64,24 @@
             <th>Precio</th>
         </tr>
         </thead>
+        <tbody>
+
+        <?php
+        foreach ($reservas as $reserva) { ?>
+            <tr>
+                <td><?php echo $reserva->getVivienda()->getNombre() ?></td>
+                <td><?php echo $reserva->getVendedor()->getNombre() ?></td>
+                <td><?php echo $reserva->getNombreEstado() ?></td>
+                <td><?php echo $reserva->getFechaReserva() ?></td>
+                <td><?php echo $reserva->getPrecio() ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
     </table>
 </div>
 <?php include_once("footer.php") ?>
-<script src="js/selects/selectReservasList.js"></script>
-<script src="js/selects/selectEstadoFiltro.js"></script>
+<!--<script src="js/selects/selectReservasList.js"></script>-->
+<!--<script src="js/selects/selectEstadoFiltro.js"></script>-->
 
 
 </body>
