@@ -230,7 +230,7 @@
         accessToken: 'pk.eyJ1IjoibmV3dGltZXN0dWJlIiwiYSI6ImNqcG1kZGtlNTBqeHEzeG55azU0dm9lcHEifQ.oxGxeLR7J8MBpVxRlZ4WJg'
     }).addTo(map);
     L.geoJSON(data).addTo(map);
-    L.marker([39.604138280110185, 3.2872759342193604], {icon: icon}).addTo(map).bindPopup("One House");
+    let marker = L.marker([39.604138280110185, 3.2872759342193604], {icon: icon}).addTo(map).bindPopup("One House");
 </script>
 </body>
 </html>

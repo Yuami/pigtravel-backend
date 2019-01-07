@@ -1,4 +1,5 @@
 <?php
+
 namespace Config;
 
 use Controller\Controller;
@@ -84,18 +85,21 @@ class Router
                 }
                 break;
             case "POST":
-                $c->store();
+                if (isset($_POST["_method"])) {
+                    if ($_POST["_method"] == 'PUT' || $_POST["_method"] == 'PATCH') {
+                        $c->update($params[0]);
+                    } else if ($_POST["_method"] == 'DELETE') {
+                        $c->destroy();
+                    }
+                }   else {
+                    $c->store();
+                }
                 break;
-            case "PUT":
-            case "PATCH":
-                $c->update($params[0]);
-                break;
-            case "DELETE":
-                $c->destroy();
         }
     }
 
-    public function redirect()
+    public
+    function redirect()
     {
         $controller = new DummyController();
         switch ($this->getController()) {

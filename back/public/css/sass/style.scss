@@ -343,6 +343,21 @@ body#landingBody {
   object-fit: cover;
 }
 
+ /* House */
+#scrollspy {
+  background-color: #7a7a7a !important;
+
+  a {
+    color: rgba(255, 255, 255, 0.92);
+    text-transform: uppercase;
+  }
+
+}
+
+.boxed {
+  border: 1px solid black;
+}
+
 /* ADD HOUSE */
 $color_1: #ffffff;
 $font_family_1: Raleway;

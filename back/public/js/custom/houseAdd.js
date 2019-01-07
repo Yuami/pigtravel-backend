@@ -115,31 +115,6 @@ function fixStepIndicator(n) {
     }
 }
 
-$(function () {
-    function loadLocalidades() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var localidades = JSON.parse(this.responseText);
-                for (tipo in localidades) {
-                    let nombre = localidades[tipo].nombre;
-                    let idCiudad = localidades[tipo].idCiudad;
-                    let item = "<option value=" + idCiudad + ">" + nombre + "</option>";
-                    addToLista(item);
-                }
-            }
-        };
-        xhttp.open("GET", "/info/selectLocalidades.php", true);
-        xhttp.send();
-    }
-
-    function addToLista(item) {
-        $("#city").append(item);
-    }
-
-    loadLocalidades();
-});
-
 
 $("#houseName").on('blur',bootstrapValidate('#houseName', 'required:Enter a name!'))
     .on('blur',bootstrapValidate('#houseName', 'regex:^[a-zA-Z ]+$:Enter only letters!'));
