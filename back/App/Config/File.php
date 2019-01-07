@@ -5,27 +5,27 @@ namespace Config;
 use Model\DAO\PersonaDAO;
 use Model\Items\Persona;
 
-class File
-{
+class File {
 
-    public static function exists($file)
-    {
+    public static function exists($file) : bool {
         if (file_exists($file)) {
             return true;
         }
         return false;
     }
 
+    public static function newDirectory($path) : bool {
+        if (self::exists($path)) return false;
+        mkdir($path, 0777, true);
+        return true;
+    }
 
     public static function add($path, $file) {
-        if (!self::exists($path)) {
-            mkdir($path, 0777, true);
-        }
+        self::newDirectory($path);
 
     }
 
-    public static function uploadImage($path, $id, $image)
-    {
+    public static function uploadImage($path, $id, $image) {
         $target_file = $path . basename($_FILES[$id]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $check = getimagesize($image["tmp_name"]);
@@ -39,20 +39,17 @@ class File
     }
 
 
-    public static function setProfileImage($id, $image)
-    {
+    public static function setProfileImage($id, $image) {
         $file = PERFIL . $id . ".png";
         file_put_contents($file, $image);
         return $file;
     }
 
-    public static function setRandomImageByName($name, $surname, $id, $size = 128)
-    {
+    public static function setRandomImageByName($name, $surname, $id, $size = 128) {
         return self::setProfileImage($id, file_get_contents("https://api.adorable.io/avatars/" . $size . "/" . $id . ".png"));
     }
 
-    public static function getProfileImage(Persona $persona): string
-    {
+    public static function getProfileImage(Persona $persona) : string {
         $id = $persona->getId();
         $name = $persona->getNombre();
         $surname = $persona->getApellido1();
@@ -64,14 +61,12 @@ class File
         return self::setRandomImageByName($name, $surname, $id);
     }
 
-    public static function getProfileImageById($idPersona)
-    {
+    public static function getProfileImageById($idPersona) {
         $persona = PersonaDAO::getById($idPersona);
         return self::getProfileImage($persona);
     }
 
-    public static function getIMG($route, $name)
-    {
+    public static function getIMG($route, $name) {
         $imageType = array('.png', '.jpg', '.jpeg');
         $img = $route . $name;
         foreach ($imageType as $type) {
@@ -82,8 +77,7 @@ class File
         return null;
     }
 
-    public static function getMainHouseImage($houseID): string
-    {
+    public static function getMainHouseImage($houseID) : string {
         define("HOUSEIMG", "img/casas/");
         $img = self::getIMG(HOUSEIMG, $houseID);
         if ($img != null) {

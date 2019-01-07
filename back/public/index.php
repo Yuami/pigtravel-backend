@@ -11,6 +11,10 @@ if (isset($_SERVER['REDIRECT_URL'])) {
     $r = new Router(DOMAIN . "main", []);
 }
 $c = $r->getController();
+if ($c == 'photos'){
+    include_once 'photo.php';
+    die();
+}
 
 if (!Session::isSet('userID')) {
     if ($c != "register" && $c != "login" && $c != "loginController")
