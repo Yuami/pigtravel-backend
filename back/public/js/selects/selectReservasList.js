@@ -7,19 +7,20 @@ $(document).ready(function () {
             type: "GET",
         },
         columns: [
+            {data: "idReserva"},
             {
-                data: "nomVivienda",
+                data: "nomV",
                 render: function (data, type, row, meta) {
                     console.log(row);
                     if (type === 'display') {
-                        data = '<a href="/reservations/' + row['idVivienda'] + '"style="text-decoration: none; color: black ">' + data + '</a>';
+                        data = '<a href="/reservations/' + row['idReserva'] + '"style="text-decoration: none; color: black ">' + data + '</a>';
                     }
 
                     return data;
                 }
             },
-            {data: 'nomPersona'},
-            {data: 'nomEstat'},
+            {data: 'nomP'},
+            {data: 'estado'},
             {data: 'fechaReserva'},
             {data: 'preu'}
         ],
@@ -37,7 +38,19 @@ $(document).ready(function () {
     $('#filterEst').on('change', function () {
         t.search(this.value).draw();
     });
+    $('#filterViv').on('change', function () {
+        t.search(this.value).draw();
+    });
     $('#clean').on('click', function () {
         t.search('').columns().search('').draw();
+        reset();
     });
+
+    function reset() {
+        var dropDownE = document.getElementById("filterEst");
+        var dropDownV = document.getElementById("filterViv");
+        dropDownE.selectedIndex = 0;
+        dropDownV.selectedIndex = 0;
+        dropDownV.attr('disabled', true);
+    }
 });

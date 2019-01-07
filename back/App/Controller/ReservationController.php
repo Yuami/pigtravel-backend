@@ -1,35 +1,47 @@
 <?php
+
 namespace Controller;
 
+use Config\Session;
 use Model\DAO\ReservaDAO;
 
-class ReservationController extends Controller {
-    public function index() {
+class ReservationController extends Controller
+{
+    public function index()
+    {
+        $id = Session::get('userID');
+        $reservas = ReservaDAO::getByPropietario($id);
         require_once VIEW . 'reservations.php';
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $reserva = ReservaDAO::getById($id);
         require_once VIEW . 'reservation.php';
     }
 
-    public function create() {
+    public function create()
+    {
         // TODO: Implement create() method.
     }
 
-    public function store() {
+    public function store()
+    {
         // TODO: Implement store() method.
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         // TODO: Implement edit() method.
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         // TODO: Implement update() method.
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         // TODO: Implement destroy() method.
     }
 

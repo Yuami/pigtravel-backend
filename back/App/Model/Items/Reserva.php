@@ -1,11 +1,13 @@
 <?php
+
 namespace Model\Items;
 
 use Model\DAO\PersonaDAO;
 use Model\DAO\ReservaHasEstadoDAO;
 use Model\DAO\ViviendaDAO;
 
-class Reserva {
+class Reserva
+{
 
     private $id;
     private $checkIn;
@@ -17,17 +19,18 @@ class Reserva {
     private $idMetodoPago;
     private $idCliente;
 
-    public function json() {
+    public function json()
+    {
         return [
-          "id" => $this->id,
-          "checkIn" => $this->checkIn,
-          "checkOut" => $this->checkOut,
-          "fechaReserva" => $this->fechaReserva,
-          "precio" => $this->precio,
-          "totalClientes" => $this->totalClientes,
-          "idVivienda" => $this->idVivienda,
-          "idMetodoPago" => $this->idMetodoPago,
-          "idCliente" => $this->idCliente,
+            "id" => $this->id,
+            "checkIn" => $this->checkIn,
+            "checkOut" => $this->checkOut,
+            "fechaReserva" => $this->fechaReserva,
+            "precio" => $this->precio,
+            "totalClientes" => $this->totalClientes,
+            "idVivienda" => $this->idVivienda,
+            "idMetodoPago" => $this->idMetodoPago,
+            "idCliente" => $this->idCliente,
         ];
     }
 
@@ -47,127 +50,152 @@ class Reserva {
     /**
      * @return mixed
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return mixed
      */
-    public function getCheckIn() {
+    public function getCheckIn()
+    {
         return $this->checkIn;
     }
 
     /**
      * @param mixed $checkIn
      */
-    public function setCheckIn($checkIn): void {
+    public function setCheckIn($checkIn): void
+    {
         $this->checkIn = $checkIn;
     }
 
     /**
      * @return mixed
      */
-    public function getCheckOut() {
+    public function getCheckOut()
+    {
         return $this->checkOut;
     }
 
     /**
      * @param mixed $checkOut
      */
-    public function setCheckOut($checkOut): void {
+    public function setCheckOut($checkOut): void
+    {
         $this->checkOut = $checkOut;
     }
 
     /**
      * @return mixed
      */
-    public function getFechaReserva() {
+    public function getFechaReserva()
+    {
         return $this->fechaReserva;
     }
 
     /**
      * @param mixed $fechaReserva
      */
-    public function setFechaReserva($fechaReserva): void {
+    public function setFechaReserva($fechaReserva): void
+    {
         $this->fechaReserva = $fechaReserva;
     }
 
     /**
      * @return mixed
      */
-    public function getPrecio() {
+    public function getPrecio()
+    {
         return $this->precio;
     }
 
     /**
      * @param mixed $precio
      */
-    public function setPrecio($precio): void {
+    public function setPrecio($precio): void
+    {
         $this->precio = $precio;
     }
 
     /**
      * @return mixed
      */
-    public function getTotalClientes() {
+    public function getTotalClientes()
+    {
         return $this->totalClientes;
     }
 
     /**
      * @param mixed $totalClientes
      */
-    public function setTotalClientes($totalClientes): void {
+    public function setTotalClientes($totalClientes): void
+    {
         $this->totalClientes = $totalClientes;
     }
 
     /**
      * @return mixed
      */
-    public function getIdVivienda() {
+    public function getIdVivienda()
+    {
         return $this->idVivienda;
     }
 
     /**
      * @return mixed
      */
-    public function getIdMetodoPago() {
+    public function getIdMetodoPago()
+    {
         return $this->idMetodoPago;
     }
 
     /**
      * @param mixed $idMetodoPago
      */
-    public function setIdMetodoPago($idMetodoPago): void {
+    public function setIdMetodoPago($idMetodoPago): void
+    {
         $this->idMetodoPago = $idMetodoPago;
     }
 
     /**
      * @return mixed
      */
-    public function getIdCliente() {
+    public function getIdCliente()
+    {
         return $this->idCliente;
     }
 
     /**
      * @return Vivienda
      */
-    public function getVivienda() : Vivienda{
+    public function getVivienda(): Vivienda
+    {
         return ViviendaDAO::getById($this->idVivienda);
     }
 
     /**
      * @return Persona
      */
-    public function getCliente() : Persona{
+    public function getCliente(): Persona
+    {
         return PersonaDAO::getById($this->idCliente);
+    }
+
+    /**
+     * @return Persona
+     */
+    public function getVendedor(): Persona
+    {
+        return PersonaDAO::getById($this->getVivienda()->getIdVendedor());
     }
 
     public function getCambios()
     {
         $estados = ReservaHasEstado::getEstadosByReserva($this);
         $result = [];
-        foreach ($estados as $estado){
+        foreach ($estados as $estado) {
             $result[] = ["estado" => $estado->getNombre(), "fechaCambio" => $estado->getFechaCambio()];
         }
         return $result;
@@ -177,7 +205,7 @@ class Reserva {
     {
         $estados = ReservaHasEstado::getEstadosByReserva($this);
         $result = [];
-        foreach ($estados as $estado){
+        foreach ($estados as $estado) {
             $result[] = ["estado" => $estado->getNombre(), "fechaCambio" => $estado->getFechaCambio()];
         }
         return json_encode($result);
@@ -202,7 +230,7 @@ class Reserva {
         $checkOut = new \DateTime($this->checkOut);
         $diff = date_diff($checkIn, $checkOut, true);
 
-        return  $diff->days;
+        return $diff->days;
     }
 
     public function getMedia()
