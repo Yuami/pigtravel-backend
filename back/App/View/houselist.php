@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php use Config\Cookie;
+    use Config\Session;
 
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -15,8 +16,8 @@
 <body>
 
 <?php include_once("header.php");
-if (Cookie::isSet("wrongHouse")) {
-    Cookie::delete("wrongHouse");
+if (Session::isSet("wrongHouse")) {
+    Session::delete("wrongHouse");
     ?>
     <div id="wrongHouse" class="alert alert-danger" role="alert">
         You've no permission to see this house!

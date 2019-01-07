@@ -21,4 +21,4 @@ if (!Session::isSet('userID')) {
     }
 }
 
-$r->redirect();
+$r->load();

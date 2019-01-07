@@ -3,17 +3,18 @@
 namespace Controller;
 
 use Config\Cookie;
+use Config\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
 
 class HouseController extends Controller
 {
 
-    public function validUser($userID, $viviendaUserID)
+    public function validUser($userID, $vivienda)
     {
-        if ($userID !== $viviendaUserID) {
-            Cookie::set("wrongHouse", "true", 1);
-            $this->index();
+        if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
+            Session::set("wrongHouse", "true");
+            Router::redirect("houses");
             return false;
         }
         return true;
@@ -27,7 +28,7 @@ class HouseController extends Controller
     public function show($id)
     {
         $vInfo = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $vInfo->getIdVendedor())) {
+        if ($this->validUser(Session::get('userID'), $vInfo)) {
             include_once VIEW . "house.php";
         }
     }
