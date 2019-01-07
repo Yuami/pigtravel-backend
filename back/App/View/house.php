@@ -22,16 +22,14 @@
 <body>
 <?php include_once("header.php") ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
-    <ul class="nav nav-pills mr-auto ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#section1">House</a></li>
-        <li class="nav-item"><a class="nav-link" href="#section2">Rates</a></li>
-        <li class="nav-item"><a class="nav-link" href="#section3">Policies</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Show</a></li>
-    </ul>
-</nav>
-
-
+    <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
+        <ul class="nav nav-pills mr-auto ml-auto">
+            <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
+            <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section2">Rates</a></li>
+            <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section3">Policies</a></li>
+            <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
+        </ul>
+    </nav>
 <section id="housePage" class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
@@ -147,7 +145,7 @@
                     <div id="houseMap" style="width:auto;height:300px;"></div>
                 </div>
             </div>
-            <input class="btn d-md-block d-none btn-block btn-primary mt-3" type="submit"/>
+            <input class="btn btn-block btn-primary mt-3" type="submit"/>
 
         </form>
     </div>

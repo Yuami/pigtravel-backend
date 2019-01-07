@@ -2,11 +2,23 @@
 
 namespace Controller;
 
+use Config\Cookie;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
 
 class HouseController extends Controller
 {
+
+    public function validUser($userID, $viviendaUserID)
+    {
+        if ($userID !== $viviendaUserID) {
+            Cookie::set("wrongHouse", "true", 1);
+            $this->index();
+            return false;
+        }
+        return true;
+    }
+
     public function index()
     {
         include_once VIEW . "houselist.php";
@@ -15,7 +27,9 @@ class HouseController extends Controller
     public function show($id)
     {
         $vInfo = ViviendaDAO::getById($id);
-        include_once VIEW . "house.php";
+        if ($this->validUser(Session::get('userID'), $vInfo->getIdVendedor())) {
+            include_once VIEW . "house.php";
+        }
     }
 
     public function create()
@@ -25,22 +39,21 @@ class HouseController extends Controller
 
     public function store()
     {
-        echo "success";
-//        ViviendaDAO::insert([
-//            "nombre" => $_POST['houseName'],
-//            "capacidad" => $_POST['peopleAmount'],
-//            "coordX" => 0,
-//            "coordY" => 0,
-//            "metrosCuadrados" => $_POST['squaremeters'],
-//            "calle" => $_POST['street'],
-//            "horaEntrada" => $_POST['checkIn'],
-//            "horaSalida" => $_POST['checkOut'],
-//            "alquilerAutomatico" => $_POST['standardRate'],
-//            "idTipoVivienda" => 1,
-//            "idCiudad" => $_POST['city'],
-//            "idVendedor" => Session::get('userID'),
-//            "descripcion" => $_POST['description']]);
-//        header("Location: " . DOMAIN . "/houses");
+        ViviendaDAO::insert([
+            "nombre" => $_POST['houseName'],
+            "capacidad" => $_POST['peopleAmount'],
+            "coordX" => 0,
+            "coordY" => 0,
+            "metrosCuadrados" => $_POST['squaremeters'],
+            "calle" => $_POST['street'],
+            "horaEntrada" => $_POST['checkIn'],
+            "horaSalida" => $_POST['checkOut'],
+            "alquilerAutomatico" => $_POST['standardRate'],
+            "idTipoVivienda" => 1,
+            "idCiudad" => $_POST['city'],
+            "idVendedor" => Session::get('userID'),
+            "descripcion" => $_POST['description']]);
+        header("Location: " . DOMAIN . "/houses");
     }
 
     public function edit($id)

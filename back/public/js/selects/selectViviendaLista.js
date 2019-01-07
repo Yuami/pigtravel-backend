@@ -30,7 +30,7 @@ $(function () {
                             let newCol = $("<div/>", {
                                 class: 'col-md-4 col-xl-3 col-sm-6 mb-3'
                             });
-                            let url = "houses/" + id;
+                            let url = "/houses/" + id;
                             let newA = $("<a/>", {
                                 href: url,
                                 class: 'card p-0',
