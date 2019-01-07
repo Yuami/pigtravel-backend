@@ -27,7 +27,7 @@ class Cookie {
 
     public static function delete($key) {
         if (self::isSet($key)){
-            $_COOKIE[$key] = null;
+            unset($_COOKIE[$key]);
         }
     }
 }
