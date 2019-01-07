@@ -16,6 +16,14 @@ class File
         return false;
     }
 
+
+    public static function add($path, $file) {
+        if (!self::exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+    }
+
     public static function uploadImage($path, $id, $image)
     {
         $target_file = $path . basename($_FILES[$id]["name"]);
