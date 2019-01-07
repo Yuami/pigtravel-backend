@@ -57,6 +57,7 @@
     <table id="taula" class="table table-striped table-bordered">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Casa</th>
             <th>Cliente</th>
             <th>Estado</th>
