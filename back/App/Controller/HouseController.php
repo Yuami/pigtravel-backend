@@ -76,8 +76,9 @@ class HouseController extends Controller
             "idTipoVivienda" => 1,
             "idCiudad" => $_POST['city'],
             "descripcion" => $_POST['description']]);
-        header("Location: " . DOMAIN . "/houses/" . $id);
+        Router::redirect("houses/" . $id);
     }
+
 
     public function destroy()
     {

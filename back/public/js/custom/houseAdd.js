@@ -1,7 +1,8 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the crurrent tab
 
-var map = L.map('houseMap').setView([25, 0], 1);
+var map = L.map('houseMap').setView([52.520008, 13.404954], 13);
+var marker;
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -24,25 +25,60 @@ $('#person').on('change', function () {
     }
 });
 
-function updateStreet(){
+function updateStreet() {
     let address;
     let streetName = $("#street").val();
     let city = $("#city option:selected").text();
-    if (city !== $("#city option:first-child").text() && streetName){
+    if (city !== $("#city option:first-child").text() && streetName) {
         address = streetName + ", " + city;
         $("#streetCard").html('<span class="fas fa-road"></span> ' + address);
     }
+    if (streetName !== "" || city !== "") {
+        fetch("https://eu1.locationiq.com/v1/search.php?key=dd14f9f9501763&q=" + address + "&format=json")
+            .then(r => r.json())
+            .then(r => r[0])
+            .then(r => {
+                let lng = r.lon;
+                let lat = r.lat;
+                checkMarker();
+                addPoint(lng, lat);
+            })
+    }
+}
 
-//    geocoder.geocode(address, function(results, status) {
-//        if (status == geocoder.GeocoderStatus.OK) {
-// // // latLng = new L.LatLng(results[0].center.lat, results[0].center.lng);
-//             marker = new L.Marker(latLng);
-//             marker.addTo(map);
-//             console.log(latLng);
-//         } else {
-//             console.log("ERROR");
-//         }
-//     });
+map.on('click', function (e) {
+    let lat = e.latlng.lat;
+    let lon = e.latlng.lng;
+
+    console.log("You clicked the map at LAT: " + lat + " and LONG: " + lon);
+    checkMarker();
+    addPoint(lon, lat);
+
+    fetch("https://eu1.locationiq.com/v1/reverse.php?key=dd14f9f9501763&lat=" + lat + "&lon= " + lon + " &format=json")
+        .then(r => r.json())
+        .then(r => r.address)
+        .then(r => {
+                console.log(r.road);
+                if (r.house_number === undefined) {
+                    $("#street").val(r.road);
+                } else {
+                    $("#street").val(r.road + " " + r.house_number);
+                }
+            }
+        )
+});
+
+function checkMarker() {
+    if (marker != undefined) {
+        map.removeLayer(marker);
+    }
+    ;
+}
+
+function addPoint(lng, lat) {
+    map.setView([lat, lng]);
+    marker = L.marker([lat, lng]).addTo(map);
+    console.log(lat + " " + lng);
 }
 
 $('#street').on('change', function (e) {
@@ -116,9 +152,9 @@ function fixStepIndicator(n) {
 }
 
 
-$("#houseName").on('blur',bootstrapValidate('#houseName', 'required:Enter a name!'))
-    .on('blur',bootstrapValidate('#houseName', 'regex:^[a-zA-Z ]+$:Enter only letters!'));
+$("#houseName").on('blur', bootstrapValidate('#houseName', 'required:Enter a name!'))
+    .on('blur', bootstrapValidate('#houseName', 'regex:^[a-zA-Z ]+$:Enter only letters!'));
 
-$("#street").on('blur',bootstrapValidate('#street', 'required:Enter a name!'));
+$("#street").on('blur', bootstrapValidate('#street', 'required:Enter a name!'));
 
 
