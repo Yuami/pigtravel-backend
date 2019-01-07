@@ -5,13 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php require_once ROOT . "libraries.php" ?>
+    <?php use Config\Cookie;
+    use Config\Session;
+
+    require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <title>List of houses</title>
 </head>
 
 <body>
-<?php include_once("header.php") ?>
+
+<?php include_once("header.php");
+if (Session::isSet("wrongHouse")) {
+    Session::delete("wrongHouse");
+    ?>
+    <div id="wrongHouse" class="alert alert-danger" role="alert">
+        You've no permission to see this house!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php } ?>
+
+
+
 <section class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">

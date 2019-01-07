@@ -91,15 +91,19 @@ class Router
                     } else if ($_POST["_method"] == 'DELETE') {
                         $c->destroy();
                     }
-                }   else {
+                } else {
                     $c->store();
                 }
                 break;
         }
     }
 
-    public
-    function redirect()
+    public static function redirect($route)
+    {
+        header("location: " . DOMAIN . "/" . $route);
+    }
+
+    public function load()
     {
         $controller = new DummyController();
         switch ($this->getController()) {
