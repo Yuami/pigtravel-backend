@@ -14192,6 +14192,10 @@ body#landingBody {
   overflow: hidden;
 }
 
+.menu-padding {
+  padding-top: 56px !important;
+}
+
 .item img {
   width: 100%;
   object-fit: cover;
