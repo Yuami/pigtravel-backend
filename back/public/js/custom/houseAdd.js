@@ -3,6 +3,8 @@ showTab(currentTab); // Display the crurrent tab
 
 var map = L.map('houseMap').setView([52.520008, 13.404954], 13);
 var marker;
+var wrongHouseLocation = false;
+
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -16,12 +18,11 @@ $('#houseName').on('change', function (e) {
     $("#houseNameCard").text($("#houseName").val());
 });
 
-$('#person').on('change', function () {
-    console.log(this.value);
+$('#peopleAmount').on('change', function () {
     if (this.value > 1) {
-        $("#personCard").html('<span class="fas fa-user-friends"></span> ' + this.value + " people");
+        $("#personCard").html('<span class="fas fa-user-friends"></span> ' + $("#peopleAmount").val() + " people");
     } else {
-        $("#personCard").html('<span class="fas fa-user-friends"></span> ' + this.value + " person");
+        $("#personCard").html('<span class="fas fa-user-friends"></span> ' +  $("#peopleAmount").val()  + " person");
     }
 });
 
@@ -46,26 +47,29 @@ function updateStreet() {
     }
 }
 
+
 map.on('click', function (e) {
-    let lat = e.latlng.lat;
-    let lon = e.latlng.lng;
+    if (wrongHouseLocation) {
+        let lat = e.latlng.lat;
+        let lon = e.latlng.lng;
 
-    console.log("You clicked the map at LAT: " + lat + " and LONG: " + lon);
-    checkMarker();
-    addPoint(lon, lat);
+        console.log("You clicked the map at LAT: " + lat + " and LONG: " + lon);
+        checkMarker();
+        addPoint(lon, lat);
 
-    fetch("https://eu1.locationiq.com/v1/reverse.php?key=dd14f9f9501763&lat=" + lat + "&lon= " + lon + " &format=json")
-        .then(r => r.json())
-        .then(r => r.address)
-        .then(r => {
-                console.log(r.road);
-                if (r.house_number === undefined) {
-                    $("#street").val(r.road);
-                } else {
-                    $("#street").val(r.road + " " + r.house_number);
+        fetch("https://eu1.locationiq.com/v1/reverse.php?key=dd14f9f9501763&lat=" + lat + "&lon= " + lon + " &format=json")
+            .then(r => r.json())
+            .then(r => r.address)
+            .then(r => {
+                    console.log(r.road);
+                    if (r.house_number === undefined) {
+                        $("#street").val(r.road);
+                    } else {
+                        $("#street").val(r.road + " " + r.house_number);
+                    }
                 }
-            }
-        )
+            )
+    }
 });
 
 function checkMarker() {

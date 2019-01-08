@@ -98,6 +98,7 @@
                     </div>
                     <div class="card-body">
                         <div id="houseMap" style="width:auto;height:300px;margin: -36px -36px 0;"></div>
+                        <p id="wrongHouseLocation">Wrong house location?</p>
                         <p id="personCard" class="mb-0"></p>
                         <p id="streetCard"></p>
                         <p id="descriptionCard" class="card-text"></p>
