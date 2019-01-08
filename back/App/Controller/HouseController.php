@@ -47,8 +47,8 @@ class HouseController extends Controller
         ViviendaDAO::insert([
             "nombre" => $_POST['houseName'],
             "capacidad" => $_POST['peopleAmount'],
-            "coordX" => 0,
-            "coordY" => 0,
+            "coordX" => $_POST['lan'],
+            "coordY" => $_POST['lon'],
             "metrosCuadrados" => $_POST['squaremeters'],
             "calle" => $_POST['street'],
             "horaEntrada" => $_POST['checkIn'],
@@ -69,7 +69,7 @@ class HouseController extends Controller
     public function update($id)
     {
         ViviendaDAO::update([
-            "id" => $id,
+            "id" => Session::get("userID"),
             "nombre" => $_POST['houseName'],
             "capacidad" => $_POST['peopleAmount'],
             "metrosCuadrados" => $_POST['squaremeters'],

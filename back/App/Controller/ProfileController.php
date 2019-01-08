@@ -1,6 +1,8 @@
 <?php
 namespace Controller;
 
+use Config\Router;
+use Config\Session;
 use Model\DAO\PersonaDAO;
 
 class ProfileController extends Controller {
@@ -10,7 +12,7 @@ class ProfileController extends Controller {
 
     public function show($id)
     {
-        // TODO: Implement show() method.
+        Router::redirect("profile");
     }
 
     public function create()
@@ -20,17 +22,25 @@ class ProfileController extends Controller {
 
     public function store()
     {
-        PersonaDAO::modify();
     }
 
     public function edit($id)
     {
-        // TODO: Implement edit() method.
+
     }
 
     public function update($id)
     {
-        // TODO: Implement update() method.
+        PersonaDAO::modify([
+            "id" => Session::get("userID"),
+            "nombre" => $_POST["firstNameForm"],
+            "apellido1" => $_POST["surnameForm"],
+            "tlf" => $_POST["telephoneForm"],
+            "correo" => $_POST["emailForm"],
+            "descripcion" => $_POST['descriptionForm'],
+        ]);
+        Router::redirect("profile");
+
     }
 
     public function destroy()

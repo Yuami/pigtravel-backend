@@ -6,6 +6,7 @@ use Controller\Controller;
 use Controller\DummyController;
 use Controller\HouseController;
 use Controller\MessagesController;
+use Controller\ProfileController;
 use Controller\RegisterController;
 use Controller\ReservationController;
 use Controller\SendMessagesController;
@@ -115,7 +116,7 @@ class Router
                 break;
             case "profile":
             case "settings":
-                include_once VIEW . "profile.php";
+            $controller = new ProfileController();
                 break;
             case "support":
                 include_once VIEW . "support.php";
