@@ -12,8 +12,13 @@ $(document).ready(function() {
             .toggleClass('fa-eye');
     });
     $('.openBtn').on('click',function(){
-        $(this).find('#nombreReciever').append('<b> To: ' + getIdFromRow  + '</b>');
-        $('#myModal').modal({show:true});
+            nomPersona = $(this).attr('data-to');
+            $('#nombreReciever').html('Para: <b>'+nomPersona+'</b>');
+            $('#myModal').modal({
+                keyboard: true,
+                backdrop: "static",
+                show:false,
+        });
     });
 });
 function myNewFunction(sel) {

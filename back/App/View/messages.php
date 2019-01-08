@@ -55,13 +55,13 @@ if (isset($_POST['submit'])) {
             <?php
             foreach(self::recibidos(Session::get('userID')) as $mensaje) {
                 if($mensaje->getLeido()==0){ ?>
-                    <tr class="openBtn"  data-leido="0" data-target="#myModal" data-toggle="modal" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>"  id="<?php echo $mensaje->getIdVivienda();?>">
+                    <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre() ?>"  id="<?php echo $mensaje->getIdVivienda();?>">
                         <td style="width:25%"> <?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></td>
                         <td style="width:65%"> <?php echo $mensaje->getMensaje(); ?></td>
                         <td style="width:10%"><?php echo $mensaje->getFechaEnviado();?></td>
                     </tr>
                 <?php }else{ ?>
-                    <tr class="openBtn"  data-leido="1" data-target="#myModal" data-toggle="modal" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>"  id="<?php echo $mensaje->getIdVivienda();?>">
+                    <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>"  id="<?php echo $mensaje->getIdVivienda();?>">
                         <td> <strong><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></td>
                         <td><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
                         <td><strong><?php echo $mensaje->getFechaEnviado();?></strong></td>
@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                 <?php } }?>
         </table>
     </div>
-    <form method="post" role="form">
+    <form id="addMessagesForm" method="POST" action="/messages">
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -77,12 +77,8 @@ if (isset($_POST['submit'])) {
                         Mensaje
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div id="nombreReciever" class="col-6"></div>
-                        </div>
-                        <div class="row">
+                            <div id="nombreReciever"></div>
                             <input type="text" class="form-control" name="mensajeRespuesta" aria-describedby="basic-addon1" />
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>

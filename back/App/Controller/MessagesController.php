@@ -17,7 +17,7 @@ class MessagesController extends Controller {
     }
 
     public function create() {
-        // TODO: Implement create() method.
+
     }
 
     public function store() {

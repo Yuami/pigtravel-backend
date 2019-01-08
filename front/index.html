@@ -1,13 +1,301 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+
+
+    .jumbotron_cont {
+        position: relative;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 78vh;
+    }
+    .buscador{
+
+        background-color:rgba(255, 255, 255, 0.9);
+        padding: 0px;
+        margin: auto;
+    }
+    .has-search .form-control {
+        border-radius: 0px;
+    }
+    .boton{
+        border-radius: 0px;
+        width: 100%;
+    }
+
+    .has-search .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 3.675rem;
+        height: 3.675rem;
+        text-align: center;
+        pointer-events: none;
+        left: 5%;
+        top: 25%;
+    }
+    .form-group{
+        margin-bottom: 0px;
+    }
+    .HeadLine{
+        text-align: center;
+        color: white;
+    }
+    .filtros{
+        padding: 0px;
+    }
+    .index{
+        padding-top: 5%;
+    }
+    html,
+    body,
+    .view {
+
+        background-image: url('casa.png');
+        background-repeat: no-repeat;
+
+    }
+
+    @media (min-width: 768px) {
+
+        .carousel-inner .active,
+        .carousel-inner .active + .carousel-item,
+        .carousel-inner .active + .carousel-item + .carousel-item,
+        .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item  {
+            display: block;
+        }
+
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+            transition: none;
+        }
+
+        .carousel-inner .carousel-item-next,
+        .carousel-inner .carousel-item-prev {
+            position: relative;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: absolute;
+            top: 0;
+            right: -25%;
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+
+        .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+        .carousel-item-next.carousel-item-left + .carousel-item,
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item,
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+
+        .carousel-inner .carousel-item-prev.carousel-item-right {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+
+        .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+        .carousel-item-prev.carousel-item-right + .carousel-item,
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item,
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+
+    }
+
+    .textboxid
+    {
+        height:70px;
+        font-size:14pt;
+        border: none;
+    }
+
+    * {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+    .index{
+        margin-top: 5%;
+    }
+</style>
 </head>
+
 <body>
-<h1>Welcome to this new site!</h1>
+<header>
+    <div class="view">
+        <h1 class="HeadLine">RESERVA APARTAMENTOS EN TODO EL MUNDO</span></h1>
+        <div class="Jumbotron">
+            <div class="jumbotron_cont">
+                <div class="buscador col-xs-10 col-lg-8">
+
+                    <div class="form-group has-search filtros col-xs-12 col-sm-6 col-lg-3">
+                        <input class="form-control textboxid" id="autocomplete" type="text" placeholder="¿Donde quieres ir?" name="location">
+                    </div>
+                    <div class="form-group has-search filtros col-xs-12 col-sm-8 col-lg-5">
+                        <div class="filtros col-xs-6 col-sm-6 col-lg-6">
+                            <span class="fa fa-calendar form-control-feedback"></span>
+                            <input class="form-control textboxid" type='button'  id='dt1' value='Entrada'>
+                        </div>
+                        <div class="filtros col-xs-6 col-sm-6 col-lg-6">
+                            <span class="fa fa-calendar form-control-feedback"></span>
+                            <input class="form-control textboxid" type='button' id='dt2' value="Salida">
+                        </div>
+                    </div>
+                    <div class="form-group has-search filtros col-xs-12 col-sm-6 col-lg-3">
+                        <span class="fa fa-user"></span>
+                        <select class="textboxid">
+                            <option value="" selected>Huespedes</option>
+                            <option value="1">1 Huesped</option>
+                            <option value="2">2 Huespedes</option>
+                            <option value="3">3 Huespedes</option>
+                        </select>
+                    </div>
+                    <div class="filtros col-xs-12 col-sm-6 col-lg-1">
+                        <button type="button" class="btn btn-primary boton textboxid"><i class="fa fa-search fa-2x "></i></button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container index">
+    <h2 style="text-align: center">Te recomendamos</h2>
+    <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
+        <div class="carousel-inner row mx-auto" role="listbox">
+            <div class="carousel-item col-md-3 active">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="http://placehold.it/300x200/418cf4/fff" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Mallorca</h4>
+                        <p class="card-text">España</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="http://placehold.it/300x200/418cf4/fff" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Mallorca</h4>
+                        <p class="card-text">España</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="http://placehold.it/300x200/418cf4/fff" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Mallorca</h4>
+                        <p class="card-text">España</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="http://placehold.it/300x200/418cf4/fff" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Mallorca</h4>
+                        <p class="card-text">España</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="http://placehold.it/300x200/418cf4/fff" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Mallorca</h4>
+                        <p class="card-text">España</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left fa-lg text-muted"></i>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+            <i class="fa fa-chevron-right fa-lg text-muted"></i>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#dt1").datepicker({
+            numberOfMonths: 1,
+            dateFormat: 'dd-mm-y',
+            onSelect: function (selected) {
+                var dt = new Date(selected);
+                dt.setDate(dt.getDate() + 1);
+                $("#dt2").datepicker("option", "minDate", dt);
+            }
+        });
+        $("#dt2").datepicker({
+            numberOfMonths: 1,
+            dateFormat: 'dd-mm-y',
+            onSelect: function (selected) {
+                var dt = new Date(selected);
+                dt.setDate(dt.getDate() - 1);
+                $("#dt1").datepicker("option", "maxDate", dt);
+            }
+        });
+    });
+    $('#carouselExample').on('slide.bs.carousel', function (e) {
+
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 4;
+        var totalItems = $('.carousel-item').length;
+        if(totalItems>itemsPerSlide) {
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    if (e.direction == "left") {
+                        $('.carousel-item').eq(i).appendTo('.carousel-inner');
+                    } else {
+                        $('.carousel-item').eq(0).appendTo('.carousel-inner');
+                    }
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>
