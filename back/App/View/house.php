@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php require_once ROOT . "libraries.php" ?>
+    <?php use Config\Session; require_once ROOT . "libraries.php" ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="/css/leaflet.css">
     <script src="/js/leaflet.js"></script>
     <title>House</title>
 </head>
 <body class="bg-color-background">
-<?php include_once("header.php") ?>
+
+<?php include_once("header.php"); ?>
+
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
@@ -22,7 +24,19 @@
     </ul>
 </nav>
 
-<section class="container"  id="mainHouseSection" >
+<?php
+if (Session::isSet("updateCompleted")) {
+Session::delete("updateCompleted");
+?>
+<div id="updateCompleted" class="alert alert-success" role="alert">
+    House successfully updated!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php } ?>
+
+<section class="container-fluid"  id="mainHouseSection" >
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
             <h1>House</h1>
@@ -33,7 +47,7 @@
             </ol>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container">
         <form method="POST" action="/houses/<?= $vInfo->getId(); ?>">
             <input type="hidden" name="_method" value="PUT">
 
@@ -130,6 +144,7 @@
 
                         <textarea id="description" class="form-control mb-1 col-md-8" rows="4" cols="50"
                                   name="description"><?= $vInfo->getDescripcion(); ?></textarea>
+                        <input class="btn btn-block btn-primary mt-3" type="submit"/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -137,7 +152,6 @@
                     <div id="houseMap" style="width:auto;height:300px;"></div>
                 </div>
             </div>
-            <input class="btn btn-block btn-primary mt-3" type="submit"/>
 
         </form>
     </div>

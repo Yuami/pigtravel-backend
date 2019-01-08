@@ -26,3 +26,9 @@ function mapLoad(x, y) {
     L.marker([x, y]).bindPopup("Your House").addTo(map);
 
 }
+
+$(function() {
+    $("#updateCompleted").delay(2000).fadeTo(2000, 500).slideUp(500, function(){
+        $("#updateCompleted").slideUp(500);
+    });
+});

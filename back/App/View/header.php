@@ -2,6 +2,7 @@
 
 use Config\File;
 use Config\Session;
+use Model\DAO\PersonaDAO;
 
 if (!Session::isSet('userID')) { ?>
     <header class="head">
@@ -17,7 +18,7 @@ if (!Session::isSet('userID')) { ?>
         </div>
     </header>
 <?php } else {
-    $user = unserialize(Session::get('user'));
+    $user = PersonaDAO::getById(Session::get("userID"));
     $profileImage = File::getProfileImage($user);
     ?>
     <header class="head">
