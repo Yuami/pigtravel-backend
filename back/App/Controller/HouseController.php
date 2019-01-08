@@ -20,6 +20,10 @@ class HouseController extends Controller
         return true;
     }
 
+    public function updateCompleted(){
+        Session::set("updateCompleted", "true");
+    }
+
     public function index()
     {
         include_once VIEW . "houselist.php";
@@ -76,8 +80,10 @@ class HouseController extends Controller
             "idTipoVivienda" => 1,
             "idCiudad" => $_POST['city'],
             "descripcion" => $_POST['description']]);
-        header("Location: " . DOMAIN . "/houses/" . $id);
+        $this->updateCompleted();
+        Router::redirect("houses/" . $id);
     }
+
 
     public function destroy()
     {

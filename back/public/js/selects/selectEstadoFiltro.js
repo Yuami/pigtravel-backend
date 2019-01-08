@@ -13,7 +13,7 @@ $(document).ready(function () {
             if (this.readyState == 4 && this.status == 200) {
                 var estats = JSON.parse(this.responseText);
                 for (i in estats) {
-                    var estado = estats[i].nomEstat;
+                    var estado = estats[i].estado;
                     var item = $("<option/>",
                         {
                             value: estado,
@@ -35,13 +35,13 @@ $(document).ready(function () {
                 var vivienda = JSON.parse(this.responseText);
                 var item0 = $("<option/>", {
                     value: "0",
-                    text: "Selecciona"
+                    text: "--- Casa ---"
                 });
                 $("#filterViv").append(item0);
                 for (i in vivienda) {
-                    var nomV = vivienda[i].nom;
+                    var nombre = vivienda[i].nombre;
                     var item = $("<option/>", {
-                        text: nomV
+                        text: nombre
                     });
                     $("#filterViv").append(item);
                 }

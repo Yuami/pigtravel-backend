@@ -104,6 +104,11 @@ descripcion = :des
         return parent::getBy("idCiudad", $id);
     }
 
+    public static function getByVendedor($idV)
+    {
+        return parent::getBy("idVendedor", $idV);
+    }
+
     /**
      * @param $bool
      * @return array
