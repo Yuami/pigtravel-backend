@@ -7,6 +7,8 @@
  */
 namespace Controller;
 
+use Model\DAO\RegisterDAO;
+
 class RegisterController extends Controller
 {
     public function edit($id)
@@ -41,7 +43,6 @@ class RegisterController extends Controller
 
     public function store()
     {
-        include_once DAO . "RegisterDAO.php";
         if (isset($_POST["nom"])) {
             $nom = $_POST["nom"];
         }
