@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php use Config\File;
+    use Config\Session;
 
     require_once ROOT . "libraries.php" ?>
     <title>Profile</title>
@@ -27,7 +28,8 @@
     </div>
 
     <div class="container">
-        <form id="profileForm" method="POST">
+        <form action="/profile/<?= Session::get("userID") ?>" id="profileForm" method="POST">
+            <input type="hidden" name="_method" value="PUT">
             <div class="row">
                 <div class="order-0 order-md-1 offset-md-1 col-md-3 side-menu">
                     <div class="picture-container">

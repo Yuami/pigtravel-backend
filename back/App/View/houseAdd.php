@@ -33,6 +33,8 @@
     <div class="container-fluid">
 
         <form id="addHouseForm" method="POST" action="/houses">
+            <input id="lon" type="hidden" name="lon">
+            <input id="lan" type="hidden" name="lan">
 
             <div class="row px-md-5">
                 <div class="col-md-8 col-12">
@@ -98,7 +100,10 @@
                     </div>
                     <div class="card-body">
                         <div id="houseMap" style="width:auto;height:300px;margin: -36px -36px 0;"></div>
-                        <p id="wrongHouseLocation">Wrong house location?</p>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
+                            <label class="custom-control-label" for="wrongHouseLocation">Wrong house location on map!</label>
+                        </div>
                         <p id="personCard" class="mb-0"></p>
                         <p id="streetCard"></p>
                         <p id="descriptionCard" class="card-text"></p>
