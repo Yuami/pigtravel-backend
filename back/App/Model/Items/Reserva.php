@@ -94,6 +94,11 @@ class Reserva
     {
         return $this->fechaReserva;
     }
+    public function getFechaReservaFormat()
+    {
+        $this->fechaReserva= date("d/m/Y");
+        return $this->fechaReserva;
+    }
 
     /**
      * @param mixed $fechaReserva
@@ -242,4 +247,5 @@ class Reserva
     {
         return $this->precio * 0.95 - 5;
     }
+
 }
