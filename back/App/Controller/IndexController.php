@@ -18,7 +18,7 @@ class IndexController extends Controller {
     public function index() {
         $id = Session::get('userID');
         $persona = PersonaDAO::getById($id);
-        require_once VIEW . 'main.php';
+        include_once VIEW . 'main.php';
     }
 
 
