@@ -71,8 +71,8 @@ class HouseController extends Controller
 
     public function update($id)
     {
-        $vInfo = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $vInfo)) {
+        $houses = ViviendaDAO::getById($id);
+        if ($this->validUser(Session::get('userID'), $houses)) {
             ViviendaDAO::update([
                 "id" => $id,
                 "nombre" => $_POST['houseName'],
