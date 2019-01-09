@@ -14,7 +14,7 @@
 <section class="container">
     <div class="card">
         <div class="card-title row justify-content-center">
-            <h1><?php echo $vInfo->getNombre() ?></h1>
+            <h1><?php echo $houses->getNombre() ?></h1>
         </div>
         <div class="card-img-top">
             <div class="row justify-content-center">
