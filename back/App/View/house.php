@@ -48,7 +48,7 @@ if (Session::isSet("updateCompleted")) {
         </div>
     </div>
     <div class="container">
-        <form method="POST" action="/houses/<?= $vInfo->getId(); ?>">
+        <form method="POST" action="/houses/<?= $houses->getId(); ?>">
             <input type="hidden" name="_method" value="PUT">
 
             <div class="row">
@@ -63,7 +63,7 @@ if (Session::isSet("updateCompleted")) {
                                 </div>
                             </div>
                             <input type="text" class="form-control col-md-8" id="houseName" name="houseName"
-                                   style="width: 80px;" value="<?= $vInfo->getNombre(); ?>">
+                                   style="width: 80px;" value="<?= $houses->getNombre(); ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -75,7 +75,7 @@ if (Session::isSet("updateCompleted")) {
                                 </div>
                             </div>
                             <input type="number" class="form-control col-md-8" id="peopleAmount" name="peopleAmount"
-                                   style="width: 80px;" value="<?= $vInfo->getCapacidad(); ?>">
+                                   style="width: 80px;" value="<?= $houses->getCapacidad(); ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -87,7 +87,7 @@ if (Session::isSet("updateCompleted")) {
                                 </div>
                             </div>
                             <input type="text" class="form-control col-md-8" id="street" name="street"
-                                   style="width: 80px;" value="<?= $vInfo->getCalle(); ?>">
+                                   style="width: 80px;" value="<?= $houses->getCalle(); ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -111,7 +111,7 @@ if (Session::isSet("updateCompleted")) {
                                 </div>
                             </div>
                             <input type="text" class="form-control col-md-8" id="squaremeters" name="squaremeters"
-                                   style="width: 80px;" value="<?= $vInfo->getMetrosCuadrados(); ?>">
+                                   style="width: 80px;" value="<?= $houses->getMetrosCuadrados(); ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -123,7 +123,7 @@ if (Session::isSet("updateCompleted")) {
                                 </div>
                             </div>
                             <input type="time" class="form-control col-md-8" id="checkIn" name="checkIn"
-                                   style="width: 80px;" value="<?= $vInfo->getHoraEntrada(); ?>">
+                                   style="width: 80px;" value="<?= $houses->getHoraEntrada(); ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -135,7 +135,7 @@ if (Session::isSet("updateCompleted")) {
                                 </div>
                             </div>
                             <input type="time" class="form-control col-md-8" id="checkOut" name="checkOut"
-                                   style="width: 80px;" value="<?= $vInfo->getHoraSalida(); ?>">
+                                   style="width: 80px;" value="<?= $houses->getHoraSalida(); ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -143,7 +143,7 @@ if (Session::isSet("updateCompleted")) {
                         <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Description</h6>
 
                         <textarea id="description" class="form-control mb-1 col-md-8" rows="4" cols="50"
-                                  name="description"><?= $vInfo->getDescripcion(); ?></textarea>
+                                  name="description"><?= $houses->getDescripcion(); ?></textarea>
                         <input class="btn btn-block btn-primary mt-3" type="submit"/>
                     </div>
                 </div>
@@ -320,9 +320,9 @@ if (Session::isSet("updateCompleted")) {
 <script src="/js/custom/loadLocalidades.js"></script>
 <script>
     $(function () {
-        let idCiudadVivienda = <?= $vInfo->getIdCiudad(); ?>;
+        let idCiudadVivienda = <?= $houses->getIdCiudad(); ?>;
         loadLocalidades(idCiudadVivienda);
-        mapLoad(<?php echo $vInfo->getCoordX() . "," . $vInfo->getCoordY(); ?>);
+        mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
     });
 </script>
 <?php include_once("footer.php") ?>

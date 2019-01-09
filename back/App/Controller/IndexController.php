@@ -9,6 +9,7 @@ namespace Controller;
 
 use Config\Session;
 use Model\DAO\PersonaDAO;
+use Model\DAO\ReservaDAO;
 
 class IndexController extends Controller {
     public function show($id) {
@@ -18,6 +19,7 @@ class IndexController extends Controller {
     public function index() {
         $id = Session::get('userID');
         $persona = PersonaDAO::getById($id);
+        $reservas = ReservaDAO::getByVendedor($id);
         include_once VIEW . 'main.php';
     }
 
