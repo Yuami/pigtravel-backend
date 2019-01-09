@@ -96,7 +96,12 @@ class Reserva
     }
     public function getFechaReservaFormat()
     {
-        $this->fechaReserva= date("d/m/Y");
+        $this->fechaReserva= date("d/m/y");
+        return $this->fechaReserva;
+    }
+    public function getFechaReservaYear()
+    {
+        $this->fechaReserva= date("Y");
         return $this->fechaReserva;
     }
 

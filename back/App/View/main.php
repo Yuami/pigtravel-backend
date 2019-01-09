@@ -17,46 +17,55 @@
         <div id="content">
             <h1>Hola <?php echo $persona->getNombre(); ?></h1>
             <div class="row">
-                <div class="col-sm-4 col-lg-4">
+                <div class="col-sm-4 col-lg-3">
                     <h4>Proxima reserva</h4>
-                    <h4 class="est">28/10/19</h4>
-                </div>
-                <div class="col-sm-4 col-lg-4">
+                    <h6 class="est"><?php echo $reservas[0]->getFechaReservaFormat() ?></h6>
                     <h4>Beneficios anuales</h4>
-                    <h4 class="est">24,834€</h4>
-
-                </div>
-                <div class="col-sm-4 col-lg-4">
+                    <h6 class="est"><?php
+                       $beneficios=0;
+                       foreach ($reservas as $reserva){
+                              if($reserva->getFechaReservaYear()=='2019'){
+                                  $beneficios+=$reserva->getPrecio();
+                              }
+                       }
+                       echo $beneficios?>€</h6>
                     <h4>Mensajes pendientes</h4>
-                    <h4 class="est">3</h4>
+                    <h6 class="est"><?php
+                        $mensajesPendientes=0;
+                        foreach ($mensajes as $mensaje){
+                            if($mensaje->getLeido()=='1'){
+                                $mensajesPendientes++;
+                            }
+                        }
+                        echo $mensajesPendientes?></h6>
 
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-7">
+
+                <div class="col-lg-5">
                     <h4>Calendario</h4>
                     <div id="calendario" class="col-lg-10">
                         <div id="calendars">
-                            <div id="mainCalendar" data-f_inicio="2018-11-06 00:00:00" data-f_fin="2018-12-06 00:00:00"></div>
+                            <div id="mainCalendar" data-f_inicio="2019-11-06 00:00:00" data-f_fin="2019-12-06 00:00:00"></div>
                         </div>
-                        <button type="button" class="fc-prev-button btn btn-primary ml-auto" id="prevMonth">
-                            <span class="fa fa-chevron-left"></span> PREV
+                        <div class="text-center">
+                        <button type="button" class="fc-prev-button btn  ml-auto" id="prevMonth">
+                            <span class="fa fa-chevron-left"></span>
                         </button>
-                        <button type="button" class="fc-prev-button btn btn-primary ml-auto" id="nextMonth">
-                            NEXT <span class="fa fa-chevron-right"></span>
+                        <button type="button" class="fc-prev-button btn  ml-auto" id="nextMonth">
+                            <span class="fa fa-chevron-right"></span>
                         </button>
+                        </div>
                     </div>
                 </div>
-                <div  class="col-lg-5">
+                <div  class="col-lg-4">
                     <h4>Ultimas reservas</h4>
                     <table>
                        <?php foreach ($reservas as $reserva) { ?>
                         <tr>
-                            <td><?php echo $reserva->getVivienda()->getNombre() ?></td>
-                            <td><?php echo $reserva->getCliente()->getNombre() ?></td>
-                            <td><?php echo $reserva->getFechaReservaFormat() ?></td>
-                            <td><?php echo $reserva->getPrecio() ?></td>
-                            <td>
+                            <td id="reservas"><?php echo $reserva->getFechaReservaFormat() ?></td>
+                            <td id="reservas"><?php echo $reserva->getVivienda()->getNombre() ?></td>
+                            <td id="reservas"><?php echo $reserva->getPrecio() ?>€</td>
+                            <td id="reservas">
                                 <small>
                                     <span id="estado-reserva" class="badge badge-pill"><?php echo $reserva->getNombreEstado() ?></span>
                                 </small>
@@ -66,11 +75,11 @@
                     </table>
                 </div>
 
-            </div>
 
 
 
         </div>
+    </div>
     </div>
 
 
@@ -92,6 +101,16 @@
         border-radius: 4px;
         overflow: hidden;
 
+
+    }
+    .fc-toolbar h2{
+        font-size: 16px;
+    }
+    #reservas{
+        padding-right: 10px;
+    }
+    #mainCalendar{
+        font-size: 10px !important;
     }
 
     #content {

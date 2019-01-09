@@ -8,8 +8,10 @@
 namespace Controller;
 
 use Config\Session;
+use Model\DAO\MensajesDAO;
 use Model\DAO\PersonaDAO;
 use Model\DAO\ReservaDAO;
+
 
 class IndexController extends Controller {
     public function show($id) {
@@ -20,6 +22,7 @@ class IndexController extends Controller {
         $id = Session::get('userID');
         $persona = PersonaDAO::getById($id);
         $reservas = ReservaDAO::getByVendedor($id);
+        $mensajes = MensajesDAO::getBy('idSender',$id);
         include_once VIEW . 'main.php';
     }
 
