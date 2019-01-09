@@ -10,7 +10,7 @@ class ReservationController extends Controller
     public function index()
     {
         $id = Session::get('userID');
-        $reservas = ReservaDAO::getByPropietario($id);
+        $reservas = ReservaDAO::getByVendedor($id);
         require_once VIEW . 'reservations.php';
     }
 

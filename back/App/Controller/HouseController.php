@@ -27,13 +27,15 @@ class HouseController extends Controller
 
     public function index()
     {
+        $id = Session::get('userID');
+        $houses = ViviendaDAO::getByVendedor($id);
         include_once VIEW . "houselist.php";
     }
 
     public function show($id)
     {
-        $vInfo = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $vInfo)) {
+        $houses = ViviendaDAO::getById($id);
+        if ($this->validUser(Session::get('userID'), $houses)) {
             include_once VIEW . "house.php";
         }
     }
@@ -69,8 +71,8 @@ class HouseController extends Controller
 
     public function update($id)
     {
-        $vInfo = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $vInfo)) {
+        $houses = ViviendaDAO::getById($id);
+        if ($this->validUser(Session::get('userID'), $houses)) {
             ViviendaDAO::update([
                 "id" => $id,
                 "nombre" => $_POST['houseName'],

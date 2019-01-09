@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use Config\Photo;
 use Config\Router;
 use Config\Session;
 use Model\DAO\PersonaDAO;

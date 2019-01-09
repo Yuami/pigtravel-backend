@@ -41,7 +41,6 @@
                         </div>
                         <h6 class="">Choose Picture</h6>
                     </div>
-                    <input class="btn d-md-block d-none btn-block btn-primary mt-3" type="submit" form="profileForm"/>
                 </div>
                 <div class="order-1 order-md-0 col-md-8">
                     <div class="col-12 order-1 order-md-0 ">
@@ -167,6 +166,7 @@
                                           name="descriptionForm"
                                           placeholder="Tell us something about you!"><?= $user->getDescripcion(); ?></textarea>
                             </div>
+                                <input class="btn d-md-block d-none btn-block btn-primary offset-md-3 mt-3" type="submit" form="profileForm"/>
                         </div>
                         <div class="row">
                             <input class="btn d-md-none d-block btn-block btn-primary mt-3" type="submit"

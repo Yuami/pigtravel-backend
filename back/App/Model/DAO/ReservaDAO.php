@@ -14,7 +14,7 @@ class ReservaDAO extends DAO
         return parent::getBy('idVivienda', $id);
     }
 
-    public static function getByPropietario($id)
+    public static function getByVendedor($id)
     {
         $statement = DB::conn()->prepare('SELECT r.* from reserva r
        inner join reserva_has_estado rhe on r.id = rhe.idReserva
