@@ -28,7 +28,6 @@ if (Session::isSet("wrongHouse")) {
 <?php } ?>
 
 
-
 <section class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
@@ -37,19 +36,36 @@ if (Session::isSet("wrongHouse")) {
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Gestio Cases</li>
             </ol>
+            <button id="addHouse" onclick="window.location.href='/houses/create'"
+                    class="btn btn-outline-success col">
+                Añadir Casa <span><i class="fas fa-plus"></i></span>
+            </button>
         </div>
     </div>
     <div id="firstHouse">
         <h1 class="text-center mb-5">Add your first house!</h1>
     </div>
-    <div class="row justify-content-center">
-        <button id="addHouse" onclick="window.location.href='/houses/create'" class="btn btn-outline-success">Añadir
-            Casa
-            <span><i class="fas fa-plus"></i></span></button>
-    </div>
     <div class="container-fluid">
-        <div class="row" id="cardCasa">
-
+        <div class="row justify-content-center">
+            <?php foreach ($houses
+                           as $house) { ?>
+                <div class="col-md-4 col-xl-3 col-sm-6 mb-3">
+                    <a href="/houses/<?php echo $house->getId() ?>" class="card p-0"
+                       style="color: inherit; text-decoration:none;">
+                        <div class="view overlay">
+                            <img src="img/casas/placeholder.jpg" alt="CASA" style="width: 100%;height: 250px;">
+                        </div>
+                        <div class="card-body ">
+                            <p class="col font-weight-bold text-center">
+                                <?php echo $house->getNombre() ?></p>
+                            <p class="col font-weight-bold text-center">
+                                <?php echo $house->getCiudad()->getNombre() ?></p>
+                            <p class="col font-weight-bold text-center">
+                                <?php echo "Ahi que asociar mensajes con Vivienda" ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
