@@ -19,7 +19,7 @@ class IndexController extends Controller {
     public function index() {
         $id = Session::get('userID');
         $persona = PersonaDAO::getById($id);
-        $reservas = ReservaDAO::getByPropietario($id);
+        $reservas = ReservaDAO::getByVendedor($id);
         include_once VIEW . 'main.php';
     }
 
