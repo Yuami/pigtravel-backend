@@ -5,9 +5,51 @@ namespace Controller;
 use Config\Session;
 use Model\DAO\LoginDAO;
 use Model\DAO\PersonaDAO;
+use Config\Cookie;
 
-class LoginController
+class LoginController extends Controller
 {
+    public function index()
+    {
+        include_once VIEW . "login.php";
+    }
+
+    public function create()
+    {
+        // TODO: Implement create() method.
+    }
+
+    public function store()
+    {
+        Cookie::set('lastEmail', $_POST['emailLogin'], 30);
+        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
+            LoginController::login($_POST['emailLogin'], $_POST['passwordLogin']);
+        }
+        header("Location: " . DOMAIN);
+    }
+
+    public function show($id)
+    {
+        // TODO: Implement show() method.
+    }
+
+    public function edit($id)
+    {
+        // TODO: Implement edit() method.
+    }
+
+    public function update($id)
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function destroy()
+    {
+        session_destroy();
+        header("Location: " . DOMAIN);
+
+    }
+
     public static function isLoggable($correoPost, $passwordPost): bool
     {
         $credentials = LoginDAO::credentials($correoPost);

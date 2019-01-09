@@ -27,16 +27,14 @@
 
 <?php
 if (Session::isSet("updateCompleted")) {
-    Session::delete("updateCompleted");
-    if (Session::get("updateCompleted")) { ?>
+    Session::delete("updateCompleted"); ?>
     <div id="updateCompleted" class="alert alert-success" role="alert">
         House successfully updated!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
-    <?php }
-} ?>
+    <?php } ?>
 
 <section class="container-fluid" id="mainHouseSection">
     <div class="row breadcrumb-row">
