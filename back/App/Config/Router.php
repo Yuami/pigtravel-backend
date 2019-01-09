@@ -5,6 +5,7 @@ namespace Config;
 use Controller\Controller;
 use Controller\DummyController;
 use Controller\HouseController;
+use Controller\IndexController;
 use Controller\MessagesController;
 use Controller\ProfileController;
 use Controller\RegisterController;
@@ -144,7 +145,7 @@ class Router
                 break;
             case "main":
             case "":
-                include_once VIEW . "main.php";
+                $controller = new IndexController();
                 break;
             case "loginController":
                 include_once INFO . "loginController.php";

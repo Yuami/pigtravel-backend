@@ -15,9 +15,10 @@ class MensajesDAO extends DAO {
             $mensaje = $parameters["mensaje"];
             $idVivienda = $parameters["idVivienda"];
             $sql = "insert into mensajes (idSender, idReciever,mensaje, fechaEnviado,leido,idVivienda)
-                values (".Session::get('userID').",:idReciever, :mensaje,now(),1,:idVivienda)";
+                values (:idSender,:idReciever, :mensaje,now(),1,:idVivienda)";
             $stm = DB::conn()->prepare($sql);
             $stm->bindValue(":idReciever",$idReciever);
+            $stm->bindValue(":idSender",Session::get('userID'));
             $stm->bindValue(":mensaje",$mensaje);
             $stm->bindValue(":idVivienda",$idVivienda);
             $stm->execute();

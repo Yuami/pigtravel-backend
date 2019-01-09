@@ -17,7 +17,7 @@
 <?php include_once("header.php"); ?>
 
 <section style="height:300px" class="bg-gradient-warning">
-    <h1>Index</h1>
+    <h1>Hola <?php echo $persona->getNombre(); ?></h1>
 
 </section>
 

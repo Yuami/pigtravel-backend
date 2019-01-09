@@ -7,14 +7,20 @@
  */
 namespace Controller;
 
+use Config\Session;
+use Model\DAO\PersonaDAO;
+
 class IndexController extends Controller {
     public function show($id) {
-        include_once VIEW . "main.php";
+        require_once VIEW . 'main.php';
     }
 
     public function index() {
-        // TODO: Implement index() method.
+        $id = Session::get('userID');
+        $persona = PersonaDAO::getById($id);
+        require_once VIEW . 'main.php';
     }
+
 
     public function create() {
         // TODO: Implement create() method.
