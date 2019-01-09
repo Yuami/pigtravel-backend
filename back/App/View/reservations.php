@@ -51,18 +51,18 @@
                 <th>Precio</th>
             </tr>
             </thead>
-            <tbody>
+
             <?php
             foreach ($reservas as $reserva) { ?>
-                <tr>
+                <tr onclick="window.location='/houses/<?php echo $reserva->getIDVivienda() ?>'">
                     <td><?php echo $reserva->getVivienda()->getNombre() ?></td>
-                    <td><?php echo $reserva->getVendedor()->getNombre() ?></td>
+                    <td><?php echo $reserva->getCliente()->getNombre() ?></td>
                     <td><?php echo $reserva->getNombreEstado() ?></td>
                     <td><?php echo $reserva->getFechaReserva() ?></td>
                     <td><?php echo $reserva->getPrecio() ?></td>
                 </tr>
             <?php } ?>
-            </tbody>
+
         </table>
     </div>
 </div>
