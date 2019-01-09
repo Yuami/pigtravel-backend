@@ -6,6 +6,7 @@ use Controller\Controller;
 use Controller\DummyController;
 use Controller\HouseController;
 use Controller\IndexController;
+use Controller\LoginController;
 use Controller\MessagesController;
 use Controller\ProfileController;
 use Controller\RegisterController;
@@ -117,7 +118,7 @@ class Router
                 break;
             case "profile":
             case "settings":
-            $controller = new ProfileController();
+                $controller = new ProfileController();
                 break;
             case "support":
                 include_once VIEW . "support.php";
@@ -135,10 +136,12 @@ class Router
                 include_once VIEW . "premium.php";
                 break;
             case "login":
-                include_once VIEW . "login.php";
+                $controller = new LoginController();
                 break;
             case "logout":
-                include_once VIEW . "logout.php";
+                $controller = new LoginController();
+                $controller->destroy();
+                die();
                 break;
             case "register":
                 $controller = new RegisterController();
@@ -146,9 +149,6 @@ class Router
             case "main":
             case "":
                 $controller = new IndexController();
-                break;
-            case "loginController":
-                include_once INFO . "loginController.php";
                 break;
             default:
                 echo "<h1>404</h1><br><h2> PAGINA NO ENCONTRADA</h2>";

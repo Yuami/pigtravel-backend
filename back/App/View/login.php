@@ -24,7 +24,7 @@
                     <h5 class="mt-3">Pig Travel</h5>
                     <h5 class="mb-3">Administration Panel</h5>
                     <h6 class="mb-3">Manage your Reservations</h6>
-                    <form action="/loginController" method="post" class="text-left mb-3">
+                    <form action="/login" method="post" class="text-left mb-3">
                         <div class="form-group">
                             <label for="emailLogin">
                                 <span class="fas fa-user text-danger mr-1 ml-2"></span>Email
