@@ -8,7 +8,7 @@ session_start();
 if (isset($_SERVER['REDIRECT_URL'])) {
     $r = new Router($_SERVER['REDIRECT_URL'], $_SERVER['REQUEST_METHOD']);
 } else {
-    $r = new Router(DOMAIN . "main", []);
+    $r = new Router(DOMAIN , []);
 }
 $c = $r->getController();
 if ($c == 'photos'){

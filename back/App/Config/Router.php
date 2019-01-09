@@ -12,14 +12,12 @@ use Controller\RegisterController;
 use Controller\ReservationController;
 use Controller\SendMessagesController;
 
-class Router
-{
+class Router {
     private $controller;
     private $params;
     private $method;
 
-    public function __construct($url, $method)
-    {
+    public function __construct($url, $method) {
         $params = explode("/", $url);
         $controller = $params[1];
         $params = array_splice($params, 2);
@@ -34,45 +32,39 @@ class Router
     /**
      * @return mixed
      */
-    public function getMethod()
-    {
+    public function getMethod() {
         return $this->method;
     }
 
     /**
      * @return mixed
      */
-    public function getController()
-    {
+    public function getController() {
         return $this->controller;
     }
 
     /**
      * @param mixed $controller
      */
-    public function setController($controller): void
-    {
+    public function setController($controller) : void {
         $this->controller = $controller;
     }
 
     /**
      * @return mixed
      */
-    public function getParams()
-    {
+    public function getParams() {
         return $this->params;
     }
 
     /**
      * @param mixed $params
      */
-    public function setParams($params): void
-    {
+    public function setParams($params) : void {
         $this->params = $params;
     }
 
-    private function methodSelection(Controller $c)
-    {
+    private function methodSelection(Controller $c) {
         $params = $this->getParams();
         switch ($this->getMethod()) {
             case "GET":
@@ -97,16 +89,17 @@ class Router
                     $c->store();
                 }
                 break;
+            default:
+                $c->index();
+                break;
         }
     }
 
-    public static function redirect($route)
-    {
+    public static function redirect($route) {
         header("location: " . DOMAIN . "/" . $route);
     }
 
-    public function load()
-    {
+    public function load() {
         $controller = new DummyController();
         switch ($this->getController()) {
             case "houses":
@@ -117,7 +110,7 @@ class Router
                 break;
             case "profile":
             case "settings":
-            $controller = new ProfileController();
+                $controller = new ProfileController();
                 break;
             case "support":
                 include_once VIEW . "support.php";
