@@ -3,14 +3,14 @@ $(function () {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    var reserves = JSON.parse(this.responseText);
+                    var houses = JSON.parse(this.responseText);
 
-                    for (reserva in reserves) {
-                        var idReserva = reserves[reserva].id;
-                        var nomVivenda = reserves[reserva].vivienda;
-                        var ciudadVivienda = reserves[reserva].ciudad;
+                    for (h in houses) {
+                        var id = houses[h].id;
+                        var nomVivenda = houses[h].vivienda;
+                        var ciudadVivienda = houses[h].ciudad;
 
-                        var url = "houses/" + idReserva;
+                        var url = "houses/" + id;
                         var newA = $("<a/>", {
                             href: url,
                             class: 'card col-8 align-self-center',
@@ -18,7 +18,7 @@ $(function () {
                         });
                         var newCBody = $("<div/>", {class: 'card-body row'});
                         var newCImg = $("<div/>", {class: 'card-image col-4'});
-                        var newI = $("<img/>", {src: "img/casas/" + idReserva + ".jpg", style: 'max-width: 60%'});
+                        var newI = $("<img/>", {src: "img/casas/" + id + ".jpg", style: 'max-width: 60%'});
                         var newCCont = $("<div/>", {class: 'row col-8 '});
                         var newPN = $("<p/>", {text: nomVivenda, class: 'col font-weight-bold  py-5 text-center'});
                         var newPC = $("<p/>", {text: ciudadVivienda, class: 'col font-weight-bold py-5 text-center'});

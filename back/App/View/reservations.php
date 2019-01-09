@@ -7,27 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <?php require_once ROOT . "libraries.php" ?>
-    <!-- css -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"/>
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap4.min.css"/>
-
-    <!-- js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
-
+    <script src="/js/jquery.dataTables.js"></script>
     <title>Reservations</title>
 </head>
 
 <body>
 <?php include_once("header.php") ?>
-<div class="container col-10">
+<div class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
             <h1>Gestio Reservas</h1>
@@ -37,50 +23,50 @@
             </ol>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group col-3 form-check-inline">
-            <h6 class="col-4">Filtrar por</h6>
-            <select id="filterEst" class="form-control">
-                <option value="" selected="selected">--- Estado ---</option>
-            </select>
+    <div class="row justify-content-center">
+        <div class="row col-10">
+            <div class="form-group col-3 form-check-inline">
+                <h6 class="col-4">Filtrar por</h6>
+                <select id="filterEst" class="form-control">
+                    <option value="" selected="selected">--- Estado ---</option>
+                </select>
+            </div>
+            <div class="form-group col-3 form-check-inline">
+                <h6 class="col-4">Filtrar por</h6>
+                <select id="filterViv" class="form-control">
+                    <option value="0" selected="selected">--- Casa ---</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <button id="clean" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
+            </div>
         </div>
-        <div class="form-group col-3 form-check-inline">
-            <h6 class="col-4">Filtrar por</h6>
-            <select id="filterViv" class="form-control">
-                <option value="0" selected="selected">--- Casa ---</option>
-            </select>
-        </div>
-        <div class=" col-2">
-            <button id="clean" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
-        </div>
-    </div>
-    <table id="taula" class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th>Casa</th>
-            <th>Cliente</th>
-            <th>Estado</th>
-            <th>Fecha</th>
-            <th>Precio</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <?php
-        foreach ($reservas as $reserva) { ?>
+        <table id="taula" class="table table-striped table-bordered col-10">
+            <thead>
             <tr>
-                <td><?php echo $reserva->getVivienda()->getNombre() ?></td>
-                <td><?php echo $reserva->getVendedor()->getNombre() ?></td>
-                <td><?php echo $reserva->getNombreEstado() ?></td>
-                <td><?php echo $reserva->getFechaReserva() ?></td>
-                <td><?php echo $reserva->getPrecio() ?></td>
+                <th>Casa</th>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Precio</th>
             </tr>
-        <?php } ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($reservas as $reserva) { ?>
+                <tr>
+                    <td><?php echo $reserva->getVivienda()->getNombre() ?></td>
+                    <td><?php echo $reserva->getVendedor()->getNombre() ?></td>
+                    <td><?php echo $reserva->getNombreEstado() ?></td>
+                    <td><?php echo $reserva->getFechaReserva() ?></td>
+                    <td><?php echo $reserva->getPrecio() ?></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 <?php include_once("footer.php") ?>
-<!--<script src="js/selects/selectReservasList.js"></script>-->
 <!--<script src="js/selects/selectEstadoFiltro.js"></script>-->
 
 
