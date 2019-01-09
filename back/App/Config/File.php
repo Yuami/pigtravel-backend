@@ -6,6 +6,7 @@ use Model\DAO\PersonaDAO;
 use Model\Items\Persona;
 
 class File {
+    private static $files = [];
 
     public static function exists($file) : bool {
         if (file_exists($file)) {
@@ -14,15 +15,37 @@ class File {
         return false;
     }
 
+    public static function fetchAll($dir) {
+        $scanned_directory = array_diff(scandir($dir), array('..', '.'));
+        foreach ($scanned_directory as $filename) {
+            if (self::exists(ROOT . $filename)) {
+                self::$files[] = self::rootIt($dir, $filename);
+            }
+        }
+        return self::$files;
+    }
+
+    public static function rootIt($dir,$filename) {
+        return ROOT . $dir . $filename;
+    }
+
     public static function newDirectory($path) : bool {
         if (self::exists($path)) return false;
         mkdir($path, 0777, true);
         return true;
     }
 
-    public static function add($path, $file) {
-        self::newDirectory($path);
-
+    public static function upload($path, $id, $file) {
+        $target_file = $path . basename($_FILES[$id]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $check = getimagesize($image["tmp_name"]);
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
     }
 
     public static function uploadImage($path, $id, $image) {
