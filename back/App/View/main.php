@@ -54,13 +54,13 @@
                         <tr>
                             <td><?php echo $reserva->getVivienda()->getNombre() ?></td>
                             <td><?php echo $reserva->getCliente()->getNombre() ?></td>
+                            <td><?php echo $reserva->getFechaReservaFormat() ?></td>
+                            <td><?php echo $reserva->getPrecio() ?></td>
                             <td>
                                 <small>
                                     <span id="estado-reserva" class="badge badge-pill"><?php echo $reserva->getNombreEstado() ?></span>
                                 </small>
                             </td>
-                            <td><?php echo $reserva->getFechaReservaFormat() ?></td>
-                            <td><?php echo $reserva->getPrecio() ?></td>
                         </tr>
                         <?php } ?>
                     </table>
@@ -81,9 +81,6 @@
 <script src="/js/estadoReserva.js"></script>
 
 <style>
-    .sunny-morning-gradient {
-        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-    }
     * {
         box-sizing: border-box;
     }
