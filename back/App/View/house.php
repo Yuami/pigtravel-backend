@@ -1,11 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php use Config\Session; require_once ROOT . "libraries.php" ?>
+    <?php use Config\Session;
+
+    require_once ROOT . "libraries.php" ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="/css/leaflet.css">
     <script src="/js/leaflet.js"></script>
@@ -26,17 +27,18 @@
 
 <?php
 if (Session::isSet("updateCompleted")) {
-Session::delete("updateCompleted");
-?>
-<div id="updateCompleted" class="alert alert-success" role="alert">
-    House successfully updated!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<?php } ?>
+    Session::delete("updateCompleted");
+    if (Session::get("updateCompleted")) { ?>
+    <div id="updateCompleted" class="alert alert-success" role="alert">
+        House successfully updated!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    <?php }
+} ?>
 
-<section class="container-fluid"  id="mainHouseSection" >
+<section class="container-fluid" id="mainHouseSection">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
             <h1>House</h1>

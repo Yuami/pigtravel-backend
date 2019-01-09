@@ -20,8 +20,9 @@ class HouseController extends Controller
         return true;
     }
 
-    public function updateCompleted(){
-        Session::set("updateCompleted", "true");
+    public function updateCompleted($completed)
+    {
+        Session::set("updateCompleted", $completed);
     }
 
     public function index()
@@ -68,20 +69,25 @@ class HouseController extends Controller
 
     public function update($id)
     {
-        ViviendaDAO::update([
-            "id" => Session::get("userID"),
-            "nombre" => $_POST['houseName'],
-            "capacidad" => $_POST['peopleAmount'],
-            "metrosCuadrados" => $_POST['squaremeters'],
-            "calle" => $_POST['street'],
-            "horaEntrada" => $_POST['checkIn'],
-            "horaSalida" => $_POST['checkOut'],
-            "alquilerAutomatico" => $_POST['standardRate'],
-            "idTipoVivienda" => 1,
-            "idCiudad" => $_POST['city'],
-            "descripcion" => $_POST['description']]);
-        $this->updateCompleted();
-        Router::redirect("houses/" . $id);
+        $vInfo = ViviendaDAO::getById($id);
+        if ($this->validUser(Session::get('userID'), $vInfo)) {
+            ViviendaDAO::update([
+                "id" => $id,
+                "nombre" => $_POST['houseName'],
+                "capacidad" => $_POST['peopleAmount'],
+                "metrosCuadrados" => $_POST['squaremeters'],
+                "calle" => $_POST['street'],
+                "horaEntrada" => $_POST['checkIn'],
+                "horaSalida" => $_POST['checkOut'],
+                "alquilerAutomatico" => $_POST['standardRate'],
+                "idTipoVivienda" => 1,
+                "idCiudad" => $_POST['city'],
+                "descripcion" => $_POST['description']]);
+            $this->updateCompleted(true);
+            Router::redirect("houses/" . $id);
+        } else {
+            $this->updateCompleted(false);
+        }
     }
 
 
