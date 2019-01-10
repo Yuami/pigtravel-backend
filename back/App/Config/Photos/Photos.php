@@ -13,13 +13,14 @@ use Config\Session;
 
 class Photos
 {
+    protected $fileNameClient = 'file';
     protected static $maxSize = 10;
     private $limit;
     private $newDirectory;
 
     private $fullPath;
-    private $dir;
-    protected $route = 'public/img/';
+    protected $dir = '';
+    protected $route = 'public/assets/img/';
     private $routeDir;
 
     protected $primary = 'primary';
@@ -30,14 +31,33 @@ class Photos
     protected $main;
     protected $imageType = array('png', 'jpg', 'jpeg');
 
-    public function __construct($dir, $limit = 0)
+    public function __construct($limit = 0)
     {
-        $this->routeDir = $this->route . $dir;
-        $this->dir = $dir;
+        $this->routeDir = $this->route . $this->dir;
         $this->limit = $limit;
         $this->newDirectory = File::newDirectory($this->routeDir);
         $this->fullPath = File::fullPath($this->routeDir) . '\\';
         $this->init();
+    }
+
+    public function fetchRandom(): ?Photo
+    {
+        $all = $this->all();
+        if (empty($all)) return null;
+        $size = sizeof($all) - 1;
+        var_dump($size);
+        try {
+            $r = random_int(0, $size);
+        } catch (\Exception $e) {
+            echo 'Empty array';
+            return null;
+        }
+        return $all[$r];
+    }
+
+    protected function fullPath()
+    {
+        return $this->fullPath;
     }
 
     public function getRoute()
@@ -59,16 +79,15 @@ class Photos
         }
     }
 
-    private function toPhoto($name): Photo
+    protected function toPhoto($name): Photo
     {
-        $file = File::find($name, $this->routeDir, self::$maxSize);
+        $file = File::toFile($this->routeDir, $name);
         return new Photo($file);
     }
 
-    protected function verifyType(string $photo): bool
+    public function verifyType(string $photo): bool
     {
-        $img = $this->fullPath . $photo;
-        return File::exists($img) ? in_array(File::extension($img), $this->imageType) : false;
+        return File::verifyType($this->routeDir, $photo, $this->imageType);
     }
 
     public function overLimit(): bool
@@ -82,13 +101,12 @@ class Photos
         return HousePhoto::find($id);
     }
 
-
     public static function me()
     {
         return self::perfil(Session::get('userID'));
     }
 
-    public static function perfil($id) : PerfilPhoto
+    public static function perfil($id): PerfilPhoto
     {
         return PerfilPhoto::find($id);
     }
@@ -112,14 +130,14 @@ class Photos
         return $temp;
     }
 
-    public function main() : ?Photo
+    public function main(): ?Photo
     {
         return $this->main;
     }
 
     public function mainPath()
     {
-        return $this->main->get();
+        return $this->main->path();
     }
 
     protected function newDirectoryCreated(): bool
@@ -129,8 +147,16 @@ class Photos
 
     public function upload(File $photo): bool
     {
-        if ($this->overLimit()) return false;
-
+        if ($this->overLimit() || !$this->verifyType($photo->name())) return false;
+        $photo->upload($this->routeDir);
         return true;
+    }
+
+    public function uploadAll()
+    {
+        $photos = File::getUploadeds($this->fileNameClient);
+        foreach ($photos as $p) {
+            $this->upload($p);
+        }
     }
 }

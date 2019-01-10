@@ -49,7 +49,7 @@ $cliente = $reserva->getCliente();
                                         <div class="card-body">
                                             <div class="card-text">
                                                 <div class="row">
-                                                    <img src="/img/casas/1.jpg" alt=""
+                                                    <img src="<?php \Config\Photos\Photos::house($vivienda->getId())->mainPath() ?>" alt=""
                                                          class="vivienda-img rounded-circle">
                                                     <h5 class="ml-2 mt-3"><?php echo $vivienda->getNombre() ?></h5>
 

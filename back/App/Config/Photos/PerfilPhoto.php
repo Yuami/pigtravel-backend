@@ -11,8 +11,8 @@ namespace Config\Photos;
 
 class PerfilPhoto extends Photos
 {
-    private $dir;
-    private $size;
+    protected $fileNameClient = 'photoPerfil';
+    private $size = 128;
 
     public static function find(string $id)
     {
@@ -21,17 +21,22 @@ class PerfilPhoto extends Photos
 
     protected function __construct(string $id, $limit = 3)
     {
-        $this->dir = 'perfiles/' . $id . '/';
+        $this->dir = 'perfiles/' . $id;
         parent::__construct($this->dir, $limit);
-        if ($this->main() == null){
-            return self::setProfileImage($id, file_get_contents("https://api.adorable.io/avatars/" . $size . "/" . $id . ".png"));
+        $this->defaultIfNotExists($id);
+    }
+
+    public function defaultIfNotExists($id)
+    {
+        if ($this->main() == null) {
+            self::setProfileImage(file_get_contents("https://api.adorable.io/avatars/" . $this->size . "/" . $id . ".png"));
         }
     }
 
-    public static function setProfileImage($id, $image)
+    public function setProfileImage($image)
     {
-        $file = PERFIL . $id . ".png";
+        $file = $this->fullPath() . 'main.png';
         file_put_contents($file, $image);
-        return $file;
+        $this->main = $this->toPhoto('main.png');
     }
 }

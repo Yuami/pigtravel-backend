@@ -34,3 +34,4 @@ function dd($var){
 }
 
 require_once CONFIG . "conf.php";
+require_once CONFIG . "web.php";

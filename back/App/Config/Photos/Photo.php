@@ -16,15 +16,8 @@ class Photo
     /**
      * @var string
      */
-    private $primary;
-
     private $limit;
     private $file;
-
-    public function main(): ?string
-    {
-        return $this->primary;
-    }
 
     public function __construct(File $file , int $limit = 0)
     {
@@ -32,13 +25,32 @@ class Photo
         $this->file = $file;
     }
 
-    public function upload()
+    public function path() : string
     {
-
+        return $this->domainPath();
     }
 
-    public function get()
+    public function me() : File
     {
-        return $this->file->getFullPath();
+        return $this->file;
+    }
+
+    public function rename($name) : self
+    {
+        $this->me()->rename($name);
+        return $this;
+    }
+
+    public function changeNames(Photo $photo) :self
+    {
+        $this->me()->changeNames($photo->me());
+        return $this;
+    }
+
+    private function domainPath(){
+        $path = $this->file->projectRootPath() . '\\' . $this->file->name();
+        $from = '/'.preg_quote('public\\', '/').'/';
+        $path = preg_replace($from, '', $path, 1);
+        return str_replace('\\','/', $path);
     }
 }

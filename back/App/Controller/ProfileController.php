@@ -13,7 +13,7 @@ class ProfileController extends Controller {
 
     public function show($id)
     {
-        Router::redirect("profile");
+        Router::redirectWithDomain("profile");
     }
 
     public function create()
@@ -40,7 +40,7 @@ class ProfileController extends Controller {
             "correo" => $_POST["emailForm"],
             "descripcion" => $_POST['descriptionForm'],
         ]);
-        Router::redirect("profile");
+        Router::redirectWithDomain("profile");
 
     }
 

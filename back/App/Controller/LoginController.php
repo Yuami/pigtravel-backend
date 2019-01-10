@@ -6,6 +6,7 @@ use Config\Session;
 use Model\DAO\LoginDAO;
 use Model\DAO\PersonaDAO;
 use Config\Cookie;
+use Routing\Router;
 
 class LoginController extends Controller
 {
@@ -46,8 +47,7 @@ class LoginController extends Controller
     public function destroy()
     {
         session_destroy();
-        header("Location: " . DOMAIN);
-
+        Router::redirectToDomain();
     }
 
     public static function isLoggable($correoPost, $passwordPost): bool

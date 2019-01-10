@@ -21,7 +21,10 @@ abstract class DAO
 
     protected static function fetchOne(\PDOStatement $statement)
     {
-        return self::fetchAll($statement)[0];
+        $statement = self::fetchAll($statement);
+        if (isset($statement[0]))
+            return $statement[0];
+        return null;
     }
 
     public static function getAll()
