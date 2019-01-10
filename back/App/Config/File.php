@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use Config\Photos\Photos;
 use Model\DAO\PersonaDAO;
 use Model\Items\Persona;
 
@@ -49,7 +50,7 @@ class File
     {
         $tmp = $this->nameNoExt();
         $tmp2 = $file->nameNoExt();
-        $this->rename($this->nameNoExt() .'temp');
+        $this->rename($this->nameNoExt() . 'temp');
         $file->rename($tmp);
         $this->rename($tmp2);
 
@@ -253,11 +254,16 @@ class File
         $name = $persona->getNombre();
         $surname = $persona->getApellido1();
 
-        $img = self::getIMG(PERFIL, $id);
+        $img = Photos::me()->mainPath();
         if ($img != null) {
             return $img;
         }
         return self::setRandomImageByName($name, $surname, $id);
+    }
+
+    public static function get($path)
+    {
+
     }
 
     public static function getProfileImageById($idPersona)

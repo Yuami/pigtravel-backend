@@ -24,6 +24,9 @@ class Photos
 
     protected $primary = 'primary';
     private $photos = [];
+    /**
+     * @var Photo
+     */
     protected $main;
     protected $imageType = array('png', 'jpg', 'jpeg');
 
@@ -85,10 +88,9 @@ class Photos
         return self::perfil(Session::get('userID'));
     }
 
-    public static function perfil($id)
+    public static function perfil($id) : PerfilPhoto
     {
-        $dir = 'perfiles/' . $id . '/';
-        return new self($dir);
+        return PerfilPhoto::find($id);
     }
 
     public function allNoMain(): ?array
@@ -106,8 +108,18 @@ class Photos
     public function all(): ?array
     {
         $temp = $this->photos;
-        $temp[] = $this->primary;
+        $temp[] = $this->main;
         return $temp;
+    }
+
+    public function main() : ?Photo
+    {
+        return $this->main;
+    }
+
+    public function mainPath()
+    {
+        return $this->main->get();
     }
 
     protected function newDirectoryCreated(): bool

@@ -36,4 +36,9 @@ class Photo
     {
 
     }
+
+    public function get()
+    {
+        return $this->file->getFullPath();
+    }
 }
