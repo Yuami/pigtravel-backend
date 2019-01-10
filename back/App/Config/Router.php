@@ -139,6 +139,11 @@ class Router {
             case "register":
                 $controller = new RegisterController();
                 break;
+            case "upload":
+                File::getUploadeds('file');
+                include_once ROOT . 'photo.php';
+                die('upload');
+                break;
             case "main":
             case "":
                 $controller = new IndexController();
