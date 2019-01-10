@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
     <title>Pig Travel</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
@@ -40,7 +41,15 @@
                         echo $mensajesPendientes?></h6>
 
                 </div>
-
+                <?php
+                $beneficiMes=array();
+                foreach ($reservas as $reserva) {
+                    if($reserva->getFechaReservaYear()==2019){
+                        $mes=(int) $reserva->getFechaReservaMonth();
+                        $beneficiMes[$mes]+=$reserva->getPrecio();
+                    }
+                }
+                ?>
                 <div class="col-lg-5">
                     <h4>Calendario</h4>
                     <div id="calendario" class="col-lg-10">
@@ -74,10 +83,6 @@
                         <?php } ?>
                     </table>
                 </div>
-
-
-
-
         </div>
     </div>
     </div>
@@ -88,7 +93,6 @@
 <?php include_once CALENDAR ?>
 <script src="/js/calendar.js"></script>
 <script src="/js/estadoReserva.js"></script>
-
 <style>
     * {
         box-sizing: border-box;
@@ -123,6 +127,7 @@
     h3.est{
         text-align: center;
     }
+
 </style>
 </body>
 </html>
