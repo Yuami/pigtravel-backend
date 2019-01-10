@@ -84,7 +84,7 @@ modules.xml
 *.ipr
 
 # End of https://www.gitignore.io/api/jetbrains+all
-app/config/conf.php
+back/App/Config/conf.php
 public/info/conn.php
 public/img/perfil
 .htaccess
