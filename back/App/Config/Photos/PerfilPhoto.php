@@ -11,13 +11,32 @@ namespace Config\Photos;
 
 class PerfilPhoto extends Photos
 {
+    protected $fileNameClient = 'photoPerfil';
+    private $size = 128;
+
     public static function find(string $id)
     {
-        return new self('perfiles/' . $id . '/');
+        return new self($id);
     }
 
-    protected function __construct($dir, $limit = 1)
+    protected function __construct(string $id, $limit = 3)
     {
-        parent::__construct($dir, $limit);
+        $this->dir = 'perfiles/' . $id;
+        parent::__construct($this->dir, $limit);
+        $this->defaultIfNotExists($id);
+    }
+
+    public function defaultIfNotExists($id)
+    {
+        if ($this->main() == null) {
+            self::setProfileImage(file_get_contents("https://api.adorable.io/avatars/" . $this->size . "/" . $id . ".png"));
+        }
+    }
+
+    public function setProfileImage($image)
+    {
+        $file = $this->fullPath() . 'main.png';
+        file_put_contents($file, $image);
+        $this->main = $this->toPhoto('main.png');
     }
 }

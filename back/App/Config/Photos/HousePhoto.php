@@ -11,6 +11,7 @@ namespace Config\Photos;
 
 class HousePhoto extends Photos
 {
+    protected $fileNameClient = 'housePhotos';
     public static function find(string $id)
     {
         return new self('casas/' . $id . '/');
@@ -18,7 +19,8 @@ class HousePhoto extends Photos
 
     protected function __construct($dir, $limit = 15)
     {
-        parent::__construct($dir, $limit);
+        $this->dir = $dir;
+        parent::__construct($limit);
     }
 
 

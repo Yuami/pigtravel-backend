@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use Config\Photos\Photos;
 use Model\DAO\PersonaDAO;
 use Model\Items\Persona;
 
@@ -18,6 +19,7 @@ class File
     private $uploaded;
     private $newDirectory;
     private $ext;
+    private $projectRootPath;
 
     private function __construct($file, $uploadPath = '', $uploaded = true, $maxSize = 10)
     {
@@ -28,10 +30,42 @@ class File
         $this->error = $file['error'];
         $this->maxSize = self::MBtoB($maxSize);
         $this->uploaded = $uploaded;
-        $this->uploadPath = $uploadPath == '' ? self::fullPath('assets/uploads') : self::fullPath($uploadPath);
+        $this->uploadPath = $uploadPath == '' ? self::fullPath('public/assets/uploads') : self::fullPath($uploadPath);
         $this->ext = self::extension($this->filename);
-        $this->newDirectory = File::newDirectory($uploadPath);
+        $this->updatePath();
+        $this->newDirectory = File::newDirectory($this->projectRootPath);
+    }
+
+    public function delete() : void
+    {
+        unlink($this->fullPath);
+    }
+
+    public function projectRootPath()
+    {
+        return $this->projectRootPath;
+    }
+
+    public function iExist()
+    {
+        return File::exists($this->fullPath);
+    }
+
+    private function updatePath()
+    {
         $this->updateFullPath();
+        $this->updateProjectRootPath();
+    }
+
+    private function updateProjectRootPath()
+    {
+        $strs = explode('\\back', $this->fullPath);
+        $this->projectRootPath = File::dir($strs[1]);
+    }
+
+    public function rootPath()
+    {
+        return $this->fullPath('');
     }
 
     private function updateFullPath()
@@ -49,7 +83,7 @@ class File
     {
         $tmp = $this->nameNoExt();
         $tmp2 = $file->nameNoExt();
-        $this->rename($this->nameNoExt() .'temp');
+        $this->rename($this->nameNoExt() . 'temp');
         $file->rename($tmp);
         $this->rename($tmp2);
 
@@ -133,13 +167,20 @@ class File
 
     public function upload($dir = ''): ?self
     {
-        if (self::exists($this->fullPath)) return null;
-        if ($dir === '') {
-            $dir = $this->uploadPath;
-        }
+        if ($this->iExist()) return $this;
+
         self::newDirectory($dir);
-        move_uploaded_file($this->tmp, $dir);
-        $this->tmp = $this->filename;
+        $path = $this->rootPath();
+        $path .= $dir == '' ? $this->projectRootPath : $dir;
+
+        if ($this->error == UPLOAD_ERR_OK) {
+            $name = basename($this->filename);
+            $full = $path . "\\" . $name;
+            move_uploaded_file($this->tmp, $full);
+            $this->filename = $name;
+            $this->tmp = $name;
+            $this->updatePath();
+        }
         return $this;
     }
 
@@ -148,11 +189,23 @@ class File
         $name .= '.' . $this->ext;
         $from = $this->fullPath;
         $to = $this->uploadPath . '\\' . $name;
+
         $this->filename = $name;
         rename($from, $to);
-        $this->updateFullPath();
+        $this->updatePath();
 
         return $this;
+    }
+
+
+    public static function uploadAll($name = 'file')
+    {
+        $upload = self::getUploadeds($name . '[]');
+        foreach ($upload as $u) {
+            if ($u instanceof File) {
+                $u->upload();
+            }
+        }
     }
 
     private static function reArrayFiles(array $arr): array
@@ -165,7 +218,7 @@ class File
         return $new;
     }
 
-    public static function find($name, $path, int $maxsize = 10): ?File
+    public static function toFile($path, $name, int $maxSize = 10): ?File
     {
         $fullPath = self::fullPath($path) . '/' . $name;
 
@@ -174,7 +227,7 @@ class File
         $type = self::type($fullPath);
 
         $file = ['name' => $name, 'tmp_name' => $name, 'size' => $size, 'type' => $type, 'error' => 0];
-        return new self($file, $path, true, $maxsize);
+        return new self($file, $path, true, $maxSize);
     }
 
     public static function size($path)
@@ -187,32 +240,39 @@ class File
         if (isset($_FILES[$name])) {
             $file_ary = self::reArrayFiles($_FILES[$name]);
         } else {
-            $filename = $_FILES[$name]["name"];
-            $tmp = $_FILES[$name]["tmp_name"];
-            $size = $_FILES[$name]["size"];
-            $fileType = $_FILES[$name]['type'];
-            $error = $_FILES[$name]['error'];
-            $file_ary = [['name' => $filename, 'tpye' => $fileType, 'tmp_name' => $tmp, 'error' => $error, 'size' => $size]];
+            if (isset($_FILES[$name]["name"])) {
+                $filename = $_FILES[$name]["name"];
+                $tmp = $_FILES[$name]["tmp_name"];
+                $size = $_FILES[$name]["size"];
+                $fileType = $_FILES[$name]['type'];
+                $error = $_FILES[$name]['error'];
+                $file_ary = [['name' => $filename, 'type' => $fileType, 'tmp_name' => $tmp, 'error' => $error, 'size' => $size]];
+            } else {
+                $file_ary = [];
+            }
         }
+        var_dump($file_ary);
         return $file_ary;
     }
 
     public static function getUploadeds($name): array
     {
         $arr = self::getFileSubmited($name);
+        $new = [];
         foreach ($arr as $f) {
             $new[] = new File($f);
         }
         return $new;
     }
 
-    public static function exists($file): bool
+    public static function exists(string $path): bool
     {
-        return file_exists($file);
+        return file_exists($path);
     }
 
     public static function fetchAll($dir)
     {
+        $files = [];
         $scanned_directory = array_diff(scandir($dir), array('..', '.'));
         foreach ($scanned_directory as $filename) {
             if (self::exists(ROOT . $filename)) {
@@ -222,15 +282,27 @@ class File
         return $files;
     }
 
+    public static function verifyType(string $path, string $file, array $fileTypes): bool
+    {
+        $fullPath = self::fullPath($path, $file);
+        return File::exists($fullPath) ? in_array(File::extension($file), $fileTypes) : false;
+    }
+
     public static function fullPath($dir, $filename = ''): string
     {
-        return realpath(BACK . $dir . '/' . $filename);
+        return realpath(self::rootIt($dir . '/' . $filename));
+    }
+
+
+    public static function rootIt(string $path): string
+    {
+        return BACK . $path;
     }
 
     public static function newDirectory($path): bool
     {
+        $path = self::rootIt($path);
         if (self::exists($path)) return false;
-
         mkdir($path, 0777, true);
         return true;
     }
@@ -253,11 +325,16 @@ class File
         $name = $persona->getNombre();
         $surname = $persona->getApellido1();
 
-        $img = self::getIMG(PERFIL, $id);
+        $img = Photos::me()->mainPath();
         if ($img != null) {
             return $img;
         }
         return self::setRandomImageByName($name, $surname, $id);
+    }
+
+    public static function get($path)
+    {
+
     }
 
     public static function getProfileImageById($idPersona)
@@ -284,6 +361,11 @@ class File
     public static function type($path): ?string
     {
         return self::exists($path) ? filetype($path) : null;
+    }
+
+    public static function dir($path)
+    {
+        return pathinfo($path, PATHINFO_DIRNAME);
     }
 
     public static function getMainHouseImage($houseID): string
