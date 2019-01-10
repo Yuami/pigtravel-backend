@@ -15,15 +15,6 @@
 
 <body>
 <?php include_once("header.php");
-$to      = 'newtimestube@gmail.com';
-$subject = 'the subject';
-$message = 'hello';
-$headers = 'From:admin@pigtravel.top' . "\r\n" .
-    'Reply-To: admin@pigtravel.top' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-mail($to, $subject, $message, $headers);
-
 ?>
 
 <section id="profilePage" class="container-fluid">

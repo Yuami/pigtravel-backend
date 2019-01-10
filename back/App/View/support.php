@@ -1,24 +1,54 @@
+<?php
+if(isset($_POST["submit"])) {
+   self::store();
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:color="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
-    <title>Support</title>
+    <title>Reservations</title>
 </head>
 
 <body>
 <?php include_once("header.php") ?>
-
-<section>
-    <h1>Support</h1>
-
-</section>
-
-
+<div class="container-fluid">
+    <div class="row breadcrumb-row">
+        <div class="col-md-10 offset-md-1">
+            <h1>Soporte</h1>
+            <ol class="bg-transparent pt-0 breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Soporte</li>
+            </ol>
+        </div>
+    </div>
+    <div class="inputSoporte">
+    <form  method="post" enctype="text/plain">
+        <h3 style="text-align: center">Que problema tienes?</h3>
+            <input type="hidden" name="name" <?php echo $persona->getNombre() ?>><br>
+            <input type="hidden" name="mail" value="<?php echo $persona->getCorreo() ?>"><br>
+            <textarea rows="5" class="form-control" name="comment"></textarea><br><br>
+            <input type="submit" value="Send">
+            <input type="reset" value="Reset">
+    </form>
+    </div>
+</div>
 <?php include_once("footer.php") ?>
+<!--<script src="js/selects/selectEstadoFiltro.js"></script>-->
 
+<style>
+
+    .inputSoporte{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
+
+</style>
 </body>
+
 </html>

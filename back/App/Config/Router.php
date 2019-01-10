@@ -12,6 +12,7 @@ use Controller\ProfileController;
 use Controller\RegisterController;
 use Controller\ReservationController;
 use Controller\SendMessagesController;
+use Controller\SupportController;
 
 class Router {
     private $controller;
@@ -114,7 +115,7 @@ class Router {
                 $controller = new ProfileController();
                 break;
             case "support":
-                include_once VIEW . "support.php";
+                $controller = new SupportController();
                 break;
             case "messages":
                 $controller = new MessagesController();

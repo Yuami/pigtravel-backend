@@ -42,28 +42,30 @@ if (Session::isSet("wrongHouse")) {
             </button>
         </div>
     </div>
-    <div id="firstHouse">
-        <h1 class="text-center mb-5">Add your first house!</h1>
-    </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <?php foreach ($houses
-                           as $house) { ?>
-                <div class="col-md-4 col-xl-3 col-sm-6 mb-3">
-                    <a href="/houses/<?php echo $house->getId() ?>" class="card p-0"
-                       style="color: inherit; text-decoration:none;">
-                        <div class="view overlay">
-                            <img src="img/casas/placeholder.jpg" alt="CASA" style="width: 100%;height: 250px;">
-                        </div>
-                        <div class="card-body ">
-                            <p class="col font-weight-bold text-center">
-                                <?php echo $house->getNombre() ?></p>
-                            <p class="col font-weight-bold text-center">
-                                <?php echo $house->getCiudad()->getNombre() ?></p>
-                            <p class="col font-weight-bold text-center">
-                                <?php echo "Ahi que asociar mensajes con Vivienda" ?></p>
-                        </div>
-                    </a>
+            <?php if (!empty($houses)) {
+                foreach ($houses as $house) { ?>
+                    <div class="col-md-4 col-xl-3 col-sm-6 mb-3">
+                        <a href="/houses/<?php echo $house->getId() ?>" class="card p-0"
+                           style="color: inherit; text-decoration:none;">
+                            <div class="view overlay">
+                                <img src="img/casas/placeholder.jpg" alt="CASA" style="width: 100%;height: 250px;">
+                            </div>
+                            <div class="card-body ">
+                                <p class="col font-weight-bold text-center">
+                                    <?php echo $house->getNombre() ?></p>
+                                <p class="col font-weight-bold text-center">
+                                    <?php echo $house->getCiudad()->getNombre() ?></p>
+                                <p class="col font-weight-bold text-center">
+                                    <?php echo "Ahi que asociar mensajes con Vivienda" ?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php }
+            } else { ?>
+                <div id="firstHouse">
+                    <h1 class="mt-5 text-center mb-5">Add your first house!</h1>
                 </div>
             <?php } ?>
         </div>
@@ -71,7 +73,5 @@ if (Session::isSet("wrongHouse")) {
 </section>
 
 <?php include_once("footer.php") ?>
-
-<script src="/js/selects/selectViviendaLista.js"></script>
 </body>
 </html>

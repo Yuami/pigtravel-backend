@@ -104,6 +104,11 @@ class Reserva
         $this->fechaReserva= date("Y");
         return $this->fechaReserva;
     }
+    public function getFechaReservaMonth()
+    {
+        $this->fechaReserva= date("m");
+        return $this->fechaReserva;
+    }
 
     /**
      * @param mixed $fechaReserva

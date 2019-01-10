@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 <?php include_once("header.php");?>
 <div class="container">
     <div class="row breadcrumb-row">
-        <div class="col-md-10">
+        <div class="col-md-10 offset-md-1" >
             <h1>Mensajes recibidos</h1>
             <ol class="bg-transparent pt-0 breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
