@@ -11,17 +11,17 @@ namespace Config\Photos;
 
 class HousePhoto extends Photos
 {
+    protected $defaultMain = '/assets/img/casas/default-image.jpg';
+    protected $noMain = false;
     protected $fileNameClient = 'housePhotos';
+
     public static function find(string $id)
     {
-        return new self('casas/' . $id . '/');
+        return new self('casas/' . $id . '/', $id);
     }
 
     protected function __construct($dir, $limit = 15)
     {
-        $this->dir = $dir;
-        parent::__construct($limit);
+        parent::__construct($dir, $limit);
     }
-
-
 }

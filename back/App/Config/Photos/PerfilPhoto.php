@@ -21,8 +21,8 @@ class PerfilPhoto extends Photos
 
     protected function __construct(string $id, $limit = 3)
     {
-        $this->dir = 'perfiles/' . $id;
-        parent::__construct($this->dir, $limit);
+        $dir = 'perfiles/' . $id . '/';
+        parent::__construct($dir, $limit);
         $this->defaultIfNotExists($id);
     }
 
@@ -38,5 +38,6 @@ class PerfilPhoto extends Photos
         $file = $this->fullPath() . 'main.png';
         file_put_contents($file, $image);
         $this->main = $this->toPhoto('main.png');
+        $this->noMain = false;
     }
 }

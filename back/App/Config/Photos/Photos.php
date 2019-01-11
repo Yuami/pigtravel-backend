@@ -28,12 +28,14 @@ class Photos
     /**
      * @var Photo
      */
+    protected $defaultMain = '';
+    protected $noMain = false;
     protected $main;
     protected $imageType = array('png', 'jpg', 'jpeg');
 
-    public function __construct($limit = 0)
+    public function __construct($dir, $limit = 0)
     {
-        $this->routeDir = $this->route . $this->dir;
+        $this->routeDir = $this->route . $dir;
         $this->limit = $limit;
         $this->newDirectory = File::newDirectory($this->routeDir);
         $this->fullPath = File::fullPath($this->routeDir) . '\\';
@@ -75,7 +77,10 @@ class Photos
                 File::fileName($filename) === $this->primary ?
                     $this->main = $photo : $this->photos[] = $photo;
             }
+        }
 
+        if ($this->main == null) {
+            $this->noMain = true;
         }
     }
 
@@ -103,7 +108,7 @@ class Photos
 
     public static function me()
     {
-        return self::perfil(Session::get('userID'));
+        return self::perfil(Session::me());
     }
 
     public static function perfil($id): PerfilPhoto
@@ -137,6 +142,8 @@ class Photos
 
     public function mainPath()
     {
+        if ($this->noMain)
+            return $this->defaultMain;
         return $this->main->path();
     }
 
