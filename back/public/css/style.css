@@ -13895,6 +13895,7 @@ body {
   min-height: 100vh;
   position: relative;
   font-family: "Helvetica Neue", Arial, sans-serif !important;
+  background-color: #f9f9f9;
 }
 body::after {
   content: "";
@@ -14205,7 +14206,6 @@ body#landingBody {
   object-fit: cover;
 }
 
-/* House */
 #scrollspy {
   background-color: #7a7a7a !important;
 }
@@ -14220,21 +14220,27 @@ body#landingBody {
 
 /* ADD HOUSE */
 #addHouseForm {
-  background-color: #ffffff;
-  margin: 10px auto 0 auto;
   font-family: Raleway;
   padding: 40px;
   min-width: 300px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 5% auto;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+#addHouseForm #leftHouseForm {
+  margin-right: 100px;
 }
 #addHouseForm h1 {
   text-align: center;
 }
 #addHouseForm input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #eee;
+  margin-bottom: 15px;
+  height: 40px;
+  padding: 0px 15px;
 }
 #addHouseForm input.invalid {
   background-color: #ffdddd;
