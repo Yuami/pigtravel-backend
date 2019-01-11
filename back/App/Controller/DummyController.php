@@ -9,31 +9,31 @@ namespace Controller;
 
 class DummyController extends Controller {
     public function index() {
-        // TODO: Implement index() method.
+        echo "I'm dummy index";
     }
 
     public function create() {
-        // TODO: Implement create() method.
+        echo "I'm dummy create";
     }
 
     public function store() {
-        // TODO: Implement store() method.
+        echo "I'm dummy store";
     }
 
     public function show($id) {
-        // TODO: Implement show() method.
+        echo "I'm dummy $id show";
     }
 
     public function edit($id) {
-        // TODO: Implement edit() method.
+        echo "I'm dummy $id edit";
     }
 
     public function update($id) {
-        // TODO: Implement update() method.
+        echo "I'm dummy $id update";
     }
 
     public function destroy() {
-        // TODO: Implement destroy() method.
+        echo "I'm dummy destroy";
     }
 
 }

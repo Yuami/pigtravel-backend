@@ -2,18 +2,6 @@
 
 namespace Routing;
 
-use Controller\Controller;
-use Controller\DummyController;
-use Controller\HouseController;
-use Controller\IndexController;
-use Controller\LoginController;
-use Controller\MessagesController;
-use Controller\ProfileController;
-use Controller\RegisterController;
-use Controller\ReservationController;
-use Controller\SendMessagesController;
-use Controller\UploadController;
-
 /**
  * Class Router
  * @package Routing
@@ -26,6 +14,8 @@ use Controller\UploadController;
  */
 class Router
 {
+    protected static $baseURL = '/';
+
     private static $methods = ['get', 'post', 'patch', 'put', 'delete'];
     private static $routes = [];
     private $route;
@@ -50,7 +40,7 @@ class Router
 
     public static function resource($name, $controller)
     {
-        $url = '/' . $name;
+        $url = static::$baseURL . $name;
         self::get($url, $controller . '@index');
         self::get($url . '/create', $controller . '@create');
         self::get($url . '/([\d\w]+)', $controller . '@show');
@@ -71,11 +61,11 @@ class Router
         }
     }
 
-    private static function addRoute($method, &$arguments, $view = false)
+    protected static function addRoute($method, &$arguments, $view = false)
     {
         $route = $arguments[0];
         $c = $arguments[1];
-        Router::$routes[] = new Route($route, $c, $method, $view);
+        self::$routes[] = new Route(static::$baseURL . $route, $c, $method, $view);
     }
 
     /**
@@ -103,14 +93,6 @@ class Router
     public function getMethod()
     {
         return $this->method;
-    }
-
-    /**
-     * @param mixed $params
-     */
-    public function setParams($params): void
-    {
-        $this->params = $params;
     }
 
     public static function back()
