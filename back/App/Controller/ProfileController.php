@@ -2,9 +2,9 @@
 namespace Controller;
 
 use Config\Photo;
-use Config\Router;
 use Config\Session;
 use Model\DAO\PersonaDAO;
+use Routing\Router;
 
 class ProfileController extends Controller {
     public function index() {
@@ -13,7 +13,7 @@ class ProfileController extends Controller {
 
     public function show($id)
     {
-        Router::redirectWithDomain("profile");
+        Router::redirect("profile");
     }
 
     public function create()
