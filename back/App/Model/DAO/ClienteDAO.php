@@ -30,4 +30,5 @@ class ClienteDAO extends DAO
     {
         return parent::deleteById( $idPersona);
     }
+
 }

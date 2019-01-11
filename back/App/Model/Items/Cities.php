@@ -35,7 +35,7 @@ class Cities
     /**
      * @return mixed
      */
-    public function getName()
+    public function getNombre()
     {
         return $this->name;
     }

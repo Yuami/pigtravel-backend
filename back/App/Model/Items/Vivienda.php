@@ -2,6 +2,7 @@
 
 namespace Model\Items;
 
+use Model\DAO\CitiesDAO;
 use Model\DAO\CiudadHasIdiomaDAO;
 
 class Vivienda
@@ -236,7 +237,7 @@ class Vivienda
      */
     public function getCiudad() 
     {
-        return CiudadHasIdiomaDAO::getBy('idCiudad',$this->idCiudad)[0];
+        return CitiesDAO::getBy('id',$this->idCiudad)[0];
     }
 
     /**

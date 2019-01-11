@@ -21,4 +21,5 @@ Router::view('notifications', 'notifications');
 
 // THIS IS TESTING AREA
 Router::view('photos', 'photo');
-Api::resource('test}', 'DummyController');
+Api::get('test', 'DummyController@index');
+Api::get('paises', 'Api\PaisesController@index');

@@ -83,7 +83,7 @@ descripcion = :des
 
     public static function getByTipoVivienda($tipo)
     {
-        return parent::getBy("idTipoVvienda", $tipo);
+        return parent::getBy("idTipoVivienda", $tipo);
     }
 
     /**
