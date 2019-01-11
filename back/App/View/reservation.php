@@ -1,7 +1,11 @@
 <?php
 
 use Config\File;
+use Config\Photos\Photos;
 
+if (!($reserva instanceof \Model\Items\Reserva)) {
+    die();
+}
 $vivienda = $reserva->getVivienda();
 $cliente = $reserva->getCliente();
 ?>
@@ -23,12 +27,12 @@ $cliente = $reserva->getCliente();
         <div class="row flex-xl-nowrap">
             <div class="col-12 col-md-3 col-xl-2"></div>
             <div class="col-12 col-md-3 col-xl-2 order-2">
-               <div class="mt-5"> AQUI IRAN LOS MENSAJES ESPERANDO A PEP TONI</div>
+                <div class="mt-5"> AQUI IRAN LOS MENSAJES ESPERANDO A PEP TONI</div>
             </div>
             <main class="col-12 col-md-9 col-xl-8 py-md-3" role="main">
-                <h2>Reserva #<?php echo $reserva->getId() ?>
+                <h2>Reserva #<?= $reserva->getId() ?>
                     <small><span id="estado-reserva"
-                                 class="badge badge-pill"><?php echo $reserva->getNombreEstado() ?></span>
+                                 class="badge badge-pill"><?= $reserva->getNombreEstado() ?></span>
                     </small>
                 </h2>
                 <div class="row">
@@ -45,13 +49,14 @@ $cliente = $reserva->getCliente();
                             <div class="">
                                 <h6>CASA</h6>
                                 <div class="card card-show">
-                                    <a href="/houses/<?php echo $vivienda->getId() ?>">
+                                    <a href="<?= $vivienda->link() ?>">
                                         <div class="card-body">
                                             <div class="card-text">
                                                 <div class="row">
-                                                    <img src="<?php \Config\Photos\Photos::house($vivienda->getId())->mainPath() ?>" alt=""
+                                                    <img src="<?= $vivienda->photo() ?>"
+                                                         alt=""
                                                          class="vivienda-img rounded-circle">
-                                                    <h5 class="ml-2 mt-3"><?php echo $vivienda->getNombre() ?></h5>
+                                                    <h5 class="ml-2 mt-3"><?= $vivienda->getNombre() ?></h5>
 
                                                 </div>
                                             </div>
@@ -62,17 +67,17 @@ $cliente = $reserva->getCliente();
 
                             <div class="mt-3">
                                 <h6>CLIENTE</h6>
-                                <a href="/messages/<?php echo $vivienda->getID(); ?>"
+                                <a href="/messages/<?= $vivienda->getID(); ?>"
                                    class="btn btn-primary col-auto my-1">CHAT
-                                    CON <?php echo strtoupper($cliente->getNombre()); ?></a>
+                                    CON <?= strtoupper($cliente->getNombre()); ?></a>
                                 <div class="card card-show">
-                                    <a href="/profile/<?php echo $cliente->getID() ?>">
+                                    <a href="/profile/<?= $cliente->getID() ?>">
                                         <div class="card-body">
                                             <div class="card-text">
                                                 <div class="row">
-                                                    <img src="/<?php echo File::getProfileImageById($reserva->getIdCliente()) ?>"
+                                                    <img src="<?= $cliente->image(); ?>"
                                                          alt="" class="vivienda-img rounded-circle">
-                                                    <h5 class="ml-2 mt-3"><?php echo $cliente->getNombreCompleto(); ?></h5>
+                                                    <h5 class="ml-2 mt-3"><?= $cliente->getNombreCompleto(); ?></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,9 +91,12 @@ $cliente = $reserva->getCliente();
                                     <div class="card-body">
                                         <div class="card-text">
                                             <div class="row">
-                                                <p class="col-12 ml-2 mt-3"><b>CALCULO:</b> <?php echo $reserva->getCalculo() ?></p>
-                                                <p class="col-12 ml-2 mt-3"><b>CALCULO:</b> <?php echo $reserva->getDias() ?></p>
-                                                <p class="col-12 ml-2 mt-3"><b>GANANCIAS:</b> $<?php echo $reserva->getIngreso() ?></p>
+                                                <p class="col-12 ml-2 mt-3">
+                                                    <b>CALCULO:</b> <?= $reserva->getCalculo() ?></p>
+                                                <p class="col-12 ml-2 mt-3">
+                                                    <b>CALCULO:</b> <?= $reserva->getDias() ?></p>
+                                                <p class="col-12 ml-2 mt-3"><b>GANANCIAS:</b>
+                                                    $<?= $reserva->getIngreso() ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -102,10 +110,10 @@ $cliente = $reserva->getCliente();
                                         <div class="card-text">
                                             <div class="row">
                                                 <p class="ml-2 mt-3">
-                                                    <b>Total clientes: </b><?php echo $reserva->getTotalClientes() ?>
+                                                    <b>Total clientes: </b><?= $reserva->getTotalClientes() ?>
                                                 </p>
                                                 <p class="ml-2 mt-3">
-                                                    <b>Fecha creación: </b><?php echo $reserva->getFechaReserva() ?>
+                                                    <b>Fecha creación: </b><?= $reserva->getFechaReserva() ?>
                                                 </p>
                                                 <h6 class="col-12"><b>Cambios:</b></h6>
                                                 <p id="cambios" class="col-12"></p>
@@ -115,7 +123,7 @@ $cliente = $reserva->getCliente();
                                 </div>
                             </div>
                             <script>
-                                let json = <?php echo $reserva->getCambiosJSON(); ?>;
+                                let json = <?= $reserva->getCambiosJSON(); ?>;
                                 let container = $('#cambios');
                                 json.forEach(item => {
                                     container.append(cambioHTML(item));
@@ -151,8 +159,8 @@ $cliente = $reserva->getCliente();
                         </div>
                         <div class="modal-body">
                             <div id="calendars">
-                                <div id="mainCalendar" data-f_inicio="<?php echo $reserva->getCheckIn(); ?>"
-                                     data-f_fin="<?php echo $reserva->getCheckOut(); ?>"></div>
+                                <div id="mainCalendar" data-f_inicio="<?= $reserva->getCheckIn(); ?>"
+                                     data-f_fin="<?= $reserva->getCheckOut(); ?>"></div>
 
                                 <div id="nextCalendar"></div>
                             </div>

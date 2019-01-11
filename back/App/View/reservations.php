@@ -53,15 +53,18 @@
             </thead>
 
             <?php
-            foreach ($reservas as $reserva) { ?>
-                <tr onclick="window.location='/houses/<?php echo $reserva->getIDVivienda() ?>'">
-                    <td><?php echo $reserva->getVivienda()->getNombre() ?></td>
-                    <td><?php echo $reserva->getCliente()->getNombre() ?></td>
-                    <td><?php echo $reserva->getNombreEstado() ?></td>
-                    <td><?php echo $reserva->getFechaReserva() ?></td>
-                    <td><?php echo $reserva->getPrecio() ?></td>
-                </tr>
-            <?php } ?>
+            foreach ($reservas as $r) {
+                if ($r instanceof \Model\Items\Reserva) {
+                    ?>
+                    <tr onclick="window.location='<?php echo $r->link() ?>'">
+                        <td><?php echo $r->getVivienda()->getNombre() ?></td>
+                        <td><?php echo $r->getCliente()->getNombre() ?></td>
+                        <td><?php echo $r->getNombreEstado() ?></td>
+                        <td><?php echo $r->getFechaReserva() ?></td>
+                        <td><?php echo $r->getPrecio() ?></td>
+                    </tr>
+                <?php }
+            } ?>
 
         </table>
     </div>

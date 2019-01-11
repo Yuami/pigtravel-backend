@@ -42,15 +42,16 @@ if (Session::isSet("wrongHouse")) {
             </button>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
         <div class="row justify-content-center">
             <?php if (!empty($houses)) {
-                foreach ($houses as $house) { ?>
+                foreach ($houses as $house) {
+                    if ($house instanceof \Model\Items\Vivienda)?>
                     <div class="col-md-4 col-xl-3 col-sm-6 mb-3">
-                        <a href="/houses/<?php echo $house->getId() ?>" class="card p-0"
+                        <a href="/houses/<?php echo $house->getId() ?>" class="card p-0 card-show"
                            style="color: inherit; text-decoration:none;">
                             <div class="view overlay">
-                                <img src="img/casas/placeholder.jpg" alt="CASA" style="width: 100%;height: 250px;">
+                                <img src="<?= $house->photo() ?>" alt="CASA" style="width: 100%;height: 250px;">
                             </div>
                             <div class="card-body ">
                                 <p class="col font-weight-bold text-center">
