@@ -25,10 +25,13 @@ define("DOMAIN", "http://" . $_SERVER['HTTP_HOST']);
 
 spl_autoload_register(function($class) {
     $className = str_replace("\\", "/", $class);
-    include_once APP . $className . '.php';
+    $class = APP . $className . '.php';
+    if (file_exists($class))
+    include_once $class;
 });
 
 
+require BACK . '/vendor/autoload.php';
 require_once CONFIG . "conf.php";
 require_once CONFIG . "web.php";
 require_once ROOT . "dd.php";
