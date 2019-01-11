@@ -1,6 +1,8 @@
 <?php
 namespace Model\Items;
 
+use Config\Photos\PerfilPhoto;
+
 class Persona {
     private $nombre;
     private $id;
@@ -186,6 +188,11 @@ class Persona {
         $string = $this->nombre . " " . $this->apellido1 . " ";
         $string .= $this->apellido2 == null ? "" : $this->apellido2;
         return $string;
+    }
+
+    public function image()
+    {
+        return PerfilPhoto::find($this->id)->mainPath();
     }
 
 }

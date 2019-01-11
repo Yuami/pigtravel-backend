@@ -2,6 +2,7 @@
 
 namespace Model\Items;
 
+use Config\Photos\HousePhoto;
 use Model\DAO\CitiesDAO;
 use Model\DAO\CiudadHasIdiomaDAO;
 
@@ -39,6 +40,10 @@ class Vivienda
         $this->descripcion = $descripcion;
     }
 
+    public function link()
+    {
+        return '/houses/' . $this->getId();
+    }
 
     /**
      * @return mixed
@@ -254,6 +259,11 @@ class Vivienda
     public function getIdVendedor()
     {
         return $this->idVendedor;
+    }
+
+    public function photo()
+    {
+        return HousePhoto::house($this->id)->mainPath();
     }
 
     public function __toString()

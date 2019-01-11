@@ -258,4 +258,8 @@ class Reserva
         return $this->precio * 0.95 - 5;
     }
 
+    public function link()
+    {
+        return '/reservations/' . $this->getId();
+    }
 }
