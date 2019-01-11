@@ -34,4 +34,4 @@ spl_autoload_register(function($class) {
 require BACK . '/vendor/autoload.php';
 require_once CONFIG . "conf.php";
 require_once CONFIG . "web.php";
-require_once ROOT . "dd.php";
+require_once ROOT . "helpers.php";
