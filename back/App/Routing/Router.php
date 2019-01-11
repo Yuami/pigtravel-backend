@@ -16,7 +16,7 @@ class Router
 {
     protected static $baseURL = '/';
 
-    private static $methods = ['get', 'post', 'patch', 'put', 'delete'];
+    private static $methods = ['get', 'post', 'patch', 'put', 'delete', 'view'];
     private static $routes = [];
     private $route;
     private $method;
@@ -56,16 +56,13 @@ class Router
         if (in_array(strtolower($name), Router::$methods)) {
             self::addRoute($name, $arguments);
         }
-        if ($name == 'view') {
-            self::addRoute('get', $arguments, true);
-        }
     }
 
-    protected static function addRoute($method, &$arguments, $view = false)
+    private static function addRoute($method, $arguments)
     {
-        $route = $arguments[0];
+        $route = static::$baseURL . $arguments[0];
         $c = $arguments[1];
-        self::$routes[] = new Route(static::$baseURL . $route, $c, $method, $view);
+        $method == 'view' ? Route::view($route, $c) : Route::new($route, $c, $method);
     }
 
     /**
@@ -73,13 +70,16 @@ class Router
      */
     public function routeToGod()
     {
+        $found = false;
         foreach (self::$routes as $r) {
             if ($r->matches($this->route, $this->method)) {
                 $r->execute();
+                $found = true;
                 break;
             }
         }
-        throw new \Exception('Not Found', 404);
+        if (!$found)
+            throw new \Exception('Not Found', 404);
     }
 
     public function default()
@@ -102,17 +102,14 @@ class Router
 
     public static function redirectToDomain()
     {
-        self::redirect(DOMAIN);
+        self::redirect(DOMAIN, false);
     }
 
-    public static function redirect($route)
+    public static function redirect($route, $domain = true)
     {
+        if ($domain)
+            self::redirect(DOMAIN . "/" . $route, false);
         header("Location: $route");
         exit;
-    }
-
-    public static function redirectWithDomain($route)
-    {
-        self::redirect(DOMAIN . "/" . $route);
     }
 }

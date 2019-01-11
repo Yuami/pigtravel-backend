@@ -37,4 +37,9 @@ class Session {
         $_SESSION = null;
         session_destroy();
     }
+
+    public static function me()
+    {
+        return self::isSet('userID');
+    }
 }

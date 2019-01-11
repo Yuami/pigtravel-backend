@@ -17,7 +17,17 @@ class Route
     private $view;
     private $matches = [];
 
-    public function __construct($route, $controller, $method, $view = false)
+    public static function view($route, $controller)
+    {
+        return new self($route, $controller, 'get', true);
+    }
+
+    public static function new($route, $controller, $method)
+    {
+        return new self($route, $controller, $method);
+    }
+
+        public function __construct($route, $controller, $method, $view = false)
     {
         $this->route = preg_replace('#{id}#', '([\d]+)', $route);
         $this->route = preg_replace('#{[\w]+}#', '([\d\w]+)', $route);
