@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <?php
+
+    use Model\DAO\CiudadDAO;
+
     require_once ROOT . "libraries.php" ?>
 
     <link rel="stylesheet" href="/css/leaflet.css">
@@ -137,6 +140,8 @@
         loadLocalidades();
     });
 </script>
-<?php include_once("footer.php") ?>
+<?php
+dd($ciudades);
+include_once("footer.php") ?>
 </body>
 </html>

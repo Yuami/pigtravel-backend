@@ -28,10 +28,7 @@ spl_autoload_register(function($class) {
     include_once APP . $className . '.php';
 });
 
-function dd($var){
-    var_dump($var);
-    die();
-}
 
 require_once CONFIG . "conf.php";
 require_once CONFIG . "web.php";
+require_once ROOT . "dd.php";
