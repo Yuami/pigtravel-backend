@@ -5,39 +5,42 @@
  * Date: 27/11/2018
  * Time: 18:47
  */
+
 namespace Model\DAO;
-class CiudadDAO extends DAO{
-  protected static $table = "ciudad";
+class CiudadDAO extends DAO
+{
+    protected static $table = "cities";
     protected static $class = "Ciudad";
 
     public static function insert()
-{
-    // TODO: Implement insert() method.
-}
+    {
+        // TODO: Implement insert() method.
+    }
+
     public static function getById($id)
-{
-    return parent::getById( $id);
-}
+    {
+        return parent::getById($id);
+    }
 
     public static function getAll()
-{
-    return parent::getAll();
-}
+    {
+        return parent::getAll();
+    }
 
     public static function deleteById($id)
-{
-    return parent::deleteById( $id);
-}
+    {
+        return parent::deleteById($id);
+    }
 
     public static function getByPais($idPais)
-{
-    return parent::getBy( idPais, $idPais);
-}
+    {
+        return parent::getBy(idPais, $idPais);
+    }
 
     public static function deleteByPais($idPais)
-{
-    return parent::deleteBy( $idPais, $idPais);
+    {
+        return parent::deleteBy($idPais, $idPais);
 
-}
+    }
 
 }

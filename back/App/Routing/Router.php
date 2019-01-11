@@ -86,6 +86,7 @@ class Router
         foreach (self::$routes as $r) {
             if ($r->matches($this->route, $this->method)) {
                 $r->execute();
+                break;
             }
         }
         throw new \Exception('Not Found', 404);
