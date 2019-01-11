@@ -4,22 +4,43 @@ namespace Model\Items;
 class Ciudad
 {
     private $id;
-    private $cp;
-    private $idPais;
-    public function __construct($id, $cp,$idPais)
+    private $region_id;
+    private $country_id;
+    private $name;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
-        $this->id = $id;
-        $this->cp = $cp;
-        $this->idPais=$idPais;
+        return $this->id;
     }
-    public function getCP()
+
+    /**
+     * @return mixed
+     */
+    public function getRegionId()
     {
-        return $this->cp;
+        return $this->region_id;
     }
-    public function getPais()
+
+    /**
+     * @return mixed
+     */
+    public function getCountryId()
     {
-        return $this->idPais;
+        return $this->country_id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
 }
 
 

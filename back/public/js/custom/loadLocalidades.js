@@ -4,7 +4,7 @@ function loadLocalidades(idCiudadVivienda = null) {
         if (this.readyState == 4 && this.status == 200) {
             var localidades = JSON.parse(this.responseText);
             addToLista('<option disabled>-- Select an option --</option>');
-            console.log(localidades);
+
             for (tipo in localidades) {
                 let item;
                 let nombre = localidades[tipo].name;

@@ -21,10 +21,8 @@ abstract class DAO
 
     protected static function fetchOne(\PDOStatement $statement)
     {
-        $statement = self::fetchAll($statement);
-        if (isset($statement[0]))
-            return $statement[0];
-        return null;
+       $statement->setFetchMode(PDO::FETCH_CLASS, self::getClassName());
+       return $statement->fetch();
     }
 
     public static function getAll()
