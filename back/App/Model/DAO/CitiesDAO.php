@@ -9,10 +9,10 @@
 namespace Model\DAO;
 use PDO;
 
-class CiudadDAO extends DAO
+class CitiesDAO extends DAO
 {
     protected static $table = "cities";
-    protected static $class = "Ciudad";
+    protected static $class = "Cities";
 
     public static function insert()
     {
@@ -40,6 +40,7 @@ class CiudadDAO extends DAO
     {
         return parent::deleteById($id);
     }
+
 
     public static function getByPais($idPais)
     {

@@ -3,7 +3,7 @@
 namespace Controller;
 
 use Config\Cookie;
-use Model\DAO\CiudadDAO;
+use Model\DAO\CitiesDAO;
 use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;

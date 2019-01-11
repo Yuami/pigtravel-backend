@@ -9,7 +9,7 @@ $(function () {
                     "<th scope='col'>Vivienda</th>" +
                     "<th scope='col'>Calle</th>" +
                     "<th scope='col'>Tipo Vivienda</th>" +
-                    "<th scope='col'>Ciudad</th>" +
+                    "<th scope='col'>Cities</th>" +
                     "</tr>" + "</thead><tbody>"
                 );
 

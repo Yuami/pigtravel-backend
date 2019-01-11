@@ -1,7 +1,7 @@
 <?php
 namespace Model\Items;
 
-class Ciudad
+class Cities
 {
     private $id;
     private $region_id;

@@ -7,7 +7,7 @@
  */
 namespace Model\DAO;
 include "DAO.php";
-include_once("../Items/Pais.php");
+include_once("../Items/Country.php");
 
 class ServicioDAO extends DAO
 {

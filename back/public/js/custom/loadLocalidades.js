@@ -1,4 +1,13 @@
-function loadLocalidades(idCiudadVivienda = null) {
+
+
+function loadPaises() {
+    fetch("/info/localidades/loadPaises.php")
+        .then(r => r.json())
+        .then(countries => console.log(countries));
+}
+
+
+function loadCiudades(idCiudadVivienda = null) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {

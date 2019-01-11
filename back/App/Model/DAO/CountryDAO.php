@@ -7,13 +7,13 @@
  */
 namespace Model\DAO;
 include "DAO.php";
-include_once("../Items/Pais.php");
+include_once("../Items/Country.php");
 
-class PaisDAO extends DAO
+class CountryDAO extends DAO
 {
 
-    protected static $table = "pais";
-    protected static $class = "Pais";
+    protected static $table = "countries";
+    protected static $class = "Country";
 
     public static function insert()
     {
@@ -22,7 +22,7 @@ class PaisDAO extends DAO
 
     public static function getById($id)
     {
-        return parent::getById( $id);
+        return parent::getById($id);
     }
 
     public static function getAll()

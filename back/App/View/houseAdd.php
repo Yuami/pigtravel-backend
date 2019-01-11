@@ -8,7 +8,7 @@
 
     <?php
 
-    use Model\DAO\CiudadDAO;
+    use Model\DAO\CitiesDAO;
 
     require_once ROOT . "libraries.php" ?>
 
@@ -51,19 +51,11 @@
                         <label for="peopleAmount">People Capacity</label>
                         <input type="number" id="peopleAmount" class="form-control mb-1"
                                name="peopleAmount">
-                        <label for="country">City</label>
+                        <label for="country">Country</label>
                         <select id="country" class="form-control" name="country">
-
                         </select>
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
-                            <?php
-                            $ciudades = CiudadDAO::getByIdRegion(970);
-                            echo '<option selected disabled>-- Select an option --</option>';
-                            foreach ($ciudades as $c) {
-                                echo "<option value=" . $c->getId() . ">" . $c->getName() . "</option>";
-                            }
-                            ?>
                         </select>
                         <label for="street">Address</label>
                         <input id="street" type="text" class="form-control mb-1"
@@ -137,11 +129,10 @@
 <script src="/js/custom/loadLocalidades.js"></script>
 <script>
     $(function () {
-        loadLocalidades();
+        loadPaises();
     });
 </script>
 <?php
-dd($ciudades);
 include_once("footer.php") ?>
 </body>
 </html>
