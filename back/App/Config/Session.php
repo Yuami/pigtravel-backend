@@ -40,6 +40,6 @@ class Session {
 
     public static function me()
     {
-        return self::isSet('userID');
+        return self::get('userID');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Config\Api;
+use Routing\Api;
 use Routing\Router;
 
 Router::resource('houses','HouseController');
@@ -22,4 +22,4 @@ Router::view('notifications', 'notifications');
 // THIS IS TESTING AREA
 Router::view('photos', 'photo');
 Api::get('test', 'DummyController@index');
-Api::get('paises', 'Api\PaisesController@index');
+Api::get('paises', 'PaisesController@index');
