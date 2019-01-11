@@ -12,6 +12,8 @@ class DB {
         $user = $config->get('dbuser');
         $pass = $config->get('dbpass');
         self::$conn = new PDO($dsn, $user, $pass);
+        self::$conn->exec("set names utf8");
+
     }
 
     /**

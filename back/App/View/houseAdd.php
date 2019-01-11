@@ -5,12 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 
-
-    <?php use Model\DAO\CiudadDAO;
-
+    <?php
     require_once ROOT . "libraries.php" ?>
 
     <link rel="stylesheet" href="/css/leaflet.css">
@@ -44,7 +40,7 @@
 
             <div class="row px-md-5">
                 <div class="col-md-8 col-12">
-                    <div class="tab form-group">
+                    <div id="leftHouseForm"  class="tab form-group">
                         <h3 class="text-center">General Information</h3>
                         <label for="houseName">Name of the house</label>
                         <input type="text" id="houseName" class="form-control mb-1"
@@ -52,18 +48,23 @@
                         <label for="peopleAmount">People Capacity</label>
                         <input type="number" id="peopleAmount" class="form-control mb-1"
                                name="peopleAmount">
-                        <label for="street">Address</label>
-                        <input id="street" type="text" class="form-control mb-1"
-                               name="street">
+                        <label for="country">City</label>
+                        <select id="country" class="form-control" name="country">
+
+                        </select>
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
                             <?php
-                            echo '<option disabled>-- Select an option --</option>';
+                            $ciudades = CiudadDAO::getByIdRegion(970);
+                            echo '<option selected disabled>-- Select an option --</option>';
                             foreach ($ciudades as $c) {
                                 echo "<option value=" . $c->getId() . ">" . $c->getName() . "</option>";
                             }
                             ?>
                         </select>
+                        <label for="street">Address</label>
+                        <input id="street" type="text" class="form-control mb-1"
+                               name="street">
                     </div>
                     <div class="tab form-group">
                         <h1 class="text-center">Additional Information</h1>

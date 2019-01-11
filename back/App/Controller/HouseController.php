@@ -43,7 +43,7 @@ class HouseController extends Controller
 
     public function create()
     {
-        $ciudades = CiudadDAO::getByIdRegion(970);
+
         include_once VIEW . "houseAdd.php";
     }
 

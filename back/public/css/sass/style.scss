@@ -22,6 +22,8 @@ body {
   min-height: 100vh;
   position: relative;
   font-family: "Helvetica Neue", Arial, sans-serif !important;
+  background-color: #f9f9f9;
+
   &::after {
     content: '';
     display: block;
@@ -30,10 +32,9 @@ body {
 }
 
 /* Messages */
-.nombreReciever{
+.nombreReciever {
   margin-left: 50px;
 }
-
 
 .mensajes {
   margin: 50px;
@@ -342,18 +343,15 @@ body#landingBody {
   overflow: hidden;
 }
 
-
 .menu-padding {
   padding-top: 56px !important;
 }
-
 
 .item img {
   width: 100%;
   object-fit: cover;
 }
 
- /* House */
 #scrollspy {
   background-color: #7a7a7a !important;
 
@@ -371,26 +369,34 @@ body#landingBody {
 /* ADD HOUSE */
 $color_1: #ffffff;
 $font_family_1: Raleway;
-$background_color_1: #ffffff;
 $background_color_2: #ffdddd;
 $background_color_3: #4CAF50;
 $background_color_4: #bbbbbb;
 
 #addHouseForm {
-  background-color: $background_color_1;
-  margin: 10px auto 0 auto;
   font-family: $font_family_1;
   padding: 40px;
   min-width: 300px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 5% auto;
+  background-color: #FFFFFF;
+  overflow: hidden;
+
+  #leftHouseForm {
+margin-right: 100px;
+  }
+
   h1 {
     text-align: center;
   }
   input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: $font_family_1;
-    border: 1px solid #aaaaaa;
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    height: 40px;
+    padding: 0px 15px;
+
   }
   input.invalid {
     background-color: $background_color_2;
