@@ -8,6 +8,7 @@
 
 namespace Model\DAO;
 
+use Config\Session;
 use Controller\LoginController;
 
 class PersonaDAO extends DAO
@@ -71,5 +72,10 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         if (isset($res))
             return $res[0];
         return null;
+    }
+
+    public static function me()
+    {
+        return PersonaDAO::getById(Session::me());
     }
 }
