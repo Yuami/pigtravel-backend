@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Config\Cookie;
+use Model\DAO\CiudadDAO;
 use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
@@ -42,6 +43,7 @@ class HouseController extends Controller
 
     public function create()
     {
+        $ciudades = CiudadDAO::getByIdRegion(970);
         include_once VIEW . "houseAdd.php";
     }
 

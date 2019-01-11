@@ -7,6 +7,8 @@
  */
 
 namespace Model\DAO;
+use PDO;
+
 class CiudadDAO extends DAO
 {
     protected static $table = "cities";
@@ -20,6 +22,13 @@ class CiudadDAO extends DAO
     public static function getById($id)
     {
         return parent::getById($id);
+    }
+
+    public static function getByIdRegion($id){
+        $statement = DB::conn()->prepare("SELECT * FROM " . self::$table . " WHERE region_id = :id");
+        $statement->bindValue(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+        return self::fetchAll($statement);
     }
 
     public static function getAll()

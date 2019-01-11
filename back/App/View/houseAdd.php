@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php require_once ROOT . "libraries.php" ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+
+    <?php use Model\DAO\CiudadDAO;
+
+    require_once ROOT . "libraries.php" ?>
 
     <link rel="stylesheet" href="/css/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
@@ -51,6 +57,12 @@
                                name="street">
                         <label for="city">City</label>
                         <select id="city" class="form-control" name="city">
+                            <?php
+                            echo '<option disabled>-- Select an option --</option>';
+                            foreach ($ciudades as $c) {
+                                echo "<option value=" . $c->getId() . ">" . $c->getName() . "</option>";
+                            }
+                            ?>
                         </select>
                     </div>
                     <div class="tab form-group">
@@ -102,7 +114,8 @@
                         <div id="houseMap" style="width:auto;height:300px;margin: -36px -36px 0;"></div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
-                            <label class="custom-control-label" for="wrongHouseLocation">Wrong house location on map!</label>
+                            <label class="custom-control-label" for="wrongHouseLocation">Wrong house location on
+                                map!</label>
                         </div>
                         <p id="personCard" class="mb-0"></p>
                         <p id="streetCard"></p>
