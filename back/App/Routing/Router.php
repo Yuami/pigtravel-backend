@@ -15,6 +15,7 @@ namespace Routing;
 class Router
 {
     protected static $baseURL = '/';
+    protected static $baseDir = '';
 
     private static $methods = ['get', 'post', 'patch', 'put', 'delete', 'view'];
     private static $routes = [];
@@ -61,8 +62,8 @@ class Router
     private static function addRoute($method, $arguments)
     {
         $route = static::$baseURL . $arguments[0];
-        $c = $arguments[1];
-        $method == 'view' ? Route::view($route, $c) : Route::new($route, $c, $method);
+        $c = static::$baseDir . $arguments[1];
+        self::$routes[] = $method == 'view' ? Route::view($route, $c) : Route::new($route, $c, $method);
     }
 
     /**

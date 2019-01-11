@@ -1,10 +1,9 @@
 <?php
 
-namespace Config;
-
-use Routing\Router;
+namespace Routing;
 
 class Api extends Router
 {
     protected static $baseURL = '/api/';
+    protected static $baseDir = 'Api\\';
 }
