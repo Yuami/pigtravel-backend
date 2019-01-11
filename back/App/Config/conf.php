@@ -1,12 +1,20 @@
 <?php
+
 use Config\Config;
+
+// TODO: Errors only on dev
+Config::errorsOn();
+
+
+
 $config = Config::singleton();
 
 //local
- $config->set('dbhost', 'sql142.main-hosting.eu');
- $config->set('dbname', 'u333704226_pigtr');
- $config->set('dbuser', 'u333704226_pigtr');
- $config->set('dbpass', 'ifc21B17*');
+$config->set('dbhost', 'sql142.main-hosting.eu');
+$config->set('dbname', 'u333704226_pigtr');
+$config->set('dbuser', 'u333704226_pigtr');
+$config->set('dbpass', 'ifc21B17*');
+
 
 //server
 //$config->set('dbhost', 'localhost');

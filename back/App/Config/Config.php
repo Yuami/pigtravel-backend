@@ -34,6 +34,13 @@ class Config
 
         return self::$instance;
     }
+
+    public static function errorsOn()
+    {
+        $whoops = new \Whoops\Run;
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
+    }
 }
 /*
  Uso:
