@@ -1,6 +1,6 @@
 <?php
 
-use Config\File;
+use Config\Photos\Photos;
 use Config\Session;
 use Model\DAO\PersonaDAO;
 
@@ -19,7 +19,7 @@ if (!Session::isSet('userID')) { ?>
     </header>
 <?php } else {
     $user = PersonaDAO::getById(Session::get("userID"));
-    $profileImage = File::getProfileImage($user);
+    $profileImage = Photos::me()->mainPath();
     ?>
     <header class="head">
         <div class="container-fluid">
@@ -109,13 +109,13 @@ if (!Session::isSet('userID')) { ?>
                         <button id="dropdownHeaderButton" type="button"
                                 class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
-                            <img src="/<?php echo $profileImage ?>" alt="" class="header-profile-img rounded-circle mr-md-1">
+                            <img src="<?php echo $profileImage ?>" alt="" class="header-profile-img rounded-circle mr-md-1">
                         </button>
                         <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="/<?php echo $profileImage ?>" alt="" class="header-profile-img rounded-circle">
+                                        <img src="<?php echo $profileImage ?>" alt="" class="header-profile-img rounded-circle">
                                         <span class="textRightNav d-md-none"> PROFILE</span>
                                     </div>
                                     <div class="col-8">

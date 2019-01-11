@@ -1,28 +1,23 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/basicVars.php";
 
-use Config\Router;
+use Routing\Router;
 use Config\Session;
 
 session_start();
-if (isset($_SERVER['REDIRECT_URL'])) {
-    $r = new Router($_SERVER['REDIRECT_URL'], $_SERVER['REQUEST_METHOD']);
-} else {
-    $r = new Router(DOMAIN , []);
-}
-$c = $r->getController();
-if ($c == 'photos'){
-    include_once 'photo.php';
-    die();
-}
+$r = new Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
 if (!Session::isSet('userID')) {
-    if ($c != "register" && $c != "login" && $c != "loginController")
+    if ($r->isNot("register") && $r->isNot("login") && $r->isNot("loginController"))
         header("Location: " . DOMAIN . "/login");
 } else {
-    if ($c == "register" || $c == "login"){
+    if ($r->is('register') || $r->is('login')) {
         header("Location: " . DOMAIN);
     }
 }
 
-$r->load();
+try {
+    $r->routeToGod();
+} catch (Exception $e) {
+    $r->default();
+}

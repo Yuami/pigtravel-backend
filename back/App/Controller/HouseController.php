@@ -3,18 +3,18 @@
 namespace Controller;
 
 use Config\Cookie;
-use Config\Router;
+use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
 
 class HouseController extends Controller
 {
 
-    public function validUser($userID, $vivienda)
+    public static function validUser($userID, $vivienda)
     {
         if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
             Session::set("wrongHouse", "true");
-            Router::redirect("houses");
+            Router::redirectWithDomain("houses");
             return false;
         }
         return true;
@@ -35,7 +35,7 @@ class HouseController extends Controller
     public function show($id)
     {
         $houses = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $houses)) {
+        if (self::validUser(Session::get('userID'), $houses)) {
             include_once VIEW . "house.php";
         }
     }
@@ -86,7 +86,7 @@ class HouseController extends Controller
                 "idCiudad" => $_POST['city'],
                 "descripcion" => $_POST['description']]);
             $this->updateCompleted(true);
-            Router::redirect("houses/" . $id);
+            Router::redirectWithDomain("houses/" . $id);
         } else {
             $this->updateCompleted(false);
         }
