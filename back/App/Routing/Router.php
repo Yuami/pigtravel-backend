@@ -40,7 +40,7 @@ class Router
 
     public static function resource($name, $controller)
     {
-        $url = static::$baseURL . $name;
+        $url = $name;
         self::get($url, $controller . '@index');
         self::get($url . '/create', $controller . '@create');
         self::get($url . '/([\d\w]+)', $controller . '@show');
