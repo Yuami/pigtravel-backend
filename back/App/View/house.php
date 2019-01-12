@@ -301,7 +301,7 @@ if (Session::isSet("updateCompleted")) {
 <script>
     $(function () {
         let idCiudadVivienda = <?= $houses->getIdCiudad(); ?>;
-        loadLocalidades(idCiudadVivienda);
+        loadCiudad(idCiudadVivienda);
         mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
     });
 </script>

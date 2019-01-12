@@ -13,16 +13,10 @@ use Controller\Controller;
 use Model\DAO\DB;
 use PDO;
 
-class PaisesController extends Controller
+class RegionController extends Controller
 {
     public function index()
     {
-        header("Content-Type: application/json; charset=UTF-8");
-        $statement = "select p.name, p.id from countries p group by p.name";
-        $res = DB::conn()->prepare($statement);
-        $res->execute();
-        $rows = $res->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($rows);
     }
 
     public function create()
@@ -37,7 +31,12 @@ class PaisesController extends Controller
 
     public function show($id)
     {
-        // TODO: Implement show() method.
+        header("Content-Type: application/json; charset=UTF-8");
+        $statement = "select r.name, r.region_id, r.country_id, r.id from region r where `country_id` = $id GROUP by r.name";
+        $res = DB::conn()->prepare($statement);
+        $res->execute();
+        $rows = $res->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($rows);
     }
 
     public function edit($id)

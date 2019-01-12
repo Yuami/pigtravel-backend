@@ -1,36 +1,51 @@
-
+let country = $('#country');
+let city = $('#city');
+let region = $('#region');
 
 function loadPaises() {
-    fetch("/info/localidades/loadPaises.php")
+    let url = "/api/paises";
+
+    fetch(url)
         .then(r => r.json())
-        .then(countries => console.log(countries));
+        .then(countries => countries.forEach(c => addToLista("#country", toOption(c.id, c.name))));
+    loadCiudades()
 }
 
-
-function loadCiudades(idCiudadVivienda = null) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var localidades = JSON.parse(this.responseText);
-            addToLista('<option disabled>-- Select an option --</option>');
-
-            for (tipo in localidades) {
-                let item;
-                let nombre = localidades[tipo].name;
-                let idCiudad = localidades[tipo].id;
-                if (idCiudad == idCiudadVivienda) {
-                    item = "<option value=" + idCiudad + " selected>" + nombre + "</option>";
-                } else {
-                    item = "<option value=" + idCiudad + ">" + nombre + "</option>";
-                }
-                addToLista(item);
-            }
-        }
-    };
-    xhttp.open("GET", "/info/selectLocalidades.php", true);
-    xhttp.send();
+function loadRegion(idRegionVivienda = "") {
+    let url = "/api/region/" + idRegionVivienda;
+    region.empty();
+    fetch(url)
+        .then(r => r.json())
+        .then(cities => cities.forEach(c => addToLista("#city", toOption(c.id, c.name))));
+    loadCiudades();
 }
 
-function addToLista(item) {
-    $("#city").append(item);
+function loadCiudades(idCiudadVivienda = "") {
+    let url = "/api/ciudades/" + idCiudadVivienda;
+    city.empty();
+    fetch(url)
+        .then(r => r.json())
+        .then(cities => cities.forEach(c => addToLista("#city", toOption(c.id, c.name))));
 }
+
+function toOption(value, content) {
+    return `<option value="${value}">${content}</option>`;
+}
+
+function addToLista(selector, item) {
+    $(selector).append(item);
+}
+
+$(function () {
+    country.select2();
+    region.select2();
+    city.select2();
+
+    $('#country').on('change', function () {
+        loadRegion(this.value);
+    });
+
+    $('#region').on('change', function () {
+        loadCiudades(this.value);
+    });
+});
