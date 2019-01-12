@@ -71,16 +71,12 @@ class Router
      */
     public function routeToGod()
     {
-        $found = false;
         foreach (self::$routes as $r) {
             if ($r->matches($this->route, $this->method)) {
-                $r->execute();
-                $found = true;
-                break;
+                return $r->execute();
             }
         }
-        if (!$found)
-            throw new \Exception('Not Found', 404);
+        throw new \Exception('Not Found', 404);
     }
 
     public function default()
