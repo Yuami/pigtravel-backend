@@ -1,2 +1,2 @@
 <?php
-echo \Config\Photos\Photos::me()->mainPath();
+print_r(\Config\Photos\Photos::me());
