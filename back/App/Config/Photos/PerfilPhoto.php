@@ -11,6 +11,7 @@ namespace Config\Photos;
 
 class PerfilPhoto extends Photos
 {
+//    protected $defaultMain = '/assets/img/perfiles/default-image.png';
     protected $fileNameClient = 'photoPerfil';
     private $size = 128;
 
@@ -36,6 +37,7 @@ class PerfilPhoto extends Photos
     public function setProfileImage($image)
     {
         $file = $this->fullPath() . 'main.png';
+        var_dump($this->fullPath());
         file_put_contents($file, $image);
         $this->main = $this->toPhoto('main.png');
         $this->noMain = false;
