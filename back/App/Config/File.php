@@ -272,14 +272,7 @@ class File
 
     public static function fetchAll($dir)
     {
-        $files = [];
-        $scanned_directory = array_diff(scandir($dir), array('..', '.'));
-        foreach ($scanned_directory as $filename) {
-            if (self::exists(ROOT . $filename)) {
-                $files[] = self::fullPath($dir, $filename);
-            }
-        }
-        return $files;
+        return array_diff(scandir($dir), array('..', '.'));
     }
 
     public static function verifyType(string $path, string $file, array $fileTypes): bool

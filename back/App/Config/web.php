@@ -26,3 +26,5 @@ Api::get('test', 'DummyController@index');
 Api::get('paises', 'PaisesController@index');
 Api::get('region/{id}', 'RegionController@show');
 Api::get('ciudades/{id}', 'CiudadesController@show');
+
+Router::view('test', 'test');
