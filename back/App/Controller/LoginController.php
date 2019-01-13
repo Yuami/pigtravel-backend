@@ -54,7 +54,6 @@ class LoginController extends Controller
     {
         $credentials = LoginDAO::credentials($correoPost);
         if (isset($credentials)) {
-            password_verify($passwordPost, $credentials["password"]);
             if (password_verify($passwordPost, $credentials["password"])) {
                 return true;
             }

@@ -4,7 +4,7 @@ use Config\Photos\Photos;
 use Config\Session;
 use Model\DAO\PersonaDAO;
 
-if (!Session::isSet('userID')) { ?>
+if (!Session::me()) { ?>
     <header class="head">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
