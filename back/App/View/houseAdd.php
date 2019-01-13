@@ -18,8 +18,7 @@
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="/js/validation/bootstrap-validator.js"></script>
 
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <title>Plantilla para backend</title>
@@ -27,6 +26,13 @@
 
 <body>
 <?php include_once("header.php") ?>
+
+<div id="loading" class="d-none">
+    <div class="loading-image">
+        <img id="loading-image" src="/img/loading.gif" alt="Loading..."/>
+        <p id="loading-message"></p>
+    </div>
+</div>
 
 <section class="container-fluid">
     <div class="row breadcrumb-row">
@@ -47,7 +53,7 @@
 
             <div class="row px-md-5">
                 <div class="col-md-8 col-12">
-                    <div id="leftHouseForm"  class="tab form-group">
+                    <div id="leftHouseForm" class="tab form-group">
                         <h3 class="text-center">General Information</h3>
                         <label for="houseName">Name of the house</label>
                         <input type="text" id="houseName" class="form-control mb-1"
@@ -55,18 +61,6 @@
                         <label for="peopleAmount">People Capacity</label>
                         <input type="number" id="peopleAmount" class="form-control mb-1"
                                name="peopleAmount">
-                        <label for="country">Country</label>
-                        <select id="country" class="form-control" name="country" style="width: 100% !important;">
-                        </select>
-                        <label for="region">Region</label>
-                        <select id="region" class="form-control" name="region" style="width: 100% !important;">
-                        </select>
-                        <label for="city">City</label>
-                        <select id="city" class="form-control" name="city" style="width: 100% !important;">
-                        </select>
-                        <label for="street">Address</label>
-                        <input id="street" type="text" class="form-control mb-1"
-                               name="street">
                     </div>
                     <div class="tab form-group">
                         <h1 class="text-center">Additional Information</h1>
@@ -81,9 +75,21 @@
                                   name="description"></textarea>
                     </div>
                     <div class="tab">
-                        <h1 class="text-center">Rates</h1>
+                        <h1 class="text-center">Rates and Location</h1>
                         <label for="standardRate">Standard Rate</label>
                         <input type="number" class="form-control mb-1" name="standardRate">
+                        <label for="country">Country</label>
+                        <select id="country" class="form-control" name="country" style="width: 100% !important;">
+                        </select>
+                        <label for="region">Region</label>
+                        <select id="region" class="form-control" name="region" style="width: 100% !important;">
+                        </select>
+                        <label for="city">City</label>
+                        <select id="city" class="form-control" name="city" style="width: 100% !important;">
+                        </select>
+                        <label for="street">Address</label>
+                        <input id="street" type="text" class="form-control mb-1"
+                               name="street">
                     </div>
                     <div id="imageTab" class="tab">
                         <h1 class="text-center">Images</h1>

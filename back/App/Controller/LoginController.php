@@ -54,9 +54,8 @@ class LoginController extends Controller
     {
         $credentials = LoginDAO::credentials($correoPost);
         if (isset($credentials)) {
-            $correo = $credentials["correo"];
-            $password = $credentials["password"];
-            if ($correo == $correoPost && $passwordPost == $password) {
+            password_verify($passwordPost, $credentials["password"]);
+            if (password_verify($passwordPost, $credentials["password"])) {
                 return true;
             }
             Session::set("loginStatus", 'Wrong email or password!');

@@ -29,7 +29,7 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         $stmt->bindValue(':dni', $dni);
         $stmt->bindValue(':tlf', $tlf);
         $stmt->bindValue(':correo', $correo);
-        $stmt->bindValue(':passw', $password);
+        $stmt->bindValue(':passw', password_hash($password, PASSWORD_ARGON2I));
         $stmt->bindValue(':fechaN', $fechaN);
         $stmt->execute();
         self::setVendedor(PersonaDAO::getByCorreo($correo)->getId());

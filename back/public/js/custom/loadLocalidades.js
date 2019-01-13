@@ -1,31 +1,45 @@
 let country = $('#country');
 let city = $('#city');
 let region = $('#region');
+let loader = $("#loading");
+
+
+function startLoading(msg = "Loading...") {
+    loader.removeClass("d-none");
+    loader.find("#loading-message").text(msg);
+}
+
+function stopLoading() {
+    loader.addClass('d-none');
+}
+
+function fetchToSelect(url, id) {
+    fetch(url)
+        .then(r => r.json())
+        .then(countries => {
+                countries.forEach(c => addToLista(id, toOption(c.id, c.name)));
+                stopLoading();
+            }
+        )
+}
 
 function loadPaises() {
     let url = "/api/paises";
-
-    fetch(url)
-        .then(r => r.json())
-        .then(countries => countries.forEach(c => addToLista("#country", toOption(c.id, c.name))));
-    loadCiudades()
+    fetchToSelect(url, "#country");
 }
 
 function loadRegion(idRegionVivienda = "") {
     let url = "/api/region/" + idRegionVivienda;
     region.empty();
-    fetch(url)
-        .then(r => r.json())
-        .then(cities => cities.forEach(c => addToLista("#city", toOption(c.id, c.name))));
-    loadCiudades();
+    startLoading("Loading Regions");
+    fetchToSelect(url, "#region");
 }
 
 function loadCiudades(idCiudadVivienda = "") {
     let url = "/api/ciudades/" + idCiudadVivienda;
     city.empty();
-    fetch(url)
-        .then(r => r.json())
-        .then(cities => cities.forEach(c => addToLista("#city", toOption(c.id, c.name))));
+    startLoading("Loading Cities");
+    fetchToSelect(url, "#city");
 }
 
 function toOption(value, content) {
@@ -42,10 +56,10 @@ $(function () {
     city.select2();
 
     $('#country').on('change', function () {
-        loadRegion(this.value);
+        loadRegion(country.select2('val'));
     });
 
     $('#region').on('change', function () {
-        loadCiudades(this.value);
+        loadCiudades(region.select2('val'));
     });
 });
