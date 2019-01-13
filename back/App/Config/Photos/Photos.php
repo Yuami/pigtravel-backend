@@ -37,7 +37,9 @@ class Photos
     {
         $this->routeDir = $this->route . $dir;
         $this->limit = $limit;
+        print_r('new dir <br>');
         $this->newDirectory = File::newDirectory($this->routeDir);
+        print_r('get full path <br>');
         $this->fullPath = File::fullPath($this->routeDir) . '\\';
         $this->init();
     }
@@ -69,7 +71,7 @@ class Photos
 
     private function init()
     {
-        $scanned_directory = array_diff(scandir($this->fullPath), array('..', '.'));
+        $scanned_directory = File::fetchAll($this->fullPath);
 
         foreach ($scanned_directory as $filename) {
             if ($this->verifyType($filename)) {
