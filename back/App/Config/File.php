@@ -293,18 +293,9 @@ class File
 
     public static function newDirectory($path): bool
     {
-        print_r('Path:' . $path . '<br>');
-        $path = self::fullPath($path);
-        print_r('Path root: ' . $path . '<br>');
-        print_r('Already created?' . '<br>');
+        $path = self::rootIt($path);
         if (self::exists($path)) return false;
-        $oldmask = umask(0);
-        print_r('seted umask to 0');
-        print_r('Creating Dir');
         mkdir($path, 0777, true);
-        print_r('Dir created');
-        umask($oldmask);
-        print_r('seted umask to default');
         return true;
     }
 
