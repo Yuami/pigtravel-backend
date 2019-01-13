@@ -37,7 +37,7 @@ class Photos
     {
         $this->routeDir = $this->route . $dir;
         $this->limit = $limit;
-        $this->newDirectory = File::newDirectory($this->routeDir);
+//        $this->newDirectory = File::newDirectory($this->routeDir);
         $this->fullPath = File::fullPath($this->routeDir) . '\\';
         $this->init();
     }

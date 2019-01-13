@@ -24,7 +24,7 @@ class PerfilPhoto extends Photos
     {
         $dir = 'perfiles/' . $id . '/';
         parent::__construct($dir, $limit);
-        $this->defaultIfNotExists($id);
+//        $this->defaultIfNotExists($id);
     }
 
     public function defaultIfNotExists($id)
