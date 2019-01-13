@@ -11,7 +11,7 @@ namespace Config\Photos;
 
 class PerfilPhoto extends Photos
 {
-//    protected $defaultMain = '/assets/img/perfiles/default-image.png';
+    protected $defaultMain = '/assets/img/perfiles/default-image.png';
     protected $fileNameClient = 'photoPerfil';
     private $size = 128;
 
@@ -24,7 +24,7 @@ class PerfilPhoto extends Photos
     {
         $dir = 'perfiles/' . $id . '/';
         parent::__construct($dir, $limit);
-        $this->defaultIfNotExists($id);
+//        $this->defaultIfNotExists($id);
     }
 
     public function defaultIfNotExists($id)
