@@ -37,9 +37,7 @@ class Photos
     {
         $this->routeDir = $this->route . $dir;
         $this->limit = $limit;
-        print_r('new dir <br>');
         $this->newDirectory = File::newDirectory($this->routeDir);
-        print_r('get full path <br>');
         $this->fullPath = File::fullPath($this->routeDir) . '\\';
         $this->init();
     }

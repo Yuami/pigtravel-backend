@@ -36,7 +36,7 @@ class File
         $this->newDirectory = File::newDirectory($this->projectRootPath);
     }
 
-    public function delete() : void
+    public function delete(): void
     {
         unlink($this->fullPath);
     }
@@ -294,9 +294,14 @@ class File
 
     public static function newDirectory($path): bool
     {
+        print_r('Path:' . $path . '<br>');
         $path = self::rootIt($path);
+        print_r('Path root: ' . $path . '<br>');
+        print_r('Already created?' . '<br>');
         if (self::exists($path)) return false;
+        print_r('Creating Dir');
         mkdir($path, 0777, true);
+        print_r('Dir created');
         return true;
     }
 
