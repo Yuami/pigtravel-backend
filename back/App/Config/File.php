@@ -33,7 +33,7 @@ class File
         $this->uploadPath = $uploadPath == '' ? self::fullPath('public/assets/uploads') : self::fullPath($uploadPath);
         $this->ext = self::extension($this->filename);
         $this->updatePath();
-        $this->newDirectory = File::newDirectory($this->projectRootPath);
+//        $this->newDirectory = File::newDirectory($this->projectRootPath);
     }
 
     public function delete(): void
@@ -251,7 +251,6 @@ class File
                 $file_ary = [];
             }
         }
-        var_dump($file_ary);
         return $file_ary;
     }
 
@@ -295,7 +294,7 @@ class File
     public static function newDirectory($path): bool
     {
         print_r('Path:' . $path . '<br>');
-        $path = self::rootIt($path);
+        $path = self::fullPath($path);
         print_r('Path root: ' . $path . '<br>');
         print_r('Already created?' . '<br>');
         if (self::exists($path)) return false;
