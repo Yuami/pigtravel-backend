@@ -1,5 +1,7 @@
 <?php
-define("ROOT", $_SERVER['DOCUMENT_ROOT'] . "/");
+$root = $_SERVER['DOCUMENT_ROOT'];
+$root = substr($root, -1) == "/" ? substr($root, 0,-1) : $root;
+define("ROOT", $root . "/");
 define("BACK", ROOT . "../");
 define("INFO", ROOT . "info/");
 define("CALENDAR", ROOT . "calendarInclude.php");
