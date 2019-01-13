@@ -24,7 +24,7 @@ class PerfilPhoto extends Photos
     {
         $dir = 'perfiles/' . $id . '/';
         parent::__construct($dir, $limit);
-//        $this->defaultIfNotExists($id);
+        $this->defaultIfNotExists($id);
     }
 
     public function defaultIfNotExists($id)
@@ -37,7 +37,6 @@ class PerfilPhoto extends Photos
     public function setProfileImage($image)
     {
         $file = $this->fullPath() . 'main.png';
-        var_dump($this->fullPath());
         file_put_contents($file, $image);
         $this->main = $this->toPhoto('main.png');
         $this->noMain = false;

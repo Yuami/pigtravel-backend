@@ -282,7 +282,7 @@ class File
 
     public static function fullPath($dir, $filename = ''): string
     {
-        return realpath(self::rootIt($dir . '/' . $filename));
+        return File::real(self::rootIt($dir . '/' . $filename));
     }
 
 
@@ -291,11 +291,20 @@ class File
         return BACK . $path;
     }
 
+    public static function real($path)
+    {
+        return realpath($path);
+    }
+
     public static function newDirectory($path): bool
     {
-        $path = self::rootIt($path);
+        print_r($path . '<br>');
+        $path = self::rootIt($path) . '/';
+        print_r($path . '<br>');
+        print_r(self::exists($path) . '<br>');
         if (self::exists($path)) return false;
-        mkdir($path, 0777, true);
+        print_r('Creating dir'. '</br>');
+        print_r(mkdir($path, 0777));
         return true;
     }
 
