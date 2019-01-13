@@ -38,8 +38,9 @@ class Photos
         $this->routeDir = $this->route . $dir;
         $this->limit = $limit;
 //        $this->newDirectory = File::newDirectory($this->routeDir);
-        $this->fullPath = File::fullPath($this->routeDir) . '\\';
-        $this->init();
+//        $this->fullPath = File::fullPath($this->routeDir) . '\\';
+//        $this->init();
+        $this->noMain = true;
     }
 
     public function fetchRandom(): ?Photo
