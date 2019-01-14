@@ -5,6 +5,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -14243,7 +14244,7 @@ body#landingBody {
 
 /* ADD HOUSE */
 #addHouseForm {
-  font-family: Raleway;
+  font-family: "Roboto", sans-serif;
   padding: 40px;
   min-width: 300px;
   border-radius: 5px;
@@ -14251,9 +14252,6 @@ body#landingBody {
   margin: 2% auto;
   background-color: #FFFFFF;
   overflow: hidden;
-}
-#addHouseForm #leftHouseForm {
-  margin-right: 100px;
 }
 #addHouseForm h1 {
   text-align: center;
@@ -14272,12 +14270,12 @@ body#landingBody {
   display: none;
 }
 #addHouseForm button {
-  background-color: #4CAF50;
+  background-color: #2699FB;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: "Roboto", sans-serif;
   cursor: pointer;
 }
 #addHouseForm button:hover {
@@ -14300,7 +14298,7 @@ body#landingBody {
   opacity: 1;
 }
 #addHouseForm .step.finish {
-  background-color: #4CAF50;
+  background-color: #2699FB;
 }
 
 /* OTHER */

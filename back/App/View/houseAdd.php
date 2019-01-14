@@ -27,13 +27,6 @@
 <body>
 <?php include_once("header.php") ?>
 
-<div id="loading" class="d-none">
-    <div class="loading-image">
-        <img id="loading-image" src="/img/loading.gif" alt="Loading..."/>
-        <p id="loading-message"></p>
-    </div>
-</div>
-
 <section class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
@@ -75,6 +68,13 @@
                                   name="description"></textarea>
                     </div>
                     <div class="tab">
+                        <div id="loading" class="d-none">
+                            <div class="loading-image">
+                                <img id="loading-image" src="/img/loading.gif" alt="Loading..."/>
+                                <p id="loading-message"></p>
+                            </div>
+                        </div>
+
                         <h1 class="text-center">Rates and Location</h1>
                         <label for="standardRate">Standard Rate</label>
                         <input type="number" class="form-control mb-1" name="standardRate">
@@ -143,6 +143,8 @@
 <script>
     $(function () {
         loadPaises();
+        loadRegion(country.select2('val'));
+
     });
 </script>
 <?php

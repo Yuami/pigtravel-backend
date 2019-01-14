@@ -37,7 +37,7 @@ if (Session::isSet("wrongHouse")) {
                 <li class="breadcrumb-item active" aria-current="page">Gestio Cases</li>
             </ol>
             <button id="addHouse" onclick="window.location.href='/houses/create'"
-                    class="btn btn-outline-success col">
+                    class="btn btn-outline-primary col">
                 Añadir Casa <span><i class="fas fa-plus"></i></span>
             </button>
         </div>
