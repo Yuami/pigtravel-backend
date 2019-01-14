@@ -4,7 +4,9 @@ use Config\Session;
 use Model\DAO\PersonaDAO;
 use Model\DAO\ViviendaDAO;
 
+
 if (isset($_POST['submit'])) {
+    self::update();
     self::store();
 }
 ?>
@@ -42,7 +44,7 @@ if (isset($_POST['submit'])) {
             <select id="listaViviendas" class="form-control border-0" onChange="myNewFunction(this);">
                 <option selected="selected" value="0"><p>Casas</p></option>
                 <?php
-                foreach(ViviendaDAO::getBy('idVendedor',Session::get('userID')) as $vivienda) {
+                foreach($viviendas as $vivienda) {
                     ?>
                     <option value="<?php echo $vivienda->getId();?>"><?php echo $vivienda->getNombre(); ?></option>
                 <?php } ?>
@@ -53,15 +55,15 @@ if (isset($_POST['submit'])) {
     <div class="row">
         <table id="cardsmensajes" class="table table-hover">
             <?php
-            foreach(self::recibidos(Session::get('userID')) as $mensaje) {
+            foreach($mensajes as $mensaje) {
                 if($mensaje->getLeido()==0){ ?>
-                    <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-leido="<?php echo $mensaje->getLeido() ?>" data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre() ?>" data-id-viv="<?php echo $mensaje->getIdVivienda();?>" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getId() ?>" id="<?php echo $mensaje->getIdVivienda();?>">
+                    <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-leido="<?php echo $mensaje->getLeido();?>" data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre() ?>" data-id-viv="<?php echo $mensaje->getIdVivienda();?>" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getId() ?>" id="<?php echo $mensaje->getId();?>">
                         <td style="width:25%"> <?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></td>
                         <td style="width:65%"> <?php echo $mensaje->getMensaje(); ?></td>
                         <td style="width:10%"><?php echo $mensaje->getFechaEnviado();?></td>
                     </tr>
                 <?php }else{ ?>
-                    <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-leido="<?php echo $mensaje->getLeido() ?>"  data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>" data-id-viv="<?php echo $mensaje->getIdVivienda();?>" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getId() ?>" id="<?php echo $mensaje->getIdVivienda();?>">
+                    <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-leido="<?php echo $mensaje->getLeido(); ?>"  data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>" data-id-viv="<?php echo $mensaje->getIdVivienda();?>" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getId() ?>" id="<?php echo $mensaje->getId();?>">
                         <td> <strong><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></td>
                         <td><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
                         <td><strong><?php echo $mensaje->getFechaEnviado();?></strong></td>
@@ -69,8 +71,9 @@ if (isset($_POST['submit'])) {
                 <?php } }?>
         </table>
     </div>
-    <form id="addMessagesForm" method="POST" action="/messages">
+    <form id="addMessagesForm" method="POST" action="/messages" >
         <div class="modal fade" id="myModal" role="dialog">
+
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
