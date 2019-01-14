@@ -13,8 +13,12 @@ $(document).ready(function() {
     });
     $('.openBtn').on('click',function(){
             nomPersona = $(this).attr('data-to');
+            idVivienda = $(this).attr('data-id-viv');
+            idReciever = $(this).attr('data-id');
             $('#nombreReciever').empty();
-            $('#nombreReciever').html('Para: <b>'+nomPersona+'</b>');
+            $('#nombreReciever').append('Para: <b>'+nomPersona+'</b>');
+            $('#nombreReciever').append('<input type="hidden" name="idVivienda" value="'+idVivienda+'">');
+            $('#nombreReciever').append('<input type="hidden" name="idReciever" value="'+idReciever+'">');
             $('#myModal').modal({
                 keyboard: true,
                 backdrop: "static",

@@ -11,17 +11,19 @@ class MensajesDAO extends DAO {
 
 
     public static function insert(array $parameters) {
-            $idReciever = $parameters["idReciever"];
-            $mensaje = $parameters["mensaje"];
-            $idVivienda = $parameters["idVivienda"];
-            $sql = "insert into mensajes (idSender, idReciever,mensaje, fechaEnviado,leido,idVivienda)
-                values (:idSender,:idReciever, :mensaje,now(),1,:idVivienda)";
+            $idReciever =$parameters["idReciever"];
+            $mensaje =$parameters["mensaje"];
+            $idVivienda =$parameters["idVivienda"];
+            $sql = "insert into mensajes(idSender,idReciever,mensaje,fechaEnviado,leido,idVivienda)
+                values (:idSender,:idReciever, :mensaje,'now()','1',:idVivienda)";
             $stm = DB::conn()->prepare($sql);
-            $stm->bindValue(":idReciever",$idReciever);
-            $stm->bindValue(":idSender",Session::get('userID'));
-            $stm->bindValue(":mensaje",$mensaje);
-            $stm->bindValue(":idVivienda",$idVivienda);
+            $stm->bindValue(':idReciever',$idReciever);
+            $stm->bindValue(':idSender',Session::get('userID'));
+            $stm->bindValue(':mensaje',$mensaje);
+            $stm->bindValue(':idVivienda',$idVivienda);
+
             $stm->execute();
+            header("Location: " . DOMAIN);
         }
     public static function getByLeido($leido) {
         $res = parent::getBy("leido", $leido);
