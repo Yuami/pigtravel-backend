@@ -18,6 +18,7 @@ Router::post('register', 'RegisterController@store');
 
 Router::view('support', 'support');
 Router::view('notifications', 'notifications');
+Router::view('premium', 'premium');
 
 // THIS IS TESTING AREA
 Router::view('photos', 'photo');
