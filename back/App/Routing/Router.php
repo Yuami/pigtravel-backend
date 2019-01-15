@@ -24,8 +24,14 @@ class Router
 
     public function __construct($url, $method)
     {
+        $this->method = $this->methodSelector($method);
         $this->route = strtolower($url);
-        $this->method = strtolower($method);
+        $this->method = strtolower($this->method);
+    }
+
+    public function methodSelector($method)
+    {
+        return isset($_POST['_method']) ? $_POST['_method'] : $method;
     }
 
     public function is(string $url)

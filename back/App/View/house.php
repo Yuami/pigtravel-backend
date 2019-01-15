@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/css/leaflet.css">
     <script src="/js/leaflet.js"></script>
     <title>House</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 </head>
 <body class="bg-color-background">
 
@@ -155,89 +158,7 @@ if (Session::isSet("updateCompleted")) {
 
         </form>
     </div>
-    <!--    <div class="card">-->
-    <!--        <div class="card-title row justify-content-center">-->
-    <!--            <h1>--><?php //echo $houses->getNombre() ?><!--</h1>-->
-    <!--        </div>-->
-    <!--        <div class="card-img-top">-->
-    <!--            <div class="row justify-content-center">-->
-    <!--                <div id="carouselCasas" class="carousel slide" data-ride="carousel">-->
-    <!--                    <!-- Indicators -->-->
-    <!--                    <ul class="carousel-indicators">-->
-    <!--                        <li data-target="#carouselCasas" data-slide-to="0" class="active"></li>-->
-    <!--                        <li data-target="#carouselCasas" data-slide-to="1"></li>-->
-    <!--                        <li data-target="#carouselCasas" data-slide-to="2"></li>-->
-    <!--                        <li data-target="#carouselCasas" data-slide-to="3"></li>-->
-    <!--                    </ul>-->
-    <!--                    <!-- The slideshow -->-->
-    <!--                    <div class="carousel-inner">-->
-    <!--                        <div class="carousel-item active">-->
-    <!--                            <img src="/img/casas/1.jpg" style="width: auto; height: 300px;" alt="Los Angeles House">-->
-    <!--                        </div>-->
-    <!--                        <div class="carousel-item">-->
-    <!--                            <img src="/img/casas/2.jpg" style="width: auto; height: 300px;" alt="Los Angeles House">-->
-    <!--                        </div>-->
-    <!--                        <div class="carousel-item">-->
-    <!--                            <img src="/img/casas/3.jpg" style="width: auto; height: 300px;" alt="Los Angeles House">-->
-    <!--                        </div>-->
-    <!--                        <div class="carousel-item">-->
-    <!--                            <img src="/img/casas/4.jpg" style="width: auto; height: 300px;" alt="Los Angeles House">-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                    <!-- Left and right controls -->-->
-    <!--                    <a class="carousel-control-prev" href="#carouselCasas" data-slide="prev">-->
-    <!--                        <span class="carousel-control-prev-icon"></span>-->
-    <!--                    </a>-->
-    <!--                    <a class="carousel-control-next" href="#carouselCasas" data-slide="next">-->
-    <!--                        <span class="carousel-control-next-icon"></span>-->
-    <!--                    </a>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--        <div class="card-body">-->
-    <!--            <div class="dropdown mb-3">-->
-    <!--                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"-->
-    <!--                        data-toggle="dropdown"-->
-    <!--                        aria-haspopup="true" aria-expanded="false">-->
-    <!--                    Politicas Cancelacion-->
-    <!--                </button>-->
-    <!--                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="drop-down-list">-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--            <div class="input-group mb-3 row justify-content-between">-->
-    <!--                <select class="custom-select col-5" id="selectTarifa">-->
-    <!--                    <option value="" selected>Tarifa...</option>-->
-    <!--                </select>-->
-    <!--                <select class="custom-select col-5" id="selectRebaja">-->
-    <!--                    <option value="" selected>Rebaja...</option>-->
-    <!--                </select>-->
-    <!--            </div>-->
-    <!--            <table class="table table-striped table-responsive" id="listadoTarifas">-->
-    <!--                <thead>-->
-    <!--                <tr>-->
-    <!--                    <th>ID</th>-->
-    <!--                    <th>Fecha Inicio</th>-->
-    <!--                    <th>Fecha Fin</th>-->
-    <!--                    <th>Precio</th>-->
-    <!--                    <th>General</th>-->
-    <!--                    <th>Politica Cancelacion</th>-->
-    <!--                </tr>-->
-    <!--                </thead>-->
-    <!--            </table>-->
-    <!--            <div class="container">-->
-    <!--                <ul class="list-group mb-3" id="list-group-tarifa"></ul>-->
-    <!--                <ul class="list-group mb-3" id="list-group-rebaja"></ul>-->
-    <!--                <ul class="list-group mb-3" id="list-group-vivienda-tarifa"></ul>-->
-    <!--                <h2>Politicas Cancelacion</h2>-->
-    <!--                <div class="row">-->
-    <!--                    <div class="col-md-4 mb-3">-->
-    <!--                        <div class="list-group" id="list-group-politica-cancelacion" role="tablist"></div>-->
-    <!--                    </div>-->
-    <!--                    <div class="col-md-8">-->
-    <!--                        <div class="tab-content" id="nav-tabContent"></div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
+
     <div class="container-fluid ">
         <div class="row justify-content-center">
             <div class="card">
@@ -300,9 +221,10 @@ if (Session::isSet("updateCompleted")) {
 <script src="/js/custom/loadLocalidades.js"></script>
 <script>
     $(function () {
-        let idCiudadVivienda = <?= $houses->getIdCiudad(); ?>;
-        loadCiudad(idCiudadVivienda);
         mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
+        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
+        loadCiudades(idRegion);
+        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
     });
 </script>
 <?php include_once("footer.php") ?>

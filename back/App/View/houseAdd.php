@@ -90,6 +90,10 @@
                         <label for="street">Address</label>
                         <input id="street" type="text" class="form-control mb-1"
                                name="street">
+                        <div id="wrongHouseLocationDiv" class="custom-control custom-checkbox d-none">
+                            <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
+                            <label class="custom-control-label text-danger" for="wrongHouseLocation">Change house location on map!</label>
+                        </div>
                     </div>
                     <div id="imageTab" class="tab">
                         <h1 class="text-center">Images</h1>
@@ -121,11 +125,6 @@
                     </div>
                     <div class="card-body">
                         <div id="houseMap" style="width:auto;height:300px;margin: -36px -36px 0;"></div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
-                            <label class="custom-control-label" for="wrongHouseLocation">Wrong house location on
-                                map!</label>
-                        </div>
                         <p id="personCard" class="mb-0"></p>
                         <p id="streetCard"></p>
                         <p id="descriptionCard" class="card-text"></p>
@@ -138,8 +137,8 @@
 <!-- <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDufJRsYwR2Knzo2rmeamYxCTpdyeAkhl4&callback=initMap">
 </script> -->
-<script src="/js/custom/houseAdd.js"></script>
 <script src="/js/custom/loadLocalidades.js"></script>
+<script src="/js/custom/houseAdd.js"></script>
 <script>
     $(function () {
         loadPaises();
