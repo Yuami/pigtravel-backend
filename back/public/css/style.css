@@ -292,12 +292,43 @@ body#landingBody {
     background: 0;
   }
 }
-#registerForm {
+#regForm {
   max-height: 100%;
   margin-top: 60px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.7);
   padding: 25px 60px 30px 60px;
+}
+#regForm button {
+  background-color: #2699FB;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+}
+#regForm button:hover {
+  opacity: 0.8;
+}
+#regForm #prevBtn {
+  background-color: #bbbbbb;
+}
+#regForm .step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #2699FB;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+#regForm .step.active {
+  opacity: 1;
+}
+#regForm .step.finish {
+  background-color: #2699FB;
 }
 
 #profilePage .form-control:focus {

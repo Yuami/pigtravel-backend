@@ -1,7 +1,41 @@
-#registerForm {
+#regForm {
   max-height: 100%;
   margin-top: 60px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.7);
   padding: 25px 60px 30px 60px;
+
+  button {
+    background-color: $button;
+    color: $color_1;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: $font_family_1;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  #prevBtn {
+    background-color: $background_color_4;
+  }
+
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: $button;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  .step.active {
+    opacity: 1;
+  }
+  .step.finish {
+    background-color: $button;
+  }
 }

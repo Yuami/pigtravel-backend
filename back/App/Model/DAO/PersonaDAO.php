@@ -58,8 +58,13 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         $stmt->execute();
     }
 
-    public static function changePassword(){
-
+    public static function changePassword(array $parameters)
+    {
+        $sql = "UPDATE `persona` SET `password` = :pass where id = :id";
+        $stmt = DB::conn()->prepare($sql);
+        $stmt->bindValue(':id', $parameters['id']);
+        $stmt->bindValue(':pass', $parameters['password']);
+        $stmt->execute();
     }
 
     public static function setVendedor($id)
