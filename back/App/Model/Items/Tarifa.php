@@ -1,70 +1,102 @@
 <?php
+
 namespace Model\Items;
 
-class Tarifa {
+class Tarifa
+{
     private $id;
     private $fechaInicio;
     private $fechaFin;
-    private $dao;
     private $precio;
     private $general;
+    private $idPoliticaCancelacion;
 
     /**
-     * Tarifa constructor.
-     * @param $id
-     * @param $fechaInicio
-     * @param $fechaFin
+     * @return mixed
      */
-    public function __construct($id, $fechaInicio, $fechaFin) {
-        $this->id = $id;
-        $this->fechaInicio = $fechaInicio;
-        $this->fechaFin = $fechaFin;
-        $this->dao =  new TarifaDAO();
+    public function getIdPoliticaCancelacion()
+    {
+        return $this->idPoliticaCancelacion;
+    }
+
+    /**
+     * @param mixed $idPoliticaCancelacion
+     */
+    public function setIdPoliticaCancelacion($idPoliticaCancelacion)
+    {
+        $this->idPoliticaCancelacion = $idPoliticaCancelacion;
     }
 
     /**
      * @return mixed
      */
-    public function getFechaInicio() {
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFechaInicio()
+    {
         return $this->fechaInicio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFechaFin()
+    {
+        return $this->fechaFin;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGeneral()
+    {
+        return $this->general;
     }
 
     /**
      * @param mixed $fechaInicio
      */
-    public function setFechaInicio($fechaInicio): void {
+    public function setFechaInicio($fechaInicio)
+    {
         $this->fechaInicio = $fechaInicio;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFechaFin() {
-        return $this->fechaFin;
     }
 
     /**
      * @param mixed $fechaFin
      */
-    public function setFechaFin($fechaFin): void {
+    public function setFechaFin($fechaFin)
+    {
         $this->fechaFin = $fechaFin;
     }
 
-    public function getID($id){
-        return $this->dao->getById($id);
-    }
-
-    public function getPrecio() {
-        return $this->precio;
-    }
-
-    public function setPrecio($precio): void {
+    /**
+     * @param mixed $precio
+     */
+    public function setPrecio($precio)
+    {
         $this->precio = $precio;
     }
-    public function getGeneral() {
-        return $this->general;
+
+    /**
+     * @param mixed $general
+     */
+    public function setGeneral($general)
+    {
+        $this->general = $general;
     }
-    public function setGeneral($general): void{
-        $this->general=$general;
-    }
+
 }
