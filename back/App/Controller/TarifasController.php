@@ -29,7 +29,7 @@ class TarifasController extends Controller
 
     public function show($id)
     {
-        // TODO: Implement show() method.
+        include_once VIEW . 'tarifas.php';
     }
 
     public function edit($id)
