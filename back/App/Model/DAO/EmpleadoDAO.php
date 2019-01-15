@@ -7,5 +7,10 @@
  */
 namespace Model\DAO;
 class EmpleadoDAO {
-
+    public static function getByRol($rol) {
+        $res = parent::getBy("idRol", $rol);
+        if (isset($res))
+            return $res;
+        return null;
+    }
 }

@@ -8,7 +8,10 @@
 
 namespace Controller;
 use Config\Session;
+use Model\DAO\EmpleadoDAO;
 use Model\DAO\PersonaDAO;
+use Model\DAO\MensajesDAO;
+
 
 class SupportController extends Controller
 {
@@ -29,15 +32,24 @@ class SupportController extends Controller
     }
 
     public function store() {
-        $to = 'admin@admin.com';
-        $subject = 'the subject';
-        $message = $_POST["comment"];
-        $headers = 'From: '.$_POST["mail"].'' . "\r\n" .
-            'Reply-To: '.$to.'' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
+        $empleadosSoporte= EmpleadoDAO::getByRol(2);
+        foreach ($empleadosSoporte as $empleadoSoporte) {
+            MensajesDAO::insert([
+                "idReciever" => $empleadoSoporte->getIdPersona(),
+                "idVivienda" => null,
+                "mensaje" => $_POST['comment']]);
+        }
+        header("Location: " . DOMAIN. "/support");
 
-        mail($to, $subject, $message, $headers);
-        header('Location: ' . DOMAIN. ('/'));
+//        $to = 'admin@admin.com';
+//        $subject = 'the subject';
+//        $message = $_POST["comment"];
+//        $headers = 'From: '.$_POST["mail"].'' . "\r\n" .
+//            'Reply-To: '.$to.'' . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+//
+//        mail($to, $subject, $message, $headers);
+//        header('Location: ' . DOMAIN. ('/'));
     }
 
     public function edit($id) {
