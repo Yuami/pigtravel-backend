@@ -1,0 +1,32 @@
+body#landingBody {
+  position: relative;
+  background: url("/img/landingpage/casaback.jpg") no-repeat fixed center;
+  background-size: cover;
+
+}
+
+#loginForm {
+  margin: auto;
+  max-width: 400px !important;
+  border: solid white 1px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0 60px;
+}
+
+.ch-100 {
+  height: calc(100vh - 76px - 40px);
+}
+
+@media (max-width: 767px) {
+  body#landingBody {
+    background: rgba(241, 241, 241, 1);
+  }
+  #loginForm {
+    width: 100%;
+    max-height: calc(100% - 76px);
+    border: 0;
+    padding: 0 !important;
+    background: 0;
+  }
+}

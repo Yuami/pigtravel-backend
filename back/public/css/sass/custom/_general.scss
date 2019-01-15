@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  &:before, &:after {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  background-color: #f9f9f9;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 56px;
+  }
+}
+
+.algn-l {
+  text-align: left !important;
+}
+
+.algn-r {
+  text-align: right !important;
+}
+
+.premium-text {
+  /*color: #59ff7b;*/
+  color: #FFB4A2 !important;
+}
