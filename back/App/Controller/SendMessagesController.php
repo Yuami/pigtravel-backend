@@ -1,7 +1,9 @@
 <?php
 namespace Controller;
 
+use Config\Session;
 use Model\DAO\MensajesDAO;
+use Model\DAO\ViviendaDAO;
 
 class SendMessagesController extends Controller {
 
@@ -10,13 +12,11 @@ class SendMessagesController extends Controller {
     }
 
     public function index() {
+        $id= Session::get('userID');
+        $mensajes = MensajesDAO::getBy("idSender",$id);
+        $viviendas= ViviendaDAO::getBy('idVendedor',$id);
         require_once VIEW . 'messagesSent.php';
     }
-    public static function enviados($idUsuari) {
-        $mensajes = MensajesDAO::getBy("idSender",$idUsuari);
-        return $mensajes;
-    }
-
     public function create() {
         // TODO: Implement create() method.
     }
