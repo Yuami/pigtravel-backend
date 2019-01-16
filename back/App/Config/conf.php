@@ -14,7 +14,6 @@ $config = Config::singleton();
 // $config->set('dbpass', 'tfff01');
 
 
-//local
 $config->set('dbhost', 'localhost');
 $config->set('dbname', 'travel2');
 $config->set('dbuser', 'root');
