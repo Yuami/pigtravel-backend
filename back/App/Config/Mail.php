@@ -9,8 +9,11 @@
 namespace Config;
 
 
-use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require '../../vendor/autoload.php';
 
 class Mail {
     private $mail;
@@ -19,6 +22,8 @@ class Mail {
         $mail = new PHPMailer();
         $mail->isHTML($html);
         $mail->isSMTP();
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->SMTPDebug = 2;
         $this->mail = $mail;
         $this->mail->Body = $body;
     }
@@ -63,6 +68,11 @@ class Mail {
         return $this;
     }
 
+    public function addReplyTo($mail, $name = '') : self {
+        $this->mail->addReplyTo($mail, $name);
+        return $this;
+    }
+
     public function BCC(string $mail) : self {
         $this->mail->addBCC($mail);
         return $this;
@@ -80,9 +90,13 @@ class Mail {
 
     public function send() {
         try {
-            return $this->mail->send();
+            if (!$this->mail->send()) {
+                dd('Sorry, something went wrong. Please try again later.');
+            } else {
+                dd('Message sent! Thanks for contacting us.');
+            }
         } catch (Exception $e) {
-             throw new $e;
+            throw new $e;
         }
     }
 }

@@ -7,21 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <?php
-
-    use Model\DAO\CitiesDAO;
-
     require_once ROOT . "libraries.php" ?>
 
     <link rel="stylesheet" href="/css/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <link href="/css/select2.min.css" rel="stylesheet"/>
+
     <script src="/js/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="/js/validation/bootstrap-validator.js"></script>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
-    <title>Plantilla para backend</title>
+    <script src="/js/selects/select2.min.js"></script>
+    <title>Add house</title>
 </head>
 
 <body>

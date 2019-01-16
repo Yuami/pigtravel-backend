@@ -15,7 +15,7 @@ class CitiesDAO extends DAO
     protected static $table = "cities";
     protected static $class = "Cities";
 
-    public static function insert()
+    public static function insert(array $parameters)
     {
         // TODO: Implement insert() method.
     }

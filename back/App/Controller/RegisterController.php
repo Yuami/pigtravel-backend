@@ -8,6 +8,7 @@
 
 namespace Controller;
 
+use Config\Mail;
 use Model\DAO\PersonaDAO;
 use Model\Items\Persona;
 use Routing\Router;
@@ -60,6 +61,15 @@ class RegisterController extends Controller {
             $p = PersonaDAO::insert($params);
 
             if ($p instanceof Persona) {
+                $verificationMail = new Mail("Test");
+                $verificationMail->addAddress("newtimestube@gmail.com")
+                    ->from("noreply@pigtravel.top", "pigtravel")
+                    ->addReplyTo("noreply@pigtravel.top")
+                    ->subject("testii")
+                    ->port(587)
+                    ->altBody("test")
+                    ->send();
+
                 PersonaDAO::setVendedor($p->getId());
                 LoginController::login($correo, $password);
             }

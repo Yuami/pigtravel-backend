@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php use Config\Session;
+    use Model\DAO\CitiesDAO;
 
     require_once ROOT . "libraries.php" ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="/css/leaflet.css">
-    <script src="/js/leaflet.js"></script>
-    <title>House</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <link href="/css/select2.min.css" rel="stylesheet"/>
 
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/leaflet.js"></script>
+    <script src="/js/selects/select2.min.js"></script>
+
+    <title>House</title>
 </head>
 <body class="bg-color-background">
 
