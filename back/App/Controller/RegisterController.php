@@ -34,8 +34,14 @@ class RegisterController extends Controller {
     }
 
     public function store() {
-        if (isset($_POST["nom"]) && isset($_POST["apellido1"]) && isset($_POST["dni"])
-            && isset($_POST["telefono"]) && isset($_POST["fechaN"]) && isset($_POST["emailRegister"]) && isset($_POST["passw"])) {
+        if (isset($_POST["nom"]) &&
+            isset($_POST["apellido1"]) &&
+            isset($_POST["dni"]) &&
+            isset($_POST["telefono"]) &&
+            isset($_POST["fechaN"]) &&
+            isset($_POST["emailRegister"]) &&
+            isset($_POST["passw"])) {
+
             $dni = $_POST["dni"];
             $correo = $_POST["emailRegister"];
             $password = password_hash($_POST["passw"], PASSWORD_ARGON2I);
