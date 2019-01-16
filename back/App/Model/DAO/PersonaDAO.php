@@ -58,6 +58,10 @@ VALUES (:nombre, :apellido1, :apellido2, :dni, :tlf,:correo,:passw,:fechaN)";
         $stmt->execute();
     }
 
+    public static function changePassword(){
+
+    }
+
     public static function setVendedor($id)
     {
         $sql = "insert into vendedor_vivienda(`idPersona`) value (:id)";

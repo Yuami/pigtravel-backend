@@ -40,7 +40,12 @@ class ProfileController extends Controller {
             "correo" => $_POST["emailForm"],
             "descripcion" => $_POST['descriptionForm'],
         ]);
-        Router::redirectWithDomain("profile");
+        if (isset($_POST['passwordForm'])){
+            PersonaDAO::changePassword([
+
+            ]);
+        }
+        Router::redirect("profile");
 
     }
 

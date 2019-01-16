@@ -27,22 +27,29 @@ $('#peopleAmount').on('change', function () {
 });
 
 function updateStreet() {
-    let address;
+    let address = "";
     let streetName = $("#street").val();
-    let city = $("#city option:selected").text();
-    if (city !== $("#city option:first-child").text() && streetName) {
-        address = streetName + ", " + city;
+    if (streetName) {
+        address = streetName + ", " +
+            city.select2('data')[0].text + ", " +
+            region.select2('data')[0].text + ", " +
+            country.select2('data')[0].text;
+
         $("#streetCard").html('<span class="fas fa-road"></span> ' + address);
     }
-    if (streetName !== "" || city !== "") {
-        fetch("https://eu1.locationiq.com/v1/search.php?key=dd14f9f9501763&q=" + address + "&format=json")
+
+    if (address !== undefined && address.length > 0) {
+        let url = "https://eu1.locationiq.com/v1/search.php?key=dd14f9f9501763&q=" + address + "&format=json";
+        fetch(url)
             .then(r => r.json())
             .then(r => r[0])
             .then(r => {
                 let lng = r.lon;
                 let lat = r.lat;
                 checkMarker();
+                console.log(url);
                 addPoint(lng, lat);
+                $("#wrongHouseLocationDiv").removeClass("d-none");
             })
     }
 }

@@ -11,7 +11,7 @@ if(isset($_POST["submit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
-    <title>Reservations</title>
+    <title>Soporte</title>
 </head>
 
 <body>
@@ -27,10 +27,8 @@ if(isset($_POST["submit"])) {
         </div>
     </div>
     <div class="inputSoporte">
-    <form  method="post" enctype="text/plain">
-        <h3 style="text-align: center">Que problema tienes?</h3>
-            <input type="hidden" name="name" <?php echo $persona->getNombre() ?>><br>
-            <input type="hidden" name="mail" value="<?php echo $persona->getCorreo() ?>"><br>
+    <form  method="post">
+            <label for="comment">¿En que podemos ayudarte? </label>
             <textarea rows="5" class="form-control" name="comment"></textarea><br><br>
             <input type="submit" value="Send">
             <input type="reset" value="Reset">
@@ -38,8 +36,6 @@ if(isset($_POST["submit"])) {
     </div>
 </div>
 <?php include_once("footer.php") ?>
-<!--<script src="js/selects/selectEstadoFiltro.js"></script>-->
-
 <style>
 
     .inputSoporte{

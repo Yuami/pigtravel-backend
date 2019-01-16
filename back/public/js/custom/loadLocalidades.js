@@ -19,31 +19,44 @@ function fetchToSelect(url, id) {
         .then(countries => {
                 countries.forEach(c => addToLista(id, toOption(c.id, c.name)));
                 stopLoading();
+                if (id === "#country") {
+                    loadRegion(country.select2('val'));
+                } else if (id === "#region") {
+                    loadCiudades(region.select2('val'));
+                }
             }
         )
 }
 
 function loadPaises() {
     let url = "/api/paises";
+    region.empty();
+    city.empty();
     fetchToSelect(url, "#country");
 }
 
-function loadRegion(idRegionVivienda = "") {
-    let url = "/api/region/" + idRegionVivienda;
+function loadRegion(idPais = "") {
+    let url = "/api/region/" + idPais;
     region.empty();
+    city.empty();
     startLoading("Loading Regions");
     fetchToSelect(url, "#region");
 }
 
-function loadCiudades(idCiudadVivienda = "") {
-    let url = "/api/ciudades/" + idCiudadVivienda;
+function loadCiudades(idRegion = "") {
+    let url = "/api/ciudades/" + idRegion;
     city.empty();
     startLoading("Loading Cities");
     fetchToSelect(url, "#city");
 }
 
+function getRegionById(idCiudad = ""){
+
+}
+
 function toOption(value, content) {
-    return `<option value="${value}">${content}</option>`;
+    if (content.length > 0)
+        return `<option value="${value}">${content}</option>`;
 }
 
 function addToLista(selector, item) {

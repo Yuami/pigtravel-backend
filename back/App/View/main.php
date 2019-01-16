@@ -109,24 +109,6 @@
                 </div>
                 <div  class="col-lg-4">
                     <h4>Ultimas reservas</h4>
-                    <p><?php
-
-                        ini_set('display_errors', 1);
-
-
-                        foreach ($reservas as $reserva)
-                        {
-                            $mes=$reserva->getFechaReservaMonth();
-                            $beneficis[$mes] = array(
-                                'idVivienda' => $reserva->getIdVivienda(),
-                                'precio' => $reserva->getPrecio()
-                            );
-                        }
-                        echo json_encode($beneficis);
-
-                        ?>
-
-                        </p>
                     <table>
                        <?php foreach ($reservas as $reserva) { ?>
                         <tr>
