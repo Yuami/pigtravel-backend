@@ -22,6 +22,7 @@ class LoginController extends Controller {
         if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
             LoginController::login($_POST['emailLogin'], $_POST['passwordLogin']);
         }
+        Router::redirectToDomain();
     }
 
     public function show($id) {
@@ -57,7 +58,6 @@ class LoginController extends Controller {
     public static function login($correoPost, $passwordPost) : bool {
         if (self::isLoggable($correoPost, $passwordPost)) {
             $persona = PersonaDAO::getByCorreo($correoPost);
-            // Session::set("user", serialize($persona));
             $userID = $persona->getId();
             self::log($userID, $correoPost);
             return true;

@@ -8,13 +8,13 @@ use Config\Config;
 $config = Config::singleton();
 
 //server
- $config->set('dbhost', 'localhost');
- $config->set('dbname', 'travel2');
- $config->set('dbuser', 'jfornes');
- $config->set('dbpass', 'tfff01');
+// $config->set('dbhost', 'localhost');
+// $config->set('dbname', 'travel2');
+// $config->set('dbuser', 'jfornes');
+// $config->set('dbpass', 'tfff01');
 
 //
-//$config->set('dbhost', 'localhost');
-//$config->set('dbname', 'travel2');
-//$config->set('dbuser', 'root');
-//$config->set('dbpass', '');
+$config->set('dbhost', 'localhost');
+$config->set('dbname', 'travel2');
+$config->set('dbuser', 'root');
+$config->set('dbpass', '');

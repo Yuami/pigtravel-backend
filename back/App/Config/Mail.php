@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: j_for
- * Date: 09/01/2019
- * Time: 11:25
- */
 
 namespace Config;
 
@@ -13,7 +7,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-require '../../vendor/autoload.php';
 
 class Mail {
     private $mail;
