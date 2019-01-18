@@ -3,36 +3,38 @@ namespace Model\Items;
 
 class ViviendaHasTarifa
 {
-    private $idIdioma;
-    private $idTipo_vivienda;
-    private $nombre;
+    private $idTarifa;
+    private $idVivienda;
 
     /**
-     * ViviendaHasTarifa constructor.
-     * @param $idIdioma
-     * @param $idTipo_vivienda
-     * @param $nombre
+     * @return mixed
      */
-    public function __construct($idIdioma, $idTipo_vivienda, $nombre)
+    public function getIdTarifa()
     {
-        $this->idIdioma = $idIdioma;
-        $this->idTipo_vivienda = $idTipo_vivienda;
-        $this->nombre = $nombre;
+        return $this->idTarifa;
+    }
+
+    /**
+     * @param mixed $idTarifa
+     */
+    public function setIdTarifa($idTarifa)
+    {
+        $this->idTarifa = $idTarifa;
     }
 
     /**
      * @return mixed
      */
-    public function getNombre()
+    public function getIdVivienda()
     {
-        return $this->nombre;
+        return $this->idVivienda;
     }
 
     /**
-     * @param mixed $nombre
+     * @param mixed $idVivienda
      */
-    public function setNombre($nombre)
+    public function setIdVivienda($idVivienda)
     {
-        $this->nombre = $nombre;
+        $this->idVivienda = $idVivienda;
     }
 }

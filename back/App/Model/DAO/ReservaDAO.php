@@ -40,4 +40,12 @@ class ReservaDAO extends DAO
 
         return $statement->fetchAll(PDO::FETCH_CLASS, parent::getClassName());
     }
+
+    public static function getBeneficioViviendaByMesAll($id) {
+        $benMes = [];
+        for ($x = 1; $x <= 12; $x++) {
+            $benMes[$x] = ReservaDAO::getBeneficioViviendasByMes($id, $x);
+        }
+        return $benMes;
+    }
 }

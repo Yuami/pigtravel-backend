@@ -11,7 +11,7 @@ namespace Config\Photos;
 
 class PerfilPhoto extends Photos
 {
-    protected $defaultMain = '/assets/img/perfiles/default-image.png';
+    protected $defaultMain = '/assets/uploads/img/perfiles/default-image.png';
     protected $fileNameClient = 'photoPerfil';
     private $size = 128;
 

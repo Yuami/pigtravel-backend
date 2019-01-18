@@ -8,50 +8,41 @@ use Model\DAO\PersonaDAO;
 use Config\Cookie;
 use Routing\Router;
 
-class LoginController extends Controller
-{
-    public function index()
-    {
+class LoginController extends Controller {
+    public function index() {
         include_once VIEW . "login.php";
     }
 
-    public function create()
-    {
+    public function create() {
         // TODO: Implement create() method.
     }
 
-    public function store()
-    {
+    public function store() {
         Cookie::set('lastEmail', $_POST['emailLogin'], 30);
         if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
             LoginController::login($_POST['emailLogin'], $_POST['passwordLogin']);
         }
-        header("Location: " . DOMAIN);
+        Router::redirectToDomain();
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         // TODO: Implement show() method.
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update($id)
-    {
+    public function update($id) {
         // TODO: Implement update() method.
     }
 
-    public function destroy()
-    {
+    public function destroy() {
         session_destroy();
         Router::redirectToDomain();
     }
 
-    public static function isLoggable($correoPost, $passwordPost): bool
-    {
+    public static function isLoggable($correoPost, $passwordPost) : bool {
         $credentials = LoginDAO::credentials($correoPost);
         if (isset($credentials)) {
             if (password_verify($passwordPost, $credentials["password"])) {
@@ -64,11 +55,9 @@ class LoginController extends Controller
         return false;
     }
 
-    public static function login($correoPost, $passwordPost): bool
-    {
+    public static function login($correoPost, $passwordPost) : bool {
         if (self::isLoggable($correoPost, $passwordPost)) {
             $persona = PersonaDAO::getByCorreo($correoPost);
-            // Session::set("user", serialize($persona));
             $userID = $persona->getId();
             self::log($userID, $correoPost);
             return true;
@@ -76,8 +65,7 @@ class LoginController extends Controller
         return false;
     }
 
-    public static function log($userID, $email)
-    {
+    public static function log($userID, $email) {
         Session::set("userID", $userID);
         Session::set("email", $email);
     }

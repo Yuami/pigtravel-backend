@@ -1,4 +1,8 @@
 <?php
+// error_reporting(E_ALL);
+// ini_set('display_errors', TRUE);
+// ini_set('display_startup_errors', TRUE);
+
 require_once $_SERVER['DOCUMENT_ROOT'] . "/basicVars.php";
 
 use Routing\Router;

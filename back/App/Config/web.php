@@ -18,13 +18,14 @@ Router::post('register', 'RegisterController@store');
 
 Router::view('support', 'support');
 Router::view('notifications', 'notifications');
+Router::view('premium', 'premium');
 
 // THIS IS TESTING AREA
 Router::view('photos', 'photo');
-Api::get('test', 'DummyController@index');
+Router::get('test', 'RegisterController@store');
 
 Api::get('paises', 'PaisesController@index');
 Api::get('region/{id}', 'RegionController@show');
 Api::get('ciudades/{id}', 'CiudadesController@show');
 
-Router::view('test', 'test');
+//Router::view('test', 'test');

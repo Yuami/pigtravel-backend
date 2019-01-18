@@ -7,32 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <?php
-
-    use Model\DAO\CitiesDAO;
-
     require_once ROOT . "libraries.php" ?>
 
     <link rel="stylesheet" href="/css/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <link href="/css/select2.min.css" rel="stylesheet"/>
+
     <script src="/js/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="/js/validation/bootstrap-validator.js"></script>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
-    <title>Plantilla para backend</title>
+    <script src="/js/selects/select2.min.js"></script>
+    <title>Add house</title>
 </head>
 
 <body>
 <?php include_once("header.php") ?>
-
-<div id="loading" class="d-none">
-    <div class="loading-image">
-        <img id="loading-image" src="/img/loading.gif" alt="Loading..."/>
-        <p id="loading-message"></p>
-    </div>
-</div>
 
 <section class="container-fluid">
     <div class="row breadcrumb-row">
@@ -75,6 +64,13 @@
                                   name="description"></textarea>
                     </div>
                     <div class="tab">
+                        <div id="loading" class="d-none">
+                            <div class="loading-image">
+                                <img id="loading-image" src="/img/loading.gif" alt="Loading..."/>
+                                <p id="loading-message"></p>
+                            </div>
+                        </div>
+
                         <h1 class="text-center">Rates and Location</h1>
                         <label for="standardRate">Standard Rate</label>
                         <input type="number" class="form-control mb-1" name="standardRate">
@@ -90,6 +86,10 @@
                         <label for="street">Address</label>
                         <input id="street" type="text" class="form-control mb-1"
                                name="street">
+                        <div id="wrongHouseLocationDiv" class="custom-control custom-checkbox d-none">
+                            <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
+                            <label class="custom-control-label text-danger" for="wrongHouseLocation">Change house location on map!</label>
+                        </div>
                     </div>
                     <div id="imageTab" class="tab">
                         <h1 class="text-center">Images</h1>
@@ -121,11 +121,6 @@
                     </div>
                     <div class="card-body">
                         <div id="houseMap" style="width:auto;height:300px;margin: -36px -36px 0;"></div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
-                            <label class="custom-control-label" for="wrongHouseLocation">Wrong house location on
-                                map!</label>
-                        </div>
                         <p id="personCard" class="mb-0"></p>
                         <p id="streetCard"></p>
                         <p id="descriptionCard" class="card-text"></p>
@@ -138,11 +133,13 @@
 <!-- <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDufJRsYwR2Knzo2rmeamYxCTpdyeAkhl4&callback=initMap">
 </script> -->
-<script src="/js/custom/houseAdd.js"></script>
 <script src="/js/custom/loadLocalidades.js"></script>
+<script src="/js/custom/houseAdd.js"></script>
 <script>
     $(function () {
         loadPaises();
+        loadRegion(country.select2('val'));
+
     });
 </script>
 <?php

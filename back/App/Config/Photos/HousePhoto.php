@@ -11,7 +11,7 @@ namespace Config\Photos;
 
 class HousePhoto extends Photos
 {
-    protected $defaultMain = '/assets/img/casas/default-image.jpg';
+    protected $defaultMain = '/assets/uploads/img/casas/default-image.jpg';
     protected $noMain = false;
     protected $fileNameClient = 'housePhotos';
 

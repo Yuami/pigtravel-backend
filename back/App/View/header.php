@@ -9,7 +9,11 @@ if (!Session::me()) { ?>
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
                 <a href="/">
-                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
+                    <picture>
+                        <source srcset="/img/logotemporal.webp" type="image/webp">
+                        <source srcset="img/logotemporal.jpg"  type="image/jpeg">
+                        <img src="/img/logotemporal.jpg"  class="header-logo ml-md-1"  alt="" >
+                    </picture>
                 </a>
                 <div class="head-brand">
                     <h6 class="active" href="#">ADMINISTRATION PANEL</h6>
@@ -29,7 +33,11 @@ if (!Session::me()) { ?>
                     <p class="algn-r mb-0"><span class="premium-text">Premium</span></p>
                 </div>
                 <a href="/">
-                    <img src="/img/logotemporal2.png" alt="" class="header-logo ml-md-1">
+                    <picture>
+                        <source srcset="/img/logotemporal.webp" type="image/webp">
+                        <source srcset="img/logotemporal.jpg"  type="image/jpeg">
+                        <img src="/img/logotemporal.jpg"  class="header-logo ml-md-1"  alt="" >
+                    </picture>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
                     <span class="navbar-toggler-icon"></span>

@@ -158,16 +158,18 @@
                         <div class="row">
                             <label class="sr-only" for="descriptionForm">Description</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Description</h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Description<br></h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span class="fas fa-pen text-danger"></span>
                                     </div>
                                 </div>
                                 <textarea type="text" rows="7" class="form-control" id="descriptionForm"
                                           name="descriptionForm"
-                                          placeholder="Tell us something about you!"><?= $user->getDescripcion(); ?></textarea>
+                                          placeholder="Tell us something about you!"><?= $user->getDescripcion(); ?>
+                                </textarea>
                             </div>
-                                <input class="btn d-md-block d-none btn-block btn-primary offset-md-3 mt-3" type="submit" form="profileForm"/>
+                            <input class="btn d-md-block d-none btn-block btn-primary offset-md-3 mt-3" type="submit"
+                                   form="profileForm"/>
                         </div>
                         <div class="row">
                             <input class="btn d-md-none d-block btn-block btn-primary mt-3" type="submit"
@@ -181,7 +183,6 @@
 </section>
 
 <?php include_once("footer.php") ?>
-<script src="/js/jasny-bootstrap.min.js"></script>
 <script src="/js/custom/modifyProfile.js"></script>
 </body>
 </html>

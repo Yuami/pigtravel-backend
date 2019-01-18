@@ -7,6 +7,7 @@
  */
 
 namespace Model\DAO;
+
 use PDO;
 
 class CitiesDAO extends DAO
@@ -14,7 +15,7 @@ class CitiesDAO extends DAO
     protected static $table = "cities";
     protected static $class = "Cities";
 
-    public static function insert()
+    public static function insert(array $parameters)
     {
         // TODO: Implement insert() method.
     }
@@ -24,7 +25,8 @@ class CitiesDAO extends DAO
         return parent::getById($id);
     }
 
-    public static function getByIdRegion($id){
+    public static function getByIdRegion($id)
+    {
         $statement = DB::conn()->prepare("SELECT * FROM " . self::$table . " WHERE region_id = :id");
         $statement->bindValue(":id", $id, PDO::PARAM_INT);
         $statement->execute();

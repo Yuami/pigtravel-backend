@@ -1,0 +1,85 @@
+
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 99999;
+  text-align: center;
+}
+
+.loading-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 1%;
+  margin-top: image-height/2;
+  margin-left: image-width/2;
+  z-index: 99999;
+}
+
+#addHouseForm {
+  font-family: $font_family_1;
+  padding: 40px;
+  min-width: 300px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 2% auto;
+  background-color: #FFFFFF;
+  overflow: hidden;
+
+  h1 {
+    text-align: center;
+  }
+  input {
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    height: 40px;
+    padding: 0px 15px;
+
+  }
+  input.invalid {
+    background-color: $background_color_2;
+  }
+  .tab {
+    display: none;
+  }
+  button {
+    background-color: $button;
+    color: $color_1;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: $font_family_1;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  #prevBtn {
+    background-color: $background_color_4;
+  }
+
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: $background_color_4;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  .step.active {
+    opacity: 1;
+  }
+  .step.finish {
+    background-color: $button;
+  }
+}
