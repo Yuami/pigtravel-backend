@@ -10,6 +10,7 @@ Router::resource('messagesSent','SendMessagesController');
 Router::resource('profile', 'ProfileController');
 Router::resource('settings', 'ProfileController');
 Router::resource('login', 'LoginController');
+Router::resource('support','SupportController');
 
 Router::get('houses/{id}/tarifas', 'TarifasController@show');
 Router::post('houses/{id}/tarifas', 'TarifasController@store');

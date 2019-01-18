@@ -9,6 +9,7 @@
 namespace Controller;
 
 use Config\Session;
+use Model\DAO\BloqueoDAO;
 use Model\DAO\MensajesDAO;
 use Model\DAO\PersonaDAO;
 use Model\DAO\ReservaDAO;
@@ -25,11 +26,9 @@ public function index()
 {
 $id = Session::get('userID');
 $persona = PersonaDAO::getById($id);
-$reservas = ReservaDAO::getByVendedor($id);
-$mensajes = MensajesDAO::getBy('idSender', $id);
-for ($x = 1; $x <= 12; $x++) {
-    $benMes[$x] = ReservaDAO::getBeneficioViviendasByMes($id, $x);
-}
+$reservas = ReservaDAO::getByVendedorMax($id);
+$benMes=ReservaDAO::getBeneficioByMesAll($id);
+$mensajes = MensajesDAO::getBy('idReciever', $id);
 include_once VIEW . 'main.php';
 }
 

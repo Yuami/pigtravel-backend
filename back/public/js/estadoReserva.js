@@ -15,11 +15,11 @@ let estados = [
         estado: "pagada",
         class: "badge-success"
     }];
-
-$(function () {
-    let badge = $("#estado-reserva");
+$(function() {
+    let badge = this;
     updateEstado(badge);
 });
+
 
 function updateEstado(badge) {
     let value = badge.text();
