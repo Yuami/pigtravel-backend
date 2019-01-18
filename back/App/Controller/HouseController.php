@@ -4,6 +4,7 @@ namespace Controller;
 
 use Config\Cookie;
 use Model\DAO\CitiesDAO;
+use Model\DAO\TarifaDAO;
 use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
@@ -36,6 +37,7 @@ class HouseController extends Controller
     public function show($id)
     {
         $houses = ViviendaDAO::getById($id);
+        $tarifas = TarifaDAO::getByIdVivienda($id);
         if (self::validUser(Session::get('userID'), $houses)) {
             include_once VIEW . "house.php";
         }

@@ -49,148 +49,52 @@ if (Session::isSet("updateCompleted")) {
                 <li class="breadcrumb-item active" aria-current="page">House</li>
             </ol>
         </div>
-    </div>
-    <div class="container">
-        <form method="POST" action="/houses/<?= $houses->getId(); ?>">
-            <input type="hidden" name="_method" value="PUT">
-
-            <div class="row">
-                <div class="col-md-6 ">
-                    <h2 class="text-center">Information</h2>
-                    <div class="row">
-                        <label class="sr-only" for="firstNameForm">House Name</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">House Name</h6>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="fas fa-home text-danger"></span>
-                                </div>
-                            </div>
-                            <input type="text" class="form-control col-md-8" id="houseName" name="houseName"
-                                   style="width: 80px;" value="<?= $houses->getNombre(); ?>">
+        <div class="container-fluid ">
+            <div class="row justify-content-center">
+                <div class="card">
+                    <form class="card-body bg-main" action="/houses/<?php echo $house->getId() ?>/tarifas"
+                          method="post">
+                        <div class="form-group">
+                            <label for="fechaI" class="col-form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" name="fechaI" id="fechaI">
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="sr-only" for="peopleAmount">Capacity</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Capacity</h6>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="fas fa-user text-danger"></span>
-                                </div>
-                            </div>
-                            <input type="number" class="form-control col-md-8" id="peopleAmount" name="peopleAmount"
-                                   style="width: 80px;" value="<?= $houses->getCapacidad(); ?>">
+                        <div class="form-group">
+                            <label for="fechaF" class="col-form-label">Fecha Fin</label>
+                            <input type="date" name="fechaF" id="fechaF" class="form-control">
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="sr-only" for="street">Street</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Street</h6>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="fas fa-road text-danger"></span>
-                                </div>
-                            </div>
-                            <input type="text" class="form-control col-md-8" id="street" name="street"
-                                   style="width: 80px;" value="<?= $houses->getCalle(); ?>">
+                        <div class="form-group">
+                            <label for="precio" class="col-form-label">Precio</label>
+                            <input type="number" name="precio" id="precio" class="form-control">
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="sr-only" for="city">City</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">City</h6>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="fas fa-city text-danger"></span>
-                                </div>
-                            </div>
-                            <select id="city" class="form-control col-md-8" name="city">
+                        <div class="form-group">
+                            <select class="custom-select" name="idPC" id="idPC">
+                                <option value="0">-- POLITICA CANCELACION --</option>
+                                <?php foreach ($tarifas as $tarifa) { ?>
+                                    <option value="<?php echo $tarifa->getIdPoliticaCancelacion() ?>">
+                                        <?php echo $tarifa->getIdPoliticaCancelacion() ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="sr-only" for="squaremeters">Square meters</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Square meters</h6>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="fas fa-arrows-alt-h text-danger"></span>
-                                </div>
-                            </div>
-                            <input type="text" class="form-control col-md-8" id="squaremeters" name="squaremeters"
-                                   style="width: 80px;" value="<?= $houses->getMetrosCuadrados(); ?>">
+                        <div class="form-check" style="margin-left: 28%;">
+                            <input type="checkbox" name="general" id="general" class="form-check-input">
+                            <label for="general" class="form-check-label">General</label>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="sr-only" for="checkIn">Check In</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Check In</h6>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="fas fa-lock-open text-danger"></span>
-                                </div>
-                            </div>
-                            <input type="time" class="form-control col-md-8" id="checkIn" name="checkIn"
-                                   style="width: 80px;" value="<?= $houses->getHoraEntrada(); ?>">
+                        <div class="btn-group-toggle" style="margin-left: 15%">
+                            <button type="button" id="btnCT" class="btn btn-danger">Cancelar</button>
+                            <button type="submit" id="btnAT" class="btn btn-success" onclick="goBack()">Confirmar</button>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="sr-only" for="checkOut">Check Out</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Check Out</h6>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="fas fa-lock text-danger"></span>
-                                </div>
-                            </div>
-                            <input type="time" class="form-control col-md-8" id="checkOut" name="checkOut"
-                                   style="width: 80px;" value="<?= $houses->getHoraSalida(); ?>">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="description" class="sr-only">Description</label>
-                        <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Description</h6>
-
-                        <textarea id="description" class="form-control mb-1 col-md-8" rows="4" cols="50"
-                                  name="description"><?= $houses->getDescripcion(); ?></textarea>
-                        <input class="btn btn-block btn-primary mt-3" type="submit"/>
-                    </div>
+                    </form>
                 </div>
-                <div class="col-md-6">
-                    <h2 class="text-center">Map</h2>
-                    <div id="houseMap" style="width:auto;height:300px;"></div>
-                </div>
-            </div>
-
-        </form>
-    </div>
-
-    <div class="container-fluid ">
-        <div class="row justify-content-center">
-            <div class="card">
-                <form class="card-body bg-main">
-                    <div class="form-group">
-                        <label for="fechaI" class="col-form-label">Fecha Inicio</label>
-                        <input type="date" class="form-control" id="fechaI">
-                    </div>
-                    <div class="form-group">
-                        <label for="fechaF" class="col-form-label">Fecha Fin</label>
-                        <input type="date" name="fechaF" id="fechaF" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="precio" class="col-form-label">Precio</label>
-                        <input type="number" name="precio" id="precio" class="form-control">
-                    </div>
-                    <div class="form-check" style="margin-left: 28%;">
-                        <input type="checkbox" name="general" id="general" class="form-check-input">
-                        <label for="general" class="form-check-label">General</label>
-                    </div>
-                    <div class="btn-group-toggle" style="margin-left: 15%">
-                        <button type="button" id="btnCT" class="btn btn-danger">Cancelar</button>
-                        <button type="submit" id="btnAT" class="btn btn-success">Cancelar</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
 </section>
 
 
 <script>
+    function goBack() {
+        window.history.back();
+    }
     // Get the modal
     var modal = document.getElementById('myModal');
 

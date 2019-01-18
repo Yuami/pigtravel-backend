@@ -11,6 +11,8 @@ Router::resource('profile', 'ProfileController');
 Router::resource('settings', 'ProfileController');
 Router::resource('login', 'LoginController');
 
+Router::get('houses/{id}/tarifas', 'TarifasController@show');
+Router::post('houses/{id}/tarifas', 'TarifasController@store');
 Router::get('','IndexController@index');
 Router::get('logout', 'LoginController@destroy');
 Router::get('register', 'RegisterController@index');
