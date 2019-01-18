@@ -160,33 +160,20 @@ if (Session::isSet("updateCompleted")) {
 
         </form>
     </div>
-
-    <div class="container-fluid ">
-        <div class="row justify-content-center">
-            <div class="card">
-                <form class="card-body bg-main">
-                    <div class="form-group">
-                        <label for="fechaI" class="col-form-label">Fecha Inicio</label>
-                        <input type="date" class="form-control" id="fechaI">
+    <div class="container-fluid">
+        <div class="row">
+            <?php foreach ($tarifas as $tarifa) { ?>
+                <div class="card">
+                    <div class="card-title">
+                        <h4>Tarifa <?php echo $tarifa->getId() ?></h4>
                     </div>
-                    <div class="form-group">
-                        <label for="fechaF" class="col-form-label">Fecha Fin</label>
-                        <input type="date" name="fechaF" id="fechaF" class="form-control">
+                    <div class="card-body">
+                        <p><?php echo $tarifa->getPrecio() ?></p>
+                        <p><?php echo $tarifa->getPrecio() ?></p>
+                        <p><?php echo $tarifa->getPrecio() ?></p>
                     </div>
-                    <div class="form-group">
-                        <label for="precio" class="col-form-label">Precio</label>
-                        <input type="number" name="precio" id="precio" class="form-control">
-                    </div>
-                    <div class="form-check" style="margin-left: 28%;">
-                        <input type="checkbox" name="general" id="general" class="form-check-input">
-                        <label for="general" class="form-check-label">General</label>
-                    </div>
-                    <div class="btn-group-toggle" style="margin-left: 15%">
-                        <button type="button" id="btnCT" class="btn btn-danger">Cancelar</button>
-                        <button type="submit" id="btnAT" class="btn btn-success">Cancelar</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
