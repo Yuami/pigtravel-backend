@@ -32,14 +32,18 @@ class SupportController extends Controller
     }
 
     public function store() {
-        $empleadosSoporte= EmpleadoDAO::getByRol(2);
-        foreach ($empleadosSoporte as $empleadoSoporte) {
-            MensajesDAO::insert([
-                "idReciever" => $empleadoSoporte->getIdPersona(),
-                "idVivienda" => null,
-                "mensaje" => $_POST['comment']]);
-        }
-        header("Location: " . DOMAIN. "/support");
+
+
+        MensajesDAO::insert([
+            "idReciever" => 4,
+            "idVivienda" => null,
+            "mensaje" => $_POST['comment']]);
+        MensajesDAO::insert([
+            "idReciever" => 7,
+            "idVivienda" => null,
+            "mensaje" => $_POST['comment']]);
+
+        header("Location: " . DOMAIN . "/support");
 
 //        $to = 'admin@admin.com';
 //        $subject = 'the subject';

@@ -40,6 +40,9 @@
             display: table-cell;
         }
 
+        .legend{
+            font-size: 10px;
+        }
         h3.est {
             text-align: center;
         }
@@ -81,31 +84,34 @@
             <h1>Hola <?php echo $persona->getNombre(); ?></h1>
             <div class="row">
                 <div class="col-sm-12 col-lg-3 nopadding">
-                    <h4>Proxima reserva</h4>
+                    <h5><strong>Proxima reserva</strong></h5>
                     <h6 class="est">
                         <?php
-                            if(empty($reservas[0])) {
-                                echo '<br>';
-                            }else {
-                                echo $reservas[0]->getFechaReservaFormat();
-                            }
+                        if (empty($reservas[0])) {
+                            echo '<br>';
+                        } else {
+                            ?>
+                            <a href="/reservations/<?php echo $reservas[0]->getId(); ?>">
+                                <?php echo $reservas[0]->getFechaReservaFormat(); ?>
+                            </a>
+                            <?php
+                        }
                         ?>
+
                     </h6>
-                    <h4>Beneficios anuales</h4>
+                    <h5><strong>Beneficios anuales</strong></h5>
                     <h6 class="est"><?php
                         $beneficios = 0;
-                        if(empty($reservas)) {
-
-                        }else {
-                            foreach ($reservas as $reserva) {
-                                if ($reserva->getFechaReservaYear() == '2019') {
-                                    $beneficios += $reserva->getPrecio();
+                        foreach ($reservas as $reserva) {
+                            if ($reserva->getFechaReservaYear() == '2019') {
+                                $beneficios += $reserva->getPrecio();
                                 }
                             }
-                        }
+
                         echo $beneficios ?>€</h6>
-                    <h4>Mensajes pendientes</h4>
+                    <h5><strong>Mensajes pendientes</strong></h5>
                     <h6 class="est">
+                        <a href="/messages">
                         <?php
                         $mensajesPendientes = 0;
                         foreach ($mensajes as $mensaje) {
@@ -113,12 +119,12 @@
                                 $mensajesPendientes++;
                             }
                         }
-                        echo $mensajesPendientes ?></h6>
-                    <h4>Ultimas reservas</h4>
+                        echo $mensajesPendientes ?>
+                        </a></h6>
+                    <h5><strong>Ultimas reservas</strong></h5>
                     <table id="reservas">
-
                         <?php foreach ($reservas as $reserva) { ?>
-                            <tr>
+                            <tr onClick="location.href='/reservations/<?php echo $reserva->getId()?>'">
                                 <td id="reservas"><?php echo $reserva->getVivienda()->getNombre() ?></td>
                                 <td id="reservas"><?php echo $reserva->getPrecio() ?>€</td>
                                 <td id="estado-reserva" class="badge badge-pill">
@@ -129,15 +135,22 @@
                     </table>
                 </div>
                 <div class="col-lg-5 col-12 ">
-                    <h4>Beneficios</h4>
+                    <h5><strong>Beneficios</strong></h5>
                     <div id="grafic">
+                        <?php
+                        $dataPoints = array();
+                        foreach($benMes as $row){
+                              array_push($dataPoints, array("y"=> $row->beneficioMes));
+                        }
+                        ?>
                         <div id="chart-svg">
 
                         </div>
                     </div>
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                 </div>
                 <div class="col-lg-4 col-12 nopadding">
-                    <h4>Calendario</h4>
+                    <h5><strong>Calendario</strong></h5>
                     <div id="calendario">
                         <div id="calendars">
                             <div id="mainCalendar" data-f_inicio="2019-11-06 00:00:00"
@@ -155,19 +168,32 @@
                 </div>
 
             </div>
-            <?php
-            $beneficis = array();
-            foreach ($reservas as $reserva) {
-                $beneficis[$reserva->getFechaReservaMonth()][$reserva->getIdVivienda()] = $reserva->getPrecio();
-            }
-            ?>
+
         </div>
     </div>
 <?php include_once CALENDAR ?>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="/js/calendar.js"></script>
 <script src="/js/estadoReserva.js"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
+    window.onload = function () {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            axisX:{
+                labelFormatter: function(e){
+                    return  "Ene";
+                }
+            },
+            data: [{
+                type: "column",
+                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        chart.render();
+
+    };
 
     var margin = {top: 20, right: 150, bottom: 100, left: 25},
         width = 540 - margin.left - margin.right,
@@ -181,7 +207,7 @@
 
     d3.csv("/csv/data.csv", function (data) {
 
-        var headers = ["Casa playa", "La casa blanca"];
+        var headers = ["Casa playa", "La casa blanca","Villa Antonia"];
 
         var layers = d3.layout.stack()(headers.map(function (priceRange) {
             return data.map(function (d) {
@@ -211,7 +237,7 @@
 
         var color = d3.scale.ordinal()
             .domain(headers)
-            .range(["#98ABC5", "#8a89a6"]);
+            .range(["#98ABC5", "#8a89a6","#878787"]);
 
         var xAxis = d3.svg.axis()
             .scale(xScale)
@@ -280,7 +306,7 @@
             .enter().append("g")
             .attr("class", "legend")
             .attr("transform", function (d, i) {
-                return "translate(0," + i * 20 + ")";
+                return "translate(0," + i * 10 + ")";
             });
 
         legend.append("rect")
@@ -290,8 +316,8 @@
             .style("fill", color);
 
         legend.append("text")
-            .attr("x", width - 14)
-            .attr("y", 9)
+            .attr("x", width - 12)
+            .attr("y", 3)
             .attr("dy", ".35em")
             .style("text-anchor", "end")
             .text(function (d) {
@@ -320,35 +346,8 @@
                 })
                 .attr("width", xScale.rangeBand());
 
-            rect.on("mouseover", function () {
-                tooltip.style("display", null);
-            })
-                .on("mouseout", function () {
-                    tooltip.style("display", "none");
-                })
-                .on("mousemove", function (d) {
-                    var xPosition = d3.mouse(this)[0] - 15;
-                    var yPosition = d3.mouse(this)[1] - 25;
-                    tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-                    tooltip.select("text").text("hello world");
-                });
 
 
-        var tooltip = svg.append("g")
-            .attr("class", "tooltip");
-
-        tooltip.append("rect")
-            .attr("width", 30)
-            .attr("height", 20)
-            .attr("fill", "red")
-            .style("opacity", 0.5);
-
-        tooltip.append("text")
-            .attr("x", 15)
-            .attr("dy", "1.2em")
-            .style("text-anchor", "middle")
-            .attr("font-size", "12px")
-            .attr("font-weight", "bold");
     });
 
 </script>

@@ -10,6 +10,7 @@ Router::resource('messagesSent','SendMessagesController');
 Router::resource('profile', 'ProfileController');
 Router::resource('settings', 'ProfileController');
 Router::resource('login', 'LoginController');
+Router::resource('support','SupportController');
 
 Router::get('','IndexController@index');
 Router::get('logout', 'LoginController@destroy');

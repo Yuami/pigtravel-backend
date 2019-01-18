@@ -1,13 +1,14 @@
-month,Casa playa,La casa blanca
-Ene,125,53
-Feb,235,123
-Mar,,341
-Abr,235,456
-May,235,324
-Jun,252,42
-Jul,235,456
-Ago,686,
-Sep,678,546
-Oct,346,546
-Nov,346,452
-Dic,532,345
+month,Casa playa,La casa blanca,Villa Antonia
+Ene,125,53,234
+Feb,235,123,0
+Mar,0,341,231
+Abr,235,456,24
+May,235,324,234
+Jun,252,42,123
+Jul,235,456,0
+Ago,686,0,234
+Sep,678,546,234
+Oct,346,546,256
+Nov,0,452,234
+Dic,532,345,235
+

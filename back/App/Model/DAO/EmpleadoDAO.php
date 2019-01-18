@@ -6,11 +6,19 @@
  * Time: 12:34
  */
 namespace Model\DAO;
-class EmpleadoDAO {
+require_once MODEL . "Items/Empleado.php";
+
+class EmpleadoDAO extends DAO{
+    protected static $table = "empleado";
+    protected static $class = "Empleado";
     public static function getByRol($rol) {
-        $res = parent::getBy("idRol", $rol);
-        if (isset($res))
-            return $res;
-        return null;
+
+        $sql = "SELECT * FROM empleado WHERE idRol=:rol";
+        $statement = DB::conn()->prepare($sql);
+        $statement->bindValue(":rol", $rol);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, static::$class);
     }
+
 }

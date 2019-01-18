@@ -41,11 +41,17 @@ class ReservaDAO extends DAO
         return $statement->fetchAll(PDO::FETCH_CLASS, parent::getClassName());
     }
 
-    public static function getBeneficioViviendaByMesAll($id) {
-        $benMes = [];
-        for ($x = 1; $x <= 12; $x++) {
-            $benMes[$x] = ReservaDAO::getBeneficioViviendasByMes($id, $x);
-        }
-        return $benMes;
+    public static function getBeneficioByMesAll($id) {
+        $statement = DB::conn()->prepare('SELECT sum(r.precio) as beneficioMes, month(r.fechaReserva) as mes from reserva r
+       inner join reserva_has_estado rhe on r.id = rhe.idReserva
+       inner join vivienda v on r.idVivienda = v.id
+       inner join estado_has_idioma ehi on rhe.idEstado = ehi.idEstado
+       inner join cliente c on r.idCliente = c.idPersona
+       inner join persona p on c.idPersona = p.id where v.idVendedor= :id
+       group by month(r.fechaReserva)');
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, parent::getClassName());
     }
 }
