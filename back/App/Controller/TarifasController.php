@@ -9,12 +9,16 @@
 namespace Controller;
 
 
+use Config\Session;
+use Model\DAO\TarifaDAO;
+use Model\DAO\ViviendaDAO;
+
 class TarifasController extends Controller
 {
 
     public function index()
     {
-        include_once VIEW . 'tarifas.php';
+//        include_once VIEW . 'tarifas.php';
     }
 
     public function create()
@@ -24,11 +28,22 @@ class TarifasController extends Controller
 
     public function store()
     {
-        // TODO: Implement store() method.
+        TarifaDAO::insert([
+            "fechaInicio" => $_POST['fechaI'],
+            "fechaFin" => $_POST['fechaF'],
+            "precio" => $_POST['precio'],
+            "general" => $_POST['general'],
+            "idPoliticaCancelacion" => $_POST['idPC'],
+        ]);
+
     }
 
     public function show($id)
     {
+        $idU = Session::get('userID');
+        $houses = ViviendaDAO::getByVendedor($idU);
+        $house = $houses[0];
+        $tarifas = TarifaDAO::getByIdVivienda($id);
         include_once VIEW . 'tarifas.php';
     }
 

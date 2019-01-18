@@ -17,7 +17,7 @@ class ViviendaHasTarifaDAO extends DAO
         // TODO: Implement insert() method.
     }
 
-    public static function getByIdVivienda()
+    public static function getByIdVivienda($id)
     {
         return parent::getBy('idVivienda', $id);
     }

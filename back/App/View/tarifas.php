@@ -52,10 +52,11 @@ if (Session::isSet("updateCompleted")) {
         <div class="container-fluid ">
             <div class="row justify-content-center">
                 <div class="card">
-                    <form class="card-body bg-main">
+                    <form class="card-body bg-main" action="/houses/<?php echo $house->getId() ?>/tarifas"
+                          method="post">
                         <div class="form-group">
                             <label for="fechaI" class="col-form-label">Fecha Inicio</label>
-                            <input type="date" class="form-control" id="fechaI">
+                            <input type="date" class="form-control" name="fechaI" id="fechaI">
                         </div>
                         <div class="form-group">
                             <label for="fechaF" class="col-form-label">Fecha Fin</label>
@@ -65,13 +66,23 @@ if (Session::isSet("updateCompleted")) {
                             <label for="precio" class="col-form-label">Precio</label>
                             <input type="number" name="precio" id="precio" class="form-control">
                         </div>
+                        <div class="form-group">
+                            <select class="custom-select" name="idPC" id="idPC">
+                                <option value="0">-- POLITICA CANCELACION --</option>
+                                <?php foreach ($tarifas as $tarifa) { ?>
+                                    <option value="<?php echo $tarifa->getIdPoliticaCancelacion() ?>">
+                                        <?php echo $tarifa->getIdPoliticaCancelacion() ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
                         <div class="form-check" style="margin-left: 28%;">
                             <input type="checkbox" name="general" id="general" class="form-check-input">
                             <label for="general" class="form-check-label">General</label>
                         </div>
                         <div class="btn-group-toggle" style="margin-left: 15%">
                             <button type="button" id="btnCT" class="btn btn-danger">Cancelar</button>
-                            <button type="submit" id="btnAT" class="btn btn-success">Cancelar</button>
+                            <button type="submit" id="btnAT" class="btn btn-success" onclick="goBack()">Confirmar</button>
                         </div>
                     </form>
                 </div>
@@ -81,6 +92,9 @@ if (Session::isSet("updateCompleted")) {
 
 
 <script>
+    function goBack() {
+        window.history.back();
+    }
     // Get the modal
     var modal = document.getElementById('myModal');
 
