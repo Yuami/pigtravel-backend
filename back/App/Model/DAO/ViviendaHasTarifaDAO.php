@@ -12,7 +12,7 @@ class ViviendaHasTarifaDAO extends DAO
     protected static $table = "vivienda_has_tarifa";
     protected static $class = "ViviendaHasTarifa";
 
-    public static function insert()
+    public static function insert(array $parameters)
     {
         // TODO: Implement insert() method.
     }

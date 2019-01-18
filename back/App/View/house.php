@@ -10,7 +10,6 @@
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="/css/leaflet.css">
     <link href="/css/select2.min.css" rel="stylesheet"/>
-
     <script src="/js/popper.min.js"></script>
     <script src="/js/leaflet.js"></script>
     <script src="/js/selects/select2.min.js"></script>
