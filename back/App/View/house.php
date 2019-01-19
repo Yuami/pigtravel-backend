@@ -23,7 +23,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section2">Rates</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link"
+                                                           href="/houses/<?= $houses->getId()?>/tarifas">Rates</a>
+        </li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section3">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
     </ul>
@@ -161,18 +163,22 @@ if (Session::isSet("updateCompleted")) {
     </div>
     <div class="container-fluid">
         <div class="row">
-            <?php foreach ($tarifas as $tarifa) { ?>
-                <div class="card">
-                    <div class="card-title">
-                        <h4>Tarifa <?php echo $tarifa->getId() ?></h4>
+            <!--            --><?php //var_dump($tarifas) ?>
+            <?php if (!empty($tarifas)) {
+                foreach ($tarifas as $tarifa) { ?>
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Tarifa <?php echo $tarifa->getId() ?></h4>
+                        </div>
+                        <div class="card-body">
+                            <p><?php echo $tarifa->getPrecio() ?></p>
+                            <p><?php echo $tarifa->getFechaInicio() ?></p>
+                            <p><?php echo $tarifa->getFechaFin() ?></p>
+                            <p><?php echo $tarifa->getIdPoliticaCancelacion() ?></p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p><?php echo $tarifa->getPrecio() ?></p>
-                        <p><?php echo $tarifa->getPrecio() ?></p>
-                        <p><?php echo $tarifa->getPrecio() ?></p>
-                    </div>
-                </div>
-            <?php } ?>
+                <?php }
+            } ?>
         </div>
     </div>
 </section>

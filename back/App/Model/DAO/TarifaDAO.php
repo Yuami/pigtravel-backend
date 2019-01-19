@@ -29,9 +29,26 @@ class TarifaDAO extends DAO
 
     public static function getByIdVivienda($id)
     {
-        $arrVHT = ViviendaHasTarifaDAO::getByIdVivienda($id);
-        $ex = TarifaDAO::getByIdTarifa($arrVHT[0]->getIdTarifa());
-        return $ex;
+        $array = self::ifExistTarifa($arrVHT = ViviendaHasTarifaDAO::getByIdVivienda($id));
+        if (empty($array)) {
+            return $array;
+        } else {
+            foreach ($array as $VHT) {
+                $tarifa = TarifaDAO::getByIdTarifa($VHT->getIdTarifa());
+                $tarifas[] = $tarifa[0];
+            }
+            return $tarifas;
+        }
+    }
+
+    public static function ifExistTarifa($tarifas)
+    {
+        $vacio = [];
+        if ($tarifas != null) {
+            return $tarifas;
+        } else {
+            return $vacio;
+        }
     }
 
     public static function getByIdTarifa($id)

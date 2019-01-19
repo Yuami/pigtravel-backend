@@ -12,6 +12,8 @@ namespace Controller;
 use Config\Session;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaDAO;
+use Model\DAO\ViviendaHasTarifaDAO;
+use Routing\Router;
 
 class TarifasController extends Controller
 {
@@ -32,9 +34,13 @@ class TarifasController extends Controller
             "fechaInicio" => $_POST['fechaI'],
             "fechaFin" => $_POST['fechaF'],
             "precio" => $_POST['precio'],
-            "general" => $_POST['general'],
+            "general" => isset($_POST['general']),
             "idPoliticaCancelacion" => $_POST['idPC'],
         ]);
+        ViviendaHasTarifaDAO::insert([
+           "idVivienda"
+        ]);
+        Router::redirect('houses/');
 
     }
 
@@ -42,7 +48,11 @@ class TarifasController extends Controller
     {
         $idU = Session::get('userID');
         $houses = ViviendaDAO::getByVendedor($idU);
-        $house = $houses[0];
+        foreach ($houses as $h) {
+            if ($h->getId() == $id) {
+                $house = $h;
+            }
+        }
         $tarifas = TarifaDAO::getByIdVivienda($id);
         include_once VIEW . 'tarifas.php';
     }

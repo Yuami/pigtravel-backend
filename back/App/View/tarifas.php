@@ -28,17 +28,6 @@
     </ul>
 </nav>
 
-<?php
-if (Session::isSet("updateCompleted")) {
-    Session::delete("updateCompleted"); ?>
-    <div id="updateCompleted" class="alert alert-success" role="alert">
-        House successfully updated!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-<?php } ?>
-
 <section class="container-fluid" id="mainHouseSection">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
@@ -46,14 +35,17 @@ if (Session::isSet("updateCompleted")) {
             <ol class="bg-transparent pt-0 breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/houses">House Management</a></li>
-                <li class="breadcrumb-item active" aria-current="page">House</li>
+                <li class="breadcrumb-item active" aria-current="page">Tarifas</li>
             </ol>
         </div>
         <div class="container-fluid ">
             <div class="row justify-content-center">
                 <div class="card">
-                    <form class="card-body bg-main" action="/houses/<?php echo $house->getId() ?>/tarifas"
+                    <form class="card-body bg-main" action="/houses/<?= $house->getId() ?>/tarifas"
                           method="post">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="idVivienda" id="idVivienda" hidden value="<?= $house->getId() ?>">
+                        </div>
                         <div class="form-group">
                             <label for="fechaI" class="col-form-label">Fecha Inicio</label>
                             <input type="date" class="form-control" name="fechaI" id="fechaI">
@@ -82,7 +74,8 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                         <div class="btn-group-toggle" style="margin-left: 15%">
                             <button type="button" id="btnCT" class="btn btn-danger">Cancelar</button>
-                            <button type="submit" id="btnAT" class="btn btn-success" onclick="goBack()">Confirmar</button>
+                            <button type="submit" id="btnAT" class="btn btn-success" onclick="goBack()">Confirmar
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -95,6 +88,7 @@ if (Session::isSet("updateCompleted")) {
     function goBack() {
         window.history.back();
     }
+
     // Get the modal
     var modal = document.getElementById('myModal');
 
