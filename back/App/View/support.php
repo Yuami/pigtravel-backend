@@ -27,9 +27,10 @@ if(isset($_POST["submit"])) {
         </div>
     </div>
     <div class="inputSoporte">
-    <form  method="post">
+
+    <form method="POST" action="/support">
             <label for="comment">¿En que podemos ayudarte? </label>
-            <textarea rows="5" class="form-control" name="comment"></textarea><br><br>
+            <textarea rows="5" class="form-control" name="comment"></textarea><br>
             <input type="submit" value="Send">
             <input type="reset" value="Reset">
     </form>
