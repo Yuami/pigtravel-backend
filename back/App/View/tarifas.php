@@ -44,7 +44,8 @@
                     <form class="card-body bg-main" action="/houses/<?= $house->getId() ?>/tarifas"
                           method="post">
                         <div class="form-group">
-                            <input type="number" class="form-control" name="idVivienda" id="idVivienda" hidden value="<?= $house->getId() ?>">
+                            <input type="number" class="form-control" name="idVivienda" id="idVivienda" hidden
+                                   value="<?= $house->getId() ?>">
                         </div>
                         <div class="form-group">
                             <label for="fechaI" class="col-form-label">Fecha Inicio</label>

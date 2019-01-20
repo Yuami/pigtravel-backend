@@ -30,7 +30,7 @@ class TarifasController extends Controller
 
     public function store()
     {
-        TarifaDAO::insert([
+        $idT = TarifaDAO::insert([
             "fechaInicio" => $_POST['fechaI'],
             "fechaFin" => $_POST['fechaF'],
             "precio" => $_POST['precio'],
@@ -38,9 +38,10 @@ class TarifasController extends Controller
             "idPoliticaCancelacion" => $_POST['idPC'],
         ]);
         ViviendaHasTarifaDAO::insert([
-           "idVivienda"
+            "idVivienda" => $_POST['idVivienda'],
+            "idTarifa" => $idT
         ]);
-        Router::redirect('houses/');
+        Router::redirect('houses/' . $_POST['idVivienda']);
 
     }
 

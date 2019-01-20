@@ -15,7 +15,6 @@ class TarifaDAO extends DAO
         $general = $parameters["general"];
         $idPoliticaCancelacion = $parameters["idPoliticaCancelacion"];
 
-
         $sql = "insert into tarifa (fechaInicio, fechaFin, precio, general, idPoliticaCancelacion)
                 values (:fechaI,:fechaF,:p,:g,:idPC)";
         $stm = DB::conn()->prepare($sql);
@@ -25,6 +24,8 @@ class TarifaDAO extends DAO
         $stm->bindValue(":g", $general);
         $stm->bindValue(":idPC", $idPoliticaCancelacion);
         $stm->execute();
+        $p = DB::conn()->lastInsertId('tarifa');
+        die(var_dump($p));
     }
 
     public static function getByIdVivienda($id)
