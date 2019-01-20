@@ -11,8 +11,8 @@ if (!Session::me()) { ?>
                 <a href="/">
                     <picture>
                         <source srcset="/img/logotemporal.webp" type="image/webp">
-                        <source srcset="img/logotemporal.jpg"  type="image/jpeg">
-                        <img src="/img/logotemporal.jpg"  class="header-logo ml-md-1"  alt="" >
+                        <source srcset="/img/logotemporal.png"  type="image/jpg">
+                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="" >
                     </picture>
                 </a>
                 <div class="head-brand">
@@ -35,8 +35,8 @@ if (!Session::me()) { ?>
                 <a href="/">
                     <picture>
                         <source srcset="/img/logotemporal.webp" type="image/webp">
-                        <source srcset="img/logotemporal.jpg"  type="image/jpeg">
-                        <img src="/img/logotemporal.jpg"  class="header-logo ml-md-1"  alt="" >
+                        <source srcset="/img/logotemporal.png"  type="image/jpg">
+                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="" >
                     </picture>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
