@@ -17,15 +17,16 @@ class TarifaDAO extends DAO
 
         $sql = "insert into tarifa (fechaInicio, fechaFin, precio, general, idPoliticaCancelacion)
                 values (:fechaI,:fechaF,:p,:g,:idPC)";
-        $stm = DB::conn()->prepare($sql);
+        $conn = DB::conn();
+        $stm = $conn->prepare($sql);
         $stm->bindValue(":fechaI", $fechaInicio);
         $stm->bindValue(":fechaF", $fechaFin);
         $stm->bindValue(":p", $precio);
         $stm->bindValue(":g", $general);
         $stm->bindValue(":idPC", $idPoliticaCancelacion);
         $stm->execute();
-        $p = DB::conn()->lastInsertId('tarifa');
-        die(var_dump($p));
+        $p = $conn->lastInsertId();
+        return parent::getById($p);
     }
 
     public static function getByIdVivienda($id)

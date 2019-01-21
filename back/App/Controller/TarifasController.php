@@ -39,7 +39,7 @@ class TarifasController extends Controller
         ]);
         ViviendaHasTarifaDAO::insert([
             "idVivienda" => $_POST['idVivienda'],
-            "idTarifa" => $idT
+            "idTarifa" => $idT->getId()
         ]);
         Router::redirect('houses/' . $_POST['idVivienda']);
 

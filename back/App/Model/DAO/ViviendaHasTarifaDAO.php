@@ -16,8 +16,7 @@ class ViviendaHasTarifaDAO extends DAO
     {
         $idVivienda = $parameters["idVivienda"];
         $idTarifa = $parameters["idTarifa"];
-        die(var_dump($idVivienda, $idTarifa));
-        $sql = "insert into travel.vivienda_has_tarifa (idVivienda, idTarifa)
+        $sql = "insert into vivienda_has_tarifa (idVivienda, idTarifa)
                 values (:idV,:idT)";
         $stm = DB::conn()->prepare($sql);
         $stm->bindValue(":idV", $idVivienda);
