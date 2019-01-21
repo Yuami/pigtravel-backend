@@ -15,7 +15,7 @@ class SendMessagesController extends Controller {
         $id= Session::get('userID');
         $mensajes = MensajesDAO::getBy("idSender",$id);
         $viviendas= ViviendaDAO::getBy('idVendedor',$id);
-        require_once VIEW . 'messagesSent.php';
+        include_once VIEW . 'messagesSent.php';
     }
     public function create() {
         // TODO: Implement create() method.
