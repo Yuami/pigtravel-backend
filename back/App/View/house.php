@@ -10,7 +10,6 @@
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="/css/leaflet.css">
     <link href="/css/select2.min.css" rel="stylesheet"/>
-
     <script src="/js/popper.min.js"></script>
     <script src="/js/leaflet.js"></script>
     <script src="/js/selects/select2.min.js"></script>
@@ -24,7 +23,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section2">Rates</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link"
+                                                           href="/houses/<?= $houses->getId() ?>/tarifas">Rates</a>
+        </li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section3">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
     </ul>
@@ -160,52 +161,45 @@ if (Session::isSet("updateCompleted")) {
 
         </form>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <?php foreach ($tarifas as $tarifa) { ?>
-                <div class="card">
-                    <div class="card-title">
-                        <h4>Tarifa <?php echo $tarifa->getId() ?></h4>
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row justify-content-center">
+            <?php if (!empty($tarifas)) {
+                foreach ($tarifas as $tarifa) { ?>
+                    <div class="card text-center mr-1">
+                        <div class="card-body">
+                            <h4 class="card-title">Tarifa</h4>
+                            <p class="card-text"><?php echo $tarifa->getPrecio() ?></p>
+                            <div id="calendario" style="width: 100px">
+                                <div id="calendars">
+                                    <div id="mainCalendar" data-f_inicio="2019-11-06 00:00:00"
+                                         data-f_fin="2019-12-06 00:00:00"></div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" class="fc-prev-button btn  ml-auto" id="prevMonth">
+                                        <span class="fa fa-chevron-left"></span>
+                                    </button>
+                                    <button type="button" class="fc-prev-button btn  ml-auto" id="nextMonth">
+                                        <span class="fa fa-chevron-right"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!--                            <p class="card-text">-->
+                            <?php //echo $tarifa->getFechaInicio() ?><!--</p>-->
+                            <!--                            <p class="card-text">-->
+                            <?php //echo $tarifa->getFechaFin() ?><!--</p>-->
+                            <?php if ($tarifa->getGeneral() == 1) { ?>
+                                <input type="checkbox" name="general" id="general" checked disabled>
+                            <?php } else { ?>
+                                <input type="checkbox" name="general" id="general" disabled>
+                            <?php } ?>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p><?php echo $tarifa->getPrecio() ?></p>
-                        <p><?php echo $tarifa->getPrecio() ?></p>
-                        <p><?php echo $tarifa->getPrecio() ?></p>
-                    </div>
-                </div>
-            <?php } ?>
+                <?php }
+            } ?>
         </div>
     </div>
 </section>
-
-
-<script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "inline";
-    };
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
+<script src="/js/calendar.js"></script>
 <script src="/js/custom/house.js"></script>
 <script src="/js/custom/loadLocalidades.js"></script>
 <script>
@@ -216,5 +210,6 @@ if (Session::isSet("updateCompleted")) {
         $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
     });
 </script>
+<?php include_once CALENDAR ?>
 <?php include_once("footer.php") ?>
 <script src="/js/selects/selectTarifa-Rebaja.js"

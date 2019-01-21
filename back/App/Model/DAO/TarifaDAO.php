@@ -15,23 +15,42 @@ class TarifaDAO extends DAO
         $general = $parameters["general"];
         $idPoliticaCancelacion = $parameters["idPoliticaCancelacion"];
 
-
         $sql = "insert into tarifa (fechaInicio, fechaFin, precio, general, idPoliticaCancelacion)
                 values (:fechaI,:fechaF,:p,:g,:idPC)";
-        $stm = DB::conn()->prepare($sql);
+        $conn = DB::conn();
+        $stm = $conn->prepare($sql);
         $stm->bindValue(":fechaI", $fechaInicio);
         $stm->bindValue(":fechaF", $fechaFin);
         $stm->bindValue(":p", $precio);
         $stm->bindValue(":g", $general);
         $stm->bindValue(":idPC", $idPoliticaCancelacion);
         $stm->execute();
+        $p = $conn->lastInsertId();
+        return parent::getById($p);
     }
 
     public static function getByIdVivienda($id)
     {
-        $arrVHT = ViviendaHasTarifaDAO::getByIdVivienda($id);
-        $ex = TarifaDAO::getByIdTarifa($arrVHT[0]->getIdTarifa());
-        return $ex;
+        $array = self::ifExistTarifa($arrVHT = ViviendaHasTarifaDAO::getByIdVivienda($id));
+        if (empty($array)) {
+            return $array;
+        } else {
+            foreach ($array as $VHT) {
+                $tarifa = TarifaDAO::getByIdTarifa($VHT->getIdTarifa());
+                $tarifas[] = $tarifa[0];
+            }
+            return $tarifas;
+        }
+    }
+
+    public static function ifExistTarifa($tarifas)
+    {
+        $vacio = [];
+        if ($tarifas != null) {
+            return $tarifas;
+        } else {
+            return $vacio;
+        }
     }
 
     public static function getByIdTarifa($id)
