@@ -31,7 +31,7 @@
 <section class="container-fluid" id="mainHouseSection">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
-            <h1>House</h1>
+            <h1>Tarifas</h1>
             <ol class="bg-transparent pt-0 breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/houses">House Management</a></li>
@@ -69,14 +69,13 @@
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="form-check" style="margin-left: 28%;">
-                            <input type="checkbox" name="general" id="general" class="form-check-input">
-                            <label for="general" class="form-check-label">General</label>
+                        <div class="custom-control custom-checkbox" style="margin-left: 28%">
+                            <input type="checkbox" class="custom-control-input" name="general" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">General</label>
                         </div>
                         <div class="btn-group-toggle" style="margin-left: 15%">
                             <button type="button" id="btnCT" class="btn btn-danger">Cancelar</button>
-                            <button type="submit" id="btnAT" class="btn btn-success">Confirmar
-                            </button>
+                            <button type="submit" id="btnAT" class="btn btn-success">Confirmar</button>
                         </div>
                     </form>
                 </div>
