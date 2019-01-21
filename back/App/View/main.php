@@ -39,18 +39,10 @@
             padding: 50px;
             display: table-cell;
         }
-
-        .legend{
-            font-size: 10px;
-        }
         h3.est {
             text-align: center;
         }
 
-        .nopadding {
-            padding-left: 0px;
-            padding-right: 0px;
-        }
         .axis path,
         .axis line {
             fill: none;
@@ -62,13 +54,32 @@
         .x.axis path {
             display: none;
         }
+        #chartContainer{
+            height: 300px;
+        }
 
         @media only screen and (max-width: 600px) {
             #dashboard {
                 margin: 10px;
             }
             #content {
-                padding: 10px;
+                padding: 20px;
+
+            }
+            .index{
+                font-size: 15px;
+            }
+            h6.est{
+                font-size: 25px;
+            }
+            .chart{
+
+                visibility: hidden;
+                clear: both;
+                float: left;
+                margin: 10px auto 5px 20px;
+                width: 28%;
+                display: none;
 
             }
         }
@@ -82,8 +93,8 @@
     <div id="dashboard">
         <div id="content">
             <h1>Hola <?php echo $persona->getNombre(); ?></h1>
-            <div class="row">
-                <div class="col-sm-12 col-lg-3 nopadding">
+            <div class="row index">
+                <div class="col-sm-12 col-lg-4">
                     <h5><strong>Proxima reserva</strong></h5>
                     <h6 class="est">
                         <?php
@@ -134,26 +145,26 @@
                         <?php } ?>
                     </table>
                 </div>
-                <div class="col-lg-5 col-12 ">
+                <div class="col-lg-4 col-12 chart">
                     <h5><strong>Beneficios</strong></h5>
                         <?php
                         $dataPoints = array();
                         $meses=array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
 
                         foreach($benMes as $row){
-                              array_push($dataPoints, array("x"=> $row->mes-1,"y"=> $row->beneficioMes,"nombre"=>$row->nombre));
+                              array_push($dataPoints, array("x"=> $row->mes-1,"y"=> $row->beneficioMes,"label"=>$row->nombre));
                         }
                         for($x=0;$x<=11;$x++){
                             array_push($dataPoints, array("x"=> $x,"y"=> 0,"label"=>$meses[$x]));
                         }
                         ?>
-                    <div id="chartContainer" style="height: 200px; margin: 50px;"></div>
+                    <div id="chartContainer"></div>
                 </div>
-                <div class="col-lg-4 col-12 nopadding">
+                <div class="col-lg-4 col-12">
                     <h5><strong>Calendario</strong></h5>
                     <div id="calendario">
                         <div id="calendars">
-                            <div id="mainCalendar" data-f_inicio="2019-11-06 00:00:00"
+                            <div id="calendar" data-f_inicio="2019-11-06 00:00:00"
                                  data-f_fin="2019-12-06 00:00:00"></div>
                         </div>
                         <div class="text-center">
@@ -171,7 +182,8 @@
 
         </div>
     </div>
-<svg width="600" height="200"></svg>
+<?php include_once("footer.php") ?>
+
 <script src="//d3js.org/d3.v4.min.js"></script>
 <div id='stacked-bar'></div>
 <?php include_once CALENDAR ?>
@@ -180,6 +192,34 @@
 <script src="/js/estadoReserva.js"></script>
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript">
+
+        $('#calendar').fullCalendar({
+            defaultDate: moment(),
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            defaultView: 'month',
+
+            events: [
+            <?php foreach ($reservas as $reserva){
+                ?>
+                {
+                title:"My repeating event",
+                start: '<?php echo $reserva->getCheckIn();?>',
+                end: '<?php echo $reserva->getCheckOut();?>'
+            },<?php } ?>
+            ],
+        });
+
+
+
+
+
+
+
+
 
     window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -203,7 +243,6 @@
     };
 
 
-
     var margin = {top: 20, right: 150, bottom: 100, left: 25},
         width = 540 - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom;
@@ -216,7 +255,7 @@
 
     d3.csv("/csv/data.csv", function (data) {
 
-        var headers = ["Casa playa", "La casa blanca","Villa Antonia"];
+        var headers = ["Casa playa", "La casa blanca", "Villa Antonia"];
 
         var layers = d3.layout.stack()(headers.map(function (priceRange) {
             return data.map(function (d) {
@@ -246,7 +285,7 @@
 
         var color = d3.scale.ordinal()
             .domain(headers)
-            .range(["#98ABC5", "#8a89a6","#878787"]);
+            .range(["#98ABC5", "#8a89a6", "#878787"]);
 
         var xAxis = d3.svg.axis()
             .scale(xScale)
@@ -334,27 +373,24 @@
             });
 
 
+        y.domain([0, yStackMax]);
 
-
-            y.domain([0, yStackMax]);
-
-            rect.transition()
-                .duration(500)
-                .delay(function (d, i) {
-                    return i * 10;
-                })
-                .attr("y", function (d) {
-                    return y(d.y0 + d.y);
-                })
-                .attr("height", function (d) {
-                    return y(d.y0) - y(d.y0 + d.y);
-                })
-                .transition()
-                .attr("x", function (d) {
-                    return xScale(d.x);
-                })
-                .attr("width", xScale.rangeBand());
-
+        rect.transition()
+            .duration(500)
+            .delay(function (d, i) {
+                return i * 10;
+            })
+            .attr("y", function (d) {
+                return y(d.y0 + d.y);
+            })
+            .attr("height", function (d) {
+                return y(d.y0) - y(d.y0 + d.y);
+            })
+            .transition()
+            .attr("x", function (d) {
+                return xScale(d.x);
+            })
+            .attr("width", xScale.rangeBand());
 
 
     });

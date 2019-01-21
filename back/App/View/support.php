@@ -12,6 +12,21 @@ if(isset($_POST["submit"])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
     <title>Soporte</title>
+    <style>
+
+        .inputSoporte{
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .inputSoporte {
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +36,7 @@ if(isset($_POST["submit"])) {
         <div class="col-md-10 offset-md-1">
             <h1>Soporte</h1>
             <ol class="bg-transparent pt-0 breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Soporte</li>
             </ol>
         </div>
@@ -31,21 +46,12 @@ if(isset($_POST["submit"])) {
     <form method="POST" action="/support">
             <label for="comment">¿En que podemos ayudarte? </label>
             <textarea rows="5" class="form-control" name="comment"></textarea><br>
-            <input type="submit" value="Send">
-            <input type="reset" value="Reset">
+            <input type="submit" value="Enviar" class="btn btn-success float-right">
+            <input type="reset" value="Cancelar" class="btn float-right">
     </form>
     </div>
 </div>
 <?php include_once("footer.php") ?>
-<style>
-
-    .inputSoporte{
-        padding-left: 150px;
-        padding-right: 150px;
-    }
-
-
-</style>
 </body>
 
 </html>
