@@ -2,6 +2,7 @@
 namespace Model\Items;
 
 use Config\Photos\PerfilPhoto;
+use Model\DAO\VendedorDAO;
 
 class Persona {
     private $nombre;
@@ -193,6 +194,13 @@ class Persona {
     public function image()
     {
         return PerfilPhoto::find($this->id)->mainPath();
+    }
+
+    public function setVendedor()
+    {
+        return VendedorDAO::insert([
+            "idPersona" => $this->id
+            ]);
     }
 
 }

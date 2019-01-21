@@ -65,7 +65,7 @@ abstract class DAO {
         $statement->execute();
     }
 
-    public static function insert(array $parameters) {
+    public static function insert(array $parameters)  {
         $table = static::$table;
         $keys = array_keys($parameters);
         $columns = implode(', ', $keys);
@@ -77,8 +77,10 @@ abstract class DAO {
         try {
             $statement = DB::conn()->prepare($sql);
             $statement->execute($parameters);
-            DB::conn()->lastInsertId();
-            return static::getById(1);
+            $id  = DB::conn()->lastInsertId();
+
+            dd($id);
+            return static::getById($id);
         } catch (\Exception $e) {
             return null;
         }

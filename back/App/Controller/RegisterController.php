@@ -13,28 +13,36 @@ use Model\DAO\PersonaDAO;
 use Model\Items\Persona;
 use Routing\Router;
 
-class RegisterController extends Controller {
-    public function edit($id) {
+class RegisterController extends Controller
+{
+    public function edit($id)
+    {
     }
 
-    public function create() {
+    public function create()
+    {
     }
 
-    public function destroy() {
+    public function destroy()
+    {
     }
 
-    public function index() {
+    public function index()
+    {
         include_once VIEW . "register.php";
     }
 
-    public function show($id) {
+    public function show($id)
+    {
 
     }
 
-    public function update($id) {
+    public function update($id)
+    {
     }
 
-    public function store() {
+    public function store()
+    {
         if (isset($_POST["nom"]) &&
             isset($_POST["apellido1"]) &&
             isset($_POST["dni"]) &&
@@ -58,9 +66,12 @@ class RegisterController extends Controller {
             ];
 
             PersonaDAO::checkExits($dni);
+
             $p = PersonaDAO::insert($params);
-                PersonaDAO::setVendedor($p->getId());
-                LoginController::login($correo, $_POST["passw"]);
+            $p->setVendedor();
+
+            LoginController::login($correo, $_POST["passw"]);
+
             Router::redirectToDomain();
         } else {
             Router::redirect('/register');
