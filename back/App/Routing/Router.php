@@ -47,7 +47,7 @@ class Router
 
     public static function resource($name, $controller)
     {
-        $url = $name;
+        $url = strtolower($name);
         self::get($url, $controller . '@index');
         self::get($url . '/create', $controller . '@create');
         self::get($url . '/([\d\w]+)', $controller . '@show');

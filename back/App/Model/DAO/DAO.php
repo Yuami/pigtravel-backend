@@ -75,11 +75,10 @@ abstract class DAO {
             $table, $columns, $values);
 
         try {
-            $statement = DB::conn()->prepare($sql);
+            $con = DB::conn();
+            $statement = $con->prepare($sql);
             $statement->execute($parameters);
-            $id  = DB::conn()->lastInsertId();
-
-            dd($id);
+            $id = $con->lastInsertId();
             return static::getById($id);
         } catch (\Exception $e) {
             return null;
