@@ -36,13 +36,12 @@ class SupportController extends Controller
 
         MensajesDAO::insert([
             "idReciever" => 4,
-            "idVivienda" => null,
+            "idVivienda" => 7,
             "mensaje" => $_POST['comment']]);
         MensajesDAO::insert([
             "idReciever" => 7,
-            "idVivienda" => null,
+            "idVivienda" => 7,
             "mensaje" => $_POST['comment']]);
-
         header("Location: " . DOMAIN . "/support");
 
 //        $to = 'admin@admin.com';
