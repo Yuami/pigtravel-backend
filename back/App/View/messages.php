@@ -64,9 +64,9 @@ if (isset($_POST['submit'])) {
                     </tr>
                 <?php }else{ ?>
                     <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-leido="<?php echo $mensaje->getLeido(); ?>"  data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>" data-id-viv="<?php echo $mensaje->getIdVivienda();?>" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getId() ?>" id="<?php echo $mensaje->getId();?>">
-                        <td> <strong><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></td>
-                        <td><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
-                        <td><strong><?php echo $mensaje->getFechaEnviado();?></strong></td>
+                        <td style="width:25%"> <strong><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></td>
+                        <td style="width:65%"><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
+                        <td style="width:10%"><strong><?php echo $mensaje->getFechaEnviado();?></strong></td>
                     </tr>
                 <?php } }?>
         </table>

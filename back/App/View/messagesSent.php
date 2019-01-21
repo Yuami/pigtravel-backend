@@ -1,10 +1,3 @@
-<?php
-use Config\Session;
-use Model\DAO\PersonaDAO;
-use Model\DAO\ViviendaDAO;
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

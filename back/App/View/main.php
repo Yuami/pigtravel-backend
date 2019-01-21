@@ -91,8 +91,8 @@
                             echo '<br>';
                         } else {
                             ?>
-                            <a href="/reservations/<?php echo $reservas[0]->getId(); ?>">
-                                <?php echo $reservas[0]->getFechaReservaFormat(); ?>
+                            <a href="/reservations/<?php echo $reservas[0]->getId() ?>">
+                                <?php echo $reservas[0]->getFechaReservaFormat() ?>
                             </a>
                             <?php
                         }
@@ -136,18 +136,18 @@
                 </div>
                 <div class="col-lg-5 col-12 ">
                     <h5><strong>Beneficios</strong></h5>
-                    <div id="grafic">
                         <?php
                         $dataPoints = array();
+                        $meses=array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
+
                         foreach($benMes as $row){
-                              array_push($dataPoints, array("y"=> $row->beneficioMes));
+                              array_push($dataPoints, array("x"=> $row->mes-1,"y"=> $row->beneficioMes,"nombre"=>$row->nombre));
+                        }
+                        for($x=0;$x<=11;$x++){
+                            array_push($dataPoints, array("x"=> $x,"y"=> 0,"label"=>$meses[$x]));
                         }
                         ?>
-                        <div id="chart-svg">
-
-                        </div>
-                    </div>
-                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                    <div id="chartContainer" style="height: 200px; margin: 50px;"></div>
                 </div>
                 <div class="col-lg-4 col-12 nopadding">
                     <h5><strong>Calendario</strong></h5>
@@ -171,29 +171,38 @@
 
         </div>
     </div>
+<svg width="600" height="200"></svg>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<div id='stacked-bar'></div>
 <?php include_once CALENDAR ?>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="/js/calendar.js"></script>
 <script src="/js/estadoReserva.js"></script>
-<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript">
-    window.onload = function () {
 
+    window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
+            backgroundColor: "#d8d2d8",
             animationEnabled: true,
             axisX:{
-                labelFormatter: function(e){
-                    return  "Ene";
-                }
+                interval: 1
             },
             data: [{
-                type: "column",
+                type: "stackedColumn",
+                showInLegend: true,
                 dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-            }]
+            }],
+            axisY:{
+                valueFormatString:"#0€",
+                gridColor: "#B6B1A8",
+                tickColor: "#B6B1A8"
+            }
         });
         chart.render();
-
     };
+
+
 
     var margin = {top: 20, right: 150, bottom: 100, left: 25},
         width = 540 - margin.left - margin.right,

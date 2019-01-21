@@ -42,6 +42,12 @@ class MensajesDAO extends DAO {
             return $res;
         return null;
     }
+    public static function getByidReserva($id) {
+        $res = parent::getBy("idReserva", $id);
+        if (isset($res))
+            return $res;
+        return null;
+    }
     public static function getByIdVivienda($idVivienda)
     {
         $res = parent::getBy("idVivienda", $idVivienda);
