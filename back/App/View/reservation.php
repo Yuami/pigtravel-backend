@@ -18,6 +18,13 @@ $cliente = $reserva->getCliente();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
     <title>Reserva</title>
+    <style>
+        #table1 {
+            border-collapse: separate;
+            border-spacing: 15px;
+            border: 0px;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,8 +34,27 @@ $cliente = $reserva->getCliente();
         <div class="row flex-xl-nowrap">
             <div class="col-12 col-md-3 col-xl-2"></div>
             <div class="col-12 col-md-3 col-xl-2 order-2">
-                <div class="mt-5"> AQUI IRAN LOS MENSAJES ESPERANDO A PEP TONI</div>
+                <div class="mt-5">
+                    <h2>Mensajes</h2>
+                    <p><strong>Últimos 2 mensajes</strong></p>
+                    <a href="/messages/<?= $reserva->getID(); ?>" style="text-decoration: none">
+                    <table id="table1" >
+                        <?php
+                        $counter = 0;
+                        foreach ($mensajes as $mensaje) {
+                            if ($counter >= 2)
+                                break; ?>
+                            <tr>
+                                <td><?php echo $mensaje->getMensaje(); ?></td>
+                            </tr>
+                            <?php
+                            $counter++;
+                        } ?>
+                    </table>
+                    </a>
+                </div>
             </div>
+
             <main class="col-12 col-md-9 col-xl-8 py-md-3" role="main">
                 <h2>Reserva #<?= $reserva->getId() ?>
                     <small><span id="estado-reserva"
@@ -67,7 +93,7 @@ $cliente = $reserva->getCliente();
 
                             <div class="mt-3">
                                 <h6>CLIENTE</h6>
-                                <a href="/messages/<?= $vivienda->getID(); ?>"
+                                <a href="/messages/<?= $reserva->getID(); ?>"
                                    class="btn btn-primary col-auto my-1">CHAT
                                     CON <?= strtoupper($cliente->getNombre()); ?></a>
                                 <div class="card card-show">

@@ -1,10 +1,3 @@
-<?php
-use Config\Session;
-use Model\DAO\PersonaDAO;
-use Model\DAO\ViviendaDAO;
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,11 +11,12 @@ use Model\DAO\ViviendaDAO;
 <?php include_once("header.php"); ?>
 <div class="container">
     <div class="row breadcrumb-row">
-        <div class="col-md-10">
-            <h1>Mensajes enviados</h1>
+        <div class="col-md-10 offset-md-1" >
+            <h1>Mensajes recibidos</h1>
             <ol class="bg-transparent pt-0 breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Mensajes enviados</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/messages">Mensajes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mensajes recibidos</li>
             </ol>
         </div>
     </div>

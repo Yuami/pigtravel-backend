@@ -3,10 +3,11 @@
 use Routing\Api;
 use Routing\Router;
 
+
+Router::resource('messagessent','SendMessagesController');
 Router::resource('houses','HouseController');
 Router::resource('reservations','ReservationController');
 Router::resource('messages','MessagesController');
-Router::resource('messagesSent','SendMessagesController');
 Router::resource('profile', 'ProfileController');
 Router::resource('settings', 'ProfileController');
 Router::resource('login', 'LoginController');

@@ -4,6 +4,7 @@ namespace Controller;
 
 use Config\Session;
 use Model\DAO\ReservaDAO;
+use Model\DAO\MensajesDAO;
 
 class ReservationController extends Controller
 {
@@ -11,12 +12,14 @@ class ReservationController extends Controller
     {
         $id = Session::get('userID');
         $reservas = ReservaDAO::getByVendedor($id);
+
         require_once VIEW . 'reservations.php';
     }
 
     public function show($id)
     {
         $reserva = ReservaDAO::getById($id);
+        $mensajes = MensajesDAO::getByidReserva($id);
         require_once VIEW . 'reservation.php';
     }
 

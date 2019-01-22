@@ -8,6 +8,9 @@ use Model\DAO\ViviendaDAO;
 class MessagesController extends Controller {
 
     public function show($id) {
+        $mensajes = MensajesDAO::getByidReserva($id);
+        $viviendas= ViviendaDAO::getBy('idVendedor',Session::get('userID'));
+        require_once VIEW . 'messages.php';
     }
 
     public function index() {

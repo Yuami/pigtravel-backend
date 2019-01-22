@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
         <div class="col-md-10 offset-md-1" >
             <h1>Mensajes recibidos</h1>
             <ol class="bg-transparent pt-0 breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Mensajes recibidos</li>
             </ol>
         </div>
@@ -52,21 +52,21 @@ if (isset($_POST['submit'])) {
             <input type="text" class="form-control border-0" id="myInput" onkeyup="myFunction()" placeholder="Busca.." title="Type in a name">
         </div>
     </div>
-    <div class="row">
+    <div class="table-responsive">
         <table id="cardsmensajes" class="table table-hover">
             <?php
             foreach($mensajes as $mensaje) {
                 if($mensaje->getLeido()==0){ ?>
                     <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-leido="<?php echo $mensaje->getLeido();?>" data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre() ?>" data-id-viv="<?php echo $mensaje->getIdVivienda();?>" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getId() ?>" id="<?php echo $mensaje->getId();?>">
-                        <td style="width:25%"> <?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></td>
+                        <td style="width:5%"> <?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></td>
                         <td style="width:65%"> <?php echo $mensaje->getMensaje(); ?></td>
                         <td style="width:10%"><?php echo $mensaje->getFechaEnviado();?></td>
                     </tr>
                 <?php }else{ ?>
                     <tr class="openBtn" data-target="#myModal" data-toggle="modal" data-leido="<?php echo $mensaje->getLeido(); ?>"  data-to="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>" data-id-viv="<?php echo $mensaje->getIdVivienda();?>" data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getId() ?>" id="<?php echo $mensaje->getId();?>">
-                        <td> <strong><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></td>
-                        <td><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
-                        <td><strong><?php echo $mensaje->getFechaEnviado();?></strong></td>
+                        <td style="width:25%"> <strong><?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?><br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></strong></td>
+                        <td style="width:65%"><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
+                        <td style="width:10%"><strong><?php echo $mensaje->getFechaEnviado();?></strong></td>
                     </tr>
                 <?php } }?>
         </table>
