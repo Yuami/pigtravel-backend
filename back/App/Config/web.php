@@ -4,7 +4,7 @@ use Routing\Api;
 use Routing\Router;
 
 
-Router::resource('messagesSent','SendMessagesController');
+Router::resource('messagessent','SendMessagesController');
 Router::resource('houses','HouseController');
 Router::resource('reservations','ReservationController');
 Router::resource('messages','MessagesController');

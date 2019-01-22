@@ -29,9 +29,6 @@
             padding-right: 10px;
         }
 
-        #mainCalendar {
-            font-size: 10px !important;
-        }
 
         #content {
             width: calc(100% - 240px);
@@ -47,9 +44,6 @@
         .axis line {
             fill: none;
             stroke: #000;
-        }
-        .bar {
-            fill: steelblue;
         }
         .x.axis path {
             display: none;
@@ -150,75 +144,64 @@
                         <?php
                         $dataPoints = array();
                         $meses=array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
-
                         foreach($benMes as $row){
-                              array_push($dataPoints, array("x"=> $row->mes-1,"y"=> $row->beneficioMes,"label"=>$row->nombre));
+                              array_push($dataPoints, array("x"=> $meses[$row->mes],"y"=> $row->beneficioMes,"label"=>$row->nombre));
                         }
                         for($x=0;$x<=11;$x++){
                             array_push($dataPoints, array("x"=> $x,"y"=> 0,"label"=>$meses[$x]));
                         }
+
                         ?>
                     <div id="chartContainer"></div>
                 </div>
                 <div class="col-lg-4 col-12">
                     <h5><strong>Calendario</strong></h5>
                     <div id="calendario">
-                        <div id="calendars">
-                            <div id="calendar" data-f_inicio="2019-11-06 00:00:00"
-                                 data-f_fin="2019-12-06 00:00:00"></div>
-                        </div>
-                        <div class="text-center">
-                            <button type="button" class="fc-prev-button btn  ml-auto" id="prevMonth">
-                                <span class="fa fa-chevron-left"></span>
-                            </button>
-                            <button type="button" class="fc-prev-button btn  ml-auto" id="nextMonth">
-                                <span class="fa fa-chevron-right"></span>
-                            </button>
-                        </div>
+                            <div id="calendar"></div>
                     </div>
                 </div>
 
             </div>
-
+            <svg id="canvas" height="500" width="960"></svg>
         </div>
     </div>
+<section class="chart-container">
+    <svg width="460" height="320"></svg>
+</section>
+
 <?php include_once("footer.php") ?>
 
 <script src="//d3js.org/d3.v4.min.js"></script>
-<div id='stacked-bar'></div>
 <?php include_once CALENDAR ?>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="/js/calendar.js"></script>
 <script src="/js/estadoReserva.js"></script>
-<script src="//d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript">
 
         $('#calendar').fullCalendar({
             defaultDate: moment(),
             header: {
-                left: 'prev,next today',
+                left: '',
                 center: 'title',
+                right: ''
+            },
+            footer: {
+                left: 'prev,next',
+                center: '',
                 right: 'month,agendaWeek,agendaDay'
             },
             defaultView: 'month',
-
             events: [
             <?php foreach ($reservas as $reserva){
                 ?>
                 {
-                title:"My repeating event",
-                start: '<?php echo $reserva->getCheckIn();?>',
-                end: '<?php echo $reserva->getCheckOut();?>'
+                title:"<?php echo $reserva->nombre?>",
+                start: '<?php echo $reserva->getCheckIn()?>',
+                end: '<?php echo $reserva->getCheckOut()?>',
+                url: '/reservations/<?php echo $reserva->getId()?>'
             },<?php } ?>
             ],
         });
-
-
-
-
-
-
-
 
 
     window.onload = function () {
@@ -242,158 +225,254 @@
         chart.render();
     };
 
+        //
+        // var margin = {top: 20, right: 150, bottom: 100, left: 25},
+        //     width = 540 - margin.left - margin.right,
+        //     height = 350 - margin.top - margin.bottom;
+        //
+        // var svg = d3.select("#chart-svg").append("svg")
+        //     .attr("width", width + margin.left + margin.right)
+        //     .attr("height", height + margin.top + margin.bottom)
+        //     .append("g")
+        //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        //
+        // d3.csv("/csv/data.csv", function (data) {
+        //
+        //     var headers = ["Casa playa", "La casa blanca", "Villa Antonia"];
+        //
+        //     var layers = d3.layout.stack()(headers.map(function (priceRange) {
+        //         return data.map(function (d) {
+        //             return {x: d.month, y: +d[priceRange]};
+        //         });
+        //     }));
+        //     var yGroupMax = d3.max(layers, function (layer) {
+        //         return d3.max(layer, function (d) {
+        //             return d.y;
+        //         });
+        //     });
+        //     var yStackMax = d3.max(layers, function (layer) {
+        //         return d3.max(layer, function (d) {
+        //             return d.y0 + d.y;
+        //         });
+        //     });
+        //
+        //     var xScale = d3.scale.ordinal()
+        //         .domain(layers[0].map(function (d) {
+        //             return d.x;
+        //         }))
+        //         .rangeRoundBands([25, width], .08);
+        //
+        //     var y = d3.scale.linear()
+        //         .domain([0, yStackMax])
+        //         .range([height, 0]);
+        //
+        //     var color = d3.scale.ordinal()
+        //         .domain(headers)
+        //         .range(["#98ABC5", "#8a89a6", "#878787"]);
+        //
+        //     var xAxis = d3.svg.axis()
+        //         .scale(xScale)
+        //         .tickSize(0)
+        //         .tickPadding(6)
+        //         .orient("bottom");
+        //
+        //     var yAxis = d3.svg.axis()
+        //         .scale(y)
+        //         .orient("left")
+        //         .tickFormat(d3.format(".2s,€"));
+        //
+        //     var layer = svg.selectAll(".layer")
+        //         .data(layers)
+        //         .enter().append("g")
+        //         .attr("class", "layer")
+        //         .style("fill", function (d, i) {
+        //             return color(i);
+        //         });
+        //
+        //     var rect = layer.selectAll("rect")
+        //         .data(function (d) {
+        //             return d;
+        //         })
+        //         .enter().append("rect")
+        //         .attr("x", function (d) {
+        //             return xScale(d.x);
+        //         })
+        //         .attr("y", height)
+        //         .attr("width", xScale.rangeBand())
+        //         .attr("height", 0);
+        //
+        //     rect.transition()
+        //         .delay(function (d, i) {
+        //             return i * 10;
+        //         })
+        //         .attr("y", function (d) {
+        //             return y(d.y0 + d.y);
+        //         })
+        //         .attr("height", function (d) {
+        //             return y(d.y0) - y(d.y0 + d.y);
+        //         });
+        //
+        //     svg.append("g")
+        //         .attr("class", "x axis")
+        //         .attr("transform", "translate(0," + height + ")")
+        //         .call(xAxis)
+        //         .selectAll("text").style("text-anchor", "end")
+        //         .attr("dx", "-.8em")
+        //         .attr("dy", ".15em")
+        //         .attr("transform", function (d) {
+        //             return "rotate(-45)"
+        //         });
+        //
+        //     svg.append("g")
+        //         .attr("class", "y axis")
+        //         .attr("transform", "translate(20,0)")
+        //         .call(yAxis)
+        //         .append("text")
+        //         .attr("transform", "rotate(-90)")
+        //         .attr({"x": -100, "y": -70})
+        //         .attr("dy", ".75em");
+        //
+        //     var legend = svg.selectAll(".legend")
+        //         .data(headers.slice().reverse())
+        //         .enter().append("g")
+        //         .attr("class", "legend")
+        //         .attr("transform", function (d, i) {
+        //             return "translate(0," + i * 10 + ")";
+        //         });
+        //
+        //     legend.append("rect")
+        //         .attr("x", width - 8)
+        //         .attr("width", 8)
+        //         .attr("height", 8)
+        //         .style("fill", color);
+        //
+        //     legend.append("text")
+        //         .attr("x", width - 12)
+        //         .attr("y", 3)
+        //         .attr("dy", ".35em")
+        //         .style("text-anchor", "end")
+        //         .text(function (d) {
+        //             return d;
+        //         });
+        //
+        //
+        //     y.domain([0, yStackMax]);
+        //
+        //     rect.transition()
+        //         .duration(500)
+        //         .delay(function (d, i) {
+        //             return i * 10;
+        //         })
+        //         .attr("y", function (d) {
+        //             return y(d.y0 + d.y);
+        //         })
+        //         .attr("height", function (d) {
+        //             return y(d.y0) - y(d.y0 + d.y);
+        //         })
+        //         .transition()
+        //         .attr("x", function (d) {
+        //             return xScale(d.x);
+        //         })
+        //         .attr("width", xScale.rangeBand());
+        //
+        //
+        // });
 
-    var margin = {top: 20, right: 150, bottom: 100, left: 25},
-        width = 540 - margin.left - margin.right,
-        height = 350 - margin.top - margin.bottom;
+        var margin = { top: 20, right: 20, left: 20, bottom: 40 }
+        var width = 960 - margin.left - margin.right
+        var height = 648 - margin.top - margin.bottom
 
-    var svg = d3.select("#chart-svg").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        //Tooltips
+        var tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .attr("opacity" , 0);
 
-    d3.csv("/csv/data.csv", function (data) {
+        //Define Canvas SVG
+        var svg = d3.select("#canvas")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + "," + margin.right + ")");
 
-        var headers = ["Casa playa", "La casa blanca", "Villa Antonia"];
+        var x = d3.scaleBand()
+            .rangeRound([0,width])
+            .paddingInner(0.2)
+            .align(.2);
 
-        var layers = d3.layout.stack()(headers.map(function (priceRange) {
-            return data.map(function (d) {
-                return {x: d.month, y: +d[priceRange]};
-            });
-        }));
-        var yGroupMax = d3.max(layers, function (layer) {
-            return d3.max(layer, function (d) {
-                return d.y;
-            });
-        });
-        var yStackMax = d3.max(layers, function (layer) {
-            return d3.max(layer, function (d) {
-                return d.y0 + d.y;
-            });
-        });
+        var y = d3.scaleLinear()
+            .rangeRound([height,0]);
 
-        var xScale = d3.scale.ordinal()
-            .domain(layers[0].map(function (d) {
-                return d.x;
-            }))
-            .rangeRoundBands([25, width], .08);
+        var colors = d3
+            .scaleOrdinal()
+            .range(["#F4E8C1","#A0C1B9","#70A0AF","#706993"])
+        ;
 
-        var y = d3.scale.linear()
-            .domain([0, yStackMax])
-            .range([height, 0]);
+        var data = <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>;
 
-        var color = d3.scale.ordinal()
-            .domain(headers)
-            .range(["#98ABC5", "#8a89a6", "#878787"]);
+        console.log("Data:", data);
+        var keys = ["y"];
+        var issues = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
 
-        var xAxis = d3.svg.axis()
-            .scale(xScale)
-            .tickSize(0)
-            .tickPadding(6)
-            .orient("bottom");
+        x.domain(issues);
+        y.domain([0,300]);
+        colors.domain(keys);
 
-        var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient("left")
-            .tickFormat(d3.format(".2s,€"));
-
-        var layer = svg.selectAll(".layer")
-            .data(layers)
+        var stacks = d3.stack()
+            .keys(keys);
+        var dataStacked = stacks(data);
+        console.log(dataStacked);
+        svg.selectAll("g")
+            .data(dataStacked)
             .enter().append("g")
-            .attr("class", "layer")
-            .style("fill", function (d, i) {
-                return color(i);
-            });
-
-        var rect = layer.selectAll("rect")
-            .data(function (d) {
-                return d;
-            })
+            .attr("class","group")
+            .attr("fill", function(d){ return colors(d.key);})
+            .selectAll("rect")
+            .data(function(d){ return d;})
             .enter().append("rect")
-            .attr("x", function (d) {
-                return xScale(d.x);
-            })
-            .attr("y", height)
-            .attr("width", xScale.rangeBand())
-            .attr("height", 0);
-
-        rect.transition()
-            .delay(function (d, i) {
-                return i * 10;
-            })
-            .attr("y", function (d) {
-                return y(d.y0 + d.y);
-            })
-            .attr("height", function (d) {
-                return y(d.y0) - y(d.y0 + d.y);
-            });
-
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis)
-            .selectAll("text").style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", function (d) {
-                return "rotate(-45)"
-            });
+            .attr("x", function(d){return x(d.data.x)})
+            .attr("y", function(d){ return y(d[1])})
+            .attr("height",function(d) {return y(d[0]) - y(d[1])})
+            .attr("width", x.bandwidth())
+            .on("mouseover",
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", 0.9))
+            .on("mousemove", function(d) {
+                tooltip
+                    .style("left" , (d3.event.pageX+10)+"px")
+                    .style("top" , (d3.event.pageY+25)+"px")
+                    .html(d.data.group + "this is a tooltip")
+            }   )
+            .on("mouseout", tooltip.transition()
+                .duration(200)
+                .style("opacity", 0));
 
         svg.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(20,0)")
-            .call(yAxis)
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr({"x": -100, "y": -70})
-            .attr("dy", ".75em");
+            .attr("class","axis")
+            .attr("transform","translate (0," + height +")")
+            .call(d3.axisBottom(x));
 
-        var legend = svg.selectAll(".legend")
-            .data(headers.slice().reverse())
+        var legend = svg.append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "end")
+            .selectAll("g")
+            .data(keys.slice().reverse())
             .enter().append("g")
-            .attr("class", "legend")
-            .attr("transform", function (d, i) {
-                return "translate(0," + i * 10 + ")";
-            });
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
         legend.append("rect")
-            .attr("x", width - 8)
-            .attr("width", 8)
-            .attr("height", 8)
-            .style("fill", color);
+            .attr("x", width - 19)
+            .attr("width", 19)
+            .attr("height", 19)
+            .attr("fill",
+                colors);
 
         legend.append("text")
-            .attr("x", width - 12)
-            .attr("y", 3)
-            .attr("dy", ".35em")
-            .style("text-anchor", "end")
-            .text(function (d) {
-                return d;
-            });
-
-
-        y.domain([0, yStackMax]);
-
-        rect.transition()
-            .duration(500)
-            .delay(function (d, i) {
-                return i * 10;
-            })
-            .attr("y", function (d) {
-                return y(d.y0 + d.y);
-            })
-            .attr("height", function (d) {
-                return y(d.y0) - y(d.y0 + d.y);
-            })
-            .transition()
-            .attr("x", function (d) {
-                return xScale(d.x);
-            })
-            .attr("width", xScale.rangeBand());
-
-
-    });
+            .attr("x", width - 24)
+            .attr("y", 9.5)
+            .attr("dy", "0.32em")
+            .text(function(d) { return d; });
 
 </script>
 </body>
