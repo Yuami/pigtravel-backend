@@ -41,6 +41,7 @@ class TarifasController extends Controller
             "idVivienda" => $_POST['idVivienda'],
             "idTarifa" => $idT->getId()
         ]);
+        die(var_dump($idT->getId(), $_POST['idVivienda']));
         Router::redirect('houses/' . $_POST['idVivienda']);
 
     }
@@ -48,6 +49,8 @@ class TarifasController extends Controller
     public function show($id)
     {
         $tarifa = TarifaDAO::getById($id);
+        $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
+        $house = ViviendaDAO::getById($VHT->getIdVivienda());
         include_once VIEW . 'tarifas.php';
     }
 

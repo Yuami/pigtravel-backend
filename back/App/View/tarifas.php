@@ -21,7 +21,6 @@
 
 </head>
 <body class="bg-color-background">
-
 <?php include_once("header.php"); ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
@@ -43,70 +42,72 @@
                 <li class="breadcrumb-item active" aria-current="page">Tarifas</li>
             </ol>
         </div>
-        <div class="container-fluid" id="tarifas">
-            <form class="row m-5">
-               <div class="form-group">
-                   <input type="text" value="<?php ?>">
-               </div>
-                        <?php if ($tarifa->getGeneral() == 1) { ?>
-                            <input type="checkbox" name="general" id="general" checked disabled>
-                        <?php } else { ?>
-                            <input type="checkbox" name="general" id="general" disabled>
-                        <?php } ?>
-                    </div>
+                <div class="container-fluid" id="tarifas">
+                    <form class="row m-5">
+
+                    </form>
                 </div>
-            </form>
-        </div>
-        <button class="btn" id="CrearT">Crear</button>
-        <!--        <div class="container ">-->
-        <!--            <div class="row justify-content-center">-->
-        <!--                <div class="card">-->
-        <!--                    <form class="card-body bg-main" action="/houses/-->
-        <? //= $house->getId() ?><!--/tarifas"-->
-        <!--                          method="post">-->
-        <!--                        <div class="form-group">-->
-        <!--                            <input type="number" class="form-control" name="idVivienda" id="idVivienda" hidden-->
-        <!--                                   value="--><? //= $house->getId() ?><!--">-->
-        <!--                        </div>-->
-        <!--                        <div class="form-group">-->
-        <!--                            <label for="fechaI" class="col-form-label">Fecha Inicio</label>-->
-        <!--                            <input type="date" class="form-control" name="fechaI" id="fechaI">-->
-        <!--                        </div>-->
-        <!--                        <div class="form-group">-->
-        <!--                            <label for="fechaF" class="col-form-label">Fecha Fin</label>-->
-        <!--                            <input type="date" name="fechaF" id="fechaF" class="form-control">-->
-        <!--                        </div>-->
-        <!--                        <div class="form-group">-->
-        <!--                            <label for="precio" class="col-form-label">Precio</label>-->
-        <!--                            <input type="number" name="precio" id="precio" class="form-control">-->
-        <!--                        </div>-->
-        <!--                        <div class="form-group">-->
-        <!--                            <select class="custom-select" name="idPC" id="idPC">-->
-        <!--                                <option value="0">-- POLITICA CANCELACION --</option>-->
-        <!--                                --><?php //foreach ($tarifas as $tarifa) { ?>
-        <!--                                    <option value="-->
-        <?php //echo $tarifa->getIdPoliticaCancelacion() ?><!--">-->
-        <!--                                        --><?php //echo $tarifa->getIdPoliticaCancelacion() ?>
-        <!--                                    </option>-->
-        <!--                                --><?php //} ?>
-        <!--                            </select>-->
-        <!--                        </div>-->
-        <!--                        <div class="custom-control custom-checkbox" style="margin-left: 28%">-->
-        <!--                            <input type="checkbox" class="custom-control-input" name="general" id="customCheck1">-->
-        <!--                            <label class="custom-control-label" for="customCheck1">General</label>-->
-        <!--                        </div>-->
-        <!--                        <div class="btn-group-toggle" style="margin-left: 15%">-->
-        <!--                            <button type="button" id="btnCT" class="btn btn-danger">Cancelar</button>-->
-        <!--                            <button type="submit" id="btnAT" class="btn btn-success">Confirmar</button>-->
-        <!--                        </div>-->
-        <!--                    </form>-->
-        <!--                </div>-->
-        <!--            </div>-->
     </div>
 </section>
-<script>
-    $(function () {
-
-    })
-</script>
+<!---->
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Crear</button>-->
+<!---->
+<!--<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="ModalLabel">Tarifa</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form class="card-body" action="/houses/--><?//= $house->getId() ?><!--/tarifas" method="post">-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="number" class="form-control" name="idVivienda" id="idVivienda" hidden-->
+<!--                               value="--><?//= $house->getId() ?><!--">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="fechaI" class="col-form-label">Fecha Inicio</label>-->
+<!--                        <input type="date" class="form-control" name="fechaI" id="fechaI">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="fechaF" class="col-form-label">Fecha Fin</label>-->
+<!--                        <input type="date" name="fechaF" id="fechaF" class="form-control">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="precio" class="col-form-label">Precio</label>-->
+<!--                        <input type="number" name="precio" id="precio" class="form-control">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <select class="custom-select" name="idPC" id="idPC">-->
+<!--                            <option value="0">-- POLITICA CANCELACION --</option>-->
+<!--                            --><?php //foreach ($tarifas as $tarifa) { ?>
+<!--                                <option value="--><?php //echo $tarifa->getIdPoliticaCancelacion() ?><!--">-->
+<!--                                    --><?php //echo $tarifa->getIdPoliticaCancelacion() ?>
+<!--                                </option>-->
+<!--                            --><?php //} ?>
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    <div class="custom-control custom-checkbox" style="margin-left: 28%">-->
+<!--                        <input type="checkbox" class="custom-control-input" name="general" id="customCheck1">-->
+<!--                        <label class="custom-control-label" for="customCheck1">General</label>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div class="modal-footer row justify-content-center">-->
+<!--                <button type="button" id="btnCT" class="btn btn-danger col-4" data-dismiss="modal">Cancelar</button>-->
+<!--                <button type="submit" id="btnAT" class="btn btn-success col-4">Confirmar</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    $('#Modal').on('show.bs.modal', function (event) {-->
+<!--        var button = $(event.relatedTarget);-->
+<!--        var recipient = button.data('whatever');-->
+<!--        var modal = $(this);-->
+<!--        modal.find('.modal-body input').val(recipient)-->
+<!--    })-->
+<!--</script>-->
 <?php include_once("footer.php") ?>
