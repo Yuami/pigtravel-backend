@@ -29,7 +29,7 @@ class ReservaDAO extends DAO
     }
     public static function getByVendedorMax($id)
     {
-        $statement = DB::conn()->prepare('SELECT r.* from reserva r
+        $statement = DB::conn()->prepare('SELECT r.*,v.nombre from reserva r
        inner join reserva_has_estado rhe on r.id = rhe.idReserva
        inner join vivienda v on r.idVivienda = v.id
        inner join estado_has_idioma ehi on rhe.idEstado = ehi.idEstado
