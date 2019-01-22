@@ -7,6 +7,11 @@
     <?php use Config\Session;
     use Model\DAO\CitiesDAO;
 
+    function noHours($date)
+    {
+        return explode(" ", $date)[0];
+    }
+
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="/css/leaflet.css">
     <link href="/css/select2.min.css" rel="stylesheet"/>
@@ -22,7 +27,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#mainHouseSection">House</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link"
                                                            href="/houses/<?= $houses->getId() ?>/tarifas">Rates</a>
         </li>
@@ -53,10 +58,9 @@ if (Session::isSet("updateCompleted")) {
             </ol>
         </div>
     </div>
-    <div class="container">
+    <div class="container" id="house">
         <form method="POST" action="/houses/<?= $houses->getId(); ?>">
             <input type="hidden" name="_method" value="PUT">
-
             <div class="row">
                 <div class="col-md-6 ">
                     <h2 class="text-center">Information</h2>
@@ -161,54 +165,52 @@ if (Session::isSet("updateCompleted")) {
 
         </form>
     </div>
-    <div class="container-fluid mt-5 mb-5">
-        <div class="row justify-content-center">
+    <div class="container my-lg-5 my-sm-0" id="tarifas">
+        <div class="card-deck">
             <?php if (!empty($tarifas)) {
-                foreach ($tarifas as $tarifa) { ?>
-                    <div class="card text-center mr-1">
-                        <div class="card-body">
-                            <h4 class="card-title">Tarifa</h4>
-                            <p class="card-text"><?php echo $tarifa->getPrecio() ?></p>
-                            <div id="calendario" style="width: 100px">
-                                <div id="calendars">
-                                    <div id="mainCalendar" data-f_inicio="2019-11-06 00:00:00"
-                                         data-f_fin="2019-12-06 00:00:00"></div>
-                                </div>
-                                <div class="text-center">
-                                    <button type="button" class="fc-prev-button btn  ml-auto" id="prevMonth">
-                                        <span class="fa fa-chevron-left"></span>
-                                    </button>
-                                    <button type="button" class="fc-prev-button btn  ml-auto" id="nextMonth">
-                                        <span class="fa fa-chevron-right"></span>
-                                    </button>
+            foreach ($tarifas
+
+            as $tarifa) { ?>
+            <?php if ($tarifa->getGeneral() == 0) { ?>
+            <a href="/tarifas/<?php echo $tarifa->getId() ?>" style="text-decoration: none; color:inherit">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4 class="card-title">Tarifa</h4>
+                        <?php } else { ?>
+                        <a href="/tarifas/<?php echo $tarifa->getId() ?>" style="text-decoration: none;color:inherit">
+                            <div class="card text-center bg-warning">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <storng>Tarifa General</storng>
+                                    </h4>
+                                    <?php } ?>
+                                    <p class="card-text">
+                                        <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?></p>
+                                    <p class="card-text">
+                                        <span class="fas fa-arrow-alt-circle-right"></span>
+                                        <?php echo noHours($tarifa->getFechaInicio()) ?></p>
+                                    <p class="card-text">
+                                        <span class="fas fa-arrow-alt-circle-left"></span>
+                                        <?php echo noHours($tarifa->getFechaFin()) ?></p>
                                 </div>
                             </div>
-                            <!--                            <p class="card-text">-->
-                            <?php //echo $tarifa->getFechaInicio() ?><!--</p>-->
-                            <!--                            <p class="card-text">-->
-                            <?php //echo $tarifa->getFechaFin() ?><!--</p>-->
-                            <?php if ($tarifa->getGeneral() == 1) { ?>
-                                <input type="checkbox" name="general" id="general" checked disabled>
-                            <?php } else { ?>
-                                <input type="checkbox" name="general" id="general" disabled>
-                            <?php } ?>
-                        </div>
+                        </a>
+                        <?php }
+                        } ?>
                     </div>
-                <?php }
-            } ?>
-        </div>
-    </div>
+                </div>
+            </a>
 </section>
 <script src="/js/calendar.js"></script>
 <script src="/js/custom/house.js"></script>
 <script src="/js/custom/loadLocalidades.js"></script>
 <script>
-    $(function () {
-        mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
-        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
-        loadCiudades(idRegion);
-        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
-    });
+    //$(function () {
+    //    mapLoad(<?php //echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>//);
+    //    let idRegion = <?//= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>//;
+    //    loadCiudades(idRegion);
+    //    $('#city').select2.val(<?//= $houses->getIdCiudad() ?>//).trigger('change.select2');
+    //});
 </script>
 <?php include_once CALENDAR ?>
 <?php include_once("footer.php") ?>
