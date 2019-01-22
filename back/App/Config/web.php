@@ -12,7 +12,7 @@ Router::resource('settings', 'ProfileController');
 Router::resource('login', 'LoginController');
 Router::resource('support','SupportController');
 
-Router::get('houses/{id}/tarifas', 'TarifasController@show');
+Router::get('tarifas/{id}', 'TarifasController@show');
 Router::post('houses/{id}/tarifas', 'TarifasController@store');
 Router::get('','IndexController@index');
 Router::get('logout', 'LoginController@destroy');
