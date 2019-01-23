@@ -12,10 +12,13 @@
         * {
             box-sizing: border-box;
         }
+        body{
+
+            background: #ECECEC;
+        }
 
         #dashboard {
             display: table;
-            background: #d8d2d8;
             margin: 60px;
             border-radius: 4px;
             overflow: hidden;
@@ -33,8 +36,10 @@
         #content {
             width: calc(100% - 240px);
             height: 100%;
-            padding: 50px;
+            padding-right: 50px;
+            padding-left: 50px;
             display: table-cell;
+
         }
         h3.est {
             text-align: center;
@@ -50,6 +55,14 @@
         }
         #chartContainer{
             height: 300px;
+        }
+        .card-header{
+            background-color: #5f5f5f;
+            color: #BCBCBC;
+
+        }
+        .carddd{
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         }
 
         @media only screen and (max-width: 600px) {
@@ -76,6 +89,8 @@
                 display: none;
 
             }
+
+
         }
 
     </style>
@@ -86,85 +101,123 @@
 
     <div id="dashboard">
         <div id="content">
-            <h1>Hola <?php echo $persona->getNombre(); ?></h1>
             <div class="row index">
                 <div class="col-sm-12 col-lg-4">
-                    <h5><strong>Proxima reserva</strong></h5>
-                    <h6 class="est">
-                        <?php
-                        if (empty($reservas[0])) {
-                            echo '<br>';
-                        } else {
-                            ?>
-                            <a href="/reservations/<?php echo $reservas[0]->getId() ?>">
-                                <?php echo $reservas[0]->getFechaReservaFormat() ?>
-                            </a>
-                            <?php
-                        }
-                        ?>
-
-                    </h6>
-                    <h5><strong>Beneficios anuales</strong></h5>
-                    <h6 class="est"><?php
-                        $beneficios = 0;
-                        foreach ($reservas as $reserva) {
-                            if ($reserva->getFechaReservaYear() == '2019') {
-                                $beneficios += $reserva->getPrecio();
+                    <div class="card carddd mb-4">
+                        <div class="card-header">
+                            <h5>Proxima reserva</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="est">
+                                <?php
+                                if (empty($reservas[0])) {
+                                    echo '<br>';
+                                } else {
+                                    ?>
+                                    <a href="/reservations/<?php echo $reservas[0]->getId() ?>">
+                                        <?php echo $reservas[0]->getFechaReservaFormat() ?>
+                                    </a>
+                                    <?php
                                 }
-                            }
+                                ?>
 
-                        echo $beneficios ?>€</h6>
-                    <h5><strong>Mensajes pendientes</strong></h5>
-                    <h6 class="est">
-                        <a href="/messages">
-                        <?php
-                        $mensajesPendientes = 0;
-                        foreach ($mensajes as $mensaje) {
-                            if ($mensaje->getLeido() == 1) {
-                                $mensajesPendientes++;
-                            }
-                        }
-                        echo $mensajesPendientes ?>
-                        </a></h6>
-                    <h5><strong>Ultimas reservas</strong></h5>
-                    <table id="reservas">
-                        <?php foreach ($reservas as $reserva) { ?>
-                            <tr onClick="location.href='/reservations/<?php echo $reserva->getId()?>'">
-                                <td id="reservas"><?php echo $reserva->getVivienda()->getNombre() ?></td>
-                                <td id="reservas"><?php echo $reserva->getPrecio() ?>€</td>
-                                <td id="estado-reserva" class="badge badge-pill">
-                                    <?php echo $reserva->getNombreEstado(); ?>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </table>
+                            </h6>
+                        </div>
+
+                    </div>
+                    <div class="card carddd mb-4">
+                        <div class="card-header">
+                            <h5>Beneficios anuales</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="est"><?php
+                                $beneficios = 0;
+                                foreach ($reservas as $reserva) {
+                                    if ($reserva->getFechaReservaYear() == '2019') {
+                                        $beneficios += $reserva->getPrecio();
+                                    }
+                                }
+
+                                echo $beneficios ?>€</h6>
+                        </div>
+
+                    </div>
+                    <div class="card carddd card mb-4">
+                        <div class="card-header">
+                            <h5>Mensajes pendientes</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="est">
+                                <a href="/messages">
+                                    <?php
+                                    $mensajesPendientes = 0;
+                                    foreach ($mensajes as $mensaje) {
+                                        if ($mensaje->getLeido() == 1) {
+                                            $mensajesPendientes++;
+                                        }
+                                    }
+                                    echo $mensajesPendientes ?>
+                                </a></h6>
+                        </div>
+
+                    </div>
+                    <div class="card carddd card mb-4">
+                        <div class="card-header">
+                            <h5>Ultimas reservas</h5>
+                        </div>
+                        <div class="card-body">
+                            <table id="reservas">
+                                <?php foreach ($reservas as $reserva) { ?>
+                                    <tr onClick="location.href='/reservations/<?php echo $reserva->getId()?>'">
+                                        <td id="reservas"><?php echo $reserva->getVivienda()->getNombre() ?></td>
+                                        <td id="reservas"><?php echo $reserva->getPrecio() ?>€</td>
+                                        <td id="estado-reserva" class="badge badge-pill">
+                                            <?php echo $reserva->getNombreEstado(); ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-4 col-12 chart">
-                    <h5><strong>Beneficios</strong></h5>
-                        <?php
-                        $dataPoints = array();
-                        $meses=array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
-                        foreach($benMes as $row){
-                            array_push($dataPoints, array("x"=> $row->mes-1,"y"=> $row->beneficioMes,"label"=>$row->nombre));
-                        }
-                        for($x=0;$x<=11;$x++){
-                            array_push($dataPoints, array("x"=> $x,"y"=> 0,"label"=>$meses[$x]));
-                        }
-                        ?>
-                    <div id="chartContainer"></div>
+                    <div class="card carddd mb-4">
+                        <div class="card-header">
+                            <h5>Beneficios</h5>
+                        </div>
+                        <div class="card-body">
+                            <?php
+                            $dataPoints = array();
+                            $meses=array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
+                            foreach($benMes as $row){
+                                array_push($dataPoints, array("x"=> $row->mes-1,"y"=> $row->beneficioMes,"label"=>$row->nombre));
+                            }
+                            for($x=0;$x<=11;$x++){
+                                array_push($dataPoints, array("x"=> $x,"y"=> 0,"label"=>$meses[$x]));
+                            }
+                            ?>
+                            <div id="chartContainer"></div>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="col-lg-4 col-12">
-                    <h5><strong>Calendario</strong></h5>
-                    <div id="calendario">
-                            <div id="calendar"></div>
+                    <div class="card carddd mb-4">
+                        <div class="card-header">
+                            <h5>Calendario</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="calendario">
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-<div id="chart"></div>
-<svg width="960" height="500"></svg>
 <?php include_once("footer.php") ?>
 
 <script src="//d3js.org/d3.v4.min.js"></script>
@@ -202,7 +255,6 @@
 
     window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
-            backgroundColor: "#d8d2d8",
             animationEnabled: true,
             axisX:{
                 interval: 1
