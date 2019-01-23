@@ -16,7 +16,7 @@ class HouseController extends Controller
     {
         if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
             Session::set("wrongHouse", "true");
-            Router::redirectWithDomain("houses");
+            Router::redirect("houses");
             return false;
         }
         return true;
