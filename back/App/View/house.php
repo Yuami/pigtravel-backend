@@ -57,7 +57,7 @@ if (Session::isSet("updateCompleted")) {
         </div>
     </div>
     <div class="container" id="house">
-        <form method="POST" action="/houses/<?= $houses->getId(); ?>">
+        <form method="POST" action="/houses/<?= $houses->getId() ?>">
             <input type="hidden" name="_method" value="PUT">
             <div class="row">
                 <div class="col-md-6 ">
@@ -217,10 +217,9 @@ if (Session::isSet("updateCompleted")) {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="card-body" action="/houses/<?= $houses->getId() ?>" method="post">
+                            <form class="card-body" action="/houses/<?php echo $houses->getId() ?>" method="post">
                                 <div class="form-group">
-                                    <input type="number" class="form-control" name="idVivienda" id="idVivienda" hidden
-                                           value="<?= $houses->getId() ?>">
+                                    <input type="hidden" name="idVivienda" value="<?php echo $houses->getId() ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="fechaI" class="col-form-label">Fecha Inicio</label>
@@ -265,7 +264,7 @@ if (Session::isSet("updateCompleted")) {
 <script>
     $('#Modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
-        var recipient = button.data('whatever');
+        var recipient = button.data('');
         var modal = $(this);
         modal.find('.modal-body input').val(recipient)
     })

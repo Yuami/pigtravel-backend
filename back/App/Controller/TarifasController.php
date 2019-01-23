@@ -41,7 +41,6 @@ class TarifasController extends Controller
             "idVivienda" => $_POST['idVivienda'],
             "idTarifa" => $idT->getId()
         ]);
-        die(var_dump($idT->getId(), $_POST['idVivienda']));
         Router::redirect('houses/' . $_POST['idVivienda']);
 
     }
