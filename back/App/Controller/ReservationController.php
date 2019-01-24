@@ -3,6 +3,8 @@
 namespace Controller;
 
 use Config\Session;
+use Model\DAO\EstadoDAO;
+use Model\DAO\EstadoHasIdiomaDAO;
 use Model\DAO\ReservaDAO;
 use Model\DAO\MensajesDAO;
 
@@ -10,9 +12,9 @@ class ReservationController extends Controller
 {
     public function index()
     {
+        $estados = EstadoHasIdiomaDAO::getAll();
         $id = Session::get('userID');
         $reservas = ReservaDAO::getByVendedor($id);
-
         require_once VIEW . 'reservations.php';
     }
 
