@@ -30,6 +30,7 @@
 
         #reservas {
             padding-right: 10px;
+            width: 100%;
         }
 
 
@@ -103,28 +104,7 @@
         <div id="content">
             <div class="row index">
                 <div class="col-sm-12 col-lg-4">
-                    <div class="card carddd mb-4">
-                        <div class="card-header">
-                            <h5>Proxima reserva</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="est">
-                                <?php
-                                if (empty($reservas[0])) {
-                                    echo '<br>';
-                                } else {
-                                    ?>
-                                    <a href="/reservations/<?php echo $reservas[0]->getId() ?>">
-                                        <?php echo $reservas[0]->getFechaReservaFormat() ?>
-                                    </a>
-                                    <?php
-                                }
-                                ?>
 
-                            </h6>
-                        </div>
-
-                    </div>
                     <div class="card carddd mb-4">
                         <div class="card-header">
                             <h5>Beneficios anuales</h5>
@@ -133,12 +113,12 @@
                             <h6 class="est"><?php
                                 $beneficios = 0;
                                 foreach ($reservas as $reserva) {
-                                    if ($reserva->getFechaReservaYear() == '2019') {
+                                    if ($reserva->getFechaReservaYear() == 2019) {
                                         $beneficios += $reserva->getPrecio();
                                     }
                                 }
 
-                                echo $beneficios ?>€</h6>
+                                echo $beneficios; ?>€</h6>
                         </div>
 
                     </div>
@@ -156,8 +136,30 @@
                                             $mensajesPendientes++;
                                         }
                                     }
-                                    echo $mensajesPendientes ?>
+                                    echo $mensajesPendientes; ?>
                                 </a></h6>
+                        </div>
+
+                    </div>
+                    <div class="card carddd mb-4">
+                        <div class="card-header">
+                            <h5>Proxima reserva</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="est">
+                                <?php
+                                if (empty($reservas[0])) {
+                                    echo 'No tienes reservas';
+                                } else {
+                                    ?>
+                                    <a href="/reservations/<?php echo $reservas[0]->getId(); ?>">
+                                        <?php echo $reservas[0]->getFechaReservaFormat(); ?>
+                                    </a>
+                                    <?php
+                                }
+                                ?>
+
+                            </h6>
                         </div>
 
                     </div>
@@ -167,7 +169,12 @@
                         </div>
                         <div class="card-body">
                             <table id="reservas">
-                                <?php foreach ($reservas as $reserva) { ?>
+                                <?php
+                                if (empty($reservas)) {
+                                    echo 'No tienes reservas';
+                                } else {
+                                foreach ($reservas as $reserva) {
+                                    ?>
                                     <tr onClick="location.href='/reservations/<?php echo $reserva->getId()?>'">
                                         <td id="reservas"><?php echo $reserva->getVivienda()->getNombre() ?></td>
                                         <td id="reservas"><?php echo $reserva->getPrecio() ?>€</td>
@@ -175,10 +182,11 @@
                                             <?php echo $reserva->getNombreEstado(); ?>
                                         </td>
                                     </tr>
-                                <?php } ?>
+                                <?php }} ?>
                             </table>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-4 col-12 chart">
                     <div class="card carddd mb-4">
