@@ -8,17 +8,37 @@ class TipoViviendaHasIdioma
     private $nombre;
 
     /**
-     * TipoViviendaHasIdioma constructor.
-     * @param $idIdioma
-     * @param $idTipoVivienda
-     * @param $nombre
+     * @return mixed
      */
-    public function __construct($idIdioma, $idTipoVivienda, $nombre)
+    public function getIdIdioma()
+    {
+        return $this->idIdioma;
+    }
+
+    /**
+     * @param mixed $idIdioma
+     */
+    public function setIdIdioma($idIdioma)
     {
         $this->idIdioma = $idIdioma;
-        $this->idTipoVivienda = $idTipoVivienda;
-        $this->nombre = $nombre;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdTipoVivienda()
+    {
+        return $this->idTipoVivienda;
+    }
+
+    /**
+     * @param mixed $idTipoVivienda
+     */
+    public function setIdTipoVivienda($idTipoVivienda)
+    {
+        $this->idTipoVivienda = $idTipoVivienda;
+    }
+
     /**
      * @return mixed
      */
@@ -34,4 +54,5 @@ class TipoViviendaHasIdioma
     {
         $this->nombre = $nombre;
     }
+
 }
