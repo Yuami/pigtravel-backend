@@ -17,6 +17,12 @@ class CiudadesController extends Controller
 {
     public function index()
     {
+        header("Content-Type: application/json; charset=UTF-8");
+        $statement = "select p.name, p.region_id, p.country_id, p.id from cities p GROUP by p.name";
+        $res = DB::conn()->prepare($statement);
+        $res->execute();
+        $rows = $res->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($rows);
     }
 
     public function create()

@@ -8,19 +8,11 @@ use Model\DAO\TarifaDAO;
 use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
+use Handler\AuthHandler;
+
 
 class HouseController extends Controller
 {
-
-    public static function validUser($userID, $vivienda)
-    {
-        if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
-            Session::set("wrongHouse", "true");
-            Router::redirect("houses");
-            return false;
-        }
-        return true;
-    }
 
     public function updateCompleted($completed)
     {
@@ -38,8 +30,11 @@ class HouseController extends Controller
     {
         $houses = ViviendaDAO::getById($id);
         $tarifas = TarifaDAO::getByIdVivienda($id);
-        if (self::validUser(Session::get('userID'), $houses)) {
+        if ($houses && AuthHandler::verifyVendedor($houses->getIdVendedor())) {
             include_once VIEW . "house.php";
+        } else {
+            AuthHandler::setError("House");
+            Router::redirect("houses");
         }
     }
 
@@ -76,7 +71,7 @@ class HouseController extends Controller
     public function update($id)
     {
         $houses = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $houses)) {
+        if ($houses && AuthHandler::verifyVendedor($houses->getIdVendedor(), "House")) {
             ViviendaDAO::update([
                 "id" => $id,
                 "nombre" => $_POST['houseName'],
@@ -86,14 +81,13 @@ class HouseController extends Controller
                 "horaEntrada" => $_POST['checkIn'],
                 "horaSalida" => $_POST['checkOut'],
                 "alquilerAutomatico" => $_POST['standardRate'],
-                "idTipoVivienda" => 1,
                 "idCiudad" => $_POST['city'],
                 "descripcion" => $_POST['description']]);
-            $this->updateCompleted(true);
-            Router::redirectWithDomain("houses/" . $id);
+            self::updateCompleted(true);
         } else {
-            $this->updateCompleted(false);
+            self::updateCompleted(false);
         }
+        Router::redirect("houses/" . $id);
     }
 
 

@@ -5,6 +5,8 @@ namespace Controller;
 use Config\Session;
 use Model\DAO\ReservaDAO;
 use Model\DAO\MensajesDAO;
+use Routing\Router;
+use Handler\AuthHandler;
 
 class ReservationController extends Controller
 {
@@ -12,7 +14,6 @@ class ReservationController extends Controller
     {
         $id = Session::get('userID');
         $reservas = ReservaDAO::getByVendedor($id);
-
         require_once VIEW . 'reservations.php';
     }
 
@@ -20,7 +21,12 @@ class ReservationController extends Controller
     {
         $reserva = ReservaDAO::getById($id);
         $mensajes = MensajesDAO::getByidReserva($id);
-        require_once VIEW . 'reservation.php';
+        if ($reserva && AuthHandler::verifyVendedor($reserva->getVendedor()->getId())) {
+            require_once VIEW . 'reservation.php';
+        } else {
+            AuthHandler::setError("Reservation");
+            Router::redirect("reservations");
+        }
     }
 
     public function create()

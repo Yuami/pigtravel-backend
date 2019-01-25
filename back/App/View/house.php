@@ -33,14 +33,14 @@
 
 <?php
 if (Session::isSet("updateCompleted")) {
-    Session::delete("updateCompleted"); ?>
+    if (Session::get("updateCompleted")) { ?>
     <div id="updateCompleted" class="alert alert-success" role="alert">
         House successfully updated!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-<?php } ?>
+<?php } Session::delete("updateCompleted"); } ?>
 
 <section class="container-fluid" id="mainHouseSection">
     <div class="row breadcrumb-row">
@@ -104,7 +104,7 @@ if (Session::isSet("updateCompleted")) {
                                 <div class="input-group-text"><span class="fas fa-city text-danger"></span>
                                 </div>
                             </div>
-                            <select id="city" class="form-control col-md-8" name="city">
+                            <select id="city" class="form-control col-12" name="city">
                             </select>
                         </div>
                     </div>
@@ -207,7 +207,6 @@ if (Session::isSet("updateCompleted")) {
         mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
         let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
         loadCiudades(idRegion);
-        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
     });
 </script>
 <?php include_once CALENDAR ?>
