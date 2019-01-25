@@ -6,13 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <?php require_once ROOT . "libraries.php" ?>
+    <?php use Config\Session;
+
+    require_once ROOT . "libraries.php" ?>
     <script src="/js/jquery.dataTables.js"></script>
     <title>Reservations</title>
 </head>
 
 <body>
-<?php include_once("header.php") ?>
+<?php include_once("header.php");
+if (Session::isSet("wrongReservation")) {
+    Session::delete("wrongReservation");
+    ?>
+    <div id="wrongReservation" class="alert alert-danger" role="alert">
+        You've no permission to see this reservation!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php } ?>
+
+
 <div class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">

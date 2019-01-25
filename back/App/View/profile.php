@@ -10,7 +10,8 @@
 
     require_once ROOT . "libraries.php" ?>
     <title>Profile</title>
-
+    <link href="/css/select2.min.css" rel="stylesheet"/>
+    <script src="/js/selects/select2.min.js"></script>
 </head>
 
 <body>
@@ -70,15 +71,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="sr-only" for="locationForm">Location</label>
-                            <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Location</h6>
+                            <label class="sr-only" for="city">City</label>
+                            <div class="input-group mb-2 mr-sm-3">
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">City</h6>
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><span
-                                                class="fas fa-map-marker-alt text-danger"></span></div>
+                                    <div class="input-group-text"><span class="fas fa-city text-danger"></span>
+                                    </div>
                                 </div>
-                                <input type="text" class="form-control" id="locationForm" name="locationForm"
-                                       value="Mallorca, ES">
+                                <select id="city" class="form-control col-12" name="city">
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -165,8 +166,7 @@
                                 </div>
                                 <textarea type="text" rows="7" class="form-control" id="descriptionForm"
                                           name="descriptionForm"
-                                          placeholder="Tell us something about you!"><?= $user->getDescripcion(); ?>
-                                </textarea>
+                                          placeholder="Tell us something about you!"><?= $user->getDescripcion(); ?></textarea>
                             </div>
                             <input class="btn d-md-block d-none btn-block btn-primary offset-md-3 mt-3" type="submit"
                                    form="profileForm"/>
@@ -183,6 +183,12 @@
 </section>
 
 <?php include_once("footer.php") ?>
+<script>
+    $(function(){
+        loadCiudades(970);
+    });
+</script>
+<script src="/js/custom/loadLocalidades.js"></script>
 <script src="/js/custom/modifyProfile.js"></script>
 </body>
 </html>

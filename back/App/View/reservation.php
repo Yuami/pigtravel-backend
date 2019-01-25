@@ -83,7 +83,6 @@ $cliente = $reserva->getCliente();
                                                          alt=""
                                                          class="vivienda-img rounded-circle">
                                                     <h5 class="ml-2 mt-3"><?= $vivienda->getNombre() ?></h5>
-
                                                 </div>
                                             </div>
                                         </div>

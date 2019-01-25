@@ -7,11 +7,6 @@
     <?php use Config\Session;
     use Model\DAO\CitiesDAO;
 
-    function noHours($date)
-    {
-        return explode(" ", $date)[0];
-    }
-
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="/css/leaflet.css">
     <link href="/css/select2.min.css" rel="stylesheet"/>
@@ -27,9 +22,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#mainHouseSection">House</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Rates</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#sectio n3">Policies</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="/houses/<?= $houses->getId() ?>/tarifas">Rates</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section3">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
     </ul>
 </nav>
@@ -57,8 +52,9 @@ if (Session::isSet("updateCompleted")) {
         </div>
     </div>
     <div class="container" id="house">
-        <form method="POST" action="/houses/<?= $houses->getId() ?>">
+        <form method="POST" action="/houses/<?= $houses->getId(); ?>">
             <input type="hidden" name="_method" value="PUT">
+
             <div class="row">
                 <div class="col-md-6 ">
                     <h2 class="text-center">Information</h2>
@@ -106,7 +102,7 @@ if (Session::isSet("updateCompleted")) {
                                 <div class="input-group-text"><span class="fas fa-city text-danger"></span>
                                 </div>
                             </div>
-                            <select id="city" class="form-control col-md-8" name="city">
+                            <select id="city" class="form-control col-md-12" name="city">
                             </select>
                         </div>
                     </div>
