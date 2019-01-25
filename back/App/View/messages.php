@@ -1,12 +1,10 @@
 <?php
 
-use Config\Session;
 use Model\DAO\PersonaDAO;
 use Model\DAO\ViviendaDAO;
 
 
 if (isset($_POST['submit'])) {
-    self::update();
     self::store();
 }
 ?>
@@ -19,6 +17,34 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
     <title>Mensajes</title>
+    <style>
+        .chat{
+
+            width: 100%;
+            height: 100px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        .darker {
+            border-color: #ccc;
+            background-color: #ddd;
+            float: right;
+        }
+        .noDarker {
+            text-align: right;
+        }
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .time-right {
+            position: absolute;
+            right: 0px;
+            float: right;
+            color: #aaa;
+        }
+    </style>
 </head>
 
 <body>
@@ -68,30 +94,54 @@ if (isset($_POST['submit'])) {
                         <td style="width:65%"><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
                         <td style="width:10%"><strong><?php echo $mensaje->getFechaEnviado();?></strong></td>
                     </tr>
-                <?php } }?>
+                <?php } ?>
+                <form id="addMessagesForm" method="POST" action="/messages">
+                    <div class="modal fade" id="myModal<?php echo $mensaje->getId()?>" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p class="modal-title">Mensaje a <?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?></p>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="chat">
+                                    <?php foreach ($mensajesX as $mensajeX){
+                                        if($mensaje->getIdSender()==$mensajeX->getIdSender()) {
+                                            ?>
+                                            <div class="row noDarker col-lg-8">
+                                                <?php echo $mensajeX->getMensaje();?>
+                                            </div>
+                                            <?php
+                                        }
+                                        if($mensaje->getIdSender()==$mensajeX->getIdReciever()) {
+                                            ?>
+                                            <div class="row darker col-lg-8">
+                                                    <?php echo $mensajeX->getMensaje();?>
+                                            </div>
+                                            <?php
+                                        }
+
+                                    }
+                                    ?>
+                                    </div>
+                                    <input type="hidden" name="idReciever" value="<?php echo $mensaje->getIdSender();?>">
+                                    <input type="hidden" name="idVivienda" value="<?php echo $mensaje->getIdVivienda();?>">
+                                    <input type="hidden" name="idMensaje" value="<?php echo $mensaje->getId();?>">
+                                    <input type="text" class="form-control" name="mensajeRespuesta" aria-describedby="basic-addon1" />
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-success" name="submit" value="Enviar" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            <?php }?>
         </table>
     </div>
-    <form id="addMessagesForm" method="POST" action="/messages" >
-        <div class="modal fade" id="myModal" role="dialog">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        Mensaje
-                    </div>
-                    <div class="modal-body">
-                        <div id="nombreReciever">
-                        </div>
-                        <input type="text" class="form-control" name="mensajeRespuesta" aria-describedby="basic-addon1" />
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>
-                        <input type="submit" class="btn btn-success" name="submit" value="Enviar" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 
 </div>
 <?php include_once("footer.php") ?>

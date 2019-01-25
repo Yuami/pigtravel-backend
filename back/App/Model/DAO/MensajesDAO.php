@@ -1,12 +1,8 @@
 <?php
 namespace Model\DAO;
 use Config\Session;
+use PDO;
 
-require_once MODEL . "Items/Mensaje.php";
-require_once MODEL . "Items/Vivienda.php";
-require_once MODEL . "DAO/ViviendaDAO.php";
-require_once MODEL . "Items/Persona.php";
-require_once MODEL . "DAO/PersonaDAO.php";
 class MensajesDAO extends DAO {
     protected static $table = "mensajes";
     protected static $class = "Mensaje";
@@ -33,7 +29,6 @@ class MensajesDAO extends DAO {
         $stm = DB::conn()->prepare($sql);
         $stm->bindValue(':idMensaje',$idMensaje);
         $stm->execute();
-        header("Location: " . DOMAIN);
     }
 
     public static function getByLeido($leido) {
@@ -55,15 +50,15 @@ class MensajesDAO extends DAO {
             return $res;
         return null;
     }
-    public static function getByRecibidosIdVivienda($leido)
+    public static function getChat($idP)
     {
-        $sql = "SELECT * FROM mensajes WHERE leido :leido and idReciever=".Session::get('userID');
-        $statement = DB::conn()->prepare($sql);
-        $statement->bindValue(":leido", $leido);
+        $statement = DB::conn()->prepare("SELECT * FROM mensajes WHERE idReciever=:idP OR idSender=:idP order by fechaEnviado");
+        $statement->bindValue(":idP", $idP, PDO::PARAM_INT);
         $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_CLASS, static::$class);
+        return $statement->fetchAll(PDO::FETCH_CLASS,parent::getClassName());
     }
+
+
     public static function getAll()
         {
             return parent::getAll();

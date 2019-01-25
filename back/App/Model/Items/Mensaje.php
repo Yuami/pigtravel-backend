@@ -37,6 +37,12 @@ class Mensaje
         $d=explode(" ",$this->fechaEnviado)[0];
         return $d;
     }
+    public function getDiaEnviado()
+    {
+        $d=explode(" ",$this->fechaEnviado)[0];
+        $dd=explode("-",$d)[1]."-".explode("-",$d)[2];
+        return $dd;
+    }
     public function getLeido()
     {
         return $this->leido;

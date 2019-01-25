@@ -16,6 +16,7 @@ class MessagesController extends Controller {
     public function index() {
         $id= Session::get('userID');
         $mensajes = MensajesDAO::getBy("idReciever",$id);
+        $mensajesX = MensajesDAO::getChat($id);
         $viviendas= ViviendaDAO::getBy('idVendedor',$id);
         require_once VIEW . 'messages.php';
     }
@@ -24,7 +25,7 @@ class MessagesController extends Controller {
     }
 
     public function store() {
-        MensajesDAO::leido($_POST['leido']);
+        MensajesDAO::leido($_POST['idMensaje']);
         MensajesDAO::insert([
             "idReciever" => $_POST['idReciever'],
             "mensaje" => $_POST['mensajeRespuesta'],

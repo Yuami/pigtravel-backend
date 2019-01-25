@@ -66,6 +66,10 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         }
 
+        .hoverTable tr:hover {
+            color: #3366BB;
+        }
+
         @media only screen and (max-width: 600px) {
             #dashboard {
                 margin: 10px;
@@ -90,8 +94,6 @@
                 display: none;
 
             }
-
-
         }
 
     </style>
@@ -168,7 +170,7 @@
                             <h5>Ultimas reservas</h5>
                         </div>
                         <div class="card-body">
-                            <table id="reservas">
+                            <table id="reservas" class="hoverTable">
                                 <?php
                                 if (empty($reservas)) {
                                     echo 'No tienes reservas';

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+use Model\DAO\PersonaDAO;
+use Model\DAO\ViviendaDAO;
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,12 +53,10 @@
                 <tr class="openBtn" data-leido="0" data-target="#myModal" data-toggle="modal"
                     data-id="<?php echo PersonaDAO::getById($mensaje->getIdSender())->getNombre(); ?>"
                     id="<?php echo $mensaje->getIdVivienda(); ?>">
-
                     <td style="width:25%"> <?php echo PersonaDAO::getById($mensaje->getIdReciever())->getNombre(); ?>
                         <br><?php echo ViviendaDAO::getById($mensaje->getIdVivienda())->getNombre(); ?></td>
                     <td style="width:65%"><?php echo $mensaje->getMensaje(); ?></td>
                     <td style="width:10%"><?php echo $mensaje->getFechaEnviado(); ?></td>
-
                 </tr>
             <?php } ?>
         </table>
