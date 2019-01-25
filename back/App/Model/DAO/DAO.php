@@ -12,17 +12,26 @@ abstract class DAO {
         return "Model\\Items\\" . static::$class;
     }
 
-    protected static function fetchAll(\PDOStatement $statement) {
-        return $statement->fetchAll(PDO::FETCH_CLASS, self::getClassName());
+    protected static function fetchAll(\PDOStatement $statement) : ?array {
+        $res = $statement->fetchAll(PDO::FETCH_CLASS, self::getClassName());
+        return $statement->rowCount() > 0 ? $res : null;
     }
 
     protected static function fetchOne(\PDOStatement $statement) {
         $statement->setFetchMode(PDO::FETCH_CLASS, self::getClassName());
-        return $statement->fetch();
+        return $statement->rowCount() > 0 ? $statement->fetch() : null;
     }
 
     public static function getAll() {
-        $statement = DB::conn()->prepare("SELECT * FROM " . static::$table);
+        return self::getAllOrdered();
+    }
+
+    public static function getAllOrdered($orderCol = "", $orderType = "asc") {
+        $sql = "SELECT * FROM " . static::$table;
+        if ($orderCol != "") {
+            $sql .= " order by $orderCol $orderType";
+        }
+        $statement = DB::conn()->prepare($sql);
         $statement->execute();
 
         return self::fetchAll($statement);
@@ -37,13 +46,9 @@ abstract class DAO {
     }
 
     public static function getBy($column, $value, $order = false, $orderCol = "", $orderType = "asc") {
-        if (!$order) {
-            $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value";
-        } else {
-            if ($orderCol != "")
-                $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value order by $orderCol $orderType";
-            else
-                $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value";
+        $sql = "SELECT * FROM " . static::$table . " WHERE " . $column . "= :value";
+        if ($order && $orderCol != "") {
+            $sql .= " order by $orderCol $orderType";
         }
         $statement = DB::conn()->prepare($sql);
         $statement->bindValue(":value", $value);
@@ -65,7 +70,7 @@ abstract class DAO {
         $statement->execute();
     }
 
-    public static function insert(array $parameters)  {
+    public static function insert(array $parameters) {
         $table = static::$table;
         $keys = array_keys($parameters);
         $columns = implode(', ', $keys);
