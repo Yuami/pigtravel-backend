@@ -9,7 +9,7 @@
 
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="/css/leaflet.css">
-    <link href="/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/select2.min.css"/>
     <script src="/js/popper.min.js"></script>
     <script src="/js/leaflet.js"></script>
     <script src="/js/selects/select2.min.js"></script>
@@ -23,7 +23,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="/houses/<?= $houses->getId() ?>/tarifas">Rates</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link"
+                                                           href="/houses/<?= $houses->getId() ?>/tarifas">Rates</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section3">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
     </ul>
@@ -256,7 +257,11 @@ if (Session::isSet("updateCompleted")) {
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </section>
+<script src="/js/custom/house.js"></script>
+<script src="/js/custom/loadLocalidades.js"></script>
 <script>
     $('#Modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
@@ -266,16 +271,18 @@ if (Session::isSet("updateCompleted")) {
     })
 </script>
 <script src="/js/calendar.js"></script>
-<script src="/js/custom/house.js"></script>
-<script src="/js/custom/loadLocalidades.js"></script>
+
 <script>
-    //$(function () {
-    //    mapLoad(<?php //echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>//);
-    //    let idRegion = <?//= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>//;
-    //    loadCiudades(idRegion);
-    //    $('#city').select2.val(<?//= $houses->getIdCiudad() ?>//).trigger('change.select2');
-    //});
+    $(function () {
+        mapLoad(<?= $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
+        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
+        loadCiudades(idRegion);
+        city.select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
+    });
 </script>
-<?php include_once CALENDAR ?>
-<?php include_once("footer.php") ?>
-<script src="/js/selects/selectTarifa-Rebaja.js"
+<?php
+include_once(CALENDAR);
+include_once("footer.php"); ?>
+<script src="/js/selects/selectTarifa-Rebaja.js"></script>
+</body>
+</html>
