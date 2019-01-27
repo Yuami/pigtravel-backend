@@ -26,7 +26,8 @@ Router::view('premium', 'premium');
 
 // THIS IS TESTING AREA
 Router::view('photos', 'photo');
-Router::get('test', 'RegisterController@store');
+Router::view('test', 'test');
+Router::view('upload', 'upload');
 
 Api::get('paises', 'PaisesController@index');
 Api::get('region/{id}', 'RegionController@show');

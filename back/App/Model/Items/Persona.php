@@ -16,6 +16,7 @@ class Persona {
     private $fechaNacimiento;
     private $descripcion;
     private $idCiudad;
+    private $idFoto;
 
     /**
      * @return mixed
@@ -189,6 +190,11 @@ class Persona {
         $string = $this->nombre . " " . $this->apellido1 . " ";
         $string .= $this->apellido2 == null ? "" : $this->apellido2;
         return $string;
+    }
+
+    public function getIdFoto()
+    {
+        return $this->idFoto;
     }
 
     public function image()

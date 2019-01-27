@@ -263,7 +263,7 @@ class Vivienda
 
     public function photo()
     {
-        return HousePhoto::house($this->id)->mainPath();
+
     }
 
     public function __toString()
