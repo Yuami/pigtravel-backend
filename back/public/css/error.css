@@ -106,8 +106,8 @@ body, html {
   content: "(";
   position: absolute;
   transform: rotate(-90deg);
-  right: 32vmin;
-  bottom: -35vmin;
+  right: 25vmin;
+  bottom: -30vmin;
   display: block;
   font-size: 115%;
   animation: flip 1000ms 1.6s ease-in-out forwards;
