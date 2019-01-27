@@ -5,6 +5,7 @@
  * Date: 04/12/2018
  * Time: 20:05
  */
+
 namespace Config;
 
 class Err
@@ -43,5 +44,16 @@ class Err
     public static function reset()
     {
         self::$error = array();
+    }
+
+    public static function display(string $errMessage = 'Página no encontrada!', string $code = '404')
+    {
+        if (strlen($code) != 3) {
+            $code = '500';
+            $errMessage = 'Error interno';
+        };
+        $errNumber = str_split($code);
+        include_once VIEW . 'error.php';
+        exit();
     }
 }
