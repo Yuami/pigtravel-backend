@@ -8,11 +8,7 @@ class AuthHandler {
 
     public static function verifyVendedor($idVendedor)
     {
-        $userID = Session::me();
-        if ($idVendedor == NULL || $userID !== $idVendedor) {
-            return false;
-        }
-        return true;
+        return !($idVendedor == NULL || Session::me() !== $idVendedor);
     }
 
     public static function setError($type)
