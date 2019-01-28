@@ -277,12 +277,12 @@ if (Session::isSet("updateCompleted")) {
 <script src="/js/custom/house.js"></script>
 <script src="/js/custom/loadLocalidades.js"></script>
 <script>
-    //$(function () {
-    //    mapLoad(<?php //echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>//);
-    //    let idRegion = <?//= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>//;
-    //    loadCiudades(idRegion);
-    //    $('#city').select2.val(<?//= $houses->getIdCiudad() ?>//).trigger('change.select2');
-    //});
+    $(function () {
+        mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
+        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
+        loadCiudades(idRegion);
+        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
+    });
 </script>
 <?php include_once CALENDAR ?>
 <?php include_once("footer.php") ?>
