@@ -60,6 +60,9 @@ class TarifasController extends Controller
 
     public function update($id)
     {
+        $tarifa = TarifaDAO::getById($id);
+        $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
+        $house = ViviendaDAO::getById($VHT->getIdVivienda());
         $t = TarifaDAO::update([
             "id" => $id,
             "fechaInicio" => $_POST['fechaI'],
@@ -68,8 +71,7 @@ class TarifasController extends Controller
             "general" => isset($_POST['general']),
             "idPoliticaCancelacion" => $_POST['idPC'],
         ]);
-        die(var_dump($t));
-        Router::redirect('tarifas/' . $id);
+        Router::redirect('houses/' . $house->getId());
 
     }
 

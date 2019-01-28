@@ -16,13 +16,12 @@ class TarifaDAO extends DAO
         $precio = $parameters["precio"];
         $general = $parameters["general"];
         $idPoliticaCancelacion = $parameters["idPoliticaCancelacion"];
-
         $sql = "update tarifa
 set fechaInicio           = :fI,
     fechaFin              = :fF,
     precio                = :p,
     general               = :g,
-    idPoliticaCancelacion = :idPC,
+    idPoliticaCancelacion = :idPC
     where id = :id";
         $conn = DB::conn();
         $stm = $conn->prepare($sql);

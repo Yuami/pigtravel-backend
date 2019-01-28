@@ -29,6 +29,7 @@
             <ol class="bg-transparent pt-0 breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/houses">House Management</a></li>
+                <li class="breadcrumb-item"><a href="/houses/<?php echo $house->getId()?>">House</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tarifas</li>
             </ol>
         </div>
@@ -41,7 +42,7 @@
                 <h5 class="card-title text-center">Tarifa</h5>
             </div>
             <div class="card-body">
-                <form action="/tarifas/<?= $tarifa->getId() ?>" method="post">
+                <form action="/tarifas/<?= $tarifa->getId() ?>" method="POST">
                     <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">
                         <label class="col-form-label" for="fechaI">Fecha Inicio</label>
@@ -60,16 +61,23 @@
                     </div>
                     <div class="form-group">
                         <select class="custom-select" name="idPC" id="idPC">
-                            <option value="0"><?= $tarifa->getIdPoliticaCancelacion() ?></option>
+                            <option value="<?= $tarifa->getIdPoliticaCancelacion() ?>">
+                                <?= $tarifa->getIdPoliticaCancelacion() ?></option>
                         </select>
                     </div>
-                    <div class="row justify-content-center mt-4">
-                        <div class="custom-control custom-checkbox col-md-2 col-4">
+                    <?php if ($tarifa->getGeneral() == 1) { ?>
+                        <div class="custom-control custom-checkbox" style="margin-left: 40%">
                             <input type="checkbox" class="custom-control-input" name="general"
-                                   id="general">
-                            <label class="custom-control-label" for="general">General</label>
+                                   id="customCheck1" checked>
+                            <label class="custom-control-label" for="customCheck1">General</label>
                         </div>
-                    </div>
+                    <?php } else { ?>
+                        <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                            <input type="checkbox" class="custom-control-input" name="general"
+                                   id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">General</label>
+                        </div>
+                    <?php } ?>
                     <div class="form-group row justify-content-center mt-4">
                         <button type="submit" id="btnAT" class="btn btn-success col-4">Confirmar
                         </button>
