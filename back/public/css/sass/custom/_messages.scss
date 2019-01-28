@@ -11,3 +11,45 @@
   table-layout: fixed;
   display: block;
 }
+.modalChat .chat{
+
+  width: 100%;
+  max-height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #ECECEC;
+  border: grey 1px solid;
+}
+.modalChat .missatge{
+  border-radius: 5px;
+}
+.modalChat .darker,.modalChat .noDarker{
+  border: grey 1px solid;
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
+  max-width: 400px;
+  min-width: 150px;
+  text-align: center;
+}
+.modalChat .darker {
+  background-color: #ddd;
+  float: right !important;
+}
+.modalChat .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.modalChat .modal-header, .modalChat .modal-footer {
+  color: white;
+  background-color: #5f5f5f;
+}
+.modalChat .modal-dialog{
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+}
