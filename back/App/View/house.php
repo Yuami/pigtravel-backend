@@ -6,10 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php use Config\Session;
     use Model\DAO\CitiesDAO;
+    function noHours($date)
+    {
+        return explode(" ", $date)[0];
+    }
 
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="/css/leaflet.css">
-    <link rel="stylesheet" href="/css/select2.min.css"/>
+    <link href="/css/select2.min.css" rel="stylesheet"/>
     <script src="/js/popper.min.js"></script>
     <script src="/js/leaflet.js"></script>
     <script src="/js/selects/select2.min.js"></script>
@@ -22,10 +26,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section1">House</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link"
-                                                           href="/houses/<?= $houses->getId() ?>/tarifas">Rates</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#section3">Policies</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#mainHouseSection">House</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Rates</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#sectio n3">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
     </ul>
 </nav>
@@ -53,9 +56,8 @@ if (Session::isSet("updateCompleted")) {
         </div>
     </div>
     <div class="container" id="house">
-        <form method="POST" action="/houses/<?= $houses->getId(); ?>">
+        <form method="POST" action="/houses/<?= $houses->getId() ?>">
             <input type="hidden" name="_method" value="PUT">
-
             <div class="row">
                 <div class="col-md-6 ">
                     <h2 class="text-center">Information</h2>
@@ -103,7 +105,7 @@ if (Session::isSet("updateCompleted")) {
                                 <div class="input-group-text"><span class="fas fa-city text-danger"></span>
                                 </div>
                             </div>
-                            <select id="city" class="form-control col-md-12" name="city">
+                            <select id="city" class="form-control col-md-8" name="city">
                             </select>
                         </div>
                     </div>
@@ -214,10 +216,7 @@ if (Session::isSet("updateCompleted")) {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="card-body" action="/houses/<?php echo $houses->getId() ?>" method="post">
-                                <div class="form-group">
-                                    <input type="hidden" name="idVivienda" value="<?php echo $houses->getId() ?>">
-                                </div>
+                            <form class="card-body" action="/houses/<?php echo $houses->getId()?>" method="post">
                                 <div class="form-group">
                                     <label for="fechaI" class="col-form-label">Fecha Inicio</label>
                                     <input type="date" class="form-control" name="fechaI" id="fechaI">
@@ -240,11 +239,19 @@ if (Session::isSet("updateCompleted")) {
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                    <input type="checkbox" class="custom-control-input" name="general"
-                                           id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">General</label>
-                                </div>
+                                <?php if ($tarifa->getGeneral() == 1) { ?>
+                                    <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                        <input type="checkbox" class="custom-control-input" name="general"
+                                               id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">General</label>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                        <input type="checkbox" class="custom-control-input" name="general"
+                                               id="customCheck1" disabled>
+                                        <label class="custom-control-label" for="customCheck1">General</label>
+                                    </div>
+                                <?php } ?>
                                 <div class="row justify-content-between m-2">
                                     <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
                                             data-dismiss="modal"> Cancelar
@@ -257,11 +264,7 @@ if (Session::isSet("updateCompleted")) {
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </section>
-<script src="/js/custom/house.js"></script>
-<script src="/js/custom/loadLocalidades.js"></script>
 <script>
     $('#Modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
@@ -271,18 +274,16 @@ if (Session::isSet("updateCompleted")) {
     })
 </script>
 <script src="/js/calendar.js"></script>
-
+<script src="/js/custom/house.js"></script>
+<script src="/js/custom/loadLocalidades.js"></script>
 <script>
-    $(function () {
-        mapLoad(<?= $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
-        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
-        loadCiudades(idRegion);
-        city.select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
-    });
+    //$(function () {
+    //    mapLoad(<?php //echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>//);
+    //    let idRegion = <?//= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>//;
+    //    loadCiudades(idRegion);
+    //    $('#city').select2.val(<?//= $houses->getIdCiudad() ?>//).trigger('change.select2');
+    //});
 </script>
-<?php
-include_once(CALENDAR);
-include_once("footer.php"); ?>
-<script src="/js/selects/selectTarifa-Rebaja.js"></script>
-</body>
-</html>
+<?php include_once CALENDAR ?>
+<?php include_once("footer.php") ?>
+<script src="/js/selects/selectTarifa-Rebaja.js"

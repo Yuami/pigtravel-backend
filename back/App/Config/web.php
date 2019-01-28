@@ -14,6 +14,7 @@ Router::resource('login', 'LoginController');
 Router::resource('support','SupportController');
 
 Router::get('tarifas/{id}', 'TarifasController@show');
+Router::put('tarifas/{id}', 'TarifasController@update');
 Router::post('houses/{id}', 'TarifasController@store');
 Router::get('','IndexController@index');
 Router::get('logout', 'LoginController@destroy');
