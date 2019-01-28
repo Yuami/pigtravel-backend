@@ -3,6 +3,7 @@ namespace Controller;
 
 use Config\Session;
 use Model\DAO\MensajesDAO;
+use Model\DAO\PersonaDAO;
 use Model\DAO\ViviendaDAO;
 
 class MessagesController extends Controller {
@@ -16,7 +17,11 @@ class MessagesController extends Controller {
     public function index() {
         $id= Session::get('userID');
         $mensajes = MensajesDAO::getBy("idReciever",$id);
-        $mensajesX = MensajesDAO::getChat($id);
+        $mensajesChat = MensajesDAO::getChat($id);
+        $recievers=array();
+        foreach ($mensajes as $mensaje) {
+            $recievers[$mensaje->getIdSender()] = PersonaDAO::getBy("id", $mensaje->getIdSender());
+        }
         $viviendas= ViviendaDAO::getBy('idVendedor',$id);
         require_once VIEW . 'messages.php';
     }

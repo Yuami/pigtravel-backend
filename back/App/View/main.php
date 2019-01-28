@@ -7,96 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
     <title>Pig Travel</title>
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-        body{
-
-            background: #ECECEC;
-        }
-
-        #dashboard {
-            display: table;
-            margin: 60px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .fc-toolbar h2 {
-            font-size: 16px;
-        }
-
-        #reservas {
-            padding-right: 10px;
-            width: 100%;
-        }
-
-
-        #content {
-            width: calc(100% - 240px);
-            height: 100%;
-            padding-right: 50px;
-            padding-left: 50px;
-            display: table-cell;
-
-        }
-        h3.est {
-            text-align: center;
-        }
-
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-        }
-        .x.axis path {
-            display: none;
-        }
-        #chartContainer{
-            height: 300px;
-        }
-        .card-header{
-            background-color: #5f5f5f;
-            color: #BCBCBC;
-
-        }
-        .carddd{
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        }
-
-        .hoverTable tr:hover {
-            color: #3366BB;
-        }
-
-        @media only screen and (max-width: 600px) {
-            #dashboard {
-                margin: 10px;
-            }
-            #content {
-                padding: 20px;
-
-            }
-            .index{
-                font-size: 15px;
-            }
-            h6.est{
-                font-size: 25px;
-            }
-            .chart{
-
-                visibility: hidden;
-                clear: both;
-                float: left;
-                margin: 10px auto 5px 20px;
-                width: 28%;
-                display: none;
-
-            }
-        }
-
-    </style>
 </head>
 
 <body>
@@ -107,7 +17,7 @@
             <div class="row index">
                 <div class="col-sm-12 col-lg-4">
 
-                    <div class="card carddd mb-4">
+                    <div class="card cardMain mb-4">
                         <div class="card-header">
                             <h5>Beneficios anuales</h5>
                         </div>
@@ -124,7 +34,8 @@
                         </div>
 
                     </div>
-                    <div class="card carddd card mb-4">
+                    <div class="card cardMain card mb-4">
+
                         <div class="card-header">
                             <h5>Mensajes pendientes</h5>
                         </div>
@@ -143,7 +54,8 @@
                         </div>
 
                     </div>
-                    <div class="card carddd mb-4">
+                    <div class="card cardMain mb-4">
+
                         <div class="card-header">
                             <h5>Proxima reserva</h5>
                         </div>
@@ -165,7 +77,8 @@
                         </div>
 
                     </div>
-                    <div class="card carddd card mb-4">
+                    <div class="card cardMain card mb-4">
+
                         <div class="card-header">
                             <h5>Ultimas reservas</h5>
                         </div>
@@ -190,8 +103,9 @@
                     </div>
 
                 </div>
-                <div class="col-lg-4 col-12 chart">
-                    <div class="card carddd mb-4">
+                <div class="col-lg-4 col-12 chartMain">
+                    <div class="card cardMain mb-4">
+
                         <div class="card-header">
                             <h5>Beneficios</h5>
                         </div>
@@ -213,7 +127,7 @@
 
                 </div>
                 <div class="col-lg-4 col-12">
-                    <div class="card carddd mb-4">
+                    <div class="card cardMain mb-4">
                         <div class="card-header">
                             <h5>Calendario</h5>
                         </div>

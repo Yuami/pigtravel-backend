@@ -1,0 +1,77 @@
+#dashboard {
+  display: table;
+  padding: 60px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ECECEC;
+
+}
+
+.fc-toolbar h2 {
+  font-size: 16px;
+}
+
+#reservas {
+  padding-right: 10px;
+  width: 100%;
+}
+
+
+#content {
+  width: calc(100% - 240px);
+  height: 100%;
+  padding-right: 50px;
+  padding-left: 50px;
+  display: table-cell;
+
+}
+h3.est {
+  text-align: center;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+}
+.x.axis path {
+  display: none;
+}
+#chartContainer{
+  height: 300px;
+}
+.cardMain .card-header{
+  background-color: #5f5f5f;
+  color: #BCBCBC;
+
+}
+.cardMain{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.hoverTable tr:hover {
+  color: #3366BB;
+}
+
+@media only screen and (max-width: 600px) {
+  #dashboard {
+    margin: 10px;
+  }
+  #content {
+    padding: 20px;
+  }
+  .index{
+    font-size: 15px;
+  }
+  h6.est{
+    font-size: 25px;
+  }
+  .chartMain{
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+}

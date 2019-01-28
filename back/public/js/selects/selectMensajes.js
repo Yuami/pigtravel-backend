@@ -6,7 +6,6 @@ $(document).ready(function () {
         $(this)
             .find('[id="icon"]').toggleClass('fa-eye-slash').toggleClass('fa-eye');
     });
-
     $('.openBtn').on('click', function () {
         $('#myModal'+this.id).modal();
     });
