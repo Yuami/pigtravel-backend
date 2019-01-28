@@ -6,7 +6,7 @@
 <body>
 <form enctype="multipart/form-data" action="/upload" method="POST">
     <p>Upload your file</p>
-    <input type="file" name="uploaded_file"/><br>
+    <input type="file" name="picture"/><br>
     <input type="submit" value="Upload"/>
 </form>
 </body>

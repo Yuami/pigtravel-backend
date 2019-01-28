@@ -9,22 +9,17 @@
 namespace Controller;
 
 use libs\Bulletproof\Image;
+use Model\DAO\FotoDAO;
 
 class UploadController extends Controller
 {
+    public static function uploadAll($images)
+    {
+
+    }
+
     public function index()
     {
-        $image = new Image($_FILES);
-        if ($image["pictures"]) {
-            $upload = $image->upload();
-
-            if ($upload) {
-                echo $upload->getFullPath();
-                echo $upload->getLocation();
-            } else {
-                echo $image->getError();
-            }
-        }
     }
 
     public function create()
@@ -34,19 +29,21 @@ class UploadController extends Controller
 
     public function store()
     {
-        if(isset($_FILES['uploaded_file']))
-        {
-            echo "listen"; te lo subo
-            $path = "/assets/uploads/img/casas";
-            $path = $path . basename( $_FILES['uploaded_file']['name']);
-            if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
-                echo "The file ".  basename( $_FILES['uploaded_file']['name']).
-                    " has been uploaded";
-            } else{
-                echo "There was an error uploading the file, please try again!";
+        if (isset($_FILES['picture'])) {
+            $image = new \Bulletproof\Image($_FILES);
+            $path = '/assets/uploads/img';
+            $image->setLocation(ROOT . $path, 777);
+            if ($image["picture"]) {
+                $upload = $image->upload();
+
+                if ($upload) {
+                    FotoDAO::insert([
+                        'path' => $path . '/' . $upload->getName()
+                    ]);
+                } else {
+                    echo $image->getError();
+                }
             }
-        } else {
-            echo "qqqq";
         }
     }
 
