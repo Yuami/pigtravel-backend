@@ -55,9 +55,7 @@ if (isset($_POST['submit'])) {
     <div class="table-responsive">
         <table id="cardsmensajes" class="table table-hover">
             <?php
-            foreach ($mensajes
-
-            as $mensaje) {
+            foreach ($mensajes as $mensaje) {
             if ($mensaje->getLeido() == 0) { ?>
                 <tr class="openBtn" data-target="#myModal" data-toggle="modal"
                     data-leido="<?php echo $mensaje->getLeido(); ?>"
@@ -94,18 +92,30 @@ if (isset($_POST['submit'])) {
                 </tr>
             <?php } ?>
             <form id="addMessagesForm" method="POST" action="/messages">
-                <div class="modal fade" id="myModal<?php echo $mensaje->getId() ?>" role="dialog">
+                <div class="modal fade" id="myModal<?php echo $mensaje->getId() ?>" role="dialog" >
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content modalChat">
                             <div class="modal-header">
+                                <div class="col-lg-4">
                                 <p class="modal-title">Mensaje a <?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?></p>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p align="center"><?php foreach ($viviendas as $vivienda) {
+                                        if ($vivienda->getId() == $mensaje->getIdVivienda()) {
+                                            echo $vivienda->getNombre();
+                                        }
+                                    }?>
+                                </p>
+                                </div>
+                                <div class="col-lg-4">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
                             </div>
                             <div class="modal-body">
                                 <div class="chat">
 
                                     <?php foreach ($mensajesChat as $mensajeChat) {
-                                        if ($mensaje->getIdSender() == $mensajeChat->getIdSender()) {
+                                        if ($mensaje->getIdSender() == $mensajeChat->getIdSender() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
                                             ?>
                                             <div class="row justify-content-end">
                                                 <div class="missatge darker">
@@ -114,7 +124,7 @@ if (isset($_POST['submit'])) {
                                             </div>
                                             <?php
                                         }
-                                        if ($mensaje->getIdSender() == $mensajeChat->getIdReciever()) {
+                                        if ($mensaje->getIdSender() == $mensajeChat->getIdReciever() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
                                             ?>
                                             <div class="row">
                                                 <div class="missatge noDarker">
