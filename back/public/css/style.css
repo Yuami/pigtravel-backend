@@ -252,6 +252,7 @@ header .icoNav {
   table-layout: fixed;
   display: block;
 }
+
 .modalChat .chat {
   width: 100%;
   max-height: 500px;
@@ -299,6 +300,7 @@ header .icoNav {
   justify-content: center;
   overflow: auto;
 }
+
 .foot {
   clear: both;
   width: 100%;
@@ -533,6 +535,11 @@ body#landingBody {
   color: black;
 }
 
+@media (min-width: 767px) {
+  .select2-container {
+    width: 66% !important;
+  }
+}
 @media (max-width: 767px) {
   .select2-container {
     width: calc(100% - 38px) !important;
@@ -618,6 +625,7 @@ body#landingBody {
 #addHouseForm .step.finish {
   background-color: #2699FB;
 }
+
 #dashboard {
   display: table;
   padding: 60px;
@@ -652,7 +660,6 @@ h3.est {
   fill: none;
   stroke: #000;
 }
-
 
 .x.axis path {
   display: none;

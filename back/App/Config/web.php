@@ -33,5 +33,6 @@ Api::get('paises', 'PaisesController@index');
 Api::get('region/{id}', 'RegionController@show');
 Api::get('ciudades', 'CiudadesController@index');
 Api::get('ciudades/{id}', 'CiudadesController@show');
+Api::post('mailreceiver', 'MailReceiverController@create');
 
 //Router::view('test', 'test');
