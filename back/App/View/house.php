@@ -169,7 +169,7 @@ if (Session::isSet("updateCompleted")) {
 
             as $tarifa) { ?>
             <?php if ($tarifa->getGeneral() == 0) { ?>
-            <div class="card text-center">
+            <div class="card text-center shadow">
                 <a href="/tarifas/<?php echo $tarifa->getId() ?>" style="text-decoration: none; color:inherit">
                     <div class="card-body">
                         <h4 class="card-title">Tarifa</h4>
@@ -182,7 +182,7 @@ if (Session::isSet("updateCompleted")) {
                             <span class="fas fa-arrow-alt-circle-left"></span>
                             <?php echo noHours($tarifa->getFechaFin()) ?></p>
                         <?php } else { ?>
-                        <div class="card text-center bg-warning">
+                        <div class="card text-center bg-warning shadow">
                             <a href="/tarifas/<?php echo $tarifa->getId() ?>"
                                style="text-decoration: none;color:inherit">
                                 <div class="card-body">
