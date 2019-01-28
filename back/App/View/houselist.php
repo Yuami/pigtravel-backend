@@ -63,7 +63,7 @@ if (Session::isSet("wrongHouse")) {
                             <?php $mensajesPendientes = 0;
                             foreach ($mensajes as $mensaje) {
                                 if ($mensaje->getIdVivienda() == $house->getId()) {
-                                    if (!$mensaje->getLeido() == 0) {
+                                    if ($mensaje->getLeido() == 0) {
                                         $mensajesPendientes++;
                                     }
                                 }
