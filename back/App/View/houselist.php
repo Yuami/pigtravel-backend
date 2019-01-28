@@ -28,6 +28,7 @@ if (Session::isSet("wrongHouse")) {
 <?php } ?>
 
 
+<?php //echo die(var_dump($mensajes)) ?>
 <section class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
@@ -46,22 +47,31 @@ if (Session::isSet("wrongHouse")) {
         <div class="row justify-content-center">
             <?php if (!empty($houses)) {
                 foreach ($houses as $house) {
-                    if ($house instanceof \Model\Items\Vivienda)?>
-                    <div class="col-md-4 col-xl-3 col-sm-6 mb-3">
+                    if ($house instanceof \Model\Items\Vivienda) ?>
+                        <div class="col-md-4 col-xl-3 col-sm-6 mb-3">
                         <a href="/houses/<?php echo $house->getId() ?>" class="card p-0 card-show"
-                           style="color: inherit; text-decoration:none;">
-                            <div class="view overlay">
-                                <img src="<?= $house->photo() ?>" alt="CASA" style="width: 100%;height: 250px;">
-                            </div>
-                            <div class="card-body ">
-                                <p class="col font-weight-bold text-center">
-                                    <?php echo $house->getNombre() ?></p>
-                                <p class="col font-weight-bold text-center">
-                                    <?php echo $house->getCiudad()->getNombre() ?></p>
-                                <p class="col font-weight-bold text-center">
-                                    <?php echo "Ahi que asociar mensajes con Vivienda" ?></p>
-                            </div>
-                        </a>
+                                                                        style="color: inherit; text-decoration:none;">
+                    <div class="view overlay">
+                        <img src="<?= $house->photo() ?>" alt="CASA" style="width: 100%;height: 250px;">
+                    </div>
+                    <div class="card-body ">
+                        <p class="col font-weight-bold text-center">
+                            <?php echo $house->getNombre() ?></p>
+                        <p class="col font-weight-bold text-center">
+                            <?php echo $house->getCiudad()->getNombre() ?></p>
+                        <p class="col font-weight-bold text-center">
+                            <?php $mensajesPendientes = 0;
+                            foreach ($mensajes as $mensaje) {
+                                if ($mensaje->getIdVivienda() == $house->getId()) {
+                                    if (!$mensaje->getLeido()) {
+                                        $mensajesPendientes++;
+                                    }
+                                }
+                            }
+                            echo 'Mensajes Pendientes ' . $mensajesPendientes; ?>
+                        </p>
+                    </div>
+                    </a>
                     </div>
                 <?php }
             } else { ?>
