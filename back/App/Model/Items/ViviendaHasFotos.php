@@ -10,7 +10,7 @@ class ViviendaHasFotos
     /**
      * @return mixed
      */
-    public function getIdVivienda()
+    public function getIdVivienda() : int
     {
         return $this->idVivienda;
     }
@@ -18,13 +18,18 @@ class ViviendaHasFotos
     /**
      * @return mixed
      */
-    public function getIdFoto()
+    public function getIdFoto() : int
     {
         return $this->idFoto;
     }
 
-    public function getFoto()
+    public function getFoto() : Foto
     {
         return FotoDAO::getById($this->idFoto);
+    }
+
+    public function getFotoPath() : string
+    {
+        return $this->getFoto()->getPath();
     }
 }

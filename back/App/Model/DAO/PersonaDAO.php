@@ -21,26 +21,6 @@ class PersonaDAO extends DAO {
         return $persona != null;
     }
 
-    public static function modify(array $parameters) {
-        $id = $parameters["id"];
-        $nombre = $parameters["nombre"];
-        $apellido1 = $parameters["apellido1"];
-        $tlf = $parameters["tlf"];
-        $correo = $parameters["correo"];
-        $descripcion = $parameters["descripcion"];
-
-        $sql = "UPDATE `persona` SET `nombre` = :nombre, `apellido1` = :apellido1, `tlf` = :tlf , 
-                `correo` = :correo , `descripcion` = :descripcion where id = :id";
-        $stmt = DB::conn()->prepare($sql);
-        $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':nombre', $nombre);
-        $stmt->bindValue(':apellido1', $apellido1);
-        $stmt->bindValue(':tlf', $tlf);
-        $stmt->bindValue(':correo', $correo);
-        $stmt->bindValue(':descripcion', $descripcion);
-        $stmt->execute();
-    }
-
     public static function setVendedor($id) : Vendedor {
        return VendedorDAO::insert([
             "idPersona" => $id

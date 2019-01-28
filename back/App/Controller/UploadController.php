@@ -31,17 +31,18 @@ class UploadController extends Controller
 
     public function profile($idPersona)
     {
-        if (Session::me() == $idPersona)
-            if (isset(File::get()['picture']) && isset($idPersona)) {
+        if (Session::me() == $idPersona) {
+            if (isset($_FILES['picture']) && isset($idPersona)) {
                 $uploaded = File::uploadPhoto('picture', 'assets/uploads/img/perfiles');
-                if (isset($uploaded[0])) {
-                    $photo = $uploaded[0];
+                if (isset($uploaded)) {
+                    $photo = $uploaded;
                     if ($photo instanceof Foto)
                         PersonaDAO::update([
                             'idFoto' => $photo->getId()
                         ], "id = $idPersona");
                 }
             }
+        }
     }
 
     public function house($idVivienda)

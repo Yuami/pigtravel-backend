@@ -89,7 +89,6 @@ abstract class DAO
 
         $sql = sprintf('insert into %s (%s) values (%s)',
             $table, $columns, $values);
-
         try {
             $con = DB::conn();
             $statement = $con->prepare($sql);

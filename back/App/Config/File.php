@@ -16,7 +16,7 @@ class File
             $upload = $image->upload();
 
             if ($upload) {
-                $photos[] = FotoDAO::insert([
+                $photos = FotoDAO::insert([
                     'path' => '/' . $path . '/' . $upload->getName()
                 ]);
             }
@@ -27,20 +27,19 @@ class File
     public static function uploadPhoto($name, $path)
     {
         $uploads = File::getFileSubmited($name);
-        $photos = [];
         foreach ($uploads as $upload){
             $image = new \Bulletproof\Image($upload);
             $image->setLocation(ROOT . $path);
             $upload = $image->upload();
 
             if ($upload) {
-                $photos[] = FotoDAO::insert([
-                    'path' => '/' . $path . '/' . $upload->getName()
+                $name = '/' . $path . '/' . $upload->getName();
+                return FotoDAO::insert([
+                    'path' => $name
                 ]);
             }
-            break;
         }
-        return $photos;
+        return null;
     }
 
 
