@@ -34,7 +34,20 @@ class UploadController extends Controller
 
     public function store()
     {
-        // TODO: Implement store() method.
+        if(isset($_FILES['uploaded_file']))
+        {
+            echo "listen"; te lo subo
+            $path = "/assets/uploads/img/casas";
+            $path = $path . basename( $_FILES['uploaded_file']['name']);
+            if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
+                echo "The file ".  basename( $_FILES['uploaded_file']['name']).
+                    " has been uploaded";
+            } else{
+                echo "There was an error uploading the file, please try again!";
+            }
+        } else {
+            echo "qqqq";
+        }
     }
 
     public function show($id)
