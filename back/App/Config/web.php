@@ -28,6 +28,8 @@ Router::view('premium', 'premium');
 Router::view('photos', 'photo');
 Router::view('test', 'test');
 Router::post('upload', 'UploadController@store');
+Router::post('upload/house/{id}', 'UploadController@house');
+Router::post('upload/profile/{id}', 'UploadController@profile');
 
 Api::get('paises', 'PaisesController@index');
 Api::get('region/{id}', 'RegionController@show');

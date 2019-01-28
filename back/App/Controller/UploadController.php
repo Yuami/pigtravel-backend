@@ -8,8 +8,10 @@
 
 namespace Controller;
 
-use libs\Bulletproof\Image;
-use Model\DAO\FotoDAO;
+use Config\File;
+use Config\Session;
+use Model\DAO\PersonaDAO;
+use Model\Items\Foto;
 
 class UploadController extends Controller
 {
@@ -27,24 +29,31 @@ class UploadController extends Controller
 
     }
 
-    public function store()
+    public function profile($idPersona)
     {
-        if (isset($_FILES['picture'])) {
-            $image = new \Bulletproof\Image($_FILES);
-            $path = '/assets/uploads/img';
-            $image->setLocation(ROOT . $path, 777);
-            if ($image["picture"]) {
-                $upload = $image->upload();
-
-                if ($upload) {
-                    FotoDAO::insert([
-                        'path' => $path . '/' . $upload->getName()
-                    ]);
-                } else {
-                    echo $image->getError();
+        if (Session::me() == $idPersona)
+            if (isset(File::get()['picture']) && isset($idPersona)) {
+                $uploaded = File::uploadPhoto('picture', 'assets/uploads/img/perfiles');
+                if (isset($uploaded[0])) {
+                    $photo = $uploaded[0];
+                    if ($photo instanceof Foto)
+                        PersonaDAO::update([
+                            'idFoto' => $photo->getId()
+                        ], "id = $idPersona");
                 }
             }
+    }
+
+    public function house($idVivienda)
+    {
+        if (isset(File::get()['picture']) && isset($idVivienda)){
+            $uploads = File::uploadAllPhotos('picture', 'assets/uploads/img/casas');
+            print_r($uploads);
         }
+    }
+
+    public function store()
+    {
     }
 
     public function show($id)

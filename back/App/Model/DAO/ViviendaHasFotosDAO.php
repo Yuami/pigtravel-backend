@@ -7,6 +7,8 @@
  */
 
 namespace Model\DAO;
+use Model\Items\Foto;
+
 class ViviendaHasFotosDAO extends DAO
 {
     protected static $table = "vivienda_has_fotos";
@@ -14,6 +16,12 @@ class ViviendaHasFotosDAO extends DAO
 
     public static function getFotosByVivienda(int $id)
     {
-        return self::getBy('idVivienda', $id);
+        return self::getBy('idVivienda', $id, true,'posicion');
+    }
+
+    public static function getMainFotoVivienda(int $id)
+    {
+        $res = self::getFotosByVivienda($id);
+        return isset($res[0]) ? $res[0]->getFoto()->getPath() : Foto::defaultCasa();
     }
 }

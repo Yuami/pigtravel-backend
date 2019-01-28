@@ -21,5 +21,13 @@ class Foto
         return $this->path;
     }
 
+    public static function defaultPerfil()
+    {
+        return '/assets/uploads/img/perfiles/default-image.png';
+    }
 
+    public static function defaultCasa()
+    {
+        return '/assets/uploads/img/casas/default-image.jpg';
+    }
 }
