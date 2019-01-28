@@ -4,6 +4,7 @@ namespace Controller;
 
 use Config\Cookie;
 use Model\DAO\CitiesDAO;
+use Model\DAO\MensajesDAO;
 use Model\DAO\ServicioHasIdiomaDAO;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaHasServicioDAO;
@@ -12,9 +13,11 @@ use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
 
-class HouseController extends Controller {
+class HouseController extends Controller
+{
 
-    public static function validUser($userID, $vivienda) {
+    public static function validUser($userID, $vivienda)
+    {
         if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
             Session::set("wrongHouse", "true");
             Router::redirectWithDomain("houses");
@@ -23,17 +26,21 @@ class HouseController extends Controller {
         return true;
     }
 
-    public function updateCompleted($completed) {
+    public function updateCompleted($completed)
+    {
         Session::set("updateCompleted", $completed);
     }
 
-    public function index() {
+    public function index()
+    {
         $id = Session::get('userID');
+        $mensajes = MensajesDAO::getBy('idReciever', $id);
         $houses = ViviendaDAO::getByVendedor($id);
         include_once VIEW . "houselist.php";
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $houses = ViviendaDAO::getById($id);
         $tarifas = TarifaDAO::getByIdVivienda($id);
         if (self::validUser(Session::get('userID'), $houses)) {
@@ -41,12 +48,14 @@ class HouseController extends Controller {
         }
     }
 
-    public function create() {
+    public function create()
+    {
         $servicios = ServicioHasIdiomaDAO::getAllOrdered("nombre");
         include_once VIEW . "houseAdd.php";
     }
 
-    public function store() {
+    public function store()
+    {
         $vivienda = ViviendaDAO::insert([
             "nombre" => $_POST['houseName'],
             "capacidad" => $_POST['peopleAmount'],
@@ -75,11 +84,13 @@ class HouseController extends Controller {
         header("Location: " . DOMAIN . "/houses");
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         // TODO: Implement edit() method.
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         $houses = ViviendaDAO::getById($id);
         if ($this->validUser(Session::get('userID'), $houses)) {
             ViviendaDAO::update([
@@ -102,7 +113,8 @@ class HouseController extends Controller {
     }
 
 
-    public function destroy() {
+    public function destroy()
+    {
         // TODO: Implement destroy() method.
     }
 

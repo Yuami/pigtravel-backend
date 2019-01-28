@@ -1,4 +1,5 @@
 <?php
+
 namespace Model\Items;
 
 class Mensaje
@@ -10,14 +11,17 @@ class Mensaje
     private $mensaje;
     private $fechaEnviado;
     private $leido;
+
     public function getId()
     {
         return $this->id;
     }
+
     public function getIdSender()
     {
         return $this->idSender;
     }
+
     public function getIdVivienda()
     {
         return $this->idVivienda;
@@ -27,6 +31,7 @@ class Mensaje
     {
         return $this->idReciever;
     }
+
     public function getMensaje()
     {
         return $this->mensaje;
@@ -34,15 +39,17 @@ class Mensaje
 
     public function getFechaEnviado()
     {
-        $d=explode(" ",$this->fechaEnviado)[0];
+        $d = explode(" ", $this->fechaEnviado)[0];
         return $d;
     }
+
     public function getDiaEnviado()
     {
-        $d=explode(" ",$this->fechaEnviado)[0];
-        $dd=explode("-",$d)[1]."-".explode("-",$d)[2];
+        $d = explode(" ", $this->fechaEnviado)[0];
+        $dd = explode("-", $d)[1] . "-" . explode("-", $d)[2];
         return $dd;
     }
+
     public function getLeido()
     {
         return $this->leido;
