@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php use Config\Session;
     use Model\DAO\CitiesDAO;
-
-    $idH = $houses->getId();
     function noHours($date)
     {
         return explode(" ", $date)[0];
