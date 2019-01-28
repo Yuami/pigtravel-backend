@@ -7,6 +7,7 @@
     <?php use Config\Session;
     use Model\DAO\CitiesDAO;
 
+    $idH = $houses->getId();
     function noHours($date)
     {
         return explode(" ", $date)[0];
@@ -217,10 +218,7 @@ if (Session::isSet("updateCompleted")) {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="card-body" action="/houses/<?php echo $houses->getId() ?>" method="post">
-                                <div class="form-group">
-                                    <input type="hidden" name="idVivienda" value="<?php echo $houses->getId() ?>">
-                                </div>
+                            <form class="card-body" action="/houses/<?php echo $houses->getId()?>" method="post">
                                 <div class="form-group">
                                     <label for="fechaI" class="col-form-label">Fecha Inicio</label>
                                     <input type="date" class="form-control" name="fechaI" id="fechaI">
@@ -243,11 +241,19 @@ if (Session::isSet("updateCompleted")) {
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                    <input type="checkbox" class="custom-control-input" name="general"
-                                           id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">General</label>
-                                </div>
+                                <?php if ($tarifa->getGeneral() == 1) { ?>
+                                    <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                        <input type="checkbox" class="custom-control-input" name="general"
+                                               id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">General</label>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                        <input type="checkbox" class="custom-control-input" name="general"
+                                               id="customCheck1" disabled>
+                                        <label class="custom-control-label" for="customCheck1">General</label>
+                                    </div>
+                                <?php } ?>
                                 <div class="row justify-content-between m-2">
                                     <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
                                             data-dismiss="modal"> Cancelar
