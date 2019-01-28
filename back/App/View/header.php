@@ -35,7 +35,7 @@ if (!Session::me()) { ?>
                     <picture>
                         <source srcset="/img/logotemporal.webp" type="image/webp">
                         <source srcset="/img/logotemporal.png"  type="image/jpg">
-                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="" >
+                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="pigtravel alquiler vacacional" >
                     </picture>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
@@ -116,7 +116,7 @@ if (!Session::me()) { ?>
                         <button id="dropdownHeaderButton" type="button"
                                 class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
-                            <img src="<?= $user->image() ?>" alt="" class="header-profile-img rounded-circle mr-md-1">
+                            <img src="<?= $user->image() ?>" alt="pigtravel alquiler vacacional" class="header-profile-img rounded-circle mr-md-1">
                         </button>
                         <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
                             <div class="container-fluid">
