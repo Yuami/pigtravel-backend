@@ -1,8 +1,7 @@
 $(document).ready(function () {
-    $("#mobilebutton").click(function () {
+       $('#mobilebutton').on('click',function(){
+                $('.openBtn').toggle();
 
-        if ($('.openBtn').attr('data-leido') == 0) {
-        }
         $(this)
             .find('[id="icon"]').toggleClass('fa-eye-slash').toggleClass('fa-eye');
     });
@@ -10,6 +9,7 @@ $(document).ready(function () {
         $('#myModal'+this.id).modal();
     });
 });
+
 
 function myNewFunction(sel) {
     var val = sel.options[sel.selectedIndex].value;
