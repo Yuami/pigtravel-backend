@@ -70,7 +70,7 @@
                 <div class="card subscripcion2 col-md-8 offset-md-2">
                     <div class="card-body">
                         <h2 class="card-title">PACK 5</h2>
-                        <img src="img/5houseIcon.svg">
+                        <img src="img/5houseIcon.svg" alt="pigtravel">
                         <h4 class="card-text">450€</h4>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                 <div class="card subscripcion3 col-md-8 offset-md-2">
                     <div class="card-body">
                         <h2 class="card-title">PACK 10</h2>
-                        <img src="img/10houseIcon.svg">
+                        <img src="img/10houseIcon.svg" alt="pigtravel">
                         <h4 class="card-text">950€</h4>
                     </div>
                 </div>

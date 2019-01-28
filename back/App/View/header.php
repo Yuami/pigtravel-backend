@@ -11,7 +11,7 @@ if (!Session::me()) { ?>
                     <picture>
                         <source srcset="/img/logotemporal.webp" type="image/webp">
                         <source srcset="/img/logotemporal.png"  type="image/jpg">
-                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="" >
+                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="vacaciones pigtravel" >
                     </picture>
                 </a>
                 <div class="head-brand">
@@ -122,7 +122,7 @@ if (!Session::me()) { ?>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="<?= $user->image() ?>" alt="" class="header-profile-img rounded-circle">
+                                        <img src="<?= $user->image() ?>" alt="pigtravel user" class="header-profile-img rounded-circle">
                                         <span class="textRightNav d-md-none"> PROFILE</span>
                                     </div>
                                     <div class="col-8">

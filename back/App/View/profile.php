@@ -37,7 +37,7 @@
                     <div class="picture-container">
                         <div class="picture">
                             <img src="<?php echo File::getProfileImage($user); ?>" class="picture-src"
-                                 id="wizardPicturePreview"
+                                 id="wizardPicturePreview" alt="pigtravel"
                                  title="">
                             <input name="imgForm" type="file" id="wizard-picture" class="">
                         </div>
