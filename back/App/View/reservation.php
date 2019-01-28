@@ -80,7 +80,7 @@ $cliente = $reserva->getCliente();
                                             <div class="card-text">
                                                 <div class="row">
                                                     <img src="<?= $vivienda->photo() ?>"
-                                                         alt=""
+                                                         alt="apartamento alquiler vacacional"
                                                          class="vivienda-img rounded-circle">
                                                     <h5 class="ml-2 mt-3"><?= $vivienda->getNombre() ?></h5>
                                                 </div>
@@ -101,7 +101,7 @@ $cliente = $reserva->getCliente();
                                             <div class="card-text">
                                                 <div class="row">
                                                     <img src="<?= $cliente->image(); ?>"
-                                                         alt="" class="vivienda-img rounded-circle">
+                                                         alt="pigtravel user" class="vivienda-img rounded-circle">
                                                     <h5 class="ml-2 mt-3"><?= $cliente->getNombreCompleto(); ?></h5>
                                                 </div>
                                             </div>
