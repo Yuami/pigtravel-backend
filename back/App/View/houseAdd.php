@@ -88,17 +88,33 @@
                                name="street">
                         <div id="wrongHouseLocationDiv" class="custom-control custom-checkbox d-none">
                             <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
-                            <label class="custom-control-label text-danger" for="wrongHouseLocation">Change house location on map!</label>
+                            <label class="custom-control-label text-danger" for="wrongHouseLocation">Change house
+                                location on map!</label>
                         </div>
                     </div>
                     <div id="imageTab" class="tab">
                         <h1 class="text-center">Images</h1>
 
                     </div>
+
+                    <!-- ---------- Servicios ---------- -->
+
                     <div class="tab">
                         <h1 class="text-center">Services</h1>
-                        <p>Available Soon</p>
+                        <div class="row">
+                        <?php foreach ($servicios as $servicio) {
+                            if (!$servicio instanceof \Model\Items\ServicioHasIdioma) continue;
+                                ?>
+                                <div class="custom-control custom-checkbox col-md-6 col-lg-4 col-12">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck<?= $servicio->getIdServicio() ?>" name="servicios[]" value="<?= $servicio->getIdServicio() ?>">
+                                    <label class="custom-control-label" for="customCheck<?= $servicio->getIdServicio() ?>"><?= $servicio->getNombre()?></label>
+                                </div>
+                            <?php
+                        } ?>
+                        </div>
                     </div>
+
+
                     <div style="overflow:auto;">
                         <div style="float: left;margin:10px auto 30px;">
                             <span class="step"></span>

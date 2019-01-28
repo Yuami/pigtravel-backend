@@ -7,23 +7,7 @@ $(document).ready(function () {
             .find('[id="icon"]').toggleClass('fa-eye-slash').toggleClass('fa-eye');
     });
     $('.openBtn').on('click', function () {
-        leido = $(this).attr('data-leido');
-        idMensaje = $(this).attr('id');
-        nomPersona = $(this).attr('data-to');
-        idVivienda = $(this).attr('data-id-viv');
-        idReciever = $(this).attr('data-id');
-        $('#nombreReciever').empty();
-        $('#nombreReciever').append('Para: <b>' + nomPersona + '</b>');
-        $('#nombreReciever').append('<input type="hidden" name="idVivienda" value="' + idVivienda + '">');
-        if (leido == 1) {
-            $('#nombreReciever').append('<input type="hidden" name="leido" value="' + idMensaje + '">');
-        }
-        $('#nombreReciever').append('<input type="hidden" name="idReciever" value="' + idReciever + '">');
-        $('#myModal').modal({
-            keyboard: true,
-            backdrop: "static",
-            show: false,
-        });
+        $('#myModal'+this.id).modal();
     });
 });
 

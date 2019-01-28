@@ -6,11 +6,10 @@ class TipoVivienda
     private $id;
 
     /**
-     * TipoViviendaDAO constructor.
-     * @param $id
+     * @return mixed
      */
-    public function __construct($id)
+    public function getId()
     {
-        $this->id = $id;
+        return $this->id;
     }
 }

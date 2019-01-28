@@ -7,26 +7,32 @@ class TarifaDAO extends DAO
     protected static $table = "tarifa";
     protected static $class = "Tarifa";
 
-    public static function insert(array $parameters)
+
+    public static function update(array $parameters)
     {
+        $id = $parameters["id"];
         $fechaInicio = $parameters["fechaInicio"];
         $fechaFin = $parameters["fechaFin"];
         $precio = $parameters["precio"];
         $general = $parameters["general"];
         $idPoliticaCancelacion = $parameters["idPoliticaCancelacion"];
 
-        $sql = "insert into tarifa (fechaInicio, fechaFin, precio, general, idPoliticaCancelacion)
-                values (:fechaI,:fechaF,:p,:g,:idPC)";
+        $sql = "update tarifa
+set fechaInicio           = :fI,
+    fechaFin              = :fF,
+    precio                = :p,
+    general               = :g,
+    idPoliticaCancelacion = :idPC,
+    where id = :id";
         $conn = DB::conn();
         $stm = $conn->prepare($sql);
-        $stm->bindValue(":fechaI", $fechaInicio);
-        $stm->bindValue(":fechaF", $fechaFin);
+        $stm->bindValue(":id", $id);
+        $stm->bindValue(":fI", $fechaInicio);
+        $stm->bindValue(":fF", $fechaFin);
         $stm->bindValue(":p", $precio);
         $stm->bindValue(":g", $general);
         $stm->bindValue(":idPC", $idPoliticaCancelacion);
         $stm->execute();
-        $p = $conn->lastInsertId();
-        return parent::getById($p);
     }
 
     public static function getByIdVivienda($id)

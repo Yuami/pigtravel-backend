@@ -12,8 +12,6 @@ abstract class Controller {
 
     public abstract function create();
 
-    public abstract function store();
-
     public  abstract function show($id);
 
     public abstract function edit($id);

@@ -1,6 +1,5 @@
 <?php
 
-use Config\Photos\Photos;
 use Config\Session;
 use Model\DAO\PersonaDAO;
 

@@ -13,8 +13,9 @@ Router::resource('settings', 'ProfileController');
 Router::resource('login', 'LoginController');
 Router::resource('support','SupportController');
 
-Router::get('houses/{id}/tarifas', 'TarifasController@show');
-Router::post('houses/{id}/tarifas', 'TarifasController@store');
+Router::get('tarifas/{id}', 'TarifasController@show');
+Router::put('tarifas/{id}', 'TarifasController@update');
+Router::post('houses/{id}', 'TarifasController@store');
 Router::get('','IndexController@index');
 Router::get('logout', 'LoginController@destroy');
 Router::get('register', 'RegisterController@index');
@@ -30,6 +31,7 @@ Router::get('test', 'RegisterController@store');
 
 Api::get('paises', 'PaisesController@index');
 Api::get('region/{id}', 'RegionController@show');
+Api::get('ciudades', 'CiudadesController@index');
 Api::get('ciudades/{id}', 'CiudadesController@show');
 
 //Router::view('test', 'test');

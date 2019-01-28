@@ -8,6 +8,6 @@
 namespace Model\DAO;
 class TipoVivienda extends DAO
 {
-    protected static $table = "TipoVivienda";
+    protected static $table = "tipo_vivienda";
     protected static $class = "TipoVivienda";
 }

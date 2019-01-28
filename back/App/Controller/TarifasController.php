@@ -28,7 +28,7 @@ class TarifasController extends Controller
         // TODO: Implement create() method.
     }
 
-    public function store()
+    public function store($id)
     {
         $idT = TarifaDAO::insert([
             "fechaInicio" => $_POST['fechaI'],
@@ -38,23 +38,18 @@ class TarifasController extends Controller
             "idPoliticaCancelacion" => $_POST['idPC'],
         ]);
         ViviendaHasTarifaDAO::insert([
-            "idVivienda" => $_POST['idVivienda'],
+            "idVivienda" => $id,
             "idTarifa" => $idT->getId()
         ]);
-        Router::redirect('houses/' . $_POST['idVivienda']);
+        Router::redirect('houses/' . $id);
 
     }
 
     public function show($id)
     {
-        $idU = Session::get('userID');
-        $houses = ViviendaDAO::getByVendedor($idU);
-        foreach ($houses as $h) {
-            if ($h->getId() == $id) {
-                $house = $h;
-            }
-        }
-        $tarifas = TarifaDAO::getByIdVivienda($id);
+        $tarifa = TarifaDAO::getById($id);
+        $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
+        $house = ViviendaDAO::getById($VHT->getIdVivienda());
         include_once VIEW . 'tarifas.php';
     }
 
@@ -65,7 +60,17 @@ class TarifasController extends Controller
 
     public function update($id)
     {
-        // TODO: Implement update() method.
+        $t = TarifaDAO::update([
+            "id" => $id,
+            "fechaInicio" => $_POST['fechaI'],
+            "fechaFin" => $_POST['fechaF'],
+            "precio" => $_POST['precio'],
+            "general" => isset($_POST['general']),
+            "idPoliticaCancelacion" => $_POST['idPC'],
+        ]);
+        die(var_dump($t));
+        Router::redirect('tarifas/' . $id);
+
     }
 
     public function destroy()

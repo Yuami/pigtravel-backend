@@ -46,6 +46,16 @@ class Tarifa
     /**
      * @return mixed
      */
+    public function getFechaInicioRevert()
+    {
+        $array = explode(' ', $this->fechaInicio);
+        $date=explode('-',$array[0]);
+        return $date;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getFechaFin()
     {
         return $this->fechaFin;

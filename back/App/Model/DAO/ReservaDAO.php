@@ -34,7 +34,7 @@ class ReservaDAO extends DAO
        inner join vivienda v on r.idVivienda = v.id
        inner join estado_has_idioma ehi on rhe.idEstado = ehi.idEstado
        inner join cliente c on r.idCliente = c.idPersona
-       inner join persona p on c.idPersona = p.id where v.idVendedor= :id order by r.fechaReserva limit 5');
+       inner join persona p on c.idPersona = p.id where v.idVendedor= :id order by r.fechaReserva desc limit 5');
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
 

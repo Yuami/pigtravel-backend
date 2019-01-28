@@ -15,7 +15,6 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php require_once ROOT . "libraries.php" ?>
     <title>Mensajes</title>
-
 </head>
 
 <body>
@@ -100,6 +99,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="modal-body">
                                     <div class="chat">
+
                                         <?php foreach ($mensajesChat as $mensajeChat) {
                                             if ($mensaje->getIdSender() == $mensajeChat->getIdSender()) {
                                                 ?>
@@ -133,6 +133,32 @@ if (isset($_POST['submit'])) {
                                     <input type="text" class="form-control" name="mensajeRespuesta"
                                            aria-describedby="basic-addon1"/>
                                     <input type="submit" class="btn btn-success" name="submit" value="Enviar"/>
+                                    <?php foreach ($mensajesX as $mensajeX){
+                                        if($mensaje->getIdSender()==$mensajeX->getIdSender()) {
+                                            ?>
+                                            <div class="row noDarker col-lg-8">
+                                                <?php echo $mensajeX->getMensaje();?>
+                                            </div>
+                                            <?php
+                                        }
+                                        if($mensaje->getIdSender()==$mensajeX->getIdReciever()) {
+                                            ?>
+                                            <div class="row darker col-lg-8">
+                                                    <?php echo $mensajeX->getMensaje();?>
+                                            </div>
+                                            <?php
+                                        }
+
+                                    }
+                                    ?>
+                                    </div>
+                                    <input type="hidden" name="idReciever" value="<?php echo $mensaje->getIdSender();?>">
+                                    <input type="hidden" name="idVivienda" value="<?php echo $mensaje->getIdVivienda();?>">
+                                    <input type="hidden" name="idMensaje" value="<?php echo $mensaje->getId();?>">
+                                    <input type="text" class="form-control" name="mensajeRespuesta" aria-describedby="basic-addon1" />
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-success" name="submit" value="Enviar" />
                                 </div>
                             </div>
 
@@ -140,7 +166,9 @@ if (isset($_POST['submit'])) {
                     </div>
                 </form>
 
-            <?php } ?>
+
+            <?php }?>
+
         </table>
     </div>
 

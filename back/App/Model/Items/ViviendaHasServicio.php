@@ -7,18 +7,11 @@
  */
 namespace Model\Items;
 
-class Vivienda_Servicio
+class ViviendaHasServicio
 {
-    private $id;
     private $activo;
     private $idVivienda;
     private $idServicio;
-
-    public function __construct($id, $activo)
-    {
-        $this->id = $id;
-        $this->activo = $activo;
-    }
 
     public function getActivo()
     {

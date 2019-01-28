@@ -32,7 +32,7 @@ class RegionController extends Controller
     public function show($id)
     {
         header("Content-Type: application/json; charset=UTF-8");
-        $statement = "select r.name, r.country_id, r.id from regions r where `country_id` = $id GROUP by r.name";
+        $statement = "select r.name, r.country_id, r.id from regions r where `country_id` = $id";
         $res = DB::conn()->prepare($statement);
         $res->execute();
         $rows = $res->fetchAll(PDO::FETCH_ASSOC);

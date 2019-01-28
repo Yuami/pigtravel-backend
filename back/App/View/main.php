@@ -35,6 +35,7 @@
 
                     </div>
                     <div class="card cardMain card mb-4">
+
                         <div class="card-header">
                             <h5>Mensajes pendientes</h5>
                         </div>
@@ -54,6 +55,7 @@
 
                     </div>
                     <div class="card cardMain mb-4">
+
                         <div class="card-header">
                             <h5>Proxima reserva</h5>
                         </div>
@@ -76,6 +78,7 @@
 
                     </div>
                     <div class="card cardMain card mb-4">
+
                         <div class="card-header">
                             <h5>Ultimas reservas</h5>
                         </div>
@@ -102,6 +105,7 @@
                 </div>
                 <div class="col-lg-4 col-12 chartMain">
                     <div class="card cardMain mb-4">
+
                         <div class="card-header">
                             <h5>Beneficios</h5>
                         </div>
