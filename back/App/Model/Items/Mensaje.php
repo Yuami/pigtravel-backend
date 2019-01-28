@@ -52,11 +52,7 @@ class Mensaje
 
     public function getLeido()
     {
-        if ($this->leido == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->leido;
     }
 
 
