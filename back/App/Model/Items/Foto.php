@@ -1,20 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: JFornes
- * Date: 16/01/2019
- * Time: 11:39
- */
-
 namespace Model\Items;
-
-
-class Fotos
+class Foto
 {
     private $id;
     private $path;
-    private $posicion;
-    private $idVivienda;
 
     /**
      * @return mixed
@@ -32,12 +21,13 @@ class Fotos
         return $this->path;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getIdVivienda()
+    public static function defaultPerfil()
     {
-        return $this->idVivienda;
+        return '/assets/uploads/img/perfiles/default-image.png';
     }
 
+    public static function defaultCasa()
+    {
+        return '/assets/uploads/img/casas/default-image.jpg';
+    }
 }

@@ -1,10 +1,13 @@
 <?php
+
 namespace Model\Items;
 
 use Config\Photos\PerfilPhoto;
+use Model\DAO\FotoDAO;
 use Model\DAO\VendedorDAO;
 
-class Persona {
+class Persona
+{
     private $nombre;
     private $id;
     private $apellido1;
@@ -16,6 +19,7 @@ class Persona {
     private $fechaNacimiento;
     private $descripcion;
     private $idCiudad;
+    private $idFoto;
 
     /**
      * @return mixed
@@ -191,16 +195,23 @@ class Persona {
         return $string;
     }
 
+    public function getIdFoto()
+    {
+        return $this->idFoto;
+    }
+
     public function image()
     {
-        return PerfilPhoto::find($this->id)->mainPath();
+        return $this->idFoto != null ?
+            FotoDAO::getById($this->idFoto)->getPath() :
+            Foto::defaultPerfil();
     }
 
     public function setVendedor()
     {
         return VendedorDAO::insert([
             "idPersona" => $this->id
-            ]);
+        ]);
     }
 
 }

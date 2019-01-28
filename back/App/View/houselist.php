@@ -28,7 +28,6 @@ if (Session::isSet("wrongHouse")) {
 <?php } ?>
 
 
-<?php //echo die(var_dump($mensajes)) ?>
 <section class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">

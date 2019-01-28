@@ -104,7 +104,7 @@ class HouseController extends Controller
                 "alquilerAutomatico" => $_POST['standardRate'],
                 "idTipoVivienda" => 1,
                 "idCiudad" => $_POST['city'],
-                "descripcion" => $_POST['description']]);
+                "descripcion" => $_POST['description']], "id = $id");
             $this->updateCompleted(true);
             Router::redirectWithDomain("houses/" . $id);
         } else {

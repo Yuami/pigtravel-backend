@@ -30,16 +30,17 @@
     </div>
 
     <div class="container">
-        <form action="/profile/<?= Session::get("userID") ?>" id="profileForm" method="POST">
+        <form action="/profile/<?= Session::me() ?>" id="profileForm" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
             <div class="row">
                 <div class="order-0 order-md-1 offset-md-1 col-md-3 side-menu">
                     <div class="picture-container">
                         <div class="picture">
-                            <img src="<?php echo File::getProfileImage($user); ?>" class="picture-src"
-                                 id="wizardPicturePreview" alt="pigtravel"
-                                 title="">
-                            <input name="imgForm" type="file" id="wizard-picture" class="">
+                            <img src="<?= $user->image() ?>" class="picture-src"
+                                 id="wizardPicturePreview"
+                                 alt="">
+                            <input name="picture" type="file" id="wizard-picture" class="" accept="image/*">
                         </div>
                         <h6 class="">Choose Picture</h6>
                     </div>
