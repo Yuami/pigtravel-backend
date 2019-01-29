@@ -16,7 +16,8 @@ use Model\DAO\ViviendaHasFotosDAO;
 use Model\Items\Foto;
 use Model\Items\ViviendaHasFotos;
 
-class UploadController extends Controller {
+class UploadController extends Controller
+{
     public static function uploadAll($images)
     {
 
@@ -49,21 +50,23 @@ class UploadController extends Controller {
 
     public function house($idVivienda)
     {
-        if (isset(File::get()['picture']) && isset($idVivienda)) {
+        if (HouseController::validUser($idVivienda)) {
+            if (isset(File::get()['picture']) && isset($idVivienda)) {
 
-            $uploads = File::uploadAllPhotos('picture', 'assets/uploads/img/casas');
-            $vivienda = ViviendaHasFotosDAO::getLastByVivienda($idVivienda);
-            for ($i = 0; $i < sizeof($uploads); $i++) {
-                $upload = $uploads[$i];
-                if ($upload instanceof Foto) {
-                    $index = $i + 1;
-                    $posicion = $vivienda instanceof ViviendaHasFotos ? $index + $vivienda->getPosicion() : $index;
+                $uploads = File::uploadAllPhotos('picture', 'assets/uploads/img/casas');
+                $vivienda = ViviendaHasFotosDAO::getLastByVivienda($idVivienda);
+                for ($i = 0; $i < sizeof($uploads); $i++) {
+                    $upload = $uploads[$i];
+                    if ($upload instanceof Foto) {
+                        $index = $i + 1;
+                        $posicion = $vivienda instanceof ViviendaHasFotos ? $index + $vivienda->getPosicion() : $index;
 
-                    ViviendaHasFotosDAO::insert([
-                        'idVivienda' => $idVivienda,
-                        'idFoto' => $upload->getId(),
-                        'posicion' => $posicion
-                    ]);
+                        ViviendaHasFotosDAO::insert([
+                            'idVivienda' => $idVivienda,
+                            'idFoto' => $upload->getId(),
+                            'posicion' => $posicion
+                        ]);
+                    }
                 }
             }
         }
