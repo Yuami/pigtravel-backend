@@ -8,16 +8,15 @@ use Model\DAO\MensajesDAO;
 use Model\DAO\ServicioHasIdiomaDAO;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaHasServicioDAO;
+use Model\Items\Reserva;
 use Model\Items\ServicioHasIdioma;
 use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
 
-class HouseController extends Controller
-{
+class HouseController extends Controller {
 
-    public static function validUser($userID, $vivienda)
-    {
+    public static function validUser($userID, $vivienda) {
         if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
             Session::set("wrongHouse", "true");
             Router::redirectWithDomain("houses");
@@ -26,21 +25,18 @@ class HouseController extends Controller
         return true;
     }
 
-    public function updateCompleted($completed)
-    {
+    public function updateCompleted($completed) {
         Session::set("updateCompleted", $completed);
     }
 
-    public function index()
-    {
+    public function index() {
         $id = Session::get('userID');
         $mensajes = MensajesDAO::getBy('idReciever', $id);
         $houses = ViviendaDAO::getByVendedor($id);
         include_once VIEW . "houselist.php";
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         $houses = ViviendaDAO::getById($id);
         $tarifas = TarifaDAO::getByIdVivienda($id);
         if (self::validUser(Session::get('userID'), $houses)) {
@@ -48,14 +44,26 @@ class HouseController extends Controller
         }
     }
 
-    public function create()
-    {
+    public function create() {
         $servicios = ServicioHasIdiomaDAO::getAllOrdered("nombre");
         include_once VIEW . "houseAdd.php";
     }
 
-    public function store()
-    {
+    private static function importServicios($vivienda) {
+        if (isset($_POST['servicios'])) {
+            $servicios = $_POST['servicios'];
+            if (!empty($servicios)) {
+                foreach ($servicios as $servicio)
+                    if (ServicioHasIdiomaDAO::getBy('idServicio', $servicio) != null)
+                        ViviendaHasServicioDAO::insert([
+                            'idVivienda' => $vivienda->getId(),
+                            'idServicio' => $servicio
+                        ]);
+            }
+        }
+    }
+
+    public function store() {
         $vivienda = ViviendaDAO::insert([
             "nombre" => $_POST['houseName'],
             "capacidad" => $_POST['peopleAmount'],
@@ -68,29 +76,21 @@ class HouseController extends Controller
             "idTipoVivienda" => 1,
             "idCiudad" => $_POST['city'],
             "idVendedor" => Session::get('userID'),
-            "descripcion" => $_POST['description']]);
+            "descripcion" => $_POST['description']
+        ]);
 
-        if (isset($_POST['servicios'])) {
-            $servicios = $_POST['servicios'];
-            if (!empty($servicios)) {
-                foreach ($servicios as $servicio)
-                    if (ServicioHasIdiomaDAO::getBy('idServicio', $servicio) != null)
-                        ViviendaHasServicioDAO::insert([
-                            'idVivienda' => $vivienda->getId(),
-                            'idServicio' => $servicio
-                        ]);
-            }
-        }
-        header("Location: " . DOMAIN . "/houses");
+        $uc = new UploadController();
+        $uc->house($vivienda->getId());
+        self::importServicios($vivienda);
+
+        Router::redirect('house/' . $vivienda->getId());
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         // TODO: Implement edit() method.
     }
 
-    public function update($id)
-    {
+    public function update($id) {
         $houses = ViviendaDAO::getById($id);
         if ($this->validUser(Session::get('userID'), $houses)) {
             ViviendaDAO::update([
@@ -113,8 +113,7 @@ class HouseController extends Controller
     }
 
 
-    public function destroy()
-    {
+    public function destroy() {
         // TODO: Implement destroy() method.
     }
 
