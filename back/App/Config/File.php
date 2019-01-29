@@ -33,7 +33,7 @@ class File
             $upload = $image->upload();
 
             if ($upload) {
-                $name = '/' . $path . '/' . $upload->getName();
+                $name = '/' . $path . '/' . $upload->getName() . '.' . $upload->getMime();
                 return FotoDAO::insert([
                     'path' => $name
                 ]);
