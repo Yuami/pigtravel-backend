@@ -95,7 +95,6 @@ class HouseController extends Controller
 
     public function edit($id)
     {
-        // TODO: Implement edit() method.
     }
 
     public function update($id)
@@ -123,7 +122,6 @@ class HouseController extends Controller
 
     public function destroy()
     {
-        // TODO: Implement destroy() method.
     }
 
 
