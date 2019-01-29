@@ -29,7 +29,7 @@
             <ol class="bg-transparent pt-0 breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/houses">House Management</a></li>
-                <li class="breadcrumb-item"><a href="/houses/<?php echo $house->getId()?>">House</a></li>
+                <li class="breadcrumb-item"><a href="/houses/<?php echo $house->getId() ?>">House</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tarifas</li>
             </ol>
         </div>
@@ -60,9 +60,21 @@
                                value="<?= $tarifa->getPrecio() ?>"
                     </div>
                     <div class="form-group">
+                        <label class="col-form-label" for="idPC">Politica Cancelacion</label>
                         <select class="custom-select" name="idPC" id="idPC">
-                            <option value="<?= $tarifa->getIdPoliticaCancelacion() ?>">
-                                <?= $tarifa->getIdPoliticaCancelacion() ?></option>
+                            <?php foreach ($politicas as $politica) {
+                                if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
+                                    <option value="<?php echo $tarifa->getIdPoliticaCancelacion() ?>">
+                                        <?php echo $politica->getNombre() ?></option>
+                                <?php }
+                            } ?>
+                            <?php foreach ($politicas as $politica) {
+                                if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) {
+                                } else { ?>
+                                    <option value="<?php echo $politica->getId() ?>">
+                                        <?php echo $politica->getNombre() ?></option>
+                                <?php }
+                            } ?>
                         </select>
                     </div>
                     <?php if ($tarifa->getGeneral() == 1) { ?>

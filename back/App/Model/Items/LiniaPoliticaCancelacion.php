@@ -1,24 +1,36 @@
 <?php
+
 namespace Model\Items;
 
 class LiniaPoliticaCancelacion
 {
-
+    private $id;
     private $idPoliticaCancelacion;
     private $dias;
     private $porcentaje;
 
     /**
-     * LiniaPoliticaCancelacion constructor.
-     * @param $idPoliticaCancelacion
-     * @param $dias
-     * @param $porcentaje
+     * @return mixed
      */
-    public function __construct($idPoliticaCancelacion, $dias, $porcentaje)
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdPoliticaCancelacion()
+    {
+        return $this->idPoliticaCancelacion;
+    }
+
+    /**
+     * @param mixed $idPoliticaCancelacion
+     */
+    public function setIdPoliticaCancelacion($idPoliticaCancelacion)
     {
         $this->idPoliticaCancelacion = $idPoliticaCancelacion;
-        $this->dias = $dias;
-        $this->porcentaje = $porcentaje;
     }
 
     /**
@@ -52,5 +64,6 @@ class LiniaPoliticaCancelacion
     {
         $this->porcentaje = $porcentaje;
     }
+
 
 }

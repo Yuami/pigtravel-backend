@@ -4,10 +4,13 @@ namespace Controller;
 
 use Config\Cookie;
 use Model\DAO\CitiesDAO;
+use Model\DAO\LiniaPoliticaCancelacionDAO;
 use Model\DAO\MensajesDAO;
+use Model\DAO\PoliticaCancelacionDAO;
 use Model\DAO\ServicioHasIdiomaDAO;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaHasServicioDAO;
+use Model\Items\LiniaPoliticaCancelacion;
 use Model\Items\ServicioHasIdioma;
 use Routing\Router;
 use Config\Session;
@@ -42,7 +45,9 @@ class HouseController extends Controller
     public function show($id)
     {
         $houses = ViviendaDAO::getById($id);
+        $idU = $houses->getIdVendedor();
         $tarifas = TarifaDAO::getByIdVivienda($id);
+        $politicas = PoliticaCancelacionDAO::getByIdVendedor($idU);
         if (self::validUser(Session::get('userID'), $houses)) {
             include_once VIEW . "house.php";
         }

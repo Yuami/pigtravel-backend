@@ -10,6 +10,7 @@ namespace Controller;
 
 
 use Config\Session;
+use Model\DAO\PoliticaCancelacionDAO;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaDAO;
 use Model\DAO\ViviendaHasTarifaDAO;
@@ -50,6 +51,8 @@ class TarifasController extends Controller
         $tarifa = TarifaDAO::getById($id);
         $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
         $house = ViviendaDAO::getById($VHT->getIdVivienda());
+        $idU = $house->getIdVendedor();
+        $politicas = PoliticaCancelacionDAO::getByIdVendedor($idU);
         include_once VIEW . 'tarifas.php';
     }
 

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php use Config\Session;
     use Model\DAO\CitiesDAO;
+
     function noHours($date)
     {
         return explode(" ", $date)[0];
@@ -28,7 +29,7 @@
     <ul class="nav nav-pills mr-auto ml-auto">
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#mainHouseSection">House</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Rates</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#sectio n3">Policies</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#politicas">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
     </ul>
 </nav>
@@ -162,6 +163,12 @@ if (Session::isSet("updateCompleted")) {
 
         </form>
     </div>
+    <hr>
+    <div class="row justify-content-center m-3">
+        <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#Modal">Crear
+            Tarifa
+        </button>
+    </div>
     <div class="container my-lg-5 my-sm-0" id="tarifas">
         <div class="card-deck">
             <?php if (!empty($tarifas)) {
@@ -181,6 +188,13 @@ if (Session::isSet("updateCompleted")) {
                         <p class="card-text">
                             <span class="fas fa-arrow-alt-circle-left"></span>
                             <?php echo noHours($tarifa->getFechaFin()) ?></p>
+                        <p class="card-text">
+                            <span class="fas fa-arrow-alt-circle-left"></span>
+                            <?php foreach ($politicas as $politica) { ?>
+                                <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
+                                    <?= $politica->getNombre() ?>
+                                <?php } ?>
+                            <?php } ?></p>
                         <?php } else { ?>
                         <div class="card text-center bg-warning shadow">
                             <a href="/tarifas/<?php echo $tarifa->getId() ?>"
@@ -203,67 +217,85 @@ if (Session::isSet("updateCompleted")) {
                     </div>
                 </a>
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Crear</button>
+        </div>
+    </div>
+    <hr>
+    <div class="container my-lg-5 my-sm-0" id="politicas">
+        <div class="card-deck">
+            <?php if (!empty($politicas)) {
+                foreach ($politicas
 
-            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Tarifa</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="card-body" action="/houses/<?php echo $houses->getId()?>" method="post">
-                                <div class="form-group">
-                                    <label for="fechaI" class="col-form-label">Fecha Inicio</label>
-                                    <input type="date" class="form-control" name="fechaI" id="fechaI">
+                         as $politica) { ?>
+                    <div class="card text-center shadow">
+                        <a href="/politica/<?php echo $politica->getId() ?>"
+                           style="text-decoration: none; color:inherit">
+                            <div class="card-body">
+                                <h4 class="card-title">Politica de <?= $politica->getNombre() ?></h4>
+                            </div>
+                        </a>
+                    </div>
+                <?php }
+            } ?>
+        </div>
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Tarifa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="card-body" action="/houses/<?php echo $houses->getId() ?>" method="post">
+                            <div class="form-group">
+                                <label for="fechaI" class="col-form-label">Fecha Inicio</label>
+                                <input type="date" class="form-control" name="fechaI" id="fechaI">
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaF" class="col-form-label">Fecha Fin</label>
+                                <input type="date" name="fechaF" id="fechaF" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="precio" class="col-form-label">Precio</label>
+                                <input type="number" name="precio" id="precio" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <select class="custom-select" name="idPC" id="idPC">
+                                    <option value="0">-- POLITICA CANCELACION --</option>
+                                    <?php foreach ($politicas as $politica) { ?>
+                                        <option value="<?php echo($politica->getId()) ?>">
+                                            <?php echo $politica->getNombre() ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <?php if ($tarifa->getGeneral() == 1) { ?>
+                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                    <input type="checkbox" class="custom-control-input" name="general"
+                                           id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
-                                <div class="form-group">
-                                    <label for="fechaF" class="col-form-label">Fecha Fin</label>
-                                    <input type="date" name="fechaF" id="fechaF" class="form-control">
+                            <?php } else { ?>
+                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                    <input type="checkbox" class="custom-control-input" name="general"
+                                           id="customCheck1" disabled>
+                                    <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
-                                <div class="form-group">
-                                    <label for="precio" class="col-form-label">Precio</label>
-                                    <input type="number" name="precio" id="precio" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select" name="idPC" id="idPC">
-                                        <option value="0">-- POLITICA CANCELACION --</option>
-                                        <?php foreach ($tarifas as $tarifa) { ?>
-                                            <option value="<?php echo $tarifa->getIdPoliticaCancelacion() ?>">
-                                                <?php echo $tarifa->getIdPoliticaCancelacion() ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <?php if ($tarifa->getGeneral() == 1) { ?>
-                                    <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                        <input type="checkbox" class="custom-control-input" name="general"
-                                               id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">General</label>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                        <input type="checkbox" class="custom-control-input" name="general"
-                                               id="customCheck1" disabled>
-                                        <label class="custom-control-label" for="customCheck1">General</label>
-                                    </div>
-                                <?php } ?>
-                                <div class="row justify-content-between m-2">
-                                    <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
-                                            data-dismiss="modal"> Cancelar
-                                    </button>
-                                    <button type="submit" id="btnAT" class="btn btn-success col-4 mr-5">Confirmar
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                            <?php } ?>
+                            <div class="row justify-content-between m-2">
+                                <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
+                                        data-dismiss="modal"> Cancelar
+                                </button>
+                                <button type="submit" id="btnAT" class="btn btn-success col-4 mr-5">Confirmar
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
 </section>
 <script>
     $('#Modal').on('show.bs.modal', function (event) {
@@ -277,13 +309,13 @@ if (Session::isSet("updateCompleted")) {
 <script src="/js/custom/house.js"></script>
 <script src="/js/custom/loadLocalidades.js"></script>
 <script>
-    $(function () {
-        mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
-        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
-        loadCiudades(idRegion);
-        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
-    });
+    //$(function () {
+    //    mapLoad(<?php //echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>//);
+    //    let idRegion = <?//= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>//;
+    //    loadCiudades(idRegion);
+    //    $('#city').select2.val(<?//= $houses->getIdCiudad() ?>//).trigger('change.select2');
+    //});
 </script>
 <?php include_once CALENDAR ?>
 <?php include_once("footer.php") ?>
-<script src="/js/selects/selectTarifa-Rebaja.js"
+<script src="/js/selects/selectTarifa-Rebaja.js"/>
