@@ -8,7 +8,7 @@ use Model\DAO\EstadoHasIdiomaDAO;
 use Model\DAO\ReservaDAO;
 use Model\DAO\MensajesDAO;
 use Routing\Router;
-use Handler\AuthHandler;
+use Handler\Auth;
 
 class ReservationController extends Controller
 {
@@ -24,10 +24,10 @@ class ReservationController extends Controller
     {
         $reserva = ReservaDAO::getById($id);
         $mensajes = MensajesDAO::getByidReserva($id);
-        if ($reserva && AuthHandler::verifyVendedor($reserva->getVendedor()->getId())) {
+        if ($reserva && Auth::verifyVendedor($reserva->getVendedor()->getId())) {
             require_once VIEW . 'reservation.php';
         } else {
-            AuthHandler::setError("Reservation");
+            Auth::setError("Reservation");
             Router::redirect("reservations");
         }
     }

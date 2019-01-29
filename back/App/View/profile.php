@@ -183,10 +183,11 @@
     </div>
 </section>
 
-<?php include_once("footer.php") ?>
+<?php var_dump($user->getIdCiudad()); include_once("footer.php") ?>
 <script>
     $(function(){
-        loadCiudades(970);
+        console.log(<?= $user->getIdCiudad() ?>);
+        loadCiudades(970, <?= $user->getIdCiudad() ?>);
     });
 </script>
 <script src="/js/custom/loadLocalidades.js"></script>

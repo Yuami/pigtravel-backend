@@ -16,13 +16,14 @@ use Model\DAO\ViviendaDAO;
 class HouseController extends Controller
 {
 
-    public static function validUser($userID, $vivienda)
+    public function validUser($userID, $vivienda)
     {
-        if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
+        $v = ViviendaDAO::getById($vivienda);
+        if ($v == NULL || $userID != $v->getIdVendedor()) { //false
             Session::set("wrongHouse", "true");
-            Router::redirectWithDomain("houses");
+            Router::redirect("houses");
             return false;
-        }
+        } //peta
         return true;
     }
 
@@ -43,7 +44,7 @@ class HouseController extends Controller
     {
         $houses = ViviendaDAO::getById($id);
         $tarifas = TarifaDAO::getByIdVivienda($id);
-        if (self::validUser(Session::get('userID'), $houses)) {
+        if (self::validUser(Session::me(), $id)) {
             include_once VIEW . "house.php";
         }
     }
@@ -81,7 +82,7 @@ class HouseController extends Controller
                         ]);
             }
         }
-        header("Location: " . DOMAIN . "/houses");
+        Router::redirect("houses");
     }
 
     public function edit($id)
@@ -91,10 +92,8 @@ class HouseController extends Controller
 
     public function update($id)
     {
-        $houses = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $houses)) {
+        if ($this->validUser(Session::me(), $id)) {
             ViviendaDAO::update([
-                "id" => $id,
                 "nombre" => $_POST['houseName'],
                 "capacidad" => $_POST['peopleAmount'],
                 "metrosCuadrados" => $_POST['squaremeters'],
@@ -106,7 +105,7 @@ class HouseController extends Controller
                 "idCiudad" => $_POST['city'],
                 "descripcion" => $_POST['description']], "id = $id");
             $this->updateCompleted(true);
-            Router::redirectWithDomain("houses/" . $id);
+            Router::redirect("houses");
         } else {
             $this->updateCompleted(false);
         }

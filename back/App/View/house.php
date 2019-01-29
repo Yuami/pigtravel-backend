@@ -280,8 +280,7 @@ if (Session::isSet("updateCompleted")) {
     $(function () {
         mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
         let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
-        loadCiudades(idRegion);
-        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
+        loadCiudades(idRegion, <?= $houses->getIdCiudad() ?>);
     });
 </script>
 <?php include_once CALENDAR ?>
