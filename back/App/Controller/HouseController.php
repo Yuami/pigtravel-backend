@@ -69,13 +69,28 @@ class HouseController extends Controller
             "idTipoVivienda" => 1,
             "idCiudad" => $_POST['city'],
             "idVendedor" => Session::get('userID'),
-            "descripcion" => $_POST['description']]);
+            "descripcion" => $_POST['description']
+        ]);
 
         $uc = new UploadController();
         $uc->house($vivienda->getId());
         self::importServicios($vivienda);
 
         Router::redirect('house/' . $vivienda->getId());
+    }
+
+    private static function importServicios($vivienda) {
+        if (isset($_POST['servicios'])) {
+            $servicios = $_POST['servicios'];
+            if (!empty($servicios)) {
+                foreach ($servicios as $servicio)
+                    if (ServicioHasIdiomaDAO::getBy('idServicio', $servicio) != null)
+                        ViviendaHasServicioDAO::insert([
+                            'idVivienda' => $vivienda->getId(),
+                            'idServicio' => $servicio
+                        ]);
+            }
+        }
     }
 
     public function edit($id)
