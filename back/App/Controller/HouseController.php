@@ -16,18 +16,18 @@ use Model\DAO\ViviendaDAO;
 class HouseController extends Controller
 {
 
-    public function validUser($userID, $vivienda)
+    public static function validUser($id)
     {
-        $v = ViviendaDAO::getById($vivienda);
-        if ($v == NULL || $userID != $v->getIdVendedor()) { //false
+        $v = ViviendaDAO::getById($id);
+        if ($v == NULL || Session::me() != $v->getIdVendedor()) {
             Session::set("wrongHouse", "true");
             Router::redirect("houses");
             return false;
-        } //peta
+        }
         return true;
     }
 
-    public function updateCompleted($completed)
+    public static function updateCompleted($completed)
     {
         Session::set("updateCompleted", $completed);
     }
@@ -44,7 +44,7 @@ class HouseController extends Controller
     {
         $houses = ViviendaDAO::getById($id);
         $tarifas = TarifaDAO::getByIdVivienda($id);
-        if (self::validUser(Session::me(), $id)) {
+        if (self::validUser($id)) {
             include_once VIEW . "house.php";
         }
     }
@@ -92,7 +92,7 @@ class HouseController extends Controller
 
     public function update($id)
     {
-        if ($this->validUser(Session::me(), $id)) {
+        if (self::validUser($id)) {
             ViviendaDAO::update([
                 "nombre" => $_POST['houseName'],
                 "capacidad" => $_POST['peopleAmount'],
@@ -100,14 +100,13 @@ class HouseController extends Controller
                 "calle" => $_POST['street'],
                 "horaEntrada" => $_POST['checkIn'],
                 "horaSalida" => $_POST['checkOut'],
-                "alquilerAutomatico" => $_POST['standardRate'],
                 "idTipoVivienda" => 1,
                 "idCiudad" => $_POST['city'],
                 "descripcion" => $_POST['description']], "id = $id");
-            $this->updateCompleted(true);
-            Router::redirect("houses");
+            self::updateCompleted(true);
+            Router::redirect("houses/$id");
         } else {
-            $this->updateCompleted(false);
+            self::updateCompleted(false);
         }
     }
 
