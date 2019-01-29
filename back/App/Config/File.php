@@ -6,19 +6,26 @@ use Model\DAO\FotoDAO;
 
 class File
 {
+
+    private static function upFoto($upload, $path)
+    {
+        $name = '/' . $path . '/' . $upload->getName() . '.' . $upload->getMime();
+        return FotoDAO::insert([
+            'path' => $name
+        ]);
+    }
+
     public static function uploadAllPhotos($name, $path)
     {
         $uploads = File::getFileSubmited($name);
         $photos = [];
-        foreach ($uploads as $upload){
+        foreach ($uploads as $upload) {
             $image = new \Bulletproof\Image($upload);
             $image->setLocation(ROOT . $path);
             $upload = $image->upload();
 
             if ($upload) {
-                $photos = FotoDAO::insert([
-                    'path' => '/' . $path . '/' . $upload->getName()
-                ]);
+                $photos[] = self::upFoto($upload, $path);
             }
         }
         return $photos;
@@ -27,23 +34,20 @@ class File
     public static function uploadPhoto($name, $path)
     {
         $uploads = File::getFileSubmited($name);
-        foreach ($uploads as $upload){
+        foreach ($uploads as $upload) {
             $image = new \Bulletproof\Image($upload);
             $image->setLocation(ROOT . $path);
             $upload = $image->upload();
 
             if ($upload) {
-                $name = '/' . $path . '/' . $upload->getName() . '.' . $upload->getMime();
-                return FotoDAO::insert([
-                    'path' => $name
-                ]);
+                return self::upFoto($upload, $path);
             }
         }
         return null;
     }
 
 
-    private static function reArrayFiles(array $arr): array
+    private static function reArrayFiles(array $arr) : array
     {
         $new = [];
         foreach ($arr as $key => $all) {
@@ -64,7 +68,7 @@ class File
         return $_FILES;
     }
 
-    public static function getFileSubmited($name): ?array
+    public static function getFileSubmited($name) : ?array
     {
         if (isset($_FILES[$name]['name']) && is_array($_FILES[$name]['name'])) {
             $file_ary = self::reArrayFiles($_FILES[$name]);
@@ -83,7 +87,7 @@ class File
         return $file_ary;
     }
 
-    public static function exists(string $path): bool
+    public static function exists(string $path) : bool
     {
         return file_exists($path);
     }
@@ -93,19 +97,19 @@ class File
         return array_diff(scandir($dir), array('..', '.'));
     }
 
-    public static function verifyType(string $path, string $file, array $fileTypes): bool
+    public static function verifyType(string $path, string $file, array $fileTypes) : bool
     {
         $fullPath = self::fullPath($path, $file);
         return File::exists($fullPath) ? in_array(File::extension($file), $fileTypes) : false;
     }
 
-    public static function fullPath($dir, $filename = ''): string
+    public static function fullPath($dir, $filename = '') : string
     {
         return File::real(self::rootIt($dir . '/' . $filename));
     }
 
 
-    public static function rootIt(string $path): string
+    public static function rootIt(string $path) : string
     {
         return BACK . $path;
     }
@@ -115,7 +119,7 @@ class File
         return realpath($path);
     }
 
-    public static function newDirectory($path): bool
+    public static function newDirectory($path) : bool
     {
         $path = self::rootIt($path) . '/';
         if (self::exists($path)) return false;
@@ -135,7 +139,7 @@ class File
         return self::setProfileImage($id, file_get_contents("https://api.adorable.io/avatars/" . $size . "/" . $id . ".png"));
     }
 
-    public static function extension(string $path): ?string
+    public static function extension(string $path) : ?string
     {
         return pathinfo($path, PATHINFO_EXTENSION);
     }
@@ -150,7 +154,7 @@ class File
         return pathinfo($path, PATHINFO_FILENAME);
     }
 
-    public static function type($path): ?string
+    public static function type($path) : ?string
     {
         return self::exists($path) ? filetype($path) : null;
     }

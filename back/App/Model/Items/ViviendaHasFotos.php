@@ -6,6 +6,7 @@ class ViviendaHasFotos
 {
     private $idVivienda;
     private $idFoto;
+    private $posicion;
 
     /**
      * @return mixed
@@ -31,5 +32,9 @@ class ViviendaHasFotos
     public function getFotoPath() : string
     {
         return $this->getFoto()->getPath();
+    }
+
+    public function getPosicion() {
+        return $this->posicion;
     }
 }

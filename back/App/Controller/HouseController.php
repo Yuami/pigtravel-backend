@@ -71,18 +71,11 @@ class HouseController extends Controller
             "idVendedor" => Session::get('userID'),
             "descripcion" => $_POST['description']]);
 
-        if (isset($_POST['servicios'])) {
-            $servicios = $_POST['servicios'];
-            if (!empty($servicios)) {
-                foreach ($servicios as $servicio)
-                    if (ServicioHasIdiomaDAO::getBy('idServicio', $servicio) != null)
-                        ViviendaHasServicioDAO::insert([
-                            'idVivienda' => $vivienda->getId(),
-                            'idServicio' => $servicio
-                        ]);
-            }
-        }
-        Router::redirect("houses");
+        $uc = new UploadController();
+        $uc->house($vivienda->getId());
+        self::importServicios($vivienda);
+
+        Router::redirect('house/' . $vivienda->getId());
     }
 
     public function edit($id)
@@ -94,12 +87,14 @@ class HouseController extends Controller
     {
         if (self::validUser($id)) {
             ViviendaDAO::update([
+                "id" => $id,
                 "nombre" => $_POST['houseName'],
                 "capacidad" => $_POST['peopleAmount'],
                 "metrosCuadrados" => $_POST['squaremeters'],
                 "calle" => $_POST['street'],
                 "horaEntrada" => $_POST['checkIn'],
                 "horaSalida" => $_POST['checkOut'],
+                "alquilerAutomatico" => $_POST['standardRate'],
                 "idTipoVivienda" => 1,
                 "idCiudad" => $_POST['city'],
                 "descripcion" => $_POST['description']], "id = $id");
