@@ -74,8 +74,7 @@ abstract class DAO
 
     public static function deleteBy($column, $value)
     {
-        $statement = DB::conn()->query("DELETE FROM " . static::$table . " WHERE :column=':value'");
-        $statement->bindValue(":column", $column, PDO::PARAM_STR);
+        $statement = DB::conn()->prepare("DELETE FROM " . static::$table . " WHERE $column=:value");
         $statement->bindValue(":value", $value);
         $statement->execute();
     }
@@ -89,27 +88,6 @@ abstract class DAO
 
         $sql = sprintf('insert into %s (%s) values (%s)',
             $table, $columns, $values);
-        try {
-            $con = DB::conn();
-            $statement = $con->prepare($sql);
-            $statement->execute($parameters);
-            $id = $con->lastInsertId();
-            return static::getById($id);
-        } catch (\Exception $e) {
-            return null;
-        }
-    }
-
-    public static function replace(array $parameters)
-    {
-        $table = static::$table;
-        $keys = array_keys($parameters);
-        $columns = implode(', ', $keys);
-        $values = ':' . implode(', :', $keys);
-
-        $sql = sprintf('replace into %s (%s) values (%s)',
-            $table, $columns, $values);
-
         try {
             $con = DB::conn();
             $statement = $con->prepare($sql);

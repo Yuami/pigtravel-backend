@@ -163,21 +163,25 @@ if (Session::isSet("updateCompleted")) {
 
         </form>
     </div>
+    <div id="tarifas"></div>
     <hr>
-    <h2 class="text-center m-5">Tarifas</h2>
-    <div class="row justify-content-center m-3">
-        <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalT">Crear
-            Tarifa
-        </button>
-    </div>
-    <div class="container my-lg-5 my-sm-0" id="tarifas">
-        <div class="card-deck">
+    <div class="row">
+        <div class="row col-12 justify-content-center">
+            <h2 class="text-center m-5">TARIFAS</h2>
+        </div>
+        <div class="row col-12 justify-content-center my-5">
+            <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalT">
+                Crear
+                Tarifa
+            </button>
+        </div>
+        <div class="row col-12 justify-content-center">
             <?php if (!empty($tarifas)) {
             foreach ($tarifas
 
             as $tarifa) { ?>
             <?php if ($tarifa->getGeneral() == 0) { ?>
-            <div class="card text-center shadow">
+            <div class="card text-center shadow col-md-3 col-12 m-2">
                 <a href="/tarifas/<?php echo $tarifa->getId() ?>" style="text-decoration: none; color:inherit">
                     <div class="card-body">
                         <h4 class="card-title">Tarifa</h4>
@@ -189,29 +193,46 @@ if (Session::isSet("updateCompleted")) {
                         <p class="card-text">
                             <span class="fas fa-arrow-alt-circle-left"></span>
                             <?php echo noHours($tarifa->getFechaFin()) ?></p>
-                        <p class="card-text">
-                            <span class="fas fa-arrow-alt-circle-left"></span>
-                            <?php foreach ($politicas as $politica) { ?>
-                                <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
-                                    <?= $politica->getNombre() ?>
-                                <?php } ?>
-                            <?php } ?></p>
-                        <?php } else { ?>
-                        <div class="card text-center bg-warning shadow">
+                        <?php foreach ($politicas as $politica) { ?>
+                            <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
+                                <p class="card-text">
+                                    <span class="fas fa-arrow-alt-circle-left"></span>
+                                    <?= $politica->getNombre() ?></p>
+                            <?php }
+                        }
+                        } else { ?>
+                        <div class="card text-center bg-warning shadow col-md-3 col-12 m-2">
                             <a href="/tarifas/<?php echo $tarifa->getId() ?>"
                                style="text-decoration: none;color:inherit">
                                 <div class="card-body">
-                                    <h4 class="card-title">
+                                    <h4 class="card-title ">
                                         <storng>Tarifa</storng>
                                     </h4>
-                                    <h4 class="card-title">
+                                    <h4 class="card-title mt-4">
                                         <storng>General</storng>
                                     </h4>
-                                    <p class="card-text">
-                                        <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?></p>
+                                    <p class="card-text mt-4">
+                                        <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?>
+                                    </p>
+                                    <p class="card-text mt-4 mb-2">
+                                        <?php foreach ($politicas as $politica) { ?>
+                                            <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
+                                                <span class="fas fa-arrow-alt-circle-left"></span>
+                                                <?= $politica->getNombre() ?>
+                                            <?php } ?>
+                                        <?php } ?></p>
                                     <?php } ?>
                                 </div>
                             </a>
+                            <div class="card-footer" id="footerP">
+                                <form action="/tarifas/<?php echo $tarifa->getId() ?>" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="idT" id="idT"
+                                           value="<?php echo $tarifa->getId() ?>">
+                                    <button type="submit" id="btnET" class="btn btn-danger">Eliminar
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                         <?php }
                         } ?>
@@ -221,141 +242,159 @@ if (Session::isSet("updateCompleted")) {
         </div>
     </div>
     <hr>
-    <h2 class="text-center m-5">Politicas de Cancelacion</h2>
-    <div class="row justify-content-center m-3">
-        <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalP">Crear
-            Politica
-        </button>
-    </div>
-    <div class="container my-lg-5 my-sm-0" id="politicas">
-        <div class="card-deck">
+    <div class="row" id="politicas">
+        <div class="row justify-content-center col-12">
+            <h2 class="text-center m-5">POLITICAS DE CANCELACION</h2>
+        </div>
+        <div class="row justify-content-center col-12 my-5">
+            <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalP">
+                Crear
+                Politica
+            </button>
+        </div>
+        <div class="row justify-content-center col-12 my-5">
             <?php if (!empty($politicas)) {
-                foreach ($politicas
+            foreach ($politicas
 
-                         as $politica) { ?>
-                    <div class="card text-center shadow">
-                        <a href="/politicas/<?php echo $politica->getId() ?>"
-                           style="text-decoration: none; color:inherit">
-                            <div class="card-body">
-                                <h4 class="card-title">Politica de <?= $politica->getNombre() ?></h4>
-                            </div>
-                        </a>
+            as $politica) {
+            $linias = $politica->getLinias() ?>
+            <a href="/politicas/<?php echo $politica->getId() ?>" style="text-decoration: none; color:inherit">
+                <div class="card text-center shadow col-md-3 col-12 m-2">
+                    <div class="card-header">
+                        <h4 class="card-title">Politica de <?= $politica->getNombre() ?></h4>
                     </div>
-                <?php }
-            } ?>
+                    <div class="card-body">
+                        <?php foreach ($linias as $item) { ?>
+                            <p class="card-text"><i class="fas fa-sun"></i> <?= $item->getDias() ?> Dias
+                                <br><?= $item->getPorcentaje() ?> <i class="fas fa-percentage"></i></p>
+                        <?php } ?>
+                    </div>
+            </a>
+            <div class="card-footer" id="footerP">
+                <form action="/politicas/<?php echo $politica->getId() ?>" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="idH" id="idH" value="<?php echo $houses->getId() ?>">
+                    <button type="submit" id="btnET" class="btn btn-danger">Eliminar
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="modal fade" id="ModalT" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Tarifa</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="card-body" action="/houses/<?php echo $houses->getId() ?>" method="post">
-                            <div class="form-group">
-                                <label for="fechaI" class="col-form-label">Fecha Inicio</label>
-                                <input type="date" class="form-control" name="fechaI" id="fechaI">
+        <?php }
+        } ?>
+    </div>
+    <div class="modal fade" id="ModalT" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Tarifa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="card-body" action="/houses/<?php echo $houses->getId() ?>" method="post">
+                        <div class="form-group">
+                            <label for="fechaI" class="col-form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" name="fechaI" id="fechaI">
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaF" class="col-form-label">Fecha Fin</label>
+                            <input type="date" name="fechaF" id="fechaF" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="precio" class="col-form-label">Precio</label>
+                            <input type="number" name="precio" id="precio" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <select class="custom-select" name="idPC" id="idPC">
+                                <option value="0">-- POLITICA CANCELACION --</option>
+                                <?php foreach ($politicas as $politica) { ?>
+                                    <option value="<?php echo($politica->getId()) ?>">
+                                        <?php echo $politica->getNombre() ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <?php if ($tarifa->getGeneral() == 1) { ?>
+                            <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                <input type="checkbox" class="custom-control-input" name="general"
+                                       id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">General</label>
                             </div>
-                            <div class="form-group">
-                                <label for="fechaF" class="col-form-label">Fecha Fin</label>
-                                <input type="date" name="fechaF" id="fechaF" class="form-control">
+                        <?php } else { ?>
+                            <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                <input type="checkbox" class="custom-control-input" name="general"
+                                       id="customCheck1" disabled>
+                                <label class="custom-control-label" for="customCheck1">General</label>
                             </div>
-                            <div class="form-group">
-                                <label for="precio" class="col-form-label">Precio</label>
-                                <input type="number" name="precio" id="precio" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <select class="custom-select" name="idPC" id="idPC">
-                                    <option value="0">-- POLITICA CANCELACION --</option>
-                                    <?php foreach ($politicas as $politica) { ?>
-                                        <option value="<?php echo($politica->getId()) ?>">
-                                            <?php echo $politica->getNombre() ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                            <?php if ($tarifa->getGeneral() == 1) { ?>
-                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                    <input type="checkbox" class="custom-control-input" name="general"
-                                           id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">General</label>
-                                </div>
-                            <?php } else { ?>
-                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                    <input type="checkbox" class="custom-control-input" name="general"
-                                           id="customCheck1" disabled>
-                                    <label class="custom-control-label" for="customCheck1">General</label>
-                                </div>
-                            <?php } ?>
-                            <div class="row justify-content-between m-2">
-                                <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
-                                        data-dismiss="modal"> Cancelar
-                                </button>
-                                <button type="submit" id="btnAT" class="btn btn-success col-4 mr-5">Confirmar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        <?php } ?>
+                        <div class="row justify-content-between m-2">
+                            <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
+                                    data-dismiss="modal"> Cancelar
+                            </button>
+                            <button type="submit" id="btnAT" class="btn btn-success col-md-4 col-12 mr-5">
+                                Confirmar
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="ModalP" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Politica de Cancelacion</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="card-body" action="/politicas" method="post">
-                            <input type="hidden" name="idV" value="<?php echo $houses->getIdVendedor() ?>">
-                            <input type="hidden" name="idH" value="<?php echo $houses->getId() ?>">
-                            <div class="form-group">
-                                <label for="nombre" class="col-form-label">Nombre</label>
-                                <input type="text" class="form-control" name="nombre" id="nombre">
-                            </div>
-                            <hr>
-                            <h5 class="text-center">Crea tu primera Linia de la Politica</h5>
-                            <div class="form-group">
-                                <label for="dias" class="col-form-label">Dias</label>
-                                <input type="number" name="dias" id="dias" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="porcentaje" class="col-form-label">Porcentaje</label>
-                                <input type="number" name="porcentaje" id="porcentaje" class="form-control">
-                            </div>
-                            <div class="row justify-content-between m-2">
-                                <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
-                                        data-dismiss="modal"> Cancelar
-                                </button>
-                                <button type="submit" id="btnAT" class="btn btn-success col-4 mr-5">Confirmar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+    </div>
+    <div class="modal fade" id="ModalP" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Politica de Cancelacion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="card-body" action="/politicas/<?php echo $politica->getId() ?>" method="post">
+                        <input type="hidden" name="idV" value="<?php echo $houses->getIdVendedor() ?>">
+                        <input type="hidden" name="idH" value="<?php echo $houses->getId() ?>">
+                        <div class="form-group">
+                            <label for="nombre" class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre">
+                        </div>
+                        <hr>
+                        <h5 class="text-center">Crea tu primera Linia de la Politica</h5>
+                        <div class="form-group">
+                            <label for="dias" class="col-form-label">Dias</label>
+                            <input type="number" name="dias" id="dias" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="porcentaje" class="col-form-label">Porcentaje</label>
+                            <input type="number" name="porcentaje" id="porcentaje" class="form-control">
+                        </div>
+                        <div class="row justify-content-between m-2">
+                            <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
+                                    data-dismiss="modal"> Cancelar
+                            </button>
+                            <button type="submit" id="btnAT" class="btn btn-success col-4 mr-5">Confirmar
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 </section>
+<script src="/js/calendar.js"></script>
+<script src="/js/custom/house.js"></script>
+<script src="/js/custom/loadLocalidades.js"></script>
 <script>
     $('#ModalT').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var recipient = button.data('');
         var modal = $(this);
         modal.find('.modal-body input').val(recipient)
-    })
-</script>
-<script src="/js/calendar.js"></script>
-<script src="/js/custom/house.js"></script>
-<script src="/js/custom/loadLocalidades.js"></script>
-<script>
+    });
+    // $('#footerC').on('click')
     //$(function () {
     //    mapLoad(<?php //echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>//);
     //    let idRegion = <?//= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>//;

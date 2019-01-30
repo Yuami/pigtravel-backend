@@ -67,19 +67,23 @@ class TarifasController extends Controller
         $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
         $house = ViviendaDAO::getById($VHT->getIdVivienda());
         $t = TarifaDAO::update([
-            "id" => $id,
             "fechaInicio" => $_POST['fechaI'],
             "fechaFin" => $_POST['fechaF'],
             "precio" => $_POST['precio'],
             "general" => isset($_POST['general']),
             "idPoliticaCancelacion" => $_POST['idPC'],
-        ]);
+        ], "id=$id");
         Router::redirect('houses/' . $house->getId());
 
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        // TODO: Implement destroy() method.
+        $tarifa = TarifaDAO::getById($id);
+        $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
+        $house = ViviendaDAO::getById($VHT->getIdVivienda());
+        TarifaDAO::deleteById($id);
+        ViviendaHasTarifaDAO::deleteByIdTarifa($id);
+        Router::redirect('houses/' . $house->getId());
     }
 }

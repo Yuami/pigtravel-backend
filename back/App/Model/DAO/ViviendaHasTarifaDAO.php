@@ -28,8 +28,14 @@ class ViviendaHasTarifaDAO extends DAO
     {
         return parent::getBy('idVivienda', $id);
     }
+
     public static function getByIdTarifa($id)
     {
         return parent::getBy('idTarifa', $id)[0];
+    }
+
+    public static function deleteByIdTarifa($id)
+    {
+        parent::deleteBy('idTarifa', $id);
     }
 }

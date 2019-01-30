@@ -16,4 +16,19 @@ class LiniaPoliticaCancelacionDAO extends DAO
     {
         return parent::getBy('idPoliticaCancelacion', $id);
     }
+
+    public static function deleteByIdPolitica($id)
+    {
+        parent::deleteBy('idPoliticaCancelacion', $id);
+    }
+
+    public static function getIdsPoliticas()
+    {
+        $ids = array();
+        $ps = parent::getAll();
+        foreach ($ps as $p) {
+            $ids[] += $p->getId();
+        }
+        return $ids;
+    }
 }

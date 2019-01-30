@@ -4,6 +4,7 @@ namespace Controller;
 
 use Config\Cookie;
 use Model\DAO\CitiesDAO;
+use Model\DAO\LiniaPoliticaCancelacionDAO;
 use Model\DAO\MensajesDAO;
 use Model\DAO\PoliticaCancelacionDAO;
 use Model\DAO\ServicioHasIdiomaDAO;

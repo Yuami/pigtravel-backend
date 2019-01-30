@@ -8,6 +8,8 @@
 
 namespace Model\Items;
 
+use Model\DAO\LiniaPoliticaCancelacionDAO;
+
 class PoliticaCancelacion
 {
     private $id;
@@ -52,6 +54,11 @@ class PoliticaCancelacion
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+    }
+
+    public function getLinias()
+    {
+        return LiniaPoliticaCancelacionDAO::getByIdPolitica($this->id);
     }
 
 }

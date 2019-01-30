@@ -12,6 +12,7 @@ namespace Controller;
 use Config\Session;
 use Model\DAO\LiniaPoliticaCancelacionDAO;
 use Model\DAO\PoliticaCancelacionDAO;
+use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaDAO;
 use Routing\Router;
 
@@ -23,21 +24,33 @@ class PoliticasController extends Controller
         // TODO: Implement index() method.
     }
 
-    public function store()
+    public function store($id)
     {
-        $id = $_POST['idH'];
-        $p = PoliticaCancelacionDAO::insert([
-            "nombre" => $_POST['nombre'],
-            "idVendedor" => $_POST['idV']
-        ]);
-        $idP = $p->getId();
+        $idH = $_POST['idH'];
+        if ($idH != null) {
+            $p = PoliticaCancelacionDAO::insert([
+                "nombre" => $_POST['nombre'],
+                "idVendedor" => $_POST['idV']
+            ]);
+        }
+        $idP = 0;
+        $ids = LiniaPoliticaCancelacionDAO::getIdsPoliticas();
+        if ($p != null) {
+            $idP = $p->getId();
+        } else {
+            $idP = $id;
+        }
         LiniaPoliticaCancelacionDAO::insert([
-            "id" => $idP,
+            "id" => (max($ids) + 1),
             "idPoliticaCancelacion" => $idP,
             "dias" => $_POST['dias'],
             "porcentaje" => $_POST['porcentaje']
         ]);
-        Router::redirect('houses/' . $id);
+        if ($idH != null) {
+            Router::redirect('houses/' . $idH . '#politicas');
+        } else {
+            Router::redirect('politicas/' . $id);
+        }
 
     }
 
@@ -60,18 +73,32 @@ class PoliticasController extends Controller
 
     public function update($id)
     {
+        $idL = $_POST['idL'];
         $politica = PoliticaCancelacionDAO::getById($id);
         $liniasP = LiniaPoliticaCancelacionDAO::getByIdPolitica($id);
         LiniaPoliticaCancelacionDAO::update([
             "idPoliticaCancelacion" => $id,
             "dias" => $_POST['dias'],
             "porcentaje" => $_POST['porcentaje']
-        ]);
+        ], "id", $idL);
         Router::redirect('politicas/' . $id);
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        // TODO: Implement destroy() method.
+
+        if ($_POST['idH'] != null) {
+            dd('entra');
+            TarifaDAO::update([
+                "idPoliticaCancelacion" => null
+            ], "idPoliticaCancelacion=$id");
+            LiniaPoliticaCancelacionDAO::deleteByIdPolitica($id);
+            PoliticaCancelacionDAO::deleteById($id);
+            Router::redirect('houses/' . $idH . '#politicas');
+        } else {
+            $idL=$_POST['idL'];
+            LiniaPoliticaCancelacionDAO::deleteById($idL);
+            Router::redirect('politicas/' . $id);
+        }
     }
 }
