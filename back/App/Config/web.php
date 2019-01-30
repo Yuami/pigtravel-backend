@@ -14,6 +14,9 @@ Router::resource('login', 'LoginController');
 Router::resource('support','SupportController');
 
 Router::get('tarifas/{id}', 'TarifasController@show');
+Router::get('politicas/{id}', 'PoliticasController@show');
+Router::put('politicas/{id}', 'PoliticasController@update');
+Router::post('politicas', 'PoliticasController@store');
 Router::put('tarifas/{id}', 'TarifasController@update');
 Router::post('houses/{id}', 'TarifasController@store');
 Router::get('','IndexController@index');

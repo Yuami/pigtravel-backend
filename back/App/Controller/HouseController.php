@@ -5,6 +5,7 @@ namespace Controller;
 use Config\Cookie;
 use Model\DAO\CitiesDAO;
 use Model\DAO\MensajesDAO;
+use Model\DAO\PoliticaCancelacionDAO;
 use Model\DAO\ServicioHasIdiomaDAO;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaHasServicioDAO;
@@ -43,6 +44,8 @@ class HouseController extends Controller
     public function show($id)
     {
         $houses = ViviendaDAO::getById($id);
+        $idU = $houses->getIdVendedor();
+        $politicas = PoliticaCancelacionDAO::getByIdVendedor($idU);
         $tarifas = TarifaDAO::getByIdVivienda($id);
         if (self::validUser($id)) {
             include_once VIEW . "house.php";
@@ -79,7 +82,8 @@ class HouseController extends Controller
         Router::redirect('house/' . $vivienda->getId());
     }
 
-    private static function importServicios($vivienda) {
+    private static function importServicios($vivienda)
+    {
         if (isset($_POST['servicios'])) {
             $servicios = $_POST['servicios'];
             if (!empty($servicios)) {

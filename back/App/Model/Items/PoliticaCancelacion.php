@@ -5,11 +5,30 @@
  * Date: 21/11/2018
  * Time: 9:17
  */
+
 namespace Model\Items;
 
-class PoliticaCancelacion {
+class PoliticaCancelacion
+{
     private $id;
     private $nombre;
+    private $idVendedor;
+
+    /**
+     * @return mixed
+     */
+    public function getIdVendedor()
+    {
+        return $this->idVendedor;
+    }
+
+    /**
+     * @param mixed $idVendedor
+     */
+    public function setIdVendedor($idVendedor)
+    {
+        $this->idVendedor = $idVendedor;
+    }
 
     /**
      * @return mixed
@@ -17,14 +36,6 @@ class PoliticaCancelacion {
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -38,7 +49,7 @@ class PoliticaCancelacion {
     /**
      * @param mixed $nombre
      */
-    public function setNombre($nombre): void
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
     }
