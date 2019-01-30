@@ -41,7 +41,14 @@ class PoliticasController extends Controller
 
     public function update($id)
     {
-        // TODO: Implement update() method.
+        $politica = PoliticaCancelacionDAO::getById($id);
+        $liniasP = LiniaPoliticaCancelacionDAO::getByIdPolitica($id);
+        LiniaPoliticaCancelacionDAO::update([
+            "idPoliticaCancelacion" => $id,
+            "dias" => $_POST['dias'],
+            "porcentaje" => $_POST['porcentaje']
+        ]);
+        Router::redirect('politicas/' . $id);
     }
 
     public function destroy()

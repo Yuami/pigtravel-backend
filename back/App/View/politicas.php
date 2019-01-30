@@ -6,11 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php use Config\Session;
 
-    function noHours($date)
-    {
-        return explode(' ', $date)[0];
-    }
-
     require_once ROOT . "libraries.php" ?>
     <title>Politicas de Cancelacion</title>
 </head>
@@ -37,16 +32,16 @@
                     <h5 class="card-title text-center">Linia Politica</h5>
                 </div>
                 <div class="card-body p-5">
-                    <form action="/liniaspoliticas/<?php echo $liniaP->getId() ?>" method="POST">
+                    <form action="/politicas/<?php echo $politica->getId() ?>" method="POST">
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group ">
                             <label class="col-form-label " for="lPD">Dias Descuento</label>
-                            <input class="form-control text-center" type="number" name="lPD" id="lPD"
+                            <input class="form-control text-center" type="number" name="dias" id="lPD"
                                    value="<?php echo $liniaP->getDias() ?>">
                         </div>
                         <div class="form-group ">
                             <label class="col-form-label " for="lPP">Porcentaje Aplicado</label>
-                            <input class="form-control text-center" type="number" name="lPP" id="lPP"
+                            <input class="form-control text-center" type="number" name="porcentaje" id="lPP"
                                    value="<?php echo $liniaP->getPorcentaje() ?>">
                         </div>
                         <div class="form-group row justify-content-center mt-4">
