@@ -1,10 +1,25 @@
 $(document).ready(function () {
+    var counter=true;
        $('#mobilebutton').on('click',function(){
-                $('.openBtn').toggle();
+           if(counter) {
+               $('#cardsmensajes tr').each(function () {
+                   if ($(this).data('leido') == 0) {
+                       $(this).hide();
+                   }
+               })
+               counter=false;
+           }
+           else{
+               $('#cardsmensajes tr').each(function () {
+                       $(this).show();
 
+               })
+               counter=true;
+           };
         $(this)
             .find('[id="icon"]').toggleClass('fa-eye-slash').toggleClass('fa-eye');
     });
+
     $('.openBtn').on('click', function () {
         $('#myModal'+this.id).modal();
     });
@@ -18,7 +33,7 @@ function myNewFunction(sel) {
 
     } else {
         $("tr").hide();
-        $("tr[id=" + val + "]").show();
+        $("tr[data-id-viv=" + val + "]").show();
     }
 }
 function myFunction() {

@@ -4,7 +4,7 @@ namespace Handler;
 use Config\Session;
 use Routing\Router;
 
-class AuthHandler {
+class Auth {
 
     public static function verifyVendedor($idVendedor)
     {

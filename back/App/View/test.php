@@ -1,4 +1,13 @@
-<?php
-print_r( ROOT . '<br>');
-print_r(BACK . '<br>');
-print_r(\Config\Photos\Photos::me()->mainPath());
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload your files</title>
+</head>
+<body>
+<form enctype="multipart/form-data" action="/upload" method="POST">
+    <p>Upload your file</p>
+    <input type="file" name="picture"/><br>
+    <input type="submit" value="Upload"/>
+</form>
+</body>
+</html>

@@ -21,7 +21,7 @@ class DB
             self::$conn = new PDO($dsn, $user, $pass);
             self::$conn->exec("set names utf8");
         } catch (\Exception $e){
-            Err::display('Problema al conectar con la base de datos! Intetalo más tarde!','500');
+            Err::display('Problema al conectar con la base de datos! Intentalo más tarde!','500');
         }
     }
 

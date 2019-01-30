@@ -14,7 +14,7 @@ function stopLoading() {
 }
 
 function fetchToSelect(url, id) {
-    fetch(url)
+    return fetch(url)
         .then(r => r.json())
         .then(countries => {
                 countries.forEach(c => addToLista(id, toOption(c.id, c.name)));
@@ -25,7 +25,7 @@ function fetchToSelect(url, id) {
                     loadCiudades(region.select2('val'));
                 }
             }
-        )
+        );
 }
 
 function loadPaises() {
@@ -43,14 +43,19 @@ function loadRegion(idPais = "") {
     fetchToSelect(url, "#region");
 }
 
-function loadCiudades(idRegion = "") {
+function loadCiudades(idRegion = "", idCiudad = "") {
     let url = "/api/ciudades/" + idRegion;
     city.empty();
     startLoading("Loading Cities");
-    fetchToSelect(url, "#city");
+    fetchToSelect(url, "#city").then(r => {
+        if (idCiudad) {
+            city.val(idCiudad).trigger('change');
+        }
+    });
+
 }
 
-function getRegionById(idCiudad = ""){
+function getRegionById(idCiudad = "") {
 
 }
 

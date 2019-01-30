@@ -28,7 +28,6 @@ if (Session::isSet("wrongHouse")) {
 <?php } ?>
 
 
-<?php //echo die(var_dump($mensajes)) ?>
 <section class="container-fluid">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
@@ -52,7 +51,7 @@ if (Session::isSet("wrongHouse")) {
                         <a href="/houses/<?php echo $house->getId() ?>" class="card p-0 card-show"
                                                                         style="color: inherit; text-decoration:none;">
                     <div class="view overlay">
-                        <img src="<?= $house->photo() ?>" alt="CASA" style="width: 100%;height: 250px;">
+                        <img src="<?= $house->image() ?>" alt="alojamiento" style="width: 100%;height: 250px;">
                     </div>
                     <div class="card-body ">
                         <p class="col font-weight-bold text-center">
