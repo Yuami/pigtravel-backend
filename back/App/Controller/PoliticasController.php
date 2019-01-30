@@ -86,7 +86,6 @@ class PoliticasController extends Controller
 
     public function destroy($id)
     {
-
         if ($_POST['idH'] != null) {
             dd('entra');
             TarifaDAO::update([
@@ -94,9 +93,9 @@ class PoliticasController extends Controller
             ], "idPoliticaCancelacion=$id");
             LiniaPoliticaCancelacionDAO::deleteByIdPolitica($id);
             PoliticaCancelacionDAO::deleteById($id);
-            Router::redirect('houses/' . $idH . '#politicas');
+            Router::redirect('houses/' . $_POST['idH'] . '#politicas');
         } else {
-            $idL=$_POST['idL'];
+            $idL = $_POST['idL'];
             LiniaPoliticaCancelacionDAO::deleteById($idL);
             Router::redirect('politicas/' . $id);
         }
