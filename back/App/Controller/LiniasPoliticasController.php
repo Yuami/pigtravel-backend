@@ -2,19 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: ruben
- * Date: 28/01/2019
- * Time: 11:44
+ * Date: 29/01/2019
+ * Time: 13:01
  */
 
 namespace Controller;
 
 
-use Config\Session;
 use Model\DAO\LiniaPoliticaCancelacionDAO;
-use Model\DAO\PoliticaCancelacionDAO;
-use Model\DAO\ViviendaDAO;
+use Routing\Router;
 
-class PoliticasController extends Controller
+class LiniasPoliticasController extends Controller
 {
 
     public function index()
@@ -29,9 +27,7 @@ class PoliticasController extends Controller
 
     public function show($id)
     {
-        $politica = PoliticaCancelacionDAO::getById($id);
-        $liniasP = LiniaPoliticaCancelacionDAO::getByIdPolitica($id);
-        include_once VIEW . 'politicas.php';
+        // TODO: Implement show() method.
     }
 
     public function edit($id)
@@ -41,7 +37,10 @@ class PoliticasController extends Controller
 
     public function update($id)
     {
-        // TODO: Implement update() method.
+        die(var_dump("llega"));
+        $liniaP = LiniaPoliticaCancelacionDAO::getById($id);
+        $politica = $liniaP->getId();
+        Router::redirect('/politicas' . $politica->getId());
     }
 
     public function destroy()

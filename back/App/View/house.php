@@ -164,6 +164,7 @@ if (Session::isSet("updateCompleted")) {
         </form>
     </div>
     <hr>
+    <h2 class="text-center m-5">Tarifas</h2>
     <div class="row justify-content-center m-3">
         <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#Modal">Crear
             Tarifa
@@ -220,6 +221,7 @@ if (Session::isSet("updateCompleted")) {
         </div>
     </div>
     <hr>
+    <h2 class="text-center m-5">Politicas de Cancelacion</h2>
     <div class="container my-lg-5 my-sm-0" id="politicas">
         <div class="card-deck">
             <?php if (!empty($politicas)) {
@@ -227,7 +229,7 @@ if (Session::isSet("updateCompleted")) {
 
                          as $politica) { ?>
                     <div class="card text-center shadow">
-                        <a href="/politica/<?php echo $politica->getId() ?>"
+                        <a href="/politicas/<?php echo $politica->getId() ?>"
                            style="text-decoration: none; color:inherit">
                             <div class="card-body">
                                 <h4 class="card-title">Politica de <?= $politica->getNombre() ?></h4>
