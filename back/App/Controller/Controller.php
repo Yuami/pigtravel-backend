@@ -18,6 +18,6 @@ abstract class Controller {
 
     public  abstract function update($id);
 
-    public abstract function destroy();
+//    public abstract function destroy();
 
 }
