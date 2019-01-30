@@ -3,6 +3,7 @@
 namespace Model\Items;
 
 use Config\Photos\PerfilPhoto;
+use Model\DAO\CitiesDAO;
 use Model\DAO\FotoDAO;
 use Model\DAO\VendedorDAO;
 
@@ -212,6 +213,11 @@ class Persona
         return VendedorDAO::insert([
             "idPersona" => $this->id
         ]);
+    }
+
+    public function getCiudad()
+    {
+        return CitiesDAO::getById($this->idCiudad)->getNombre();
     }
 
 }

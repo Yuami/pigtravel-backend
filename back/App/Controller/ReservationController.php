@@ -27,7 +27,7 @@ class ReservationController extends Controller
         if ($reserva && Auth::verifyVendedor($reserva->getVendedor()->getId())) {
             require_once VIEW . 'reservation.php';
         } else {
-            Auth::setError("Reservation");
+            Auth::setError("You don't have permission to see this booking");
             Router::redirect("reservations");
         }
     }

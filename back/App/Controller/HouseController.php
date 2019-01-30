@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Config\Cookie;
+use Handler\Auth;
 use Model\DAO\CitiesDAO;
 use Model\DAO\MensajesDAO;
 use Model\DAO\PoliticaCancelacionDAO;
@@ -21,9 +22,8 @@ class HouseController extends Controller
     {
         $v = ViviendaDAO::getById($id);
         if ($v == NULL || Session::me() != $v->getIdVendedor()) {
-            Session::set("wrongHouse", "true");
+            Auth::setError("You do not have access to that house");
             Router::redirect("houses");
-            return false;
         }
         return true;
     }

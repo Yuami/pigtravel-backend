@@ -11,8 +11,8 @@ class Auth {
         return !($idVendedor == NULL || Session::me() !== $idVendedor);
     }
 
-    public static function setError($type)
+    public static function setError($message)
     {
-            Session::set("wrong" . $type, "true");
+            Session::set("wrong", $message);
     }
 }

@@ -14,18 +14,7 @@
 </head>
 
 <body>
-<?php include_once("header.php");
-if (Session::isSet("wrongReservation")) {
-    Session::delete("wrongReservation");
-    ?>
-    <div id="wrongReservation" class="alert alert-danger" role="alert">
-        You've no permission to see this reservation!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-<?php } ?>
-
+<?php include_once("header.php") ?>
 
 <div class="container-fluid">
     <div class="row breadcrumb-row">
