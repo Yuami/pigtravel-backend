@@ -10,8 +10,8 @@ if (!Session::me()) { ?>
                 <a href="/">
                     <picture>
                         <source srcset="/img/logotemporal.webp" type="image/webp">
-                        <source srcset="/img/logotemporal.png"  type="image/jpg">
-                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="vacaciones pigtravel" >
+                        <source srcset="/img/logotemporal.png" type="image/jpg">
+                        <img src="/img/logotemporal.png" class="header-logo ml-md-1" alt="vacaciones pigtravel">
                     </picture>
                 </a>
                 <div class="head-brand">
@@ -29,13 +29,13 @@ if (!Session::me()) { ?>
             <nav class="navbar navbar-expand-md navbar-dark">
                 <div class="head-brand">
                     <h2 class="algn-r head-brand-text active" href="#">ADMIN</h2>
-                    <p class="algn-r mb-0"><span class="premium-text">Premium</span></p>
                 </div>
                 <a href="/">
                     <picture>
                         <source srcset="/img/logotemporal.webp" type="image/webp">
-                        <source srcset="/img/logotemporal.png"  type="image/jpg">
-                        <img src="/img/logotemporal.png"  class="header-logo ml-md-1"  alt="pigtravel alquiler vacacional" >
+                        <source srcset="/img/logotemporal.png" type="image/jpg">
+                        <img src="/img/logotemporal.png" class="header-logo ml-md-1"
+                             alt="pigtravel alquiler vacacional">
                     </picture>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
@@ -50,7 +50,7 @@ if (!Session::me()) { ?>
                             <span class="icoNav">
                                 <i class="fas fa-home fa-fw"></i>
                             </span>
-                                <span class="textNav">HOUSES</span>
+                                <span class="textNav">CASAS</span>
                             </a>
                         </li>
 
@@ -59,7 +59,7 @@ if (!Session::me()) { ?>
                             <span class="icoNav">
                                 <i class="fas fa-list-alt fa-fw"></i>
                             </span>
-                                <span class="textNav">RESERVATIONS</span>
+                                <span class="textNav">RESERVAS</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -67,19 +67,19 @@ if (!Session::me()) { ?>
                                 <span class="icoNav">
                             <i class="fas fa-question-circle fa-fw"></i>
                                 </span>
-                                <span class="textNav">SUPPORT</span>
+                                <span class="textNav">SOPPORTE</span>
                             </a>
                         </li>
                     </ul>
                     <ul id="nav-ul" class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="/messages" class="nav-link"><i class="far fa-comments fa-fw"></i>
-                                <span class="textRightNav d-md-none">MESSAGES</span>
+                                <span class="textRightNav d-md-none">MENSAJES</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/notifications" class="nav-link"><i class="far fa-bell fa-fw"></i>
-                                <span class="textRightNav d-md-none">NOTIFICATIONS</span>
+                                <span class="textRightNav d-md-none">NOTIFICACIONES</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -87,16 +87,7 @@ if (!Session::me()) { ?>
                             <span class="icoNav">
                                 <i class="fas fa-cog fa-fw"></i>
                             </span>
-                                <span class="textNav">SETTINGS</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item d-xs-block d-md-none">
-                            <a href="/premium" class="nav-link">
-                            <span class="icoNav">
-                                <i class="premium-text fas fa-award fa-fw"></i>
-                            </span>
-                                <span class="textNav premium-text">MANAGE PREMIUM</span>
+                                <span class="textNav">CONFIGURACIÓN</span>
                             </a>
                         </li>
 
@@ -105,40 +96,41 @@ if (!Session::me()) { ?>
                             <span class="icoNav">
                                 <i class="fas fa-door-open fa-fw  text-danger"></i>
                             </span>
-                                <span class="textNav text-danger">LOGOUT</span>
+                                <span class="textNav text-danger">CERRAR SESIÓN</span>
                             </a>
                         </li>
                     </ul>
-
 
 
                     <div class="dropdown d-none d-md-block">
                         <button id="dropdownHeaderButton" type="button"
                                 class="nav-link nav-item header-profile-sm btn dropdown-toggle-split dropdown-toggle ml-md-3 d-none d-md-block"
                                 data-toggle="dropdown">
-                            <img src="<?= $user->image() ?>" alt="pigtravel alquiler vacacional" class="header-profile-img rounded-circle mr-md-1">
+                            <img src="<?= $user->image() ?>" alt="pigtravel alquiler vacacional"
+                                 class="header-profile-img rounded-circle mr-md-1">
                         </button>
-                        <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton" class="dropdown-menu text-center">
+                        <div id="dropdownHeaderMenu" aria-labelledby="dropdownMenuButton"
+                             class="dropdown-menu text-center">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="<?= $user->image() ?>" alt="pigtravel user" class="header-profile-img rounded-circle">
-                                        <span class="textRightNav d-md-none"> PROFILE</span>
+                                        <img src="<?= $user->image() ?>" alt="pigtravel user"
+                                             class="header-profile-img rounded-circle">
+                                        <span class="textRightNav d-md-none"> Perfil</span>
                                     </div>
                                     <div class="col-8">
-                                        <p class="text-left ml-md-1"><strong><?= $user->getNombre(); ?></strong><br><span class="text-left small">Mallorca, ES</span></p>
+                                        <p class="text-left ml-md-1">
+                                            <strong><?= $user->getNombre(); ?></strong><br><span
+                                                    class="text-left small"><?= $user->getCiudad()?></span></p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <a href="/settings"
-                                       class="btn btn-primary btn-block btn-sm">Settings</a>
-                                    <a href="/premium"
-                                       class="btn btn-warning text-white btn-sm btn-block">Manage
-                                        Premium</a>
+                                       class="btn btn-primary btn-block btn-sm">Configuración</a>
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <div class="row">
-                                    <a href="/logout" class="btn btn-sm btn-danger btn-block">Logout</a>
+                                    <a href="/logout" class="btn btn-sm btn-danger btn-block">Cerrar Sesión</a>
                                 </div>
                             </div>
                         </div>
@@ -148,3 +140,16 @@ if (!Session::me()) { ?>
         </div>
     </header>
 <?php } ?>
+<?php
+if (Session::isSet("wrong")) {
+    ?>
+    <div id="wrongReservation" class="alert alert-danger" role="alert">
+        <strong>Error! </strong> <?= Session::get("wrong")?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php
+    Session::delete("wrong");
+}
+?>
