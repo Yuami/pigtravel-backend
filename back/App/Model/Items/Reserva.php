@@ -19,34 +19,6 @@ class Reserva
     private $idMetodoPago;
     private $idCliente;
 
-    public function json()
-    {
-        return [
-            "id" => $this->id,
-            "checkIn" => $this->checkIn,
-            "checkOut" => $this->checkOut,
-            "fechaReserva" => $this->fechaReserva,
-            "precio" => $this->precio,
-            "totalClientes" => $this->totalClientes,
-            "idVivienda" => $this->idVivienda,
-            "idMetodoPago" => $this->idMetodoPago,
-            "idCliente" => $this->idCliente,
-        ];
-    }
-
-    /**
-     * Reserva constructor.
-     * @param $id
-     * @param $checkIn
-     * @param $checkOut
-     * @param $fechaReserva
-     * @param $precio
-     * @param $totalClientes
-     * @param $idVivienda
-     * @param $idMetodoPago
-     * @param $idCliente
-     */
-
     /**
      * @return mixed
      */
@@ -261,5 +233,20 @@ class Reserva
     public function link()
     {
         return '/reservations/' . $this->getId();
+    }
+
+    public function json()
+    {
+        return [
+            "id" => $this->id,
+            "checkIn" => $this->checkIn,
+            "checkOut" => $this->checkOut,
+            "fechaReserva" => $this->fechaReserva,
+            "precio" => $this->precio,
+            "totalClientes" => $this->totalClientes,
+            "idVivienda" => $this->idVivienda,
+            "idMetodoPago" => $this->idMetodoPago,
+            "idCliente" => $this->idCliente,
+        ];
     }
 }

@@ -38,19 +38,20 @@ $cliente = $reserva->getCliente();
                     <h2>Mensajes</h2>
                     <p><strong>Últimos 2 mensajes</strong></p>
                     <a href="/messages/<?= $reserva->getID(); ?>" style="text-decoration: none">
-                    <table id="table1" >
-                        <?php
-                        $counter = 0;
-                        foreach ($mensajes as $mensaje) {
-                            if ($counter >= 2)
-                                break; ?>
-                            <tr>
-                                <td><?php echo $mensaje->getMensaje(); ?></td>
-                            </tr>
+                        <table id="table1">
                             <?php
-                            $counter++;
-                        } ?>
-                    </table>
+                            $counter = 0;
+                            if (isset($mensajes))
+                                foreach ($mensajes as $mensaje) {
+                                    if ($counter >= 2)
+                                        break; ?>
+                                    <tr>
+                                        <td><?php echo $mensaje->getMensaje(); ?></td>
+                                    </tr>
+                                    <?php
+                                    $counter++;
+                                } ?>
+                        </table>
                     </a>
                 </div>
             </div>
@@ -79,7 +80,7 @@ $cliente = $reserva->getCliente();
                                         <div class="card-body">
                                             <div class="card-text">
                                                 <div class="row">
-                                                    <img src="<?= $vivienda->photo() ?>"
+                                                    <img src="<?= $vivienda->image() ?>"
                                                          alt="apartamento alquiler vacacional"
                                                          class="vivienda-img rounded-circle">
                                                     <h5 class="ml-2 mt-3"><?= $vivienda->getNombre() ?></h5>

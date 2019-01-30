@@ -54,112 +54,115 @@ if (isset($_POST['submit'])) {
     </div>
     <div class="table-responsive">
         <table id="cardsmensajes" class="table table-hover">
-            <?php
-            foreach ($mensajes as $mensaje) {
-            if ($mensaje->getLeido() == 0) { ?>
-                <tr class="openBtn" data-target="#myModal" data-toggle="modal"
-                    data-leido="<?php echo $mensaje->getLeido(); ?>"
-                    data-to="<?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?>"
-                    data-id-viv="<?php echo $mensaje->getIdVivienda(); ?>"
-                    data-id="<?php echo $recievers[$mensaje->getIdSender()][0]->getId(); ?>"
-                    id="<?php echo $mensaje->getId(); ?>">
-                    <td style="width:25%"> <?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?>
-                        <br><?php foreach ($viviendas as $vivienda) {
-                            if ($vivienda->getId() == $mensaje->getIdVivienda()) {
-                                echo $vivienda->getNombre();
-                            }
-                        } ?></td>
-                    <td style="width:65%"> <?php echo $mensaje->getMensaje(); ?></td>
-                    <td style="width:10%"><?php echo $mensaje->getFechaEnviado(); ?></td>
-                </tr>
-            <?php } else { ?>
-                <tr class="openBtn" data-target="#myModal" data-toggle="modal"
-                    data-leido="<?php echo $mensaje->getLeido(); ?>"
-                    data-to="<?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?>"
-                    data-id-viv="<?php echo $mensaje->getIdVivienda(); ?>"
-                    data-id="<?php echo $recievers[$mensaje->getIdSender()][0]->getId(); ?>"
-                    id="<?php echo $mensaje->getId(); ?>">
-                    <td style="width:25%">
-                        <strong><?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?>
-                            <br><?php foreach ($viviendas as $vivienda) {
-                                if ($vivienda->getId() == $mensaje->getIdVivienda()) {
-                                    echo $vivienda->getNombre();
-                                }
-                            } ?></strong>
-                    </td>
-                    <td style="width:65%"><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
-                    <td style="width:10%"><strong><?php echo $mensaje->getFechaEnviado(); ?></strong></td>
-                </tr>
-            <?php } ?>
-            <form id="addMessagesForm" method="POST" action="/messages">
-                <div class="modal fade" id="myModal<?php echo $mensaje->getId() ?>" role="dialog" >
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content modalChat">
-                            <div class="modal-header">
-                                <div class="col-lg-4">
-                                <p class="modal-title">Mensaje a <?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?></p>
-                                </div>
-                                <div class="col-lg-4">
-                                    <p align="center"><?php foreach ($viviendas as $vivienda) {
+            <?php if (isset($mensajes))
+                foreach ($mensajes as $mensaje) {
+                    $persona = $recievers[$mensaje->getIdSender()][0];
+                    ?>
+                    <tr class="openBtn" data-target="#myModal" data-toggle="modal"
+                        data-to="<?= $persona->getNombre(); ?>"
+                        data-leido="<?= $mensaje->getLeido(); ?>"
+                        data-id-viv="<?= $mensaje->getIdVivienda(); ?>"
+                        data-id="<?= $persona->getId(); ?>"
+                        id="<?= $mensaje->getId(); ?>">
+
+                        <?php if ($mensaje->getLeido() == 0) { ?>
+                            <td style="width:25%">
+                                <?= $persona->getNombre(); ?>
+                                <br><?php foreach ($viviendas as $vivienda) {
+                                    if ($vivienda->getId() == $mensaje->getIdVivienda()) {
+                                        echo $vivienda->getNombre();
+                                    }
+                                } ?>
+                            </td>
+
+                            <td style="width:65%"> <?= $mensaje->getMensaje(); ?></td>
+                            <td style="width:10%"><?= $mensaje->getFechaEnviado(); ?></td>
+                        <?php } else { ?>
+                            <td style="width:25%">
+                                <strong>
+                                    <?= $persona->getNombre(); ?>
+                                    <br><?php foreach ($viviendas as $vivienda) {
                                         if ($vivienda->getId() == $mensaje->getIdVivienda()) {
                                             echo $vivienda->getNombre();
                                         }
-                                    }?>
-                                </p>
-                                </div>
-                                <div class="col-lg-4">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <div class="chat">
+                                    } ?>
+                                </strong>
+                            </td>
+                            <td style="width:65%"><strong><?= $mensaje->getMensaje(); ?></strong></td>
+                            <td style="width:10%"><strong><?= $mensaje->getFechaEnviado(); ?></strong></td>
+                        <?php } ?>
+                    </tr>
 
-                                    <?php foreach ($mensajesChat as $mensajeChat) {
-                                        if ($mensaje->getIdSender() == $mensajeChat->getIdSender() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
-                                            ?>
-                                            <div class="row justify-content-end">
-                                                <div class="missatge darker">
-                                                    <?php echo $mensajeChat->getMensaje(); ?>
-                                                </div>
-                                            </div>
-                                            <?php
-                                        }
-                                        if ($mensaje->getIdSender() == $mensajeChat->getIdReciever() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
-                                            ?>
-                                            <div class="row">
-                                                <div class="missatge noDarker">
-                                                    <?php echo $mensajeChat->getMensaje(); ?>
-                                                </div>
-                                            </div>
-                                            <?php
-                                        }
+                    <form id="addMessagesForm" method="POST" action="/messages">
+                        <div class="modal fade" id="myModal<?= $mensaje->getId() ?>" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content modalChat">
+                                    <div class="modal-header">
+                                        <div class="col-lg-4">
+                                            <p class="modal-title">Mensaje a <?= $persona->getNombre(); ?></p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p align="center">
+                                                <?php foreach ($viviendas as $vivienda) {
+                                                    if ($vivienda->getId() == $mensaje->getIdVivienda()) {
+                                                        echo $vivienda->getNombre();
+                                                    }
+                                                } ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="chat">
 
-                                    }
-                                    ?>
+                                            <?php foreach ($mensajesChat as $mensajeChat) {
+                                                if ($mensaje->getIdSender() == $mensajeChat->getIdSender() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
+                                                    ?>
+                                                    <div class="row justify-content-end">
+                                                        <div class="missatge darker">
+                                                            <?= $mensajeChat->getMensaje(); ?>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                if ($mensaje->getIdSender() == $mensajeChat->getIdReciever() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="missatge noDarker">
+                                                            <?= $mensajeChat->getMensaje(); ?>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+
+                                            }
+                                            ?>
+                                        </div>
+                                        <input type="hidden" name="idReciever"
+                                               value="<?= $mensaje->getIdSender(); ?>">
+                                        <input type="hidden" name="idVivienda"
+                                               value="<?= $mensaje->getIdVivienda(); ?>">
+                                        <input type="hidden" name="idMensaje" value="<?= $mensaje->getId(); ?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="text" class="form-control" name="mensajeRespuesta"
+                                               aria-describedby="basic-addon1"/>
+                                        <input type="submit" class="btn btn-success" name="submit" value="Enviar"/>
+                                    </div>
                                 </div>
-                                <input type="hidden" name="idReciever"
-                                       value="<?php echo $mensaje->getIdSender(); ?>">
-                                <input type="hidden" name="idVivienda"
-                                       value="<?php echo $mensaje->getIdVivienda(); ?>">
-                                <input type="hidden" name="idMensaje" value="<?php echo $mensaje->getId(); ?>">
+
                             </div>
-                            <div class="modal-footer">
-                                <input type="text" class="form-control" name="mensajeRespuesta"
-                                       aria-describedby="basic-addon1"/>
-                                <input type="submit" class="btn btn-success" name="submit" value="Enviar"/>
-                            </div>
+
                         </div>
-
-                    </div>
-
-                </div>
-    </form>
+                    </form>
 
 
-    <?php } ?>
+                <?php } ?>
 
-    </table>
-</div>
+        </table>
+    </div>
 
 
 </div>
