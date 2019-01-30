@@ -55,6 +55,7 @@ if (isset($_POST['submit'])) {
     <div class="table-responsive">
         <table id="cardsmensajes" class="table table-hover">
             <?php
+            if (isset($mensajes)){
             foreach ($mensajes as $mensaje) {
             if ($mensaje->getLeido() == 0) { ?>
                 <tr class="openBtn" data-target="#myModal" data-toggle="modal"
@@ -64,11 +65,13 @@ if (isset($_POST['submit'])) {
                     data-id="<?php echo $recievers[$mensaje->getIdSender()][0]->getId(); ?>"
                     id="<?php echo $mensaje->getId(); ?>">
                     <td style="width:25%"> <?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?>
-                        <br><?php foreach ($viviendas as $vivienda) {
+                        <br><?php
+                if (isset($viviendas)){
+                        foreach ($viviendas as $vivienda) {
                             if ($vivienda->getId() == $mensaje->getIdVivienda()) {
                                 echo $vivienda->getNombre();
                             }
-                        } ?></td>
+                        } }?></td>
                     <td style="width:65%"> <?php echo $mensaje->getMensaje(); ?></td>
                     <td style="width:10%"><?php echo $mensaje->getFechaEnviado(); ?></td>
                 </tr>
@@ -81,11 +84,13 @@ if (isset($_POST['submit'])) {
                     id="<?php echo $mensaje->getId(); ?>">
                     <td style="width:25%">
                         <strong><?php echo $recievers[$mensaje->getIdSender()][0]->getNombre(); ?>
-                            <br><?php foreach ($viviendas as $vivienda) {
+                            <br><?php
+                                   if (isset($viviendas)){
+                            foreach ($viviendas as $vivienda) {
                                 if ($vivienda->getId() == $mensaje->getIdVivienda()) {
                                     echo $vivienda->getNombre();
                                 }
-                            } ?></strong>
+                            }} ?></strong>
                     </td>
                     <td style="width:65%"><strong><?php echo $mensaje->getMensaje(); ?></strong></td>
                     <td style="width:10%"><strong><?php echo $mensaje->getFechaEnviado(); ?></strong></td>
@@ -156,7 +161,7 @@ if (isset($_POST['submit'])) {
     </form>
 
 
-    <?php } ?>
+    <?php }} ?>
 
     </table>
 </div>
