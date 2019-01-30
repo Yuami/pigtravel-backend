@@ -5,6 +5,7 @@ namespace Controller;
 use Config\Cookie;
 use Model\DAO\CitiesDAO;
 use Model\DAO\MensajesDAO;
+use Model\DAO\PoliticaCancelacionDAO;
 use Model\DAO\ServicioHasIdiomaDAO;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaHasServicioDAO;
@@ -16,17 +17,18 @@ use Model\DAO\ViviendaDAO;
 class HouseController extends Controller
 {
 
-    public static function validUser($userID, $vivienda)
+    public static function validUser($id)
     {
-        if ($vivienda == NULL || $userID !== $vivienda->getIdVendedor()) {
+        $v = ViviendaDAO::getById($id);
+        if ($v == NULL || Session::me() != $v->getIdVendedor()) {
             Session::set("wrongHouse", "true");
-            Router::redirectWithDomain("houses");
+            Router::redirect("houses");
             return false;
         }
         return true;
     }
 
-    public function updateCompleted($completed)
+    public static function updateCompleted($completed)
     {
         Session::set("updateCompleted", $completed);
     }
@@ -42,8 +44,10 @@ class HouseController extends Controller
     public function show($id)
     {
         $houses = ViviendaDAO::getById($id);
+        $idU = $houses->getIdVendedor();
+        $politicas = PoliticaCancelacionDAO::getByIdVendedor($idU);
         $tarifas = TarifaDAO::getByIdVivienda($id);
-        if (self::validUser(Session::get('userID'), $houses)) {
+        if (self::validUser($id)) {
             include_once VIEW . "house.php";
         }
     }
@@ -68,8 +72,18 @@ class HouseController extends Controller
             "idTipoVivienda" => 1,
             "idCiudad" => $_POST['city'],
             "idVendedor" => Session::get('userID'),
-            "descripcion" => $_POST['description']]);
+            "descripcion" => $_POST['description']
+        ]);
 
+        $uc = new UploadController();
+        $uc->house($vivienda->getId());
+        self::importServicios($vivienda);
+
+        Router::redirect('house/' . $vivienda->getId());
+    }
+
+    private static function importServicios($vivienda)
+    {
         if (isset($_POST['servicios'])) {
             $servicios = $_POST['servicios'];
             if (!empty($servicios)) {
@@ -81,18 +95,15 @@ class HouseController extends Controller
                         ]);
             }
         }
-        header("Location: " . DOMAIN . "/houses");
     }
 
     public function edit($id)
     {
-        // TODO: Implement edit() method.
     }
 
     public function update($id)
     {
-        $houses = ViviendaDAO::getById($id);
-        if ($this->validUser(Session::get('userID'), $houses)) {
+        if (self::validUser($id)) {
             ViviendaDAO::update([
                 "id" => $id,
                 "nombre" => $_POST['houseName'],
@@ -104,18 +115,17 @@ class HouseController extends Controller
                 "alquilerAutomatico" => $_POST['standardRate'],
                 "idTipoVivienda" => 1,
                 "idCiudad" => $_POST['city'],
-                "descripcion" => $_POST['description']]);
-            $this->updateCompleted(true);
-            Router::redirectWithDomain("houses/" . $id);
+                "descripcion" => $_POST['description']], "id = $id");
+            self::updateCompleted(true);
+            Router::redirect("houses/$id");
         } else {
-            $this->updateCompleted(false);
+            self::updateCompleted(false);
         }
     }
 
 
     public function destroy()
     {
-        // TODO: Implement destroy() method.
     }
 
 

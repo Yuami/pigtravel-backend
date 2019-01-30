@@ -5,6 +5,7 @@ namespace Model\Items;
 use Config\Photos\HousePhoto;
 use Model\DAO\CitiesDAO;
 use Model\DAO\CiudadHasIdiomaDAO;
+use Model\DAO\ViviendaHasFotosDAO;
 
 class Vivienda
 {
@@ -261,9 +262,14 @@ class Vivienda
         return $this->idVendedor;
     }
 
-    public function photo()
+    public function image()
     {
-        return HousePhoto::house($this->id)->mainPath();
+        return ViviendaHasFotosDAO::getMainFotoVivienda($this->id);
+    }
+
+    public function images()
+    {
+        return ViviendaHasFotosDAO::getFotosByVivienda($this->id);
     }
 
     public function __toString()

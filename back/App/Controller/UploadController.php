@@ -8,23 +8,23 @@
 
 namespace Controller;
 
-use libs\Bulletproof\Image;
+use Config\File;
+use Config\Session;
+use Model\DAO\PersonaDAO;
+use Model\DAO\ViviendaDAO;
+use Model\DAO\ViviendaHasFotosDAO;
+use Model\Items\Foto;
+use Model\Items\ViviendaHasFotos;
 
 class UploadController extends Controller
 {
+    public static function uploadAll($images)
+    {
+
+    }
+
     public function index()
     {
-        $image = new Image($_FILES);
-        if ($image["pictures"]) {
-            $upload = $image->upload();
-
-            if ($upload) {
-                echo $upload->getFullPath();
-                echo $upload->getLocation();
-            } else {
-                echo $image->getError();
-            }
-        }
     }
 
     public function create()
@@ -32,9 +32,48 @@ class UploadController extends Controller
 
     }
 
+    public function profile($idPersona)
+    {
+        if (Session::me() == $idPersona) {
+            if (isset($_FILES['picture']) && isset($idPersona)) {
+                $uploaded = File::uploadPhoto('picture', 'assets/uploads/img/perfiles');
+                if (isset($uploaded)) {
+                    $photo = $uploaded;
+                    if ($photo instanceof Foto)
+                        PersonaDAO::update([
+                            'idFoto' => $photo->getId()
+                        ], "id = $idPersona");
+                }
+            }
+        }
+    }
+
+    public function house($idVivienda)
+    {
+        if (HouseController::validUser($idVivienda)) {
+            if (isset(File::get()['picture']) && isset($idVivienda)) {
+
+                $uploads = File::uploadAllPhotos('picture', 'assets/uploads/img/casas');
+                $vivienda = ViviendaHasFotosDAO::getLastByVivienda($idVivienda);
+                for ($i = 0; $i < sizeof($uploads); $i++) {
+                    $upload = $uploads[$i];
+                    if ($upload instanceof Foto) {
+                        $index = $i + 1;
+                        $posicion = $vivienda instanceof ViviendaHasFotos ? $index + $vivienda->getPosicion() : $index;
+
+                        ViviendaHasFotosDAO::insert([
+                            'idVivienda' => $idVivienda,
+                            'idFoto' => $upload->getId(),
+                            'posicion' => $posicion
+                        ]);
+                    }
+                }
+            }
+        }
+    }
+
     public function store()
     {
-        // TODO: Implement store() method.
     }
 
     public function show($id)

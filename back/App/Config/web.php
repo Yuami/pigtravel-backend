@@ -14,6 +14,9 @@ Router::resource('login', 'LoginController');
 Router::resource('support','SupportController');
 
 Router::get('tarifas/{id}', 'TarifasController@show');
+Router::get('politicas/{id}', 'PoliticasController@show');
+Router::put('politicas/{id}', 'PoliticasController@update');
+Router::post('politicas', 'PoliticasController@store');
 Router::put('tarifas/{id}', 'TarifasController@update');
 Router::post('houses/{id}', 'TarifasController@store');
 Router::get('','IndexController@index');
@@ -27,7 +30,10 @@ Router::view('premium', 'premium');
 
 // THIS IS TESTING AREA
 Router::view('photos', 'photo');
-Router::get('test', 'RegisterController@store');
+Router::view('test', 'test');
+Router::post('upload', 'UploadController@store');
+Router::post('upload/house/{id}', 'UploadController@house');
+Router::post('upload/profile/{id}', 'UploadController@profile');
 
 Api::get('paises', 'PaisesController@index');
 Api::get('region/{id}', 'RegionController@show');
