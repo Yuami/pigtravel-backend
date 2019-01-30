@@ -1,5 +1,11 @@
 $(document).ready(function () {
     var counter=true;
+
+    if(window.location.hash) {
+        $("#myModal"+window.location.hash.charAt(1)).modal();
+    }
+
+
        $('#mobilebutton').on('click',function(){
            if(counter) {
                $('#cardsmensajes tr').each(function () {
@@ -13,7 +19,7 @@ $(document).ready(function () {
                $('#cardsmensajes tr').each(function () {
                        $(this).show();
 
-               })
+               });
                counter=true;
            };
         $(this)
@@ -54,3 +60,34 @@ function myFunction() {
         }
     }
 }
+
+    function post(id)
+    {
+        var comment = document.getElementById("comment").value;
+        if(comment)
+    {
+        $.ajax
+        ({
+        type: 'post',
+        url: 'info/commentajax.php',
+        data:
+    {
+        idReciever: id,
+        user_comm:comment,
+    },
+        success: function (response)
+    {
+        document.getElementById("comment").value="";
+    }
+    });
+    }
+
+        return false;
+    }
+    function autoRefresh_div()
+    {
+        $("#result").load("info/selectChat.php").show();
+    }
+
+    setInterval('autoRefresh_div()', 2000);
+

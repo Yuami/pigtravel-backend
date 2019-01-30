@@ -1,8 +1,8 @@
 <?php
-$hostname='sql142.main-hosting.eu';
-$username='u333704226_pigtr';
-$dbname='u333704226_pigtr';
-$password='ifc21B17*';
+$hostname='localhost';
+$username='root';
+$dbname='travel';
+$password='';
 $dsn = "mysql:host=$hostname;dbname=$dbname";
 
 try {
