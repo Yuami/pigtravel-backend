@@ -90,4 +90,3 @@ function myFunction() {
     }
 
     setInterval('autoRefresh_div()', 2000);
-

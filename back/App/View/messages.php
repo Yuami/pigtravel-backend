@@ -116,23 +116,22 @@ if (isset($_POST['submit'])) {
                                     </div>
                                     <div class="modal-body">
                                         <div class="chat">
-
                                             <?php foreach ($mensajesChat as $mensajeChat) {
                                                 if ($mensaje->getIdSender() == $mensajeChat->getIdSender() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
                                                     ?>
-                                                    <div class="row justify-content-end">
-                                                        <div class="missatge darker">
-                                                            <?= $mensajeChat->getMensaje(); ?>
-                                                        </div>
+                                                    <div class="containerM">
+                                                        <img src="<?= $recievers[1][0]->image()?>" alt="Avatar"  class="header-profile-img rounded-circle">
+                                                        <p><?= $mensajeChat->getMensaje(); ?></p>
+                                                        <span class="time-right"><?= $mensajeChat->getDiaEnviado()?></span>
                                                     </div>
                                                     <?php
                                                 }
                                                 if ($mensaje->getIdSender() == $mensajeChat->getIdReciever() && $mensaje->getIdVivienda() == $mensajeChat->getIdVivienda()) {
                                                     ?>
-                                                    <div class="row">
-                                                        <div class="missatge noDarker">
-                                                            <?= $mensajeChat->getMensaje(); ?>
-                                                        </div>
+                                                    <div class="containerM darker">
+                                                        <img src="<?= $recievers[1][0]->image()?>" alt="Avatar" class="header-profile-img rounded-circle right">
+                                                        <p><?= $mensajeChat->getMensaje(); ?></p>
+                                                        <span class="time-left"><?= $mensajeChat->getDiaEnviado()?></span>
                                                     </div>
                                                     <?php
                                                 }
@@ -149,7 +148,9 @@ if (isset($_POST['submit'])) {
                                     <div class="modal-footer">
                                         <input type="text" class="form-control" name="mensajeRespuesta"
                                                aria-describedby="basic-addon1"/>
-                                        <input type="submit" class="btn btn-success" name="submit" value="Enviar"/>
+                                        <button type="submit" class="btn btn-success" name="submit">
+                                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
