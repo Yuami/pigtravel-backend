@@ -53,17 +53,15 @@
                                    value="<?php echo $liniaP->getPorcentaje() ?>">
                         </div>
                         <div class="form-group row justify-content-center mt-4">
-                            <form class="form-group" action="/politicas" method="post">
-                                <input type="hidden" name="_method" value="delete">
-                                <input type="hidden" name="idL" value="<?= $liniaP->getId() ?>">
-                                <button type="submit" id="btnAT" class="btn btn-danger col-md-4">Eliminar
-                                </button>
-                            </form>
                             <button type="submit" id="btnAT" class="btn btn-success col-md-4 offset-1">Confirmar
                             </button>
                         </div>
                     </form>
-
+                    <form class="form-group" action="/politicas/<?= $politica->getId() ?>" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="idL" value="<?= $liniaP->getId() ?>">
+                        <button type="submit" id="btnAT" class="btn btn-danger col-md-4">Eliminar</button>
+                    </form>
                 </div>
             </div>
         <?php }

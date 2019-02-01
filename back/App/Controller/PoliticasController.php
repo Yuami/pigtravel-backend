@@ -87,7 +87,6 @@ class PoliticasController extends Controller
     public function destroy($id)
     {
         if ($_POST['idH'] != null) {
-            dd('entra');
             TarifaDAO::update([
                 "idPoliticaCancelacion" => null
             ], "idPoliticaCancelacion=$id");
