@@ -67,9 +67,9 @@ $cliente = $reserva->getCliente();
                         <button type="button" class="btn btn-primary col-auto my-1" data-toggle="modal"
                                 data-target="#exampleModal">CALENDARIO
                         </button>
-                        <a href="#nothing" class="btn btn-primary col-auto my-1">ACEPTAR</a>
-                        <a href="#nothing" class="btn btn-primary col-auto my-1">EDITAR/OFERTA</a>
-                        <a href="#nothing" class="btn btn-danger col-auto my-1">CANCELAR</a>
+                        <a href="#" class="btn btn-primary col-auto my-1">ACEPTAR</a>
+                        <a href="#" class="btn btn-primary col-auto my-1">EDITAR/OFERTA</a>
+                        <a href="#" class="btn btn-danger col-auto my-1">CANCELAR</a>
                     </div>
                     <div class="col-12">
                         <div class="card p-3 bg-light">
