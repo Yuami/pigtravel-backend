@@ -10,6 +10,24 @@
 
     require_once ROOT . "libraries.php" ?>
     <script src="/js/jquery.dataTables.js"></script>
+    <!-- css -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"/>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap4.min.css"/>
+
+    <!-- js -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
     <title>Reservations</title>
 </head>
 
@@ -28,75 +46,39 @@
     </div>
     <section class="container">
         <div class="row">
-            <div class="form-group col-md-3 col-12">
-                <p>Filtrar por
-                    <select id="fVivienda" class="form-control">
-                        <option value="0" selected="selected">--- Casa ---</option>
-                        <?php foreach ($reservas as $r) {
-                            $h = $r->getVivienda(); ?>
-                            <option value="<?= $h->getId() ?>"><?= $h->getNombre() ?></option>
-                        <?php } ?>
-                    </select></p>
+            <div class="form-group col-3 form-check-inline">
+                <h6 class="col-4">Filtrar por</h6>
+                <select id="filterEst" class="form-control">
+                    <option value="" selected="selected">--- Estado ---</option>
+                </select>
             </div>
-            <div class="form-group col-md-3 col-9">
-                <p>Filtrar por
-                    <select id="fEstado" class="form-control">
-                        <option value="" selected="selected">--- Estado ---</option>
-                        <?php foreach ($estados as $e) { ?>
-                            <option value="<?= $e->getIdEstado() ?>"><?= $e->getNombre() ?></option>
-                        <?php } ?>
-                    </select></p>
+            <div class="form-group col-3 form-check-inline">
+                <h6 class="col-4">Filtrar por</h6>
+                <select id="filterViv" class="form-control">
+                    <option value="0" selected="selected">--- Casa ---</option>
+                </select>
             </div>
-            <div class="col-3 col-md-1">
-                <br>
-                <button id="clean" class="btn btn-danger col-12"><i class="fas fa-times-circle"></i></button>
+            <div class=" col-2">
+                <button id="clean" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
             </div>
         </div>
-        <div class="row">
-            <table id="taula" class="table table-responsive-md table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Casa</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Precio</th>
-                </tr>
-                </thead>
-                <?php
-                foreach ($reservas as $r) {
-                    if ($r instanceof \Model\Items\Reserva) {
-                        ?>
-                        <tr class="reserva" id="<?php echo $r->getVivienda()->getId() ?>"
-                            onclick="window.location='<?php echo $r->link() ?>'" onchange="filtro()">
-                            <td><?php echo $r->getVivienda()->getNombre() ?></td>
-                            <td><?php echo $r->getNombreEstado() ?></td>
-                            <td><?php echo $r->getCliente()->getNombre() ?></td>
-                            <td><?php echo $r->getFechaReserva() ?></td>
-                            <td><?php echo $r->getPrecio() ?></td>
-                        </tr>
-                    <?php }
-                } ?>
-
-            </table>
-        </div>
+        <table id="taula" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Casa</th>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Precio</th>
+            </tr>
+            </thead>
+        </table>
     </section>
 </div>
 <?php include_once("footer.php") ?>
-<!--<script src="js/selects/selectEstadoFiltro.js"></script>-->
-<script>
-    let reservas = $('.reserva');
-    let fVivienda = $('#fVivienda');
-    let fEstado = $('#fEstado');
-        function filtro() {
-            let valV = fVivienda.value;
-            if (valV == 0) {
-                reservas.show();
-            } else {
-                reservas.hide();
-            }
-        }
-</script>
+<script src="js/selects/selectReservaList.js"></script>
+<script src="js/selects/selectEstadoFiltro.js"></script>
+
 </body>
 
 </html>
