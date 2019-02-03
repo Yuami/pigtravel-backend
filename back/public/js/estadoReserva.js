@@ -10,10 +10,6 @@ $(function () {
     updateEstado(badge);
 });
 
-function oferta() {
-    
-}
-
 function ofertaModal() {
     $('#ofertaModal').modal('show');
 }
