@@ -12,7 +12,7 @@ use Model\DAO\EstadoHasIdiomaDAO;
 class Estado {
     private $id;
 
-    public function getID()
+    public function getId()
     {
         return $this->id;
     }

@@ -6,6 +6,31 @@ use Config\Photos\Photos;
 if (!($reserva instanceof \Model\Items\Reserva)) {
     die();
 }
+
+function toBtn($text, $onClick, bool $cancel = false)
+{
+    $type = $cancel ? 'btn-danger' : 'btn-primary';
+    return '<button onclick="' . $onClick . '" class="btn ' . $type . ' my-1 mr-1">' . $text . '</button>';
+}
+
+$aceptar = toBtn("ACEPTAR", "aceptar()");
+$oferta = toBtn("OFERTA", "ofertaModal()");
+$cancel = toBtn("CANCELAR", "cancelar()", true);
+$cancelAlerta = toBtn("CANCELAR", "cancelarAlerta()", true);
+
+$seleccion = [
+    "1" => [],
+    "2" => [$cancelAlerta],
+    "3" => [
+        $aceptar,
+        $oferta,
+        $cancel
+    ],
+    "4" => [$cancelAlerta]
+];
+
+$btns = $seleccion[$reserva->getIdEstado()];
+
 $vivienda = $reserva->getVivienda();
 $cliente = $reserva->getCliente();
 ?>
@@ -67,9 +92,11 @@ $cliente = $reserva->getCliente();
                         <button type="button" class="btn btn-primary col-auto my-1" data-toggle="modal"
                                 data-target="#exampleModal">CALENDARIO
                         </button>
-                        <a href="#" class="btn btn-primary col-auto my-1">ACEPTAR</a>
-                        <a href="#" class="btn btn-primary col-auto my-1">EDITAR/OFERTA</a>
-                        <a href="#" class="btn btn-danger col-auto my-1">CANCELAR</a>
+                        <?php
+                        foreach ($btns as $btn) {
+                            echo $btn;
+                        }
+                        ?>
                     </div>
                     <div class="col-12">
                         <div class="card p-3 bg-light">
@@ -120,7 +147,7 @@ $cliente = $reserva->getCliente();
                                                 <p class="col-12 ml-2 mt-3">
                                                     <b>CALCULO:</b> <?= $reserva->getCalculo() ?></p>
                                                 <p class="col-12 ml-2 mt-3">
-                                                    <b>CALCULO:</b> <?= $reserva->getDias() ?></p>
+                                                    <b>NOCHES:</b> <?= $reserva->getNoches() ?></p>
                                                 <p class="col-12 ml-2 mt-3"><b>GANANCIAS:</b>
                                                     $<?= $reserva->getIngreso() ?></p>
                                             </div>
@@ -165,6 +192,49 @@ $cliente = $reserva->getCliente();
                     </div>
                 </div>
             </main>
+
+            <div class="modal" tabindex="-1" role="dialog" id="ofertaModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Oferta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" onclick="oferta()">Enviar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal" tabindex="-1" role="dialog" id="alertModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Alerta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <b>Estas seguro que quieres cancelar una reserva en este estado?</b>
+                                <br>Se va a devolver todo el dinero al cliente.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">

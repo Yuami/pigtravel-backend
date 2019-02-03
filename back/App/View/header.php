@@ -152,4 +152,16 @@ if (Session::isSet("wrong")) {
     <?php
     Session::delete("wrong");
 }
+
+if (Session::isSet("success")) {
+    ?>
+    <div id="success" class="alert alert-success" role="alert">
+        <strong>Éxito! </strong> <?= Session::get("success")?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php
+    Session::delete("success");
+}
 ?>
