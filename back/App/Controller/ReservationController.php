@@ -83,5 +83,39 @@ class ReservationController extends Controller
         // TODO: Implement destroy() method.
     }
 
+    public function oferta($id)
+    {
+        if (!isset($_POST['oferta'])) {
+            Auth::setError('No se ha podido crear la oferta!');
+            Router::redirect('reservations/' . $id);
+        }
+        $reserva = ReservaDAO::getById($id);
 
+        if (!$reserva instanceof Reserva) {
+            Auth::setError('Hay problemas en el servidor intentalo más tarde!');
+            Router::redirect('reservations/' . $id);
+        }
+
+        if (!(Auth::verifyVendedor($reserva->getVendedor()->getId()))) {
+            Auth::setError('No tienes permisos para crear ofertas de esta reserva!');
+            Router::redirect('reservations/' . $id);
+        }
+
+        $oferta = $_POST['oferta'];
+        if ($oferta < $reserva->getPrecio()) {
+            $newReserva = ReservaDAO::insert([
+                'checkIn' => $reserva->getCheckIn(),
+                'checkOut' => $reserva->getCheckOut(),
+                'precio' => $oferta,
+                'totalClientes' => $reserva->getTotalClientes(),
+                'idVivienda' => $reserva->getIdVivienda(),
+                'idMetodoPago' => $reserva->getIdMetodoPago(),
+                'idCliente' => $reserva->getIdCliente(),
+            ]);
+            Session::success('Esta es tu oferta 😘!');
+            Router::redirect('reservations/' . $newReserva->getId());
+        }
+        Auth::setError('Eso no es una buena oferta 😞! Pon un precio más bajo!');
+        Router::redirect('reservations/' . $id);
+    }
 }

@@ -18,7 +18,7 @@ class ReservaDAO extends DAO
     {
         $statement = DB::conn()->prepare('SELECT r.* from reserva r
        inner join vivienda v on r.idVivienda = v.id
-       where v.idVendedor= :id order by r.fechaReserva');
+       where v.idVendedor= :id order by r.fechaReserva desc');
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
 

@@ -10,8 +10,12 @@ $(function () {
     updateEstado(badge);
 });
 
-function ofertaModal() {
+function oferta() {
+    
+}
 
+function ofertaModal() {
+    $('#ofertaModal').modal('show');
 }
 
 function cancelarAlerta() {
