@@ -112,10 +112,10 @@ class ReservationController extends Controller
                 'idMetodoPago' => $reserva->getIdMetodoPago(),
                 'idCliente' => $reserva->getIdCliente(),
             ]);
-            Session::success('Esta es tu oferta 😘!');
+            Session::success('La oferta se ha creado correctamente! ✌');
             Router::redirect('reservations/' . $newReserva->getId());
         }
-        Auth::setError('Eso no es una buena oferta 😞! Pon un precio más bajo!');
+        Auth::setError('Eso no es una buena oferta! Pon un precio más bajo 😞');
         Router::redirect('reservations/' . $id);
     }
 }
