@@ -394,13 +394,13 @@ if (Session::isSet("updateCompleted")) {
         var modal = $(this);
         modal.find('.modal-body input').val(recipient)
     });
-    // $('#footerC').on('click')
-    //$(function () {
-    //    mapLoad(<?php //echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>//);
-    //    let idRegion = <?//= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>//;
-    //    loadCiudades(idRegion);
-    //    $('#city').select2.val(<?//= $houses->getIdCiudad() ?>//).trigger('change.select2');
-    //});
+     $('#footerC').on('click')
+    $(function () {
+        mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
+        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
+        loadCiudades(idRegion);
+        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
+    });
 </script>
 <?php include_once CALENDAR ?>
 <?php include_once("footer.php") ?>
