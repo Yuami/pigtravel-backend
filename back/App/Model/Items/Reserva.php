@@ -66,19 +66,22 @@ class Reserva
     {
         return $this->fechaReserva;
     }
+
     public function getFechaReservaFormat()
     {
-        $d=explode(" ",$this->fechaReserva)[0];
+        $d = explode(" ", $this->fechaReserva)[0];
         return $d;
     }
+
     public function getFechaReservaYear()
     {
-        $this->fechaReserva= date("Y");
+        $this->fechaReserva = date("Y");
         return $this->fechaReserva;
     }
+
     public function getFechaReservaMonth()
     {
-        $this->fechaReserva= date("m");
+        $this->fechaReserva = date("m");
         return $this->fechaReserva;
     }
 
@@ -198,31 +201,36 @@ class Reserva
         return json_encode($result);
     }
 
+    public function getIdEstado()
+    {
+        return ReservaHasEstado::getLastEstado($this)->getIdEstado();
+    }
+
     /**
      * @return String
      */
     public function getNombreEstado()
     {
-        return ReservaHasEstado::getLastEstado($this);
+        return ReservaHasEstado::getLastEstado($this)->getNombre();
+    }
+
+    public function getNoches()
+    {
+        $checkIn = new \DateTime($this->checkIn);
+        $checkOut = new \DateTime($this->checkOut);
+        $diff = $checkIn->diff($checkOut);
+
+        return $diff->days - 1;
+    }
+
+    public function getMedia()
+    {
+        return $this->precio / $this->getNoches();
     }
 
     public function getCalculo()
     {
         return $this->precio . " * 0.95 - 5 = " . $this->getIngreso();
-    }
-
-    public function getDias()
-    {
-        $checkIn = new \DateTime($this->checkIn);
-        $checkOut = new \DateTime($this->checkOut);
-        $diff = date_diff($checkIn, $checkOut, true);
-
-        return $diff->days;
-    }
-
-    public function getMedia()
-    {
-        return $this->precio / $this->getDias();
     }
 
     public function getIngreso()
@@ -233,6 +241,83 @@ class Reserva
     public function link()
     {
         return '/reservations/' . $this->getId();
+    }
+
+    public function checkInPast()
+    {
+        return $this->checkPast($this->checkIn);
+    }
+
+    public function checkOutPast()
+    {
+        return $this->checkPast($this->checkOut);
+    }
+
+    private function checkPast($date)
+    {
+        return strtotime($date) < time();
+    }
+
+    public function daysSinceCreation()
+    {
+        return $this->daysPast($this->fechaReserva);
+    }
+
+    public function daysPast($date)
+    {
+        $date = new \DateTime($date);
+        $now = new \DateTime();
+        $diff = $now->diff($date);
+        return $diff->days;
+    }
+
+    public function cancelIfNeeded()
+    {
+        $estado = ReservaHasEstado::getLastEstado($this)->getIdEstado();
+        if ($this->daysSinceCreation() > 15 && $estado == 3) {
+            $this->cancel();
+        } elseif ($this->checkInPast() && ($estado == 3 || $estado == 2)) {
+            $this->cancel();
+        }
+    }
+
+    public function cancel()
+    {
+        return ReservaHasEstadoDAO::insert([
+            'idReserva' => $this->id,
+            'idEstado' => 1
+        ]);
+    }
+
+    public function book()
+    {
+        return ReservaHasEstadoDAO::insert([
+            'idReserva' => $this->id,
+            'idEstado' => 2
+        ]);
+    }
+
+    public function pay()
+    {
+        return ReservaHasEstadoDAO::insert([
+            'idReserva' => $this->id,
+            'idEstado' => 4
+        ]);
+    }
+
+    public function updateEstado($estado)
+    {
+        switch ($estado) {
+            case '1':
+                return $this->cancel();
+                break;
+            case '2':
+                return $this->book();
+                break;
+            case '4':
+               return $this->pay();
+        }
+        return null;
     }
 
     public function json()

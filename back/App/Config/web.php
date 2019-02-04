@@ -13,6 +13,7 @@ Router::resource('settings', 'ProfileController');
 Router::resource('login', 'LoginController');
 Router::resource('support','SupportController');
 
+Router::put('reservations/{id}/oferta', 'ReservationController@oferta');
 Router::get('tarifas/{id}', 'TarifasController@show');
 Router::delete('tarifas/{id}', 'TarifasController@destroy');
 Router::get('politicas/{id}', 'PoliticasController@show');
@@ -30,17 +31,17 @@ Router::view('support', 'support');
 Router::view('notifications', 'notifications');
 Router::view('premium', 'premium');
 
+Api::get('paises', 'PaisesController@index');
+Api::get('region/{id}', 'RegionController@show');
+Api::get('ciudades', 'CiudadesController@index');
+Api::get('ciudades/{id}', 'CiudadesController@show');
+Api::post('mailreceiver', 'MailReceiverController@create');
+
 // THIS IS TESTING AREA
 Router::view('photos', 'photo');
 Router::view('test', 'test');
 Router::post('upload', 'UploadController@store');
 Router::post('upload/house/{id}', 'UploadController@house');
 Router::post('upload/profile/{id}', 'UploadController@profile');
-
-Api::get('paises', 'PaisesController@index');
-Api::get('region/{id}', 'RegionController@show');
-Api::get('ciudades', 'CiudadesController@index');
-Api::get('ciudades/{id}', 'CiudadesController@show');
-Api::post('mailreceiver', 'MailReceiverController@create');
 
 //Router::view('test', 'test');

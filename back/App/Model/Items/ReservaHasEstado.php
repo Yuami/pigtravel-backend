@@ -62,6 +62,6 @@ class ReservaHasEstado
 
     public static function getLastEstado(Reserva $resesrva)
     {
-        return ReservaHasEstadoDAO::getLastEstado($resesrva->getId())->getNombre();
+        return ReservaHasEstadoDAO::getLastEstado($resesrva->getId());
     }
 }

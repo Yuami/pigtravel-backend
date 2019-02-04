@@ -51,4 +51,9 @@ class Session
             return self::get('userID');
         return false;
     }
+
+    public static function success($message)
+    {
+        Session::set('success', $message);
+    }
 }
