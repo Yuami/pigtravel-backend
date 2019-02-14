@@ -80,7 +80,7 @@ class HouseController extends Controller
         $uc->house($vivienda->getId());
         self::importServicios($vivienda);
 
-        Router::redirect('house/' . $vivienda->getId());
+        Router::redirect('houses/' . $vivienda->getId());
     }
 
     private static function importServicios($vivienda)
