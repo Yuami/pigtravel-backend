@@ -10,8 +10,10 @@ use Model\DAO\MensajesDAO;
 use Model\DAO\PoliticaCancelacionDAO;
 use Model\DAO\ServicioHasIdiomaDAO;
 use Model\DAO\TarifaDAO;
+use Model\DAO\TipoViviendaHasIdiomaDAO;
 use Model\DAO\ViviendaHasServicioDAO;
 use Model\Items\ServicioHasIdioma;
+use Model\Items\TipoViviendaHasIdioma;
 use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
@@ -56,6 +58,7 @@ class HouseController extends Controller
     public function create()
     {
         $servicios = ServicioHasIdiomaDAO::getAllOrdered("nombre");
+        $tipoVivienda = TipoViviendaHasIdiomaDAO::getBy('idIdioma',2);
         include_once VIEW . "houseAdd.php";
     }
 
@@ -70,7 +73,7 @@ class HouseController extends Controller
             "calle" => $_POST['street'],
             "horaEntrada" => $_POST['checkIn'],
             "horaSalida" => $_POST['checkOut'],
-            "idTipoVivienda" => 1,
+            "idTipoVivienda" => $_POST['tipoVivienda'],
             "idCiudad" => $_POST['city'],
             "idVendedor" => Session::get('userID'),
             "descripcion" => $_POST['description']

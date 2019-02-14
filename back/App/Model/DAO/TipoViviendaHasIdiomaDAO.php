@@ -16,4 +16,6 @@ class TipoViviendaHasIdiomaDAO extends DAO
     {
         return parent::getBy('idTipo_vivienda',$id);
     }
+
+
 }
