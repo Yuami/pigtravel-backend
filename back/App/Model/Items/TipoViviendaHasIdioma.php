@@ -4,7 +4,7 @@ namespace Model\Items;
 class TipoViviendaHasIdioma
 {
     private $idIdioma;
-    private $idTipoVivienda;
+    private $idTipo_vivienda;
     private $nombre;
 
     /**
@@ -28,7 +28,7 @@ class TipoViviendaHasIdioma
      */
     public function getIdTipoVivienda()
     {
-        return $this->idTipoVivienda;
+        return $this->idTipo_vivienda;
     }
 
     /**
@@ -36,7 +36,7 @@ class TipoViviendaHasIdioma
      */
     public function setIdTipoVivienda($idTipoVivienda)
     {
-        $this->idTipoVivienda = $idTipoVivienda;
+        $this->idTipo_vivienda = $idTipoVivienda;
     }
 
     /**

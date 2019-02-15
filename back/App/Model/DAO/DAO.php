@@ -33,7 +33,7 @@ abstract class DAO
 
     public static function getAllOrdered($orderCol = "", $orderType = "asc")
     {
-        $sql = "SELECT * FROM " . static::$table;
+        $sql = "SELECT * FROM " . static::$table . " WHERE idIdioma = 2";
         if ($orderCol != "") {
             $sql .= " order by $orderCol $orderType";
         }

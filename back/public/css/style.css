@@ -535,16 +535,6 @@ body#landingBody {
   color: black;
 }
 
-@media (min-width: 767px) {
-  .select2-container {
-    width: 66% !important;
-  }
-}
-@media (max-width: 767px) {
-  .select2-container {
-    width: calc(100% - 38px) !important;
-  }
-}
 #loading {
   position: fixed;
   width: 100%;

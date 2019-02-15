@@ -12,4 +12,6 @@ class TipoVivienda
     {
         return $this->id;
     }
+
+
 }

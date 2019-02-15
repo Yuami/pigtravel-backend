@@ -61,6 +61,7 @@ class RegisterController extends Controller
                 'DNI' => $dni,
                 'tlf' => $_POST["telefono"],
                 'fechaNacimiento' => $_POST["fechaN"],
+                'idCiudad' => 713697,
                 'correo' => $correo,
                 'password' => $password
             ];
