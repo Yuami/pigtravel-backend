@@ -9,7 +9,6 @@
 namespace Controller;
 
 
-use Config\Session;
 use Model\DAO\PoliticaCancelacionDAO;
 use Model\DAO\TarifaDAO;
 use Model\DAO\ViviendaDAO;
@@ -31,7 +30,7 @@ class TarifasController extends Controller
 
     public function store($id)
     {
-        $idT = TarifaDAO::insert([
+        $t = TarifaDAO::insert([
             "fechaInicio" => $_POST['fechaI'],
             "fechaFin" => $_POST['fechaF'],
             "precio" => $_POST['precio'],
@@ -40,7 +39,7 @@ class TarifasController extends Controller
         ]);
         ViviendaHasTarifaDAO::insert([
             "idVivienda" => $id,
-            "idTarifa" => $idT->getId()
+            "idTarifa" => $t->getId()
         ]);
         Router::redirect('houses/' . $id);
 

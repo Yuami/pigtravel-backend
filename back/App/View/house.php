@@ -316,19 +316,21 @@ if (Session::isSet("updateCompleted")) {
                                 <?php } ?>
                             </select>
                         </div>
-                        <?php if ($tarifa->getGeneral() == 1) { ?>
-                            <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                <input type="checkbox" class="custom-control-input" name="general"
-                                       id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">General</label>
-                            </div>
-                        <?php } else { ?>
-                            <div class="custom-control custom-checkbox" style="margin-left: 40%">
-                                <input type="checkbox" class="custom-control-input" name="general"
-                                       id="customCheck1" disabled>
-                                <label class="custom-control-label" for="customCheck1">General</label>
-                            </div>
-                        <?php } ?>
+                        <?php if (isset($tarifa)) {
+                            if ($tarifa->getGeneral() == 1) { ?>
+                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                    <input type="checkbox" class="custom-control-input" name="general"
+                                           id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">General</label>
+                                </div>
+                            <?php } else { ?>
+                                <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                    <input type="checkbox" class="custom-control-input" name="general"
+                                           id="customCheck1" disabled>
+                                    <label class="custom-control-label" for="customCheck1">General</label>
+                                </div>
+                            <?php }
+                        } ?>
                         <div class="row justify-content-between m-2">
                             <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
                                     data-dismiss="modal"> Cancelar
@@ -394,7 +396,7 @@ if (Session::isSet("updateCompleted")) {
         var modal = $(this);
         modal.find('.modal-body input').val(recipient)
     });
-     $('#footerC').on('click')
+    $('#footerC').on('click')
     $(function () {
         mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
         let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
