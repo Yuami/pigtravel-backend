@@ -53,6 +53,12 @@
                     </div>
                     <div class="tab form-group">
                         <h1 class="text-center">Additional Information</h1>
+                        <label for="tipoVivienda">House Type</label><br/>
+                        <select name="tipoVivienda" class="form-control mb-1">
+                                <?php foreach ($tipoVivienda as $tipo) { ?>
+                                    <option value="<?= $tipo->getIdTipoVivienda()?>"><?= $tipo->getNombre() ?></option>
+                               <?php } ?>
+                            </select>
                         <label for="squaremeters">Square Meters</label>
                         <input type="number" class="form-control mb-1" name="squaremeters">
                         <label for="checkIn">Check In Time</label>
@@ -102,15 +108,18 @@
                     <div class="tab">
                         <h1 class="text-center">Services</h1>
                         <div class="row">
-                        <?php foreach ($servicios as $servicio) {
-                            if (!$servicio instanceof \Model\Items\ServicioHasIdioma) continue;
+                            <?php foreach ($servicios as $servicio) {
+                                if (!$servicio instanceof \Model\Items\ServicioHasIdioma) continue;
                                 ?>
                                 <div class="custom-control custom-checkbox col-md-6 col-lg-4 col-12">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck<?= $servicio->getIdServicio() ?>" name="servicios[]" value="<?= $servicio->getIdServicio() ?>">
-                                    <label class="custom-control-label" for="customCheck<?= $servicio->getIdServicio() ?>"><?= $servicio->getNombre()?></label>
+                                    <input type="checkbox" class="custom-control-input"
+                                           id="customCheck<?= $servicio->getIdServicio() ?>" name="servicios[]"
+                                           value="<?= $servicio->getIdServicio() ?>">
+                                    <label class="custom-control-label"
+                                           for="customCheck<?= $servicio->getIdServicio() ?>"><?= $servicio->getNombre() ?></label>
                                 </div>
-                            <?php
-                        } ?>
+                                <?php
+                            } ?>
                         </div>
                     </div>
 

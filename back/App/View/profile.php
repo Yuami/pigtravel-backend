@@ -75,10 +75,6 @@
                             <label class="sr-only" for="city">City</label>
                             <div class="input-group mb-2 mr-sm-3">
                                 <h6 class="text-md-right my-auto mr-sm-3 col-md-3">City</h6>
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><span class="fas fa-city text-danger"></span>
-                                    </div>
-                                </div>
                                 <select id="city" class="form-control col-12" name="city">
                                 </select>
                             </div>
@@ -183,9 +179,9 @@
     </div>
 </section>
 
-<?php var_dump($user->getIdCiudad()); include_once("footer.php") ?>
+<?php include_once("footer.php") ?>
 <script>
-    $(function(){
+    $(function () {
         console.log(<?= $user->getIdCiudad() ?>);
         loadCiudades(970, <?= $user->getIdCiudad() ?>);
     });
