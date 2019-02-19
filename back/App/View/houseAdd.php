@@ -36,9 +36,9 @@
     </div>
     <div class="container-fluid">
 
-        <form id="addHouseForm" method="POST" action="/houses">
-            <input id="lon" type="hidden" name="lon">
-            <input id="lan" type="hidden" name="lan">
+        <form id="addHouseForm" method="POST" action="/houses" enctype="multipart/form-data">
+                        <input id="lon" type="hidden" name="lon">
+                        <input id="lan" type="hidden" name="lan">
 
             <div class="row px-md-5">
                 <div class="col-md-8 col-12">
@@ -77,51 +77,51 @@
                             </div>
                         </div>
 
-                        <h1 class="text-center">Rates and Location</h1>
-                        <label for="standardRate">Standard Rate</label>
-                        <input type="number" class="form-control mb-1" name="standardRate">
-                        <label for="country">Country</label>
-                        <select id="country" class="form-control" name="country" style="width: 100% !important;">
-                        </select>
-                        <label for="region">Region</label>
-                        <select id="region" class="form-control" name="region" style="width: 100% !important;">
-                        </select>
-                        <label for="city">City</label>
-                        <select id="city" class="form-control" name="city" style="width: 100% !important;">
-                        </select>
-                        <label for="street">Address</label>
-                        <input id="street" type="text" class="form-control mb-1"
-                               name="street">
-                        <div id="wrongHouseLocationDiv" class="custom-control custom-checkbox d-none">
-                            <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
-                            <label class="custom-control-label text-danger" for="wrongHouseLocation">Change house
-                                location on map!</label>
-                        </div>
-                    </div>
-                    <div id="imageTab" class="tab">
-                        <h1 class="text-center">Images</h1>
-
-                    </div>
-
-                    <!-- ---------- Servicios ---------- -->
-
-                    <div class="tab">
-                        <h1 class="text-center">Services</h1>
-                        <div class="row">
-                            <?php foreach ($servicios as $servicio) {
-                                if (!$servicio instanceof \Model\Items\ServicioHasIdioma) continue;
-                                ?>
-                                <div class="custom-control custom-checkbox col-md-6 col-lg-4 col-12">
-                                    <input type="checkbox" class="custom-control-input"
-                                           id="customCheck<?= $servicio->getIdServicio() ?>" name="servicios[]"
-                                           value="<?= $servicio->getIdServicio() ?>">
-                                    <label class="custom-control-label"
-                                           for="customCheck<?= $servicio->getIdServicio() ?>"><?= $servicio->getNombre() ?></label>
+                                    <h1 class="text-center">Rates and Location</h1>
+                                    <label for="standardRate">Standard Rate</label>
+                                    <input type="number" class="form-control mb-1" name="standardRate">
+                                    <label for="country">Country</label>
+                                    <select id="country" class="form-control" name="country" style="width: 100% !important;">
+                                    </select>
+                                    <label for="region">Region</label>
+                                    <select id="region" class="form-control" name="region" style="width: 100% !important;">
+                                    </select>
+                                    <label for="city">City</label>
+                                    <select id="city" class="form-control" name="city" style="width: 100% !important;">
+                                    </select>
+                                    <label for="street">Address</label>
+                                    <input id="street" type="text" class="form-control mb-1"
+                                           name="street">
+                                    <div id="wrongHouseLocationDiv" class="custom-control custom-checkbox d-none">
+                                        <input type="checkbox" class="custom-control-input" id="wrongHouseLocation">
+                                        <label class="custom-control-label text-danger" for="wrongHouseLocation">Change house
+                                            location on map!</label>
+                                    </div>
                                 </div>
-                                <?php
-                            } ?>
+            <div id="imageTab" class="tab">
+                <h1 class="text-center">Images</h1>
+                <input type="file" name="picture[]" multiple class="form-control">
+            </div>
+
+            <!-- ---------- Servicios ---------- -->
+
+            <div class="tab">
+                <h1 class="text-center">Services</h1>
+                <div class="row">
+                    <?php foreach ($servicios as $servicio) {
+                        if (!$servicio instanceof \Model\Items\ServicioHasIdioma) continue;
+                        ?>
+                        <div class="custom-control custom-checkbox col-md-6 col-lg-4 col-12">
+                            <input type="checkbox" class="custom-control-input"
+                                   id="customCheck<?= $servicio->getIdServicio() ?>" name="servicios[]"
+                                   value="<?= $servicio->getIdServicio() ?>">
+                            <label class="custom-control-label"
+                                   for="customCheck<?= $servicio->getIdServicio() ?>"><?= $servicio->getNombre() ?></label>
                         </div>
-                    </div>
+                        <?php
+                    } ?>
+                </div>
+            </div>
 
 
                     <div style="overflow:auto;">
@@ -164,7 +164,6 @@
     $(function () {
         loadPaises();
         loadRegion(country.select2('val'));
-
     });
 </script>
 <?php
