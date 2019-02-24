@@ -45,6 +45,7 @@ class ProfileController
             "tlf" => $_POST["telephoneForm"],
             "correo" => $_POST["emailForm"],
             "descripcion" => $_POST['descriptionForm'],
+            "idCiudad" => $_POST['city'],
         ],'id = ' . $userId);
 
         $credentials = LoginDAO::credentials(PersonaDAO::getById($userId)->getCorreo());
