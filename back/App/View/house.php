@@ -282,7 +282,7 @@ if (Session::isSet("updateCompleted")) {
         <?php }
         } ?>
     </div>
-    <div class="modal fade" id="ModalT" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+  <!--  <div class="modal fade" id="ModalT" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -293,7 +293,7 @@ if (Session::isSet("updateCompleted")) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="card-body" action="/houses/<?php echo $houses->getId() ?>" method="post">
+                    <form class="card-body" action="/houses/<?php /*echo $houses->getId() */?>" method="post">
                         <div class="form-group">
                             <label for="fechaI" class="col-form-label">Fecha Inicio</label>
                             <input type="date" class="form-control" name="fechaI" id="fechaI">
@@ -309,28 +309,28 @@ if (Session::isSet("updateCompleted")) {
                         <div class="form-group">
                             <select class="custom-select" name="idPC" id="idPC">
                                 <option value="0">-- POLITICA CANCELACION --</option>
-                                <?php foreach ($politicas as $politica) { ?>
-                                    <option value="<?php echo($politica->getId()) ?>">
-                                        <?php echo $politica->getNombre() ?>
+                                <?php /*foreach ($politicas as $politica) { */?>
+                                    <option value="<?php /*echo($politica->getId()) */?>">
+                                        <?php /*echo $politica->getNombre() */?>
                                     </option>
-                                <?php } ?>
+                                <?php /*} */?>
                             </select>
                         </div>
-                        <?php if (isset($tarifa)) {
-                            if ($tarifa->getGeneral() == 1) { ?>
+                        <?php /*if (isset($tarifa)) {
+                            if ($tarifa->getGeneral() == 1) { */?>
                                 <div class="custom-control custom-checkbox" style="margin-left: 40%">
                                     <input type="checkbox" class="custom-control-input" name="general"
                                            id="customCheck1">
                                     <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
-                            <?php } else { ?>
+                            <?php /*} else { */?>
                                 <div class="custom-control custom-checkbox" style="margin-left: 40%">
                                     <input type="checkbox" class="custom-control-input" name="general"
                                            id="customCheck1" disabled>
                                     <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
-                            <?php }
-                        } ?>
+                            <?php /*}
+                        } */?>
                         <div class="row justify-content-between m-2">
                             <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
                                     data-dismiss="modal"> Cancelar
@@ -355,9 +355,9 @@ if (Session::isSet("updateCompleted")) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="card-body" action="/politicas/<?php echo $politica->getId() ?>" method="post">
-                        <input type="hidden" name="idV" value="<?php echo $houses->getIdVendedor() ?>">
-                        <input type="hidden" name="idH" value="<?php echo $houses->getId() ?>">
+                    <form class="card-body" action="/politicas/<?php /*echo $politica->getId() */?>" method="post">
+                        <input type="hidden" name="idV" value="<?php /*echo $houses->getIdVendedor() */?>">
+                        <input type="hidden" name="idH" value="<?php /*echo $houses->getId() */?>">
                         <div class="form-group">
                             <label for="nombre" class="col-form-label">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre">
@@ -384,7 +384,7 @@ if (Session::isSet("updateCompleted")) {
             </div>
         </div>
     </div>
-    </div>
+-->
 </section>
 <script src="/js/calendar.js"></script>
 <script src="/js/custom/house.js"></script>
