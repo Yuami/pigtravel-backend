@@ -30,7 +30,9 @@
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#mainHouseSection">House</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Rates</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#politicas">Policies</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#">Show</a></li>
+        <li class="nav-item text-center col-6 col-sm-3">
+            <a class="nav-link" href="http://www.pigtravel.top/houses/<?= $houses->getId() . '/' . $houses->getNombre()?>">Show</a>
+        </li>
     </ul>
 </nav>
 

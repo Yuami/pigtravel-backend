@@ -1,7 +1,7 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the crurrent tab
 
-var map = L.map('houseMap').setView([52.520008, 13.404954], 13);
+var map = L.map('houseMap').setView([39.456, -4.055685], 5);
 var marker;
 var wrongHouseLocation = false;
 
