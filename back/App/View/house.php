@@ -384,7 +384,6 @@ if (Session::isSet("updateCompleted")) {
             </div>
         </div>
     </div>
-
 </section>
 <script src="/js/calendar.js"></script>
 <script src="/js/custom/house.js"></script>
@@ -407,3 +406,5 @@ if (Session::isSet("updateCompleted")) {
 <?php include_once CALENDAR ?>
 <?php include_once("footer.php") ?>
 <script src="/js/selects/selectTarifa-Rebaja.js"/>
+</body>
+</html>
