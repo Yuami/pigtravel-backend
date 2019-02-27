@@ -18,4 +18,4 @@ $config = Config::singleton();
  $config->set('dbhost', 'localhost');
  $config->set('dbname', 'travel');
  $config->set('dbuser', 'root');
- $config->set('dbpass', 'root');
+ $config->set('dbpass', '');
