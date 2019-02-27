@@ -78,8 +78,9 @@
                         </div>
 
                         <h1 class="text-center">Rates and Location</h1>
-                        <label for="standardRate">Standard Rate</label>
-                        <input type="number" class="form-control mb-1" name="standardRate">
+
+                        <label for="standardRate">Alquiler automatico</label>
+                        <input type="checkbox" class="form-control mb-1" name="alquilerAutomatico">
                         <label for="country">Country</label>
                         <select id="country" class="form-control" name="country" style="width: 100% !important;">
                         </select>

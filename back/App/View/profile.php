@@ -182,7 +182,6 @@
 <?php include_once("footer.php") ?>
 <script>
     $(function () {
-        console.log($("#city").val());
         loadCiudades(970, <?= $user->getIdCiudad() ?>);
     });
 </script>
