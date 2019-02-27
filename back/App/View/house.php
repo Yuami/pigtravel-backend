@@ -89,6 +89,26 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                     </div>
                     <div class="row">
+                        <label class="sr-only" for="tipoVivienda">Tipo Vivienda</label>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Tipo Vivienda</h6>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><span class="fas fa-user text-danger"></span>
+                                </div>
+                            </div>
+                            <select name="tipoVivienda" class="form-control col-md-8">
+                                <?php foreach ($tipoVivienda as $tipo) {
+                                    if ($tipo->getIdTipoVivienda() == $houses->getIdTipoVivienda()) { ?>
+                                        <option value="<?= $tipo->getIdTipoVivienda() ?>" selected><?= $tipo->getNombre() ?></option>
+                                    <?php } else { ?>
+                                        <option value="<?= $tipo->getIdTipoVivienda() ?>"><?= $tipo->getNombre() ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <label class="sr-only" for="street">Street</label>
                         <div class="input-group mb-2 mr-sm-2">
                             <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Street</h6>
@@ -146,6 +166,17 @@ if (Session::isSet("updateCompleted")) {
                             </div>
                             <input type="time" class="form-control col-md-8" id="checkOut" name="checkOut"
                                    style="width: 80px;" value="<?= $houses->getHoraSalida(); ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="sr-only" for="alquilerAutomatico">Alquiler Automatico</label>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <h6 class="text-md-right my-auto mr-sm-3 col-2">Alquiler Automatico</h6>
+                            <?= $houses->getAlquilerAutomatico() ?
+                                '<input type="checkbox" class="form-control col-md-8" id="alquilerAutomatico" name="alquilerAutomatico"
+                                   style="width: 80px;" checked>' :
+                                '<input type="checkbox" class="form-control col-md-8" id="alquilerAutomatico" name="alquilerAutomatico"
+                                   style="width: 80px;">'; ?>
                         </div>
                     </div>
                     <div class="row">
@@ -397,12 +428,11 @@ if (Session::isSet("updateCompleted")) {
         var modal = $(this);
         modal.find('.modal-body input').val(recipient)
     });
-    $('#footerC').on('click')
+    $('#footerC').on('click');
     $(function () {
         mapLoad(<?php echo $houses->getCoordX() . "," . $houses->getCoordY(); ?>);
-        let idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
-        loadCiudades(idRegion);
-        $('#city').select2.val(<?= $houses->getIdCiudad() ?>).trigger('change.select2');
+        var idRegion = <?= \Model\DAO\CitiesDAO::getById($houses->getIdCiudad())->getRegionId(); ?>;
+        loadCiudades(idRegion, <?= $houses->getIdCiudad() ?>);
     });
 </script>
 <?php include_once CALENDAR ?>

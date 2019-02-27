@@ -14,6 +14,7 @@ use Model\DAO\TipoViviendaHasIdiomaDAO;
 use Model\DAO\ViviendaHasServicioDAO;
 use Model\Items\ServicioHasIdioma;
 use Model\Items\TipoViviendaHasIdioma;
+use PHPMailer\PHPMailer\Exception;
 use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
@@ -46,6 +47,7 @@ class HouseController extends Controller
 
     public function show($id)
     {
+        $tipoVivienda = TipoViviendaHasIdiomaDAO::getBy('idIdioma', 2);
         $houses = ViviendaDAO::getById($id);
         $idU = $houses->getIdVendedor();
         $politicas = PoliticaCancelacionDAO::getByIdVendedor($idU);
@@ -58,7 +60,7 @@ class HouseController extends Controller
     public function create()
     {
         $servicios = ServicioHasIdiomaDAO::getAllOrdered("nombre");
-        $tipoVivienda = TipoViviendaHasIdiomaDAO::getBy('idIdioma',2);
+        $tipoVivienda = TipoViviendaHasIdiomaDAO::getBy('idIdioma', 2);
         include_once VIEW . "houseAdd.php";
     }
 
@@ -74,6 +76,7 @@ class HouseController extends Controller
             "horaEntrada" => $_POST['checkIn'],
             "horaSalida" => $_POST['checkOut'],
             "idTipoVivienda" => $_POST['tipoVivienda'],
+            "alquilerAutomatico" => isset($_POST['alquilerAutomatico']) ? 1 : 0,
             "idCiudad" => $_POST['city'],
             "idVendedor" => Session::get('userID'),
             "descripcion" => $_POST['description']
@@ -107,23 +110,26 @@ class HouseController extends Controller
 
     public function update($id)
     {
+
         if (self::validUser($id)) {
-            ViviendaDAO::update([
-                "id" => $id,
-                "nombre" => $_POST['houseName'],
-                "capacidad" => $_POST['peopleAmount'],
-                "metrosCuadrados" => $_POST['squaremeters'],
-                "calle" => $_POST['street'],
-                "horaEntrada" => $_POST['checkIn'],
-                "horaSalida" => $_POST['checkOut'],
-                "alquilerAutomatico" => $_POST['standardRate'],
-                "idTipoVivienda" => 1,
-                "idCiudad" => $_POST['city'],
-                "descripcion" => $_POST['description']], "id = $id");
-            self::updateCompleted(true);
+            try {
+                ViviendaDAO::update([
+                    "id" => $id,
+                    "nombre" => $_POST['houseName'],
+                    "capacidad" => $_POST['peopleAmount'],
+                    "metrosCuadrados" => $_POST['squaremeters'],
+                    "calle" => $_POST['street'],
+                    "horaEntrada" => $_POST['checkIn'],
+                    "horaSalida" => $_POST['checkOut'],
+                    "alquilerAutomatico" => isset($_POST['alquilerAutomatico']) ? 1 : 0,
+                    "idTipoVivienda" => $_POST['tipoVivienda'],
+                    "idCiudad" => $_POST['city'],
+                    "descripcion" => $_POST['description']], "id = $id");
+                self::updateCompleted(true);
+            } catch (Exception $e) {
+                self::updateCompleted(false);
+            }
             Router::redirect("houses/$id");
-        } else {
-            self::updateCompleted(false);
         }
     }
 
