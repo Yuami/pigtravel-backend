@@ -101,7 +101,7 @@
                     </div>
                     <div id="imageTab" class="tab">
                         <h1 class="text-center">Images</h1>
-
+                        <input type="file" name="picture[]" multiple class="form-control">
                     </div>
 
             <!-- ---------- Servicios ---------- -->
