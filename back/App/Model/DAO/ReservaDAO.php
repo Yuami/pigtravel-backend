@@ -40,6 +40,7 @@ class ReservaDAO extends DAO
     {
         $statement = DB::conn()->prepare('SELECT sum(r.precio) as beneficioMes,v.nombre, month(r.fechaReserva) as mes from reserva r
        inner join vivienda v on r.idVivienda = v.id
+       where vivienda.idVendedor= :id
        group by r.idVivienda,MONTH (r.fechaReserva)');
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
