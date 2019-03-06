@@ -11,8 +11,8 @@ class PoliticaCancelacionDAO extends DAO
         return parent::getBy('nombre', $nombre);
     }
 
-    public static function getByIdVendedor($id)
+    public static function getByIdVivienda($id)
     {
-        return parent::getBy('idVendedor', $id);
+        return parent::getBy('idVivienda', $id);
     }
 }

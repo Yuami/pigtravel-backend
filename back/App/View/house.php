@@ -31,7 +31,8 @@
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Rates</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#politicas">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3">
-            <a class="nav-link" href="http://www.pigtravel.top/houses/<?= $houses->getId() . '/' . $houses->getNombre()?>">Show</a>
+            <a class="nav-link"
+               href="http://www.pigtravel.top/houses/<?= $houses->getId() . '/' . $houses->getNombre() ?>">Show</a>
         </li>
     </ul>
 </nav>
@@ -99,7 +100,8 @@ if (Session::isSet("updateCompleted")) {
                             <select name="tipoVivienda" class="form-control col-md-8">
                                 <?php foreach ($tipoVivienda as $tipo) {
                                     if ($tipo->getIdTipoVivienda() == $houses->getIdTipoVivienda()) { ?>
-                                        <option value="<?= $tipo->getIdTipoVivienda() ?>" selected><?= $tipo->getNombre() ?></option>
+                                        <option value="<?= $tipo->getIdTipoVivienda() ?>"
+                                                selected><?= $tipo->getNombre() ?></option>
                                     <?php } else { ?>
                                         <option value="<?= $tipo->getIdTipoVivienda() ?>"><?= $tipo->getNombre() ?></option>
                                     <?php }
@@ -196,84 +198,6 @@ if (Session::isSet("updateCompleted")) {
 
         </form>
     </div>
-    <div id="tarifas"></div>
-    <hr>
-    <div class="row">
-        <div class="row col-12 justify-content-center">
-            <h2 class="text-center m-5">TARIFAS</h2>
-        </div>
-        <div class="row col-12 justify-content-center my-5">
-            <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalT">
-                Crear
-                Tarifa
-            </button>
-        </div>
-        <div class="row col-12 justify-content-center">
-            <?php if (!empty($tarifas)) {
-            foreach ($tarifas
-
-            as $tarifa) { ?>
-            <?php if ($tarifa->getGeneral() == 0) { ?>
-            <div class="card text-center shadow col-md-3 col-12 m-2">
-                <a href="/tarifas/<?php echo $tarifa->getId() ?>" style="text-decoration: none; color:inherit">
-                    <div class="card-body">
-                        <h4 class="card-title">Tarifa</h4>
-                        <p class="card-text">
-                            <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?></p>
-                        <p class="card-text">
-                            <span class="fas fa-arrow-alt-circle-right"></span>
-                            <?php echo noHours($tarifa->getFechaInicio()) ?></p>
-                        <p class="card-text">
-                            <span class="fas fa-arrow-alt-circle-left"></span>
-                            <?php echo noHours($tarifa->getFechaFin()) ?></p>
-                        <?php foreach ($politicas as $politica) { ?>
-                            <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
-                                <p class="card-text">
-                                    <span class="fas fa-arrow-alt-circle-left"></span>
-                                    <?= $politica->getNombre() ?></p>
-                            <?php }
-                        }
-                        } else { ?>
-                        <div class="card text-center bg-warning shadow col-md-3 col-12 m-2">
-                            <a href="/tarifas/<?php echo $tarifa->getId() ?>"
-                               style="text-decoration: none;color:inherit">
-                                <div class="card-body">
-                                    <h4 class="card-title ">
-                                        <storng>Tarifa</storng>
-                                    </h4>
-                                    <h4 class="card-title mt-4">
-                                        <storng>General</storng>
-                                    </h4>
-                                    <p class="card-text mt-4">
-                                        <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?>
-                                    </p>
-                                    <p class="card-text mt-4 mb-2">
-                                        <?php foreach ($politicas as $politica) { ?>
-                                            <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
-                                                <span class="fas fa-arrow-alt-circle-left"></span>
-                                                <?= $politica->getNombre() ?>
-                                            <?php } ?>
-                                        <?php } ?></p>
-                                    <?php } ?>
-                                </div>
-                            </a>
-                            <div class="card-footer" id="footerP">
-                                <form action="/tarifas/<?php echo $tarifa->getId() ?>" method="post">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="idT" id="idT"
-                                           value="<?php echo $tarifa->getId() ?>">
-                                    <button type="submit" id="btnET" class="btn btn-danger">Eliminar
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <?php }
-                        } ?>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
     <hr>
     <div class="row" id="politicas">
         <div class="row justify-content-center col-12">
@@ -315,6 +239,87 @@ if (Session::isSet("updateCompleted")) {
         <?php }
         } ?>
     </div>
+    </div>
+    <hr>
+    <div id="tarifas">
+        <div class="row">
+            <div class="row col-12 justify-content-center">
+                <h2 class="text-center m-5">TARIFAS</h2>
+            </div>
+            <div class="row col-12 justify-content-center my-5">
+                <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalT">
+                    Crear
+                    Tarifa
+                </button>
+            </div>
+            <div class="row col-12 justify-content-center">
+                <?php if (!empty($tarifas)) {
+                foreach ($tarifas
+
+                as $tarifa) { ?>
+                <?php if ($tarifa->getGeneral() == 0) { ?>
+                <div class="card text-center shadow col-md-3 col-12 m-2">
+                    <a href="/tarifas/<?php echo $tarifa->getId() ?>" style="text-decoration: none; color:inherit">
+                        <div class="card-body">
+                            <h4 class="card-title">Tarifa</h4>
+                            <p class="card-text">
+                                <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?></p>
+                            <p class="card-text">
+                                <span class="fas fa-arrow-alt-circle-right"></span>
+                                <?php echo noHours($tarifa->getFechaInicio()) ?></p>
+                            <p class="card-text">
+                                <span class="fas fa-arrow-alt-circle-left"></span>
+                                <?php echo noHours($tarifa->getFechaFin()) ?></p>
+                            <?php foreach ($politicas as $politica) { ?>
+                                <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
+                                    <p class="card-text">
+                                        <span class="fas fa-arrow-alt-circle-left"></span>
+                                        <?= $politica->getNombre() ?></p>
+                                <?php }
+                            }
+                            } else { ?>
+                            <div class="card text-center bg-warning shadow col-md-3 col-12 m-2">
+                                <a href="/tarifas/<?php echo $tarifa->getId() ?>"
+                                   style="text-decoration: none;color:inherit">
+                                    <div class="card-body">
+                                        <h4 class="card-title ">
+                                            <storng>Tarifa</storng>
+                                        </h4>
+                                        <h4 class="card-title mt-4">
+                                            <storng>General</storng>
+                                        </h4>
+                                        <p class="card-text mt-4">
+                                            <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?>
+                                        </p>
+                                        <p class="card-text mt-4 mb-2">
+                                            <?php foreach ($politicas as $politica) { ?>
+                                                <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
+                                                    <span class="fas fa-arrow-alt-circle-left"></span>
+                                                    <?= $politica->getNombre() ?>
+                                                <?php } ?>
+                                            <?php } ?></p>
+                                        <?php } ?>
+                                    </div>
+                                </a>
+                                <div class="card-footer" id="footerP">
+                                    <form action="/tarifas/<?php echo $tarifa->getId() ?>" method="post">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="idT" id="idT"
+                                               value="<?php echo $tarifa->getId() ?>">
+                                        <button type="submit" id="btnET" class="btn btn-danger">Eliminar
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <?php }
+                            } ?>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="modal fade" id="ModalT" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">

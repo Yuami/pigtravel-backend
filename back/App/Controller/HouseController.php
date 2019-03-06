@@ -49,8 +49,7 @@ class HouseController extends Controller
     {
         $tipoVivienda = TipoViviendaHasIdiomaDAO::getBy('idIdioma', 2);
         $houses = ViviendaDAO::getById($id);
-        $idU = $houses->getIdVendedor();
-        $politicas = PoliticaCancelacionDAO::getByIdVendedor($idU);
+        $politicas = PoliticaCancelacionDAO::getByIdVivienda($id);
         $tarifas = TarifaDAO::getByIdVivienda($id);
         if (self::validUser($id)) {
             include_once VIEW . "house.php";
