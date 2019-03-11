@@ -23,8 +23,8 @@
         <div class="col-md-10 offset-md-1">
             <h1>Profile</h1>
             <ol class="bg-transparent pt-0 breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Perfil</li>
             </ol>
         </div>
     </div>
@@ -42,15 +42,15 @@
                                  alt="">
                             <input name="picture" type="file" id="wizard-picture" class="" accept="image/*">
                         </div>
-                        <h6 class="">Choose Picture</h6>
+                        <h6 class="">Elije una imagen</h6>
                     </div>
                 </div>
                 <div class="order-1 order-md-0 col-md-8">
                     <div class="col-12 order-1 order-md-0 ">
                         <div class="row">
-                            <label class="sr-only" for="firstNameForm">Name</label>
+                            <label class="sr-only" for="firstNameForm">Nombre</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Name</h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Nombre</h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span class="fas fa-user text-danger"></span>
                                     </div>
@@ -60,9 +60,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="sr-only" for="surnameForm">Surname</label>
+                            <label class="sr-only" for="surnameForm">Apellido</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Surname</h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Apellido</h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span class="fas fa-user text-danger"></span>
                                     </div>
@@ -72,17 +72,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="sr-only" for="city">City</label>
+                            <label class="sr-only" for="city">Ciudad</label>
                             <div class="input-group mb-2 mr-sm-3">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">City</h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Ciudad</h6>
                                 <select id="city" class="form-control col-12" name="city">
                                 </select>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="sr-only" for="emailForm">E-Mail</label>
+                            <label class="sr-only" for="emailForm">Correo Electronico</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">E-Mail</h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Correo Electronico</h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span
                                                 class="fas fa-envelope text-danger"></span>
@@ -93,9 +93,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="sr-only" for="telephoneForm">Telephone</label>
+                            <label class="sr-only" for="telephoneForm">Telefono</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Telephone</h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Telefono</h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span class="fas fa-phone text-danger"></span>
                                     </div>
@@ -105,9 +105,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="sr-only" for="passwordForm">Password</label>
+                            <label class="sr-only" for="passwordForm">Contraseña</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Password</h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Contraseña</h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span class="fas fa-lock text-danger"></span>
                                     </div>
@@ -119,7 +119,7 @@
                                         <a href="#collapseProfile" class="ml-auto mr-2" data-toggle="collapse"
                                            role="button"
                                            aria-expanded="false" aria-controls="collapseProfile">
-                                            <p id="changePasswordText">Modify</p>
+                                            <p id="changePasswordText">Modificar</p>
                                         </a>
                                     </div>
                                 </div>
@@ -128,9 +128,9 @@
                         <div class="row">
                             <div class="collapse col-12" id="collapseProfile">
                                 <div class="row">
-                                    <label class="sr-only" for="newPasswordForm">New Password</label>
+                                    <label class="sr-only" for="newPasswordForm">Contraseña Nueva</label>
                                     <div class="input-group mb-2 mr-sm-2">
-                                        <h6 class="text-md-right my-auto mr-sm-3 col-md-3">New Password</h6>
+                                        <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Contraseña Nueva</h6>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><span
                                                         class="fas fa-lock text-danger"></span></div>
@@ -140,9 +140,9 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="sr-only" for="confirmPasswordForm">Confirm Password</label>
+                                    <label class="sr-only" for="confirmPasswordForm">Confirmar contraseña</label>
                                     <div class="input-group mb-2 mr-sm-2">
-                                        <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Confirm Password</h6>
+                                        <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Confirmar contraseña</h6>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><span
                                                         class="fas fa-lock text-danger"></span></div>
@@ -154,9 +154,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="sr-only" for="descriptionForm">Description</label>
+                            <label class="sr-only" for="descriptionForm">Descripcion</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Description<br></h6>
+                                <h6 class="text-md-right my-auto mr-sm-3 col-md-3">Descripcion<br></h6>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><span class="fas fa-pen text-danger"></span>
                                     </div>

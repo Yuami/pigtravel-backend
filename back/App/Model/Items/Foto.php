@@ -36,4 +36,6 @@ class Foto
     {
         return '/assets/uploads/img/casas/default-image.jpg';
     }
+
+
 }
