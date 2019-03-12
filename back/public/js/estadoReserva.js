@@ -1,8 +1,8 @@
 let estados = {
     "cancelada": "badge-danger",
-    "reservada": "badge-warning",
+    "pendiente de pago": "badge-warning",
     "pendiente": "badge-secondary",
-    "pagada": "badge-success",
+    "reservada": "badge-success",
 };
 
 $(function () {
