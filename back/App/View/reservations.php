@@ -40,31 +40,6 @@ if (Session::isSet("wrongReservation")) {
     </div>
     <section class="container">
         <div class="row">
-            <div class="form-group col-md-3 col-12">
-                <p>Filtrar por
-                    <select id="fVivienda" class="form-control">
-                        <option value="0" selected="selected">--- Casa ---</option>
-                        <?php foreach ($reservas as $r) {
-                            $h = $r->getVivienda(); ?>
-                            <option value="<?= $h->getId() ?>"><?= $h->getNombre() ?></option>
-                        <?php } ?>
-                    </select></p>
-            </div>
-            <div class="form-group col-md-3 col-9">
-                <p>Filtrar por
-                    <select id="fEstado" class="form-control">
-                        <option value="" selected="selected">--- Estado ---</option>
-                        <?php foreach ($estados as $e) { ?>
-                            <option value="<?= $e->getIdEstado() ?>"><?= $e->getNombre() ?></option>
-                        <?php } ?>
-                    </select></p>
-            </div>
-            <div class="col-3 col-md-1">
-                <br>
-                <button id="clean" class="btn btn-danger col-12"><i class="fas fa-times-circle"></i></button>
-            </div>
-        </div>
-        <div class="row">
             <table id="taula" class="table table-responsive-md table-striped table-bordered">
                 <thead>
                 <tr>
@@ -95,21 +70,6 @@ if (Session::isSet("wrongReservation")) {
     </section>
 </div>
 <?php include_once("footer.php") ?>
-<!--<script src="js/selects/selectEstadoFiltro.js"></script>-->
-<script>
-    let reservas = $('.reserva');
-    let fVivienda = $('#fVivienda');
-    let fEstado = $('#fEstado');
-
-    function filtro() {
-        let valV = fVivienda.value;
-        if (valV == 0) {
-            reservas.show();
-        } else {
-            reservas.hide();
-        }
-    }
-</script>
 </body>
 
 </html>
