@@ -34,7 +34,7 @@ class PoliticasController extends Controller
         if ($idH != null) {
             $p = PoliticaCancelacionDAO::insert([
                 "nombre" => $_POST['nombre'],
-                "idVivienda" => $_POST['idV']
+                "idVivienda" => $idH
             ]);
         } else {
             $p = 'xd';
