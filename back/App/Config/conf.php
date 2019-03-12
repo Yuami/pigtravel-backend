@@ -3,7 +3,7 @@
 use Config\Config;
 
 // TODO: Errors only on dev
-//Config::errorsOn();
+Config::errorsOn();
 
 $config = Config::singleton();
 
