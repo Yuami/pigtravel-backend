@@ -56,25 +56,25 @@
         <div class="form-group window">
             <div class="row ">
                 <div class="form-group col">
-                    <label for="">Nom</label>
+                    <label for="">Nombre:</label>
                     <input type="text" class="form-control" placeholder="Nom..." name="nom">
                 </div>
                 <div class="form-group col">
-                    <label for="">Primer Llinatge:</label>
+                    <label for="">Apellido:</label>
                     <input type="text" class="form-control" placeholder="Primer Llinatge..." name="apellido1">
                 </div>
                 <div class="form-group col">
-                    <label for="">Segon Llinatge:</label>
+                    <label for="">Segundo Apellido:</label>
                     <input type="text" class="form-control" placeholder="Segon Llinatge..." name="apellido2">
                 </div>
             </div>
             <div class="row ">
                 <div class="form-group col">
-                    <label for="">DNI</label>
+                    <label for="">DNI:</label>
                     <input type="text" class="form-control" placeholder="DNI..." name="dni">
                 </div>
                 <div class="form-group col">
-                    <label for="">Fecha Nacimiento</label>
+                    <label for="">Fecha Nacimiento:</label>
                     <input type="date" class="form-control" placeholder="00-00-0000" name="fechaN">
                 </div>
             </div>
@@ -86,7 +86,7 @@
                        name="emailRegister" required>
             </div>
             <div class="form-group col">
-                <label for="">Phone:</label>
+                <label for="">Telefono:</label>
                 <input class="form-control" placeholder="Phone..." name="telefono">
             </div>
         </div>
