@@ -15,7 +15,7 @@ if (!Session::me()) { ?>
                     </picture>
                 </a>
                 <div class="head-brand">
-                    <h6 class="active" href="#">ADMINISTRATION PANEL</h6>
+                    <h6 class="active" href="#">PANEL DE ADMINISTRACION</h6>
                 </div>
             </nav>
         </div>
@@ -67,7 +67,7 @@ if (!Session::me()) { ?>
                                 <span class="icoNav">
                             <i class="fas fa-question-circle fa-fw"></i>
                                 </span>
-                                <span class="textNav">SOPPORTE</span>
+                                <span class="textNav">SOPORTE</span>
                             </a>
                         </li>
                     </ul>

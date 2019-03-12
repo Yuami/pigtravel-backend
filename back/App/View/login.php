@@ -22,31 +22,31 @@
             <div class="col-12 col-xs-8 offset-xs-2 my-auto text-center">
                 <div id="loginForm">
                     <h5 class="mt-3">Pig Travel</h5>
-                    <h5 class="mb-3">Administration Panel</h5>
-                    <h6 class="mb-3">Manage your Reservations</h6>
+                    <h5 class="mb-3">Panel de administracion</h5>
+                    <h6 class="mb-3">Administra tus reservas!</h6>
                     <form action="/login" method="post" class="text-left mb-3">
                         <div class="form-group">
                             <label for="emailLogin">
-                                <span class="fas fa-user text-danger mr-1 ml-2"></span>Email
+                                <span class="fas fa-user text-danger mr-1 ml-2"></span>Correo
                             </label>
                             <input type="email" class="form-control" name="emailLogin" id="emailLogin"
-                                   aria-describedby="emailHelp" placeholder="Enter email" value="
+                                   aria-describedby="emailHelp" placeholder="Tu correo electronico" value="
                                    <?php echo(Cookie::get('lastEmail')); ?>" required>
                         </div>
                         <div class="form-group mt-4">
                             <label for="passwordLogin">
-                                <span class="fas fa-lock text-danger mr-1 ml-2"></span>Password
+                                <span class="fas fa-lock text-danger mr-1 ml-2"></span>Contraseña
                             </label>
                             <input type="password" class="form-control" name="passwordLogin" id="passwordLogin"
-                                   aria-describedby="emailHelp" placeholder="Enter password" required>
+                                   aria-describedby="emailHelp" placeholder="Tu contraseña" required>
                         </div>
                         <p class="text-right"><a href="#" id="forgotPasswordButton" data-toggle="modal"
-                                                 data-target="#forgotPasswordModal">Forgot Password</a></p>
-                        <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
+                                                 data-target="#forgotPasswordModal">Contraseña Olvidada</a></p>
+                        <button type="submit" class="btn btn-primary btn-block">INICIAR SESION</button>
                     </form>
                     <hr class="mb-4">
-                    <p>No account yet?</p>
-                    <a href="register" class="btn btn-primary btn-block mb-4">REGISTER</a>
+                    <p>No tienes cuenta?</p>
+                    <a href="register" class="btn btn-primary btn-block mb-4">REGISTRAR</a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Access Denied</h5>
+                            <h5 class="modal-title">Acceso denegado!</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -64,7 +64,7 @@
                             <p id="modal-text"><?php echo Session::get("loginStatus"); ?></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-primary">Try Again</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Intentar de nuevo</button>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     <div class="modal-content">
                         <form class="form-group" id="forgotPasswordForm" action="#">
                             <div class="modal-header">
-                                <h5 class="modal-title">Forgot Password</h5>
+                                <h5 class="modal-title">Contraseña Olvidada</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

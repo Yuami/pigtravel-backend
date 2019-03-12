@@ -43,29 +43,29 @@
             <div class="row px-md-5">
                 <div class="col-md-8 col-12">
                     <div id="leftHouseForm" class="tab form-group">
-                        <h3 class="text-center">General Information</h3>
-                        <label for="houseName">Name of the house</label>
+                        <h3 class="text-center">Informacion General</h3>
+                        <label for="houseName">Nombre de la vivienda</label>
                         <input type="text" id="houseName" class="form-control mb-1"
                                name="houseName">
-                        <label for="peopleAmount">People Capacity</label>
+                        <label for="peopleAmount">Capacidad</label>
                         <input type="number" id="peopleAmount" class="form-control mb-1"
                                name="peopleAmount">
                     </div>
                     <div class="tab form-group">
-                        <h1 class="text-center">Additional Information</h1>
-                        <label for="tipoVivienda">House Type</label><br/>
+                        <h1 class="text-center">Informacion Adicional</h1>
+                        <label for="tipoVivienda">Tipo de vivienda</label><br/>
                         <select name="tipoVivienda" class="form-control mb-1">
                                 <?php foreach ($tipoVivienda as $tipo) { ?>
                                     <option value="<?= $tipo->getIdTipoVivienda()?>"><?= $tipo->getNombre() ?></option>
                                <?php } ?>
                             </select>
-                        <label for="squaremeters">Square Meters</label>
+                        <label for="squaremeters">Metros Cuadrados</label>
                         <input type="number" class="form-control mb-1" name="squaremeters">
-                        <label for="checkIn">Check In Time</label>
+                        <label for="checkIn">Hora del Check In</label>
                         <input type="time" class="form-control mb-1" name="checkIn" value="14:00">
-                        <label for="checkOut">Check Out Time</label>
+                        <label for="checkOut">Hora del Check Out</label>
                         <input type="time" class="form-control mb-1" name="checkOut" value="12:00">
-                        <label for="description">Description</label>
+                        <label for="description">Descripcion</label>
                         <textarea id="description" class="form-control mb-1" rows="4" cols="50"
                                   name="description"></textarea>
                     </div>
@@ -77,20 +77,20 @@
                             </div>
                         </div>
 
-                        <h1 class="text-center">Rates and Location</h1>
+                        <h1 class="text-center">Alquiler y localidad</h1>
 
                         <label for="standardRate">Alquiler automatico</label>
                         <input type="checkbox" class="form-control mb-1" name="alquilerAutomatico">
-                        <label for="country">Country</label>
+                        <label for="country">Pais</label>
                         <select id="country" class="form-control" name="country" style="width: 100% !important;">
                         </select>
                         <label for="region">Region</label>
                         <select id="region" class="form-control" name="region" style="width: 100% !important;">
                         </select>
-                        <label for="city">City</label>
+                        <label for="city">Ciudad</label>
                         <select id="city" class="form-control" name="city" style="width: 100% !important;">
                         </select>
-                        <label for="street">Address</label>
+                        <label for="street">Calle</label>
                         <input id="street" type="text" class="form-control mb-1"
                                name="street">
                         <div id="wrongHouseLocationDiv" class="custom-control custom-checkbox d-none">
@@ -100,14 +100,14 @@
                         </div>
                     </div>
                     <div id="imageTab" class="tab">
-                        <h1 class="text-center">Images</h1>
+                        <h1 class="text-center">Imagenes</h1>
                         <input type="file" name="picture[]" multiple class="form-control">
                     </div>
 
             <!-- ---------- Servicios ---------- -->
 
             <div class="tab">
-                <h1 class="text-center">Services</h1>
+                <h1 class="text-center">Servicios</h1>
                 <div class="row">
                     <?php foreach ($servicios as $servicio) {
                         if (!$servicio instanceof \Model\Items\ServicioHasIdioma) continue;
@@ -134,15 +134,15 @@
                             <span class="step"></span>
                         </div>
                         <div style="float:right;">
-                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-md-4 card">
                     <div class="row">
-                        <div class="card-header w-100"><h3 id="houseNameCard" class="text-center mb-0">Your House</h3>
+                        <div class="card-header w-100"><h3 id="houseNameCard" class="text-center mb-0">Tu Casa</h3>
                         </div>
                     </div>
                     <div class="card-body">

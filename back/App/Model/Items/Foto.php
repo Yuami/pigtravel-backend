@@ -4,7 +4,7 @@ class Foto
 {
     private $id;
     private $path;
-
+    private $back;
     /**
      * @return mixed
      */
@@ -18,7 +18,13 @@ class Foto
      */
     public function getPath()
     {
+        if (!$this->getBack())
+            return "http://pigtravel.top" . $this->path;
         return $this->path;
+    }
+
+    public function getBack(){
+        return $this->back;
     }
 
     public static function defaultPerfil()
@@ -30,4 +36,6 @@ class Foto
     {
         return '/assets/uploads/img/casas/default-image.jpg';
     }
+
+
 }
