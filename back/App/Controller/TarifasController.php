@@ -37,6 +37,8 @@ class TarifasController extends Controller
             "general" => isset($_POST['general']),
             "idPoliticaCancelacion" => $_POST['idPC'],
         ]);
+        dd($t);
+
         ViviendaHasTarifaDAO::insert([
             "idVivienda" => $id,
             "idTarifa" => $t->getId()
