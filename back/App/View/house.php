@@ -27,12 +27,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" id="scrollspy">
     <ul class="nav nav-pills mr-auto ml-auto">
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#mainHouseSection">House</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Rates</a></li>
-        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#politicas">Policies</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#mainHouseSection">Casa</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Tarifas</a></li>
+        <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#politicas">Politicas</a></li>
         <li class="nav-item text-center col-6 col-sm-3">
             <a class="nav-link" target="_blank"
-               href="http://www.pigtravel.top/houses/<?= $houses->getId() . '/' . $houses->getNombre() ?>">Show</a>
+               href="http://www.pigtravel.top/houses/<?= $houses->getId() . '/' . $houses->getNombre() ?>">Vista</a>
         </li>
     </ul>
 </nav>
@@ -41,7 +41,7 @@
 if (Session::isSet("updateCompleted")) {
     Session::delete("updateCompleted"); ?>
     <div id="updateCompleted" class="alert alert-success" role="alert">
-        House successfully updated!
+        Casa actualizada correctamente!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
