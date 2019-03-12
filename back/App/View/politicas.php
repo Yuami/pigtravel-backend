@@ -78,8 +78,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="card-body" action="/politicas/<?= $politica->getId() ?>" method="post">
-                        <input type="hidden" name="idP" value="<?php echo $politica->getId() ?>">
+                    <form class="card-body" action="/politicas" method="post">
                         <div class="form-group">
                             <label for="dias" class="col-form-label">Dias</label>
                             <input type="number" class="form-control" name="dias" id="dias">

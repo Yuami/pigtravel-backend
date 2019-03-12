@@ -14,22 +14,14 @@ class PoliticaCancelacion
 {
     private $id;
     private $nombre;
-    private $idVendedor;
+    private $idVivienda;
 
     /**
      * @return mixed
      */
-    public function getIdVendedor()
+    public function getIdVivienda()
     {
-        return $this->idVendedor;
-    }
-
-    /**
-     * @param mixed $idVendedor
-     */
-    public function setIdVendedor($idVendedor)
-    {
-        $this->idVendedor = $idVendedor;
+        return $this->idVivienda;
     }
 
     /**

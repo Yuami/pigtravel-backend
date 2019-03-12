@@ -24,21 +24,27 @@ class PoliticasController extends Controller
         // TODO: Implement index() method.
     }
 
-    public function store($id)
+    public function store()
     {
-        $idH = $_POST['idH'];
+        if (isset($_POST['idH'])) {
+            $idH = $_POST['idH'];
+        } else {
+            $idH = null;
+        }
         if ($idH != null) {
             $p = PoliticaCancelacionDAO::insert([
                 "nombre" => $_POST['nombre'],
-                "idVendedor" => $_POST['idV']
+                "idVivienda" => $_POST['idV']
             ]);
+        } else {
+            $p = 'xd';
         }
         $idP = 0;
         $ids = LiniaPoliticaCancelacionDAO::getIdsPoliticas();
         if ($p != null) {
             $idP = $p->getId();
         } else {
-            $idP = $id;
+            $idP = null;
         }
         LiniaPoliticaCancelacionDAO::insert([
             "id" => (max($ids) + 1),
@@ -49,7 +55,7 @@ class PoliticasController extends Controller
         if ($idH != null) {
             Router::redirect('houses/' . $idH . '#politicas');
         } else {
-            Router::redirect('politicas/' . $id);
+            Router::redirect('politicas/' . $p->getId());
         }
 
     }
