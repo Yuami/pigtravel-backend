@@ -31,7 +31,7 @@
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#tarifas">Rates</a></li>
         <li class="nav-item text-center col-6 col-sm-3"><a class="nav-link" href="#politicas">Policies</a></li>
         <li class="nav-item text-center col-6 col-sm-3">
-            <a class="nav-link"
+            <a class="nav-link" target="_blank"
                href="http://www.pigtravel.top/houses/<?= $houses->getId() . '/' . $houses->getNombre() ?>">Show</a>
         </li>
     </ul>
@@ -51,11 +51,11 @@ if (Session::isSet("updateCompleted")) {
 <section class="container-fluid" id="mainHouseSection">
     <div class="row breadcrumb-row">
         <div class="col-md-10 offset-md-1">
-            <h1>House</h1>
+            <h1>Casa</h1>
             <ol class="bg-transparent pt-0 breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/houses">House Management</a></li>
-                <li class="breadcrumb-item active" aria-current="page">House</li>
+                <li class="breadcrumb-item"><a href="/">Casa</a></li>
+                <li class="breadcrumb-item"><a href="/houses">Administracion Casa</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $houses->getNombre() ?></li>
             </ol>
         </div>
     </div>
@@ -64,11 +64,11 @@ if (Session::isSet("updateCompleted")) {
             <input type="hidden" name="_method" value="PUT">
             <div class="row">
                 <div class="col-md-6 ">
-                    <h2 class="text-center">Information</h2>
+                    <h2 class="text-center">Información</h2>
                     <div class="row">
-                        <label class="sr-only" for="firstNameForm">House Name</label>
+                        <label class="sr-only" for="firstNameForm">Nombre</label>
                         <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">House Name</h6>
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Nombre</h6>
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="fas fa-home text-danger"></span>
                                 </div>
@@ -78,9 +78,9 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                     </div>
                     <div class="row">
-                        <label class="sr-only" for="peopleAmount">Capacity</label>
+                        <label class="sr-only" for="peopleAmount">Capacidad</label>
                         <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Capacity</h6>
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Capacidad</h6>
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="fas fa-user text-danger"></span>
                                 </div>
@@ -111,9 +111,9 @@ if (Session::isSet("updateCompleted")) {
                     </div>
 
                     <div class="row">
-                        <label class="sr-only" for="street">Street</label>
+                        <label class="sr-only" for="street">Calle</label>
                         <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Street</h6>
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Calle</h6>
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="fas fa-road text-danger"></span>
                                 </div>
@@ -123,9 +123,9 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                     </div>
                     <div class="row">
-                        <label class="sr-only" for="city">City</label>
+                        <label class="sr-only" for="city">Ciudad</label>
                         <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">City</h6>
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Ciudad</h6>
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="fas fa-city text-danger"></span>
                                 </div>
@@ -135,9 +135,9 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                     </div>
                     <div class="row">
-                        <label class="sr-only" for="squaremeters">Square meters</label>
+                        <label class="sr-only" for="squaremeters">Metros cuadrados</label>
                         <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Square meters</h6>
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Metros cuadrados</h6>
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="fas fa-arrows-alt-h text-danger"></span>
                                 </div>
@@ -147,9 +147,9 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                     </div>
                     <div class="row">
-                        <label class="sr-only" for="checkIn">Check In</label>
+                        <label class="sr-only" for="checkIn">Entrada</label>
                         <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Check In</h6>
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Entrada</h6>
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="fas fa-lock-open text-danger"></span>
                                 </div>
@@ -159,9 +159,9 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                     </div>
                     <div class="row">
-                        <label class="sr-only" for="checkOut">Check Out</label>
+                        <label class="sr-only" for="checkOut">Salida</label>
                         <div class="input-group mb-2 mr-sm-2">
-                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Check Out</h6>
+                            <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Salida</h6>
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="fas fa-lock text-danger"></span>
                                 </div>
@@ -182,8 +182,8 @@ if (Session::isSet("updateCompleted")) {
                         </div>
                     </div>
                     <div class="row">
-                        <label for="description" class="sr-only">Description</label>
-                        <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Description</h6>
+                        <label for="description" class="sr-only">Descripcion</label>
+                        <h6 class="text-md-right my-auto mr-sm-3 col-md-2">Descripcion</h6>
 
                         <textarea id="description" class="form-control mb-1 col-md-8" rows="4" cols="50"
                                   name="description"><?= $houses->getDescripcion(); ?></textarea>
@@ -191,7 +191,7 @@ if (Session::isSet("updateCompleted")) {
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h2 class="text-center">Map</h2>
+                    <h2 class="text-center">Mapa</h2>
                     <div id="houseMap" style="width:auto;height:300px;"></div>
                 </div>
             </div>
@@ -211,9 +211,7 @@ if (Session::isSet("updateCompleted")) {
         </div>
         <div class="row justify-content-center col-12 my-5">
             <?php if (!empty($politicas)) {
-            foreach ($politicas
-
-            as $politica) {
+            foreach ($politicas as $politica) {
             $linias = $politica->getLinias() ?>
             <a href="/politicas/<?php echo $politica->getId() ?>" style="text-decoration: none; color:inherit">
                 <div class="card text-center shadow col-md-3 col-12 m-2">
@@ -393,7 +391,7 @@ if (Session::isSet("updateCompleted")) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="card-body" action="/politicas/<?php echo '$politica->getId()' ?>" method="post">
+                    <form class="card-body" action="/politicas" method="post">
                         <input type="hidden" name="idV" value="<?php echo $houses->getIdVendedor() ?>">
                         <input type="hidden" name="idH" value="<?php echo $houses->getId() ?>">
                         <div class="form-group">
