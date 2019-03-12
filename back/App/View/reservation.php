@@ -120,11 +120,8 @@ $cliente = $reserva->getCliente();
 
                             <div class="mt-3">
                                 <h6>CLIENTE</h6>
-                                <a href="/messages/<?= $reserva->getID(); ?>"
-                                   class="btn btn-primary col-auto my-1">CHAT
-                                    CON <?= strtoupper($cliente->getNombre()); ?></a>
                                 <div class="card card-show">
-                                    <a href="/profile/<?= $cliente->getID() ?>">
+                                    <a href="http://pigtravel.top/profile/<?= $cliente->getID() ?>/<?= $cliente->getNombre() ?>" target="_blank">
                                         <div class="card-body">
                                             <div class="card-text">
                                                 <div class="row">
