@@ -46,7 +46,7 @@ if(isset($_POST["submit"])) {
     <form method="POST" action="/support">
             <label for="comment">¿En que podemos ayudarte? </label>
             <textarea rows="5" class="form-control" name="comment"></textarea><br>
-            <input type="submit" value="Enviar" class="btn btn-success float-right">
+            <input type="submit" value="Enviar" class="btn btn-primary float-right ml-2">
             <input type="reset" value="Cancelar" class="btn float-right">
     </form>
     </div>
