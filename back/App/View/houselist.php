@@ -10,7 +10,7 @@
 
     require_once ROOT . "libraries.php" ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <title>List of houses</title>
+    <title>Lista de casas</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@ if (Session::isSet("wrongHouse")) {
     Session::delete("wrongHouse");
     ?>
     <div id="wrongHouse" class="alert alert-danger" role="alert">
-        You've no permission to see this house!
+        No tienes permisos para ver esa casa!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -60,6 +60,7 @@ if (Session::isSet("wrongHouse")) {
                             <?php echo $house->getCiudad()->getNombre() ?></p>
                         <p class="col font-weight-bold text-center">
                             <?php $mensajesPendientes = 0;
+                            if (is_array($mensajesPendientes))
                             foreach ($mensajes as $mensaje) {
                                 if ($mensaje->getIdVivienda() == $house->getId()) {
                                     if ($mensaje->getLeido() == 0) {
@@ -75,7 +76,7 @@ if (Session::isSet("wrongHouse")) {
                 <?php }
             } else { ?>
                 <div id="firstHouse">
-                    <h1 class="mt-5 text-center mb-5">Add your first house!</h1>
+                    <h1 class="mt-5 text-center mb-5">Añade tu primera casa!</h1>
                 </div>
             <?php } ?>
         </div>

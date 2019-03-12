@@ -163,7 +163,7 @@
                                 </div>
                                 <textarea type="text" rows="7" class="form-control" id="descriptionForm"
                                           name="descriptionForm"
-                                          placeholder="Tell us something about you!"><?= $user->getDescripcion(); ?></textarea>
+                                          placeholder="Di algo sobre ti!"><?= $user->getDescripcion(); ?></textarea>
                             </div>
                             <input class="btn d-md-block d-none btn-block btn-primary offset-md-3 mt-3" type="submit"
                                    form="profileForm"/>

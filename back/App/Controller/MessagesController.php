@@ -37,6 +37,7 @@ class MessagesController extends Controller
         $mensajes = MensajesDAO::getBy("idReciever", $id);
         $mensajesChat = MensajesDAO::getChat($id);
         $recievers = array();
+        if (is_array($mensajes))
         foreach ($mensajes as $mensaje) {
             $recievers[$mensaje->getIdSender()] = PersonaDAO::getBy("id", $mensaje->getIdSender());
         }

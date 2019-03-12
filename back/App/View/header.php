@@ -77,11 +77,11 @@ if (!Session::me()) { ?>
                                 <span class="textRightNav d-md-none">MENSAJES</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/notifications" class="nav-link"><i class="far fa-bell fa-fw"></i>
-                                <span class="textRightNav d-md-none">NOTIFICACIONES</span>
-                            </a>
-                        </li>
+<!--                        <li class="nav-item">-->
+<!--                            <a href="/notifications" class="nav-link"><i class="far fa-bell fa-fw"></i>-->
+<!--                                <span class="textRightNav d-md-none">NOTIFICACIONES</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
                         <li class="nav-item">
                             <a href="/settings" class="nav-link d-xs-block d-md-none">
                             <span class="icoNav">
