@@ -50,8 +50,8 @@ class TarifasController extends Controller
         $tarifa = TarifaDAO::getById($id);
         $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
         $house = ViviendaDAO::getById($VHT->getIdVivienda());
-        $idU = $house->getIdVendedor();
-        $politicas = PoliticaCancelacionDAO::getByIdVendedor($idU);
+        $idV = $house->getId();
+        $politicas = PoliticaCancelacionDAO::getByIdVivienda($idV);
         include_once VIEW . 'tarifas.php';
     }
 

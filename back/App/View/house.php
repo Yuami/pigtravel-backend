@@ -393,8 +393,8 @@ if (Session::isSet("updateCompleted")) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="card-body" action="/politicas/<?php echo '$politica->getId()' ?>" method="post">
-                        <input type="hidden" name="idV" value="<?php echo $houses->getIdVendedor() ?>">
+                    <form class="card-body" action="/politicas" method="post">
+                        <input type="hidden" name="idV" value="<?php echo $houses->getId() ?>">
                         <input type="hidden" name="idH" value="<?php echo $houses->getId() ?>">
                         <div class="form-group">
                             <label for="nombre" class="col-form-label">Nombre</label>
