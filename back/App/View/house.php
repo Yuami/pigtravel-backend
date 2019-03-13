@@ -205,13 +205,14 @@ if (Session::isSet("updateCompleted")) {
         </div>
         <div class="row justify-content-center col-12 my-5">
             <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalP">
-                Crear
-                Politica
+                Crear Politica
             </button>
         </div>
         <div class="row justify-content-center col-12 my-5">
             <?php if (!empty($politicas)) {
-            foreach ($politicas as $politica) {
+            foreach ($politicas
+
+            as $politica) {
             $linias = $politica->getLinias() ?>
             <a href="/politicas/<?php echo $politica->getId() ?>" style="text-decoration: none; color:inherit">
                 <div class="card text-center shadow col-md-3 col-12 m-2">
@@ -246,8 +247,7 @@ if (Session::isSet("updateCompleted")) {
             </div>
             <div class="row col-12 justify-content-center my-5">
                 <button type="button" class="btn btn-primary col-md-4 col-12" data-toggle="modal" data-target="#ModalT">
-                    Crear
-                    Tarifa
+                    Crear Tarifa
                 </button>
             </div>
             <div class="row col-12 justify-content-center">
@@ -356,7 +356,7 @@ if (Session::isSet("updateCompleted")) {
                             if ($tarifa->getGeneral() == 1) { ?>
                                 <div class="custom-control custom-checkbox" style="margin-left: 40%">
                                     <input type="checkbox" class="custom-control-input" name="general"
-                                           id="customCheck1">
+                                           id="customCheck1" checked disabled>
                                     <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
                             <?php } else { ?>
@@ -366,7 +366,13 @@ if (Session::isSet("updateCompleted")) {
                                     <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
                             <?php }
-                        } ?>
+                        } else { ?>
+                            <div class="custom-control custom-checkbox" style="margin-left: 40%">
+                                <input type="checkbox" class="custom-control-input" name="general"
+                                       id="customCheck1" checked disabled>
+                                <label class="custom-control-label" for="customCheck1">General</label>
+                            </div>
+                        <?php } ?>
                         <div class="row justify-content-between m-2">
                             <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
                                     data-dismiss="modal"> Cancelar

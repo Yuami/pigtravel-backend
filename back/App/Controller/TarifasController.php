@@ -81,8 +81,8 @@ class TarifasController extends Controller
         $tarifa = TarifaDAO::getById($id);
         $VHT = ViviendaHasTarifaDAO::getByIdTarifa($id);
         $house = ViviendaDAO::getById($VHT->getIdVivienda());
-        TarifaDAO::deleteById($id);
         ViviendaHasTarifaDAO::deleteByIdTarifa($id);
+        TarifaDAO::deleteById($id);
         Router::redirect('houses/' . $house->getId());
     }
 }
