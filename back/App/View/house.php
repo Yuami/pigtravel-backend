@@ -356,7 +356,7 @@ if (Session::isSet("updateCompleted")) {
                             if ($tarifa->getGeneral() == 1) { ?>
                                 <div class="custom-control custom-checkbox" style="margin-left: 40%">
                                     <input type="checkbox" class="custom-control-input" name="general"
-                                           id="customCheck1" checked disabled>
+                                           id="customCheck1" checked>
                                     <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
                             <?php } else { ?>
@@ -366,7 +366,8 @@ if (Session::isSet("updateCompleted")) {
                                     <label class="custom-control-label" for="customCheck1">General</label>
                                 </div>
                             <?php }
-                        } else { ?>
+                        } else {
+                            ?>
                             <div class="custom-control custom-checkbox" style="margin-left: 40%">
                                 <input type="checkbox" class="custom-control-input" name="general"
                                        id="customCheck1" checked readonly onclick="javascript: return false;">
