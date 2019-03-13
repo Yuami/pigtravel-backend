@@ -54,22 +54,16 @@ class UploadController extends Controller
             if (isset(File::get()['picture']) && isset($idVivienda)) {
 
                 $uploads = File::uploadAllPhotos('picture', 'assets/uploads/img/casas');
-                $vivienda = ViviendaHasFotosDAO::getLastByVivienda($idVivienda);
                 for ($i = 0; $i < sizeof($uploads); $i++) {
                     $upload = $uploads[$i];
-                    if ($upload instanceof Foto) {
-                        $index = $i + 1;
-                        $posicion = $vivienda instanceof ViviendaHasFotos ? $index + $vivienda->getPosicion() : $index;
 
                         ViviendaHasFotosDAO::insert([
                             'idVivienda' => $idVivienda,
                             'idFoto' => $upload->getId(),
-                            'posicion' => $posicion
                         ]);
                     }
                 }
             }
-        }
     }
 
     public function store()
