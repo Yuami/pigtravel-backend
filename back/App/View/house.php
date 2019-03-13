@@ -369,7 +369,7 @@ if (Session::isSet("updateCompleted")) {
                         } else { ?>
                             <div class="custom-control custom-checkbox" style="margin-left: 40%">
                                 <input type="checkbox" class="custom-control-input" name="general"
-                                       id="customCheck1" checked disabled>
+                                       id="customCheck1" checked readonly onclick="javascript: return false;">
                                 <label class="custom-control-label" for="customCheck1">General</label>
                             </div>
                         <?php } ?>
