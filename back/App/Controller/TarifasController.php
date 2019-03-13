@@ -30,15 +30,22 @@ class TarifasController extends Controller
 
     public function store($id)
     {
-
-        $t = TarifaDAO::insert([
-            "fechaInicio" => $_POST['fechaI'],
-            "fechaFin" => $_POST['fechaF'],
-            "precio" => $_POST['precio'],
-            "general" => isset($_POST['general']),
-            "idPoliticaCancelacion" => $_POST['idPC'],
-        ]);
-
+        if (!(isset($_POST['general']))) {
+            $t = TarifaDAO::insert([
+                "fechaInicio" => $_POST['fechaI'],
+                "fechaFin" => $_POST['fechaF'],
+                "precio" => $_POST['precio'],
+                "idPoliticaCancelacion" => $_POST['idPC'],
+            ]);
+        } else {
+            $t = TarifaDAO::insert([
+                "fechaInicio" => $_POST['fechaI'],
+                "fechaFin" => $_POST['fechaF'],
+                "precio" => $_POST['precio'],
+                "general" => $_POST['general'],
+                "idPoliticaCancelacion" => $_POST['idPC'],
+            ]);
+        }
         ViviendaHasTarifaDAO::insert([
             "idVivienda" => $id,
             "idTarifa" => $t->getId()

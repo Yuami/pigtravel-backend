@@ -353,7 +353,7 @@ if (Session::isSet("updateCompleted")) {
                             </select>
                         </div>
                         <?php if (isset($tarifa)) {
-                            if ($tarifa->getGeneral() == 1) { ?>
+                            if (!($tarifa->getGeneral() == 1)) { ?>
                                 <div class="custom-control custom-checkbox" style="margin-left: 40%">
                                     <input type="checkbox" class="custom-control-input" name="general"
                                            id="customCheck1" checked>
