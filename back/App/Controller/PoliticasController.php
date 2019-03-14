@@ -89,6 +89,7 @@ class PoliticasController extends Controller
             "dias" => $_POST['dias'],
             "porcentaje" => $_POST['porcentaje']
         ], "id", $idL);
+dd("fin");
         Router::redirect('politicas/' . $id);
     }
 
