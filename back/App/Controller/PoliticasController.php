@@ -52,6 +52,8 @@ class PoliticasController extends Controller
             "dias" => $_POST['dias'],
             "porcentaje" => $_POST['porcentaje']
         ]);
+        dd("fin");
+
         if ($idH != null) {
             Router::redirect('houses/' . $idH . '#politicas');
         } else {
