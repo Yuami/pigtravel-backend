@@ -121,7 +121,7 @@ $cliente = $reserva->getCliente();
                             <div class="mt-3">
                                 <h6>CLIENTE</h6>
                                 <div class="card card-show">
-                                    <a href="http://pigtravel.top/profile/<?= $cliente->getID() ?>/<?= $cliente->getNombre() ?>" target="_blank">
+                                    <a href="http://127.0.0.1:8000/profile/<?= $cliente->getID() ?>/<?= $cliente->getNombre() ?>" target="_blank">
                                         <div class="card-body">
                                             <div class="card-text">
                                                 <div class="row">
