@@ -61,7 +61,6 @@ class UploadController extends Controller
                             'idVivienda' => $idVivienda,
                             'idFoto' => $upload->getId(),
                         ]);
-                        dd("fin");
                     }
                 }
             }
