@@ -30,6 +30,7 @@ class TarifasController extends Controller
 
     public function store($id)
     {
+
         if (!(isset($_POST['general']))) {
             $t = TarifaDAO::insert([
                 "fechaInicio" => $_POST['fechaI'],

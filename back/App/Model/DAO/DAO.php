@@ -88,10 +88,7 @@ abstract class DAO
 
         $sql = sprintf('insert into %s (%s) values (%s)',
             $table, $columns, $values);
-        print $sql;
-        print "<br>";
-        print_r($parameters);
-        print "<br>";
+
         try {
             $con = DB::conn();
             $statement = $con->prepare($sql);
@@ -113,10 +110,7 @@ abstract class DAO
         }
 
         $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE $where";
-        print $sql;
-        print "<br>";
-        print_r($parameters);
-        print "<br>";
+
         try {
             $con = DB::conn();
             $statement = $con->prepare($sql);
