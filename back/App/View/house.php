@@ -268,13 +268,15 @@ if (Session::isSet("updateCompleted")) {
                             <p class="card-text">
                                 <span class="fas fa-arrow-alt-circle-left"></span>
                                 <?php echo noHours($tarifa->getFechaFin()) ?></p>
-                            <?php foreach ($politicas as $politica) { ?>
-                                <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
-                                    <p class="card-text">
-                                        <span class="fas fa-arrow-alt-circle-left"></span>
-                                        <?= $politica->getNombre() ?></p>
-                                <?php }
-                            }
+                            <?php
+                            if (is_array($politicas))
+                                foreach ($politicas as $politica) { ?>
+                                    <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
+                                        <p class="card-text">
+                                            <span class="fas fa-arrow-alt-circle-left"></span>
+                                            <?= $politica->getNombre() ?></p>
+                                    <?php }
+                                }
                             } else { ?>
                             <div class="card text-center bg-warning shadow col-md-3 col-12 m-2">
                                 <a href="/tarifas/<?php echo $tarifa->getId() ?>"
