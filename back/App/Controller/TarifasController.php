@@ -42,7 +42,7 @@ class TarifasController extends Controller
                 "fechaInicio" => $_POST['fechaI'],
                 "fechaFin" => $_POST['fechaF'],
                 "precio" => $_POST['precio'],
-                "general" => $_POST['general'],
+                "general" => 1,
                 "idPoliticaCancelacion" => $_POST['idPC'],
             ]);
         }
