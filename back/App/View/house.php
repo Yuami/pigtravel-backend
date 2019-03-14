@@ -292,7 +292,10 @@ if (Session::isSet("updateCompleted")) {
                                             <span class="fas fa-dollar-sign"></span> <?php echo $tarifa->getPrecio() ?>
                                         </p>
                                         <p class="card-text mt-4 mb-2">
-                                            <?php foreach ($politicas as $politica) { ?>
+
+                                            <?php
+                                            if (is_array($politicas))
+                                                foreach ($politicas as $politica) { ?>
                                                 <?php if ($politica->getId() == $tarifa->getIdPoliticaCancelacion()) { ?>
                                                     <span class="fas fa-arrow-alt-circle-left"></span>
                                                     <?= $politica->getNombre() ?>
@@ -347,7 +350,9 @@ if (Session::isSet("updateCompleted")) {
                         <div class="form-group">
                             <select class="custom-select" name="idPC" id="idPC">
                                 <option value="0">-- POLITICA CANCELACION --</option>
-                                <?php foreach ($politicas as $politica) { ?>
+                                <?php
+                                if (is_array($politicas))
+                                    foreach ($politicas as $politica) { ?>
                                     <option value="<?php echo($politica->getId()) ?>">
                                         <?php echo $politica->getNombre() ?>
                                     </option>
