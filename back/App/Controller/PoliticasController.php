@@ -26,33 +26,33 @@ class PoliticasController extends Controller
 
     public function store()
     {
+        dd($_POST);
         if (isset($_POST['idH'])) {
             $idH = $_POST['idH'];
         } else {
             $idH = null;
+        }
+        if (isset($_POST['idP'])) {
+            $idP = $_POST['idP'];
+        } else {
+            $idP = null;
         }
         if ($idH != null) {
             $p = PoliticaCancelacionDAO::insert([
                 "nombre" => $_POST['nombre'],
                 "idVivienda" => $idH
             ]);
-        } else {
-            $p = 'xd';
         }
-        $idP = 0;
-        $ids = LiniaPoliticaCancelacionDAO::getIdsPoliticas();
         if ($p != null) {
             $idP = $p->getId();
-        } else {
-            $idP = null;
         }
+        $ids = LiniaPoliticaCancelacionDAO::getIdsPoliticas();
         LiniaPoliticaCancelacionDAO::insert([
             "id" => (max($ids) + 1),
             "idPoliticaCancelacion" => $idP,
             "dias" => $_POST['dias'],
             "porcentaje" => $_POST['porcentaje']
         ]);
-        dd("fin");
 
         if ($idH != null) {
             Router::redirect('houses/' . $idH . '#politicas');
