@@ -120,7 +120,7 @@ if (!Session::me()) { ?>
                                     </div>
                                     <div class="col-8">
                                         <p class="text-left ml-md-1">
-¡                                            <strong><?= $user->getNombre(); ?></strong>
+                                            <strong><?= $user->getNombre(); ?></strong>
                                             <br>
                                             <span class="text-left small"><?= $user->getCiudad()?></span>
                                         </p>

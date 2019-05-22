@@ -64,7 +64,8 @@
                             <p id="modal-text"><?php echo Session::get("loginStatus"); ?></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-primary">Intentar de nuevo</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Intentar de nuevo
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -87,7 +88,6 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Recover</button>
-
                             </div>
                         </form>
                     </div>
@@ -102,7 +102,9 @@
 <?php
 if (Session::get('loginStatus')) { ?>
     <script type="text/javascript">
-        $('#loginErrorModal').modal('show');
+        $(function () {
+            $('#loginErrorModal').modal('show');
+        })
     </script>
 <?php }
 Session::delete('loginStatus'); ?>
