@@ -146,9 +146,9 @@
 </div>
 <?php include_once("footer.php") ?>
 
-<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="/js/d3js.js"></script>
 <?php include_once CALENDAR ?>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="/js/canvas.js"></script>
 <script src="/js/calendar.js"></script>
 <script src="/js/estadoReserva.js"></script>
 <script type="text/javascript">

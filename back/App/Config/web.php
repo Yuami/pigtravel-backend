@@ -19,6 +19,7 @@ Router::delete('tarifas/{id}', 'TarifasController@destroy');
 Router::get('politicas/{id}', 'PoliticasController@show');
 Router::put('politicas/{id}', 'PoliticasController@update');
 Router::delete('politicas/{id}', 'PoliticasController@destroy');
+Router::post('politicas/{id}', 'PoliticasController@addLinia');
 Router::post('politicas', 'PoliticasController@store');
 Router::put('tarifas/{id}', 'TarifasController@update');
 Router::post('houses/{id}', 'TarifasController@store');

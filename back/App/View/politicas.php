@@ -30,15 +30,15 @@
         </button>
     </div>
     <?php if (!empty($liniasP)) { ?>
-    <div class="row justify-content-center col-12 my-5">
+    <div class="row justify-content-center my-5">
         <?php foreach ($liniasP as $liniaP) { ?>
             <?php if (!($liniaP instanceof \Model\Items\LiniaPoliticaCancelacion)) continue; ?>
-            <div class="card text-center shadow col-md-3 col-12 m-2">
+            <div class="card text-center shadow p-0 col-12 col-md-3 col-xl-2 mx-3 my-1">
                 <div class="card-header">
                     <h5 class="card-title text-center">Linia Politica</h5>
                 </div>
                 <div class="card-body p-5">
-                    <form action="/politicas/<?php echo $politica->getId() ?>" method="POST">
+                    <form action="/politicas/<?= $politica->getId() ?>" method="POST">
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="idL" value="<?= $liniaP->getId() ?>">
                         <input type="hidden" name="idP" value="<?= $politica->getId() ?>">
@@ -52,20 +52,25 @@
                             <input class="form-control text-center" type="number" name="porcentaje" id="lPP"
                                    value="<?php echo $liniaP->getPorcentaje() ?>">
                         </div>
-                        <div class="form-group row justify-content-center mt-4">
-                            <button type="submit" id="btnAT" class="btn btn-success col-md-4 offset-1">Confirmar
-                            </button>
+                        <div class="form-group row mt-4">
+                            <div class="col-12">
+                                <button type="submit" id="btnAT" class="btn btn-success btn-block">Confirmar</button>
+                            </div>
                         </div>
                     </form>
                     <form class="form-group" action="/politicas/<?= $politica->getId() ?>" method="post">
                         <input type="hidden" name="_method" value="delete">
                         <input type="hidden" name="idL" value="<?= $liniaP->getId() ?>">
-                        <button type="submit" id="btnAT" class="btn btn-danger col-md-4">Eliminar</button>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" id="btnAT" class="btn btn-danger btn-block">Eliminar</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
-        <?php }
-        } ?>
+        <?php } ?>
+       <?php } ?>
     </div>
     <div class="modal fade" id="ModalT" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
@@ -78,7 +83,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="card-body" action="/politicas" method="post">
+                    <form class="card-body" action="/politicas/<?= $politica->getId() ?>" method="post">
                         <div class="form-group">
                             <label for="dias" class="col-form-label">Dias</label>
                             <input type="number" class="form-control" name="dias" id="dias">
@@ -88,8 +93,8 @@
                             <input type="number" name="porcentaje" id="porcentaje" class="form-control">
                         </div>
                         <div class="row justify-content-between m-2">
-                            <button type="button" id="btnCT" class="btn btn-danger col-4 offset-1"
-                                    data-dismiss="modal"> Cancelar
+                            <button type="button" id="btnCT" class="btn btn-danger col-4" data-dismiss="modal">
+                                Cancelar
                             </button>
                             <button type="submit" id="btnAT" class="btn btn-success col-md-4 col-12 mr-5">
                                 Confirmar

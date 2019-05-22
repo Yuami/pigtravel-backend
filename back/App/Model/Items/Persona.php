@@ -33,7 +33,7 @@ class Persona
     /**
      * @param mixed $idCiudad
      */
-    public function setIdCiudad($idCiudad): void
+    public function setIdCiudad($idCiudad) : void
     {
         $this->idCiudad = $idCiudad;
     }
@@ -49,7 +49,7 @@ class Persona
     /**
      * @param mixed $descripcion
      */
-    public function setDescripcion($descripcion): void
+    public function setDescripcion($descripcion) : void
     {
         $this->descripcion = $descripcion;
     }
@@ -59,7 +59,7 @@ class Persona
         return $this->id;
     }
 
-    public function setId($id): void
+    public function setId($id) : void
     {
         $this->id = $id;
     }
@@ -217,7 +217,9 @@ class Persona
 
     public function getCiudad()
     {
-        return CitiesDAO::getById($this->idCiudad)->getNombre();
+        if (isset($this->idCiudad))
+            return CitiesDAO::getById($this->idCiudad)->getNombre();
+        return "Sin ciudad";
     }
 
 }

@@ -26,7 +26,6 @@ class PoliticasController extends Controller
 
     public function store()
     {
-        dd($_POST);
         if (isset($_POST['idH'])) {
             $idH = $_POST['idH'];
         } else {
@@ -82,13 +81,11 @@ class PoliticasController extends Controller
     public function update($id)
     {
         $idL = $_POST['idL'];
-        $politica = PoliticaCancelacionDAO::getById($id);
-        $liniasP = LiniaPoliticaCancelacionDAO::getByIdPolitica($id);
         LiniaPoliticaCancelacionDAO::update([
             "idPoliticaCancelacion" => $id,
             "dias" => $_POST['dias'],
             "porcentaje" => $_POST['porcentaje']
-        ], "id", $idL);
+        ], "id = $idL and idPoliticaCancelacion = $id");
         Router::redirect('politicas/' . $id);
     }
 
@@ -106,5 +103,19 @@ class PoliticasController extends Controller
             LiniaPoliticaCancelacionDAO::deleteById($idL);
             Router::redirect('politicas/' . $id);
         }
+    }
+
+    public function addLinia($id)
+    {
+        $linia = LiniaPoliticaCancelacionDAO::getLastByIdPolitica($id);
+        LiniaPoliticaCancelacionDAO::insert(
+            [
+                "id" => $linia->getId() + 1,
+                "idPoliticaCancelacion" => $id,
+                "dias" => $_POST['dias'],
+                "porcentaje" => $_POST['porcentaje']
+            ]
+        );
+        Router::redirect('politicas/' . $id);
     }
 }

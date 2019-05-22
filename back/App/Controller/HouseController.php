@@ -19,7 +19,7 @@ use Routing\Router;
 use Config\Session;
 use Model\DAO\ViviendaDAO;
 
-class HouseController extends Controller
+class HouseController
 {
 
     public static function validUser($id)
